@@ -1,0 +1,59 @@
+% SIAM Shared Information Template
+% This is information that is shared between the main document and any
+% supplement. If no supplement is required, then this information can
+% be included directly in the main document.
+
+
+% Packages and macros go here
+\usepackage{lipsum}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{algorithmic}
+\ifpdf
+  \DeclareGraphicsExtensions{.eps,.pdf,.png,.jpg}
+\else
+  \DeclareGraphicsExtensions{.eps}
+\fi
+
+% Prevent itemized lists from running into the left margin inside theorems and proofs
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=.5in}
+\setlist[itemize]{leftmargin=.5in}
+
+% Add a serial/Oxford comma by default.
+\newcommand{\creflastconjunction}{, and~}
+
+% Used for creating new theorem and remark environments
+\newsiamremark{remark}{Remark}
+\newsiamremark{hypothesis}{Hypothesis}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\newsiamthm{claim}{Claim}
+\newsiamremark{fact}{Fact}
+\crefname{fact}{Fact}{Facts}
+
+% Sets running headers as well as PDF title and authors
+\headers{A Unified Analysis of Generalization and Sample Complexity for Semi-Supervised Domain Adaptation}{Elif Vural, Huseyin Karaca}
+
+% Title. If the supplement option is on, then "Supplementary Material"
+% is automatically inserted before the title.
+\title{A Unified Analysis of Generalization and Sample Complexity for Semi-Supervised Domain Adaptation\thanks{Submitted to the editors \today.
+\funding{This work is supported by The Scientific and Technological Research Council of Türkiye (TÜBİTAK) 1515 Frontier R\&D Laboratories Support Program for Türk Telekom 6G R\&D Lab under project number 5249902 and 2210 National Graduate Scholarship Program.}}}
+
+% Authors: full names plus addresses.
+\author{Elif Vural\thanks{Department of Electrical and Electronics Engineering, METU, Ankara, Türkiye 
+  (\email{velif@metu.edu.tr}, \url{http://blog.metu.edu.tr/velif/}).}
+\and Hüseyin Karaca\thanks{Department of Electrical and Electronics Engineering, Bilkent University, Ankara, Türkiye and Türk Telekom, Ankara, Türkiye 
+  (\email{huseyin.karaca@bilkent.edu.tr}, \email{hkaraca@turktelekom.com.tr}, \url{https://huseyin-karaca.github.io}).}}
+
+\usepackage{amsopn}
+\DeclareMathOperator{\diag}{diag}
+
+
+\input{preamble}
+
+
+%%% Local Variables: 
+%%% mode:latex
+%%% TeX-master: "main"
+%%% End: 

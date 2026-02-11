@@ -1,0 +1,385 @@
+\begin{thebibliography}{10}
+
+\bibitem{AnthonyB02}
+{\sc P.~L. Anthony, M.~Bartlett}, {\em Neural Network Learning - Theoretical
+  Foundations}, Cambridge University Press, Cambridge, UK, 2002.
+
+\bibitem{Azizzadenesheli19}
+{\sc K.~Azizzadenesheli, A.~Liu, F.~Yang, and A.~Anandkumar}, {\em Regularized
+  learning for domain adaptation under label shifts}, in Int. Conf. Learning
+  Representations, 2019.
+
+\bibitem{BachmanN66}
+{\sc G.~Bachman and L.~Narici}, {\em Functional Analysis}, Academic Press, New
+  York and London, 1966.
+
+\bibitem{BaktashmotlaghHLS13}
+{\sc M.~Baktashmotlagh, M.~T. Harandi, B.~C. Lovell, and M.~Salzmann}, {\em
+  Unsupervised domain adaptation by domain invariant projection}, in {IEEE}
+  International Conference on Computer Vision, 2013, pp.~769--776.
+
+\bibitem{BartlettFT17}
+{\sc P.~L. Bartlett, D.~J. Foster, and M.~Telgarsky}, {\em
+  Spectrally-normalized margin bounds for neural networks}, in Advances in
+  Neural Information Processing Systems 30, 2017, pp.~6240--6249.
+
+\bibitem{BartlettMR21}
+{\sc P.~L. Bartlett, A.~Montanari, and A.~Rakhlin}, {\em Deep learning: a
+  statistical viewpoint}, Acta Numerica, 30 (2021), pp.~87--201.
+
+\bibitem{BenDavidBCKPV10}
+{\sc S.~Ben{-}David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and
+  J.~Wortman}, {\em A theory of learning from different domains}, Machine
+  Learning, 79 (2010), pp.~151--175.
+
+\bibitem{BenDavidBCP06}
+{\sc S.~Ben{-}David, J.~Blitzer, K.~Crammer, and F.~Pereira}, {\em Analysis of
+  representations for domain adaptation}, in Proc. Advances in Neural
+  Information Processing Systems 19, 2006, pp.~137--144.
+
+\bibitem{Bogachev07}
+{\sc V.~I. Bogachev}, {\em Measure Theory}, Springer, Berlin Heidelberg, 2007.
+
+\bibitem{BousmalisTSKE16}
+{\sc K.~Bousmalis~et al.}, {\em Domain separation networks}, in Adv. Neural
+  Information Processing Systems, 2016, pp.~343--351.
+
+\bibitem{mmd_code_pytorch}
+{\sc C.~Cai}, {\em Deep adaptation networks ({DAN}) in {PyTorch}}, 2020.
+\newblock [Online]. Available:
+  \url{https://github.com/CuthbertCai/pytorch\_DAN}. Accessed: 2024-11-13.
+
+\bibitem{CourtyFTR17}
+{\sc N.~Courty~et al.}, {\em Optimal transport for domain adaptation}, IEEE
+  Transactions on Pattern Analysis and Machine Intelligence, 39 (2017),
+  pp.~1853--1865.
+
+\bibitem{CuckerS02}
+{\sc F.~Cucker and S.~Smale}, {\em {On the Mathematical Foundations of
+  Learning}}, Bulletin of the American Mathematical Society, 39 (2002),
+  pp.~1--49.
+
+\bibitem{DamodaranKFTC18}
+{\sc B.~B. Damodaran~et al.}, {\em Deepjdot: Deep joint distribution optimal
+  transport for unsupervised domain adaptation}, in European Conf. Comp.
+  Vision, vol.~11208, 2018, pp.~467--483.
+
+\bibitem{DanielyG24}
+{\sc A.~Daniely and E.~Granot}, {\em On the sample complexity of two-layer
+  networks: {L}ipschitz vs. element-wise {L}ipschitz activation}, in
+  International Conference on Algorithmic Learning Theory, vol.~237, 2024,
+  pp.~505--517.
+
+\bibitem{DaumeIII07}
+{\sc H.~Daum{\'{e}}~III}, {\em Frustratingly easy domain adaptation}, in Annual
+  Meeting-Association for Computational Linguistics, 2007.
+
+\bibitem{DaumeKS10}
+{\sc H.~Daum{\'{e}}~III, A.~Kumar, and A.~Saha}, {\em Co-regularization based
+  semi-supervised domain adaptation}, in Proc. Advances in Neural Information
+  Processing Systems 23, 2010, pp.~478--486.
+
+\bibitem{DengGHML23}
+{\sc Y.~Deng~et al.}, {\em On the hardness of robustness transfer: {A}
+  perspective from {R}ademacher complexity over symmetric difference hypothesis
+  space}, arXiv preprint: http://arxiv.org/abs/2302.12351,  (2023).
+
+\bibitem{DhouibRL20}
+{\sc S.~Dhouib, I.~Redko, and C.~Lartizien}, {\em Margin-aware adversarial
+  domain adaptation with optimal transport}, in Proc. Int. Conf. Machine
+  Learning,, vol.~119, 2020, pp.~2514--2524.
+
+\bibitem{DuanXT12}
+{\sc L.~Duan, D.~Xu, and I.~W. Tsang}, {\em Learning with augmented features
+  for heterogeneous domain adaptation}, in Proc. 29th International Conference
+  on Machine Learning, 2012.
+
+\bibitem{DunfordS88}
+{\sc N.~Dunford and J.~Schwartz}, {\em Linear Operators, Part 1: General
+  Theory}, Wiley Classics Library, Interscience Publishers Inc., New York,
+  1988.
+
+\bibitem{HamriBF25}
+{\sc M.~El~Hamri, Y.~Bennani, and I.~Falih}, {\em Theoretical guarantees for
+  domain adaptation with hierarchical optimal transport}, Mach. Learn., 114
+  (2025), p.~119.
+
+\bibitem{FangLLZ23}
+{\sc Z.~Fang, J.~Lu, F.~Liu, and G.~Zhang}, {\em Semi-supervised heterogeneous
+  domain adaptation: Theory and algorithms}, {IEEE} Trans. Pattern Anal. Mach.
+  Intell., 45 (2023), pp.~1087--1105.
+
+\bibitem{FernandoHST13}
+{\sc B.~Fernando, A.~Habrard, M.~Sebban, and T.~Tuytelaars}, {\em Unsupervised
+  visual domain adaptation using subspace alignment}, in {IEEE} International
+  Conference on Computer Vision, 2013, pp.~2960--2967.
+
+\bibitem{TomerWH16}
+{\sc T.~Galanti, L.~Wolf, and T.~Hazan}, {\em A theoretical framework for deep
+  transfer learning}, Information and Inference: A Journal of the IMA, 5
+  (2016), pp.~159--209.
+
+\bibitem{mnistm}
+{\sc Y.~Ganin and V.~Lempitsky}, {\em Unsupervised domain adaptation by
+  backpropagation}, in Proceedings of the 32nd International Conference on
+  Machine Learning (ICML), 2015, pp.~1180--1189.
+
+\bibitem{GaninUAGLLML16}
+{\sc Y.~Ganin~et al.}, {\em Domain-adversarial training of neural networks}, J.
+  Mach. Learn. Res., 17 (2016), pp.~59:1--59:35.
+
+\bibitem{GhifaryKZ14}
+{\sc M.~Ghifary, W.~B. Kleijn, and M.~Zhang}, {\em Domain adaptive neural
+  networks for object recognition}, in Int. Conf. Artificial Intelligence,
+  vol.~8862, 2014, pp.~898--904.
+
+\bibitem{GhifaryKZBL16}
+{\sc M.~Ghifary~et al.}, {\em Deep reconstruction-classification networks for
+  unsupervised domain adaptation}, in European Conf. Comp. Vision,, vol.~9908,
+  2016, pp.~597--613.
+
+\bibitem{fungtion_DANN_py3}
+{\sc {GitHub repository}}, {\em Dann\_py3}, 2023.
+\newblock [Online]. Available: \url{https://github.com/fungtion/DANN_py3.git}.
+
+\bibitem{GolowichRS18}
+{\sc N.~Golowich, A.~Rakhlin, and O.~Shamir}, {\em Size-independent sample
+  complexity of neural networks}, in Conference On Learning Theory, vol.~75,
+  2018, pp.~297--299.
+
+\bibitem{GrettonBRSS12}
+{\sc A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"{o}}lkopf, and A.~J.
+  Smola}, {\em A kernel two-sample test}, J. Mach. Learn. Res., 13 (2012),
+  pp.~723--773.
+
+\bibitem{HarveyLM17}
+{\sc N.~Harvey, C.~Liaw, and A.~Mehrabian}, {\em Nearly-tight {VC}-dimension
+  bounds for piecewise linear neural networks}, in Proc. Conf. Learning Theory,
+  vol.~65, 2017, pp.~1064--1068.
+
+\bibitem{HuangSGBS06}
+{\sc J.~Huang, A.~J. Smola, A.~Gretton, K.~M. Borgwardt, and
+  B.~Sch{\"{o}}lkopf}, {\em Correcting sample selection bias by unlabeled
+  data}, in Proc. Advances in Neural Information Processing Systems 19, 2006,
+  pp.~601--608.
+
+\bibitem{JiaoLLY24}
+{\sc Y.~Jiao, H.~Lin, Y.~Luo, and J.~Z. Yang}, {\em Deep transfer learning:
+  Model framework and error analysis}, arXiv preprint:
+  http://arxiv.org/abs/2410.09383,  (2024).
+
+\bibitem{KaracaAAAAUV23}
+{\sc H.~Karaca~et al.}, {\em An experimental study of the sample complexity of
+  domain adaptation}, in {IEEE} Signal Processing and Communications
+  Applications Conference, 2023, pp.~1--4.
+
+\bibitem{KouwL21}
+{\sc W.~M. Kouw and M.~Loog}, {\em A review of domain adaptation without target
+  labels}, {IEEE} Trans. Pattern Anal. Mach. Intell., 43 (2021), pp.~766--785.
+
+\bibitem{mnist}
+{\sc Y.~LeCun, L.~Bottou, Y.~Bengio, and P.~Haffner}, {\em Gradient-based
+  learning applied to document recognition}, Proceedings of the IEEE, 86
+  (1998), pp.~2278--2324.
+
+\bibitem{LongCWJ15}
+{\sc M.~Long, Y.~Cao, J.~Wang, and M.~I. Jordan}, {\em Learning transferable
+  features with deep adaptation networks}, in Proc 32nd International
+  Conference on Machine Learning, vol.~37, pp.~97--105.
+
+\bibitem{LongC0J18}
+{\sc M.~Long, Z.~Cao, J.~Wang, and M.~I. Jordan}, {\em Conditional adversarial
+  domain adaptation}, in Advances in Neural Information Processing Systems,
+  2018, pp.~1647--1657.
+
+\bibitem{MansourMR09}
+{\sc Y.~Mansour, M.~Mohri, and A.~Rostamizadeh}, {\em Domain adaptation:
+  Learning bounds and algorithms}, in The 22nd Conference on Learning Theory,
+  2009.
+
+\bibitem{MITCBCL}
+{\sc {Massachusetts Institute of Technology}}, {\em {MIT-CBCL} face recognition
+  database}.
+\newblock Available:
+  http://cbcl.mit.edu/software-datasets/heisele/facerecognition-database.html.
+
+\bibitem{McNamaraB17}
+{\sc D.~McNamara and M.~Balcan}, {\em Risk bounds for transferring
+  representations with and without fine-tuning}, in Proc. Int. Conf. Machine
+  Learning,, vol.~70, 2017, pp.~2373--2381.
+
+\bibitem{MohriM12}
+{\sc M.~Mohri and A.~M. Medina}, {\em New analysis and algorithm for learning
+  with drifting distributions}, in Int. Conf. Algorithmic Learning Theory,
+  vol.~7568, 2012, pp.~124--138.
+
+\bibitem{NeyshaburBS18}
+{\sc B.~Neyshabur, S.~Bhojanapalli, and N.~Srebro}, {\em A {PAC}-bayesian
+  approach to spectrally-normalized margin bounds for neural networks}, in Int.
+  Conf. Learning Representations, 2018.
+
+\bibitem{NeyshaburTS15}
+{\sc B.~Neyshabur, R.~Tomioka, and N.~Srebro}, {\em Norm-based capacity control
+  in neural networks}, in Prof. 28th Conference on Learning Theory, vol.~40,
+  2015, pp.~1376--1401.
+
+\bibitem{PanTKY11}
+{\sc S.~J. Pan, I.~W. Tsang, J.~T. Kwok, and Q.~Yang}, {\em Domain adaptation
+  via transfer component analysis}, {IEEE} Trans. Neural Networks, 22 (2011),
+  pp.~199--210.
+
+\bibitem{RedkoMHS20}
+{\sc I.~Redko, E.~Morvant, A.~Habrard, M.~Sebban, and Y.~Bennani}, {\em A
+  survey on domain adaptation theory}, arXiv preprint:
+  http://arxiv.org/abs/2004.11829,  (2020).
+
+\bibitem{SiciliaAAH22}
+{\sc A.~Sicilia, K.~Atwell, M.~Alikhani, and S.~J. Hwang}, {\em
+  {PAC}-{B}ayesian domain adaptation bounds for multiclass learners}, in Proc.
+  Conf. Uncertainty in Artificial Intelligence, vol.~180, 2022, pp.~1824--1834.
+
+\bibitem{SinghalWRK23}
+{\sc P.~Singhal, R.~Walambe, S.~Ramanna, and K.~Kotecha}, {\em Domain
+  adaptation: Challenges, methods, datasets, and applications}, {IEEE} Access,
+  11 (2023), pp.~6973--7020.
+
+\bibitem{SubediC19}
+{\sc M.~Subedi and J.~Cortez}, {\em {Reproducing Kernel Hilbert Spaces} -
+  {P}art {III}}.
+\newblock \url{https://www.math.uh.edu/~dlabate/LectureNote_06.pdf}.
+\newblock Accessed: 2022-03-22.
+
+\bibitem{SunS16}
+{\sc B.~Sun and K.~Saenko}, {\em Deep {CORAL:} correlation alignment for deep
+  domain adaptation}, in European Conf. Comp. Vision, vol.~9915, 2016,
+  pp.~443--450.
+
+\bibitem{SunCPY11}
+{\sc Q.~Sun, R.~Chattopadhyay, S.~Panchanathan, and J.~Ye}, {\em A two-stage
+  weighting framework for multi-source domain adaptation}, in Proc. Advances in
+  Neural Information Processing Systems 24, 2011, pp.~505--513.
+
+\bibitem{Combes0WG20}
+{\sc R.~Tachet des Combes~et al.}, {\em Domain adaptation with conditional
+  distribution matching and generalized label shift}, in Neural Inf. Proc.
+  Systems, 2020.
+
+\bibitem{TangJ20}
+{\sc H.~Tang and K.~Jia}, {\em Discriminative adversarial domain adaptation},
+  in {AAAI} Conference on Artificial Intelligence, 2020, pp.~5940--5947.
+
+\bibitem{TripuraneniJJ20}
+{\sc N.~Tripuraneni, M.~I. Jordan, and C.~Jin}, {\em On the theory of transfer
+  learning: The importance of task diversity}, in Advances in Neural
+  Information Processing Systems, 2020.
+
+\bibitem{TzengHDS15}
+{\sc E.~Tzeng, J.~Hoffman, T.~Darrell, and K.~Saenko}, {\em Simultaneous deep
+  transfer across domains and tasks}, in {IEEE} International Conference on
+  Computer Vision, 2015, pp.~4068--4076.
+
+\bibitem{TzengHSD17}
+{\sc E.~Tzeng, J.~Hoffman, K.~Saenko, and T.~Darrell}, {\em Adversarial
+  discriminative domain adaptation}, in {IEEE} Conference on Computer Vision
+  and Pattern Recognition,, 2017, pp.~2962--2971.
+
+\bibitem{TzengHZSD14}
+{\sc E.~Tzeng, J.~Hoffman, N.~Zhang, K.~Saenko, and T.~Darrell}, {\em Deep
+  domain confusion: Maximizing for domain invariance}, arXiv preprint:
+  http://arxiv.org/abs/1412.3474,  (2014).
+
+\bibitem{VardiSS22}
+{\sc G.~Vardi, O.~Shamir, and N.~Srebro}, {\em The sample complexity of
+  one-hidden-layer neural networks}, in Advances in Neural Information
+  Processing Systems 35, 2022.
+
+\bibitem{Vural18}
+{\sc E.~Vural}, {\em Generalization bounds for domain adaptation via domain
+  transformations}, in {IEEE} Int. Workshop Machine Learning for Signal
+  Processing, 2018, pp.~1--6.
+
+\bibitem{WangD18}
+{\sc M.~Wang and W.~Deng}, {\em Deep visual domain adaptation: {A} survey},
+  Neurocomputing, 312 (2018), pp.~135--153.
+
+\bibitem{WangS15}
+{\sc X.~Wang and J.~Schneider}, {\em Generalization bounds for transfer
+  learning under model shift}, in Proc. Conf. Uncertainty in Artificial
+  Intelligence, 2015, pp.~922--931.
+
+\bibitem{WangM23}
+{\sc Z.~Wang and Y.~Mao}, {\em Information-theoretic analysis of unsupervised
+  domain adaptation}, in Int. Conf. Learning Representations, 2023.
+
+\bibitem{WangM24}
+{\sc Z.~Wang and Y.~Mao}, {\em On f-divergence principled domain adaptation: An
+  improved framework}, in Advances in Neural Information Processing Systems,
+  2024.
+
+\bibitem{WangMSX23}
+{\sc B.~Wang~et al.}, {\em Gap minimization for knowledge sharing and
+  transfer}, J. Mach. Learn. Res., 24 (2023), pp.~33:1--33:57.
+
+\bibitem{WangYXWZW23}
+{\sc P.~Wang~et al.}, {\em Information maximizing adaptation network with label
+  distribution priors for unsupervised domain adaptation}, IEEE Transactions on
+  Multimedia, 25 (2023), pp.~6026--6039.
+
+\bibitem{WeiM19}
+{\sc C.~Wei and T.~Ma}, {\em Data-dependent sample complexity of deep neural
+  networks via {L}ipschitz augmentation}, in Advances in Neural Information
+  Processing Systems 32, 2019, pp.~9722--9733.
+
+\bibitem{WuMAZ24}
+{\sc X.~Wu, J.~H. Manton, U.~Aickelin, and J.~Zhu}, {\em On the generalization
+  for transfer learning: An information-theoretic analysis}, {IEEE} Trans. Inf.
+  Theory, 70 (2024), pp.~7089--7124.
+
+\bibitem{DXiaLZSL25}
+{\sc Z.~Xia~et al.}, {\em Meta domain adaptation approach for multi-domain
+  ranking}, {IEEE} Access, 13 (2025), pp.~92921--92931.
+
+\bibitem{YangZLLLC25}
+{\sc B.~Yang~et al.}, {\em Point-to-set metric-gated mixture of experts for
+  multisource domain adaptation fault diagnosis}, IEEE Transactions on Neural
+  Networks and Learning Systems,  (2025), pp.~1--15.
+
+\bibitem{YaoPNLM15}
+{\sc T.~Yao, Y.~Pan, C.~Ngo, H.~Li, and T.~Mei}, {\em Semi-supervised domain
+  adaptation with subspace learning for visual recognition}, in {IEEE}
+  Conference on Computer Vision and Pattern Recognition, 2015, pp.~2142--2150.
+
+\bibitem{Yurinski76}
+{\sc V.~V. Yurinskii}, {\em Exponential inequalities for sums of random
+  vectors}, Journal of Multivariate Analysis, 6 (1976), pp.~473--499.
+
+\bibitem{ZellingerMS21}
+{\sc W.~Zellinger, B.~A. Moser, and S.~Saminger{-}Platz}, {\em On
+  generalization in moment-based domain adaptation}, Ann. Math. Artif. Intell.,
+  89 (2021), pp.~333--369.
+
+\bibitem{ZengSRGFZ25}
+{\sc Y.~Zeng~et al.}, {\em Multirepresentation dynamic adaptive network for
+  cross-domain rolling bearing fault diagnosis in complex scenarios}, IEEE
+  Transactions on Instrumentation and Measurement, 74 (2025), pp.~1--16.
+
+\bibitem{ZhangLLJ19}
+{\sc Y.~Zhang, T.~Liu, M.~Long, and M.~I. Jordan}, {\em Bridging theory and
+  algorithm for domain adaptation}, in Proceedings of the 36th International
+  Conference on Machine Learning, vol.~97, 2019, pp.~7404--7413.
+
+\bibitem{ZhouTPT19}
+{\sc J.~T. Zhou, I.~W. Tsang, S.~J. Pan, and M.~Tan}, {\em Multi-class
+  heterogeneous domain adaptation}, Journal of Machine Learning Research, 20
+  (2019), pp.~1--31.
+
+\bibitem{ZonooziS23}
+{\sc M.~H. Zonoozi and V.~Seydi}, {\em A survey on adversarial domain
+  adaptation}, Neural Process. Lett., 55 (2023), pp.~2429--2469.
+
+\bibitem{ZonooziSD25}
+{\sc M.~H.~P. Zonoozi, V.~Seydi, and M.~Deypir}, {\em An unsupervised
+  adversarial domain adaptation based on variational auto-encoder}, Mach.
+  Learn., 114 (2025), p.~128.
+
+\end{thebibliography}

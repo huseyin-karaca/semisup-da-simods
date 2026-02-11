@@ -1,0 +1,267 @@
+% Commands for symbols
+% General
+\newcommand{\half}{\ensuremath{ \frac{1}{2} }}
+\newcommand{\tr}{\ensuremath{ \mathrm{tr}}}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\M}{\ensuremath{\mathcal{M}}}
+\newcommand{\Rn}{\ensuremath{\mathbb{R}^n}}
+\newcommand{\E}{\ensuremath{\mathbb{E}}}
+\newcommand{\B}{\ensuremath{\mathcal{B}}}
+\newcommand{\wvect}{\ensuremath{\mathbf{w}}}
+% Domain 
+\newcommand{\Xs}{\ensuremath{\mathcal{X}^s}} % Source data set
+\newcommand{\Xt}{\ensuremath{\mathcal{X}^t}} %Target data set
+\newcommand{\Ss}{\ensuremath{X^s}} % Source sample set
+\newcommand{\St}{\ensuremath{X^t}} %Target sample set
+\newcommand{\Y}{\ensuremath{\mathcal{Y}}} % Label set
+\newcommand{\Zs}{\ensuremath{\mathcal{Z}^s}} % Source combined set
+\newcommand{\Zt}{\ensuremath{\mathcal{Z}^t}} %Target combined set
+\newcommand{\mus}{\ensuremath{\mu_s}} % Source probability measure
+\newcommand{\mut}{\ensuremath{\mu_t}} % Target probability measure
+\newcommand{\nus}{\ensuremath{\nu_s}} % Source probability measure
+\newcommand{\nut}{\ensuremath{\nu_t}} % Target probability measure
+
+% Variance and moments
+\newcommand{\vars}{\ensuremath{\sigma_s^2}}
+\newcommand{\vart}{\ensuremath{\sigma_t^2}}
+\newcommand{\Cs}{\ensuremath{C_s}}
+\newcommand{\Ct}{\ensuremath{C_t}}
+
+% Data
+\newcommand{\xs}{\ensuremath{x^s}} % Source data sample
+\newcommand{\xt}{\ensuremath{x^t}} %Target data sample
+\newcommand{\xis}{\ensuremath{x^s_i}} % Source data sample
+\newcommand{\xjs}{\ensuremath{x^s_j}} % Source data sample
+\newcommand{\xjt}{\ensuremath{x^t_j}} %Target data sample
+\newcommand{\xit}{\ensuremath{x^t_i}} %Target data sample
+\newcommand{\ys}{\ensuremath{\mathbf{y}^s}} % Source label
+\newcommand{\yt}{\ensuremath{\mathbf{y}^t}} %Target label
+\newcommand{\yis}{\ensuremath{\mathbf{y}^s_i}} % Source label
+\newcommand{\y}{\ensuremath{\mathbf{y}}} %Target label
+\newcommand{\yjt}{\ensuremath{\mathbf{y}^t_j}} %Target label
+\newcommand{\zs}{\ensuremath{z^s}} % Source sample
+\newcommand{\zt}{\ensuremath{z^t}} %Target sample
+%
+\newcommand{\Ns}{\ensuremath{N_s}} %Number of source data samples
+\newcommand{\Nt}{\ensuremath{N_t}} %Number of target data samples
+%
+\newcommand{\Ms}{\ensuremath{M_s}} %Number of labeled source data samples
+\newcommand{\Mt}{\ensuremath{M_t}} %Number of labeled target data samples
+%
+\newcommand{\as}{\ensuremath{a_s}}
+\newcommand{\at}{\ensuremath{a_t}}
+% Mapping
+\newcommand{\X}{\ensuremath{\mathcal{X}}} % Space of embedding
+\newcommand{\fs}{\ensuremath{f^s}} % Source mapping
+\newcommand{\ft}{\ensuremath{f^t}} %Target mapping
+\newcommand{\h}{\ensuremath{h}} % Hypothesis 
+\newcommand{\Fs}{\ensuremath{\mathcal{F}^s}} % Source transformation space
+\newcommand{\Ft}{\ensuremath{\mathcal{F}^t}} %Target transformation space
+\newcommand{\Hs}{\ensuremath{\mathcal{H}}} % Hypothesis space
+\newcommand{\F}{\ensuremath{\mathcal{F}}} % Generic function space
+\newcommand{\gs}{\ensuremath{g^s}} % Hypothesis
+\newcommand{\gt}{\ensuremath{g^t}} % Hypothesis 
+ \newcommand{\Gs}{\ensuremath{\mathcal{G}^s}} % Source transformation space
+\newcommand{\Gt}{\ensuremath{\mathcal{G}^t}} %Target transformation space
+ \newcommand{\Dspace}{\ensuremath{\mathcal{D}}} % Generic function space
+ \newcommand{\vs}{\ensuremath{v^s}} % Composite domain discriminator function 
+\newcommand{\vt}{\ensuremath{v^t}} % Composite domain discriminator function
+ \newcommand{\Vs}{\ensuremath{\mathcal{V}^s}} % Composite domain discriminator function 
+\newcommand{\Vt}{\ensuremath{\mathcal{V}^t}}
+ 
+ 
+% Loss
+\newcommand{\loss}{\ensuremath{\ell}} % Source mapping
+\newcommand{\Ls}{\ensuremath{\mathcal{L}^s}} % Source expected loss
+\newcommand{\Lt}{\ensuremath{\mathcal{L}^t}} % Target expected loss
+\newcommand{\Lw}{\ensuremath{\mathcal{L}_{\alpha}}} % Weighed expected loss
+\newcommand{\hLs}{\ensuremath{\hat{\mathcal{L}}^s}} % Source empirical loss
+\newcommand{\hLt}{\ensuremath{\hat{\mathcal{L}}^t}} % Target empirical loss
+\newcommand{\hLw}{\ensuremath{\hat{\mathcal{L}}_{\alpha}}} % Weighed empirical loss
+% Distance
+\newcommand{\D}{\ensuremath{D}} % Distribution distance
+\newcommand{\Ddan}{\ensuremath{\D_\ddan}} % Distribution distance
+\newcommand{\hD}{\ensuremath{\hat{D}}} % Distribution distance empirical estimate
+\newcommand{\hDdan}{\ensuremath{\hat{\D}_\ddan}} % Distribution distance
+
+% Regularity
+\newcommand{\LLs}{\ensuremath{R}} % ! Modified, before: L
+\newcommand{\Lls}{\ensuremath{L_\ell}} %! Modified, before: \xi
+\newcommand{\Lact}{\ensuremath{L}} 
+\newcommand{\bls}{\ensuremath{A_\ell}} %! Modified, before: B
+\newcommand{\Lk}{\ensuremath{L_K}} % Lipschitz constant of kernel kl
+\newcommand{\LLsdan}{\ensuremath{\LLs_{A}}} 
+
+
+% Covering number
+\newcommand{\N}{\ensuremath{\mathcal{N}}}
+\newcommand{\Bx}{\ensuremath{B_{\delta}(x)}}
+\newcommand{\dmetric}{\ensuremath{\mathfrak{d}}} % General metric 
+\newcommand{\ds}{\ensuremath{\mathfrak{d}^s}} % Source metric
+%\newcommand{\dt}{\ensuremath{d^t}} % Hypothesis 
+%\newcommand{\dXs}{\ensuremath{d^s_{\mathcal{X}} }} % L-inf source distance
+%\newcommand{\dXt}{\ensuremath{d^t_{\mathcal{X}} }} % L-inf target distance
+\newcommand{\dt}{\ensuremath{\mathfrak{d}^t}} % Target metric 
+\newcommand{\dXs}{\ensuremath{\ds_{\mathcal{X}} }} % L-inf source distance
+\newcommand{\dXt}{\ensuremath{\dt_{\mathcal{X}} }} % L-inf target distance
+\newcommand{\dVs}{\ensuremath{\ds_{\mathcal{V}} }} % L-inf source distance
+\newcommand{\dVt}{\ensuremath{\dt_{\mathcal{V}} }} % L-inf target distance
+\newcommand{\Ks}{\ensuremath{\kappa^s}} %Cover number source
+\newcommand{\Kt}{\ensuremath{\kappa^t}} % Cover number target
+\newcommand{\Kl}{\ensuremath{\kappa^l}} % Cover number for parameter domain of layer l
+\newcommand{\Kgen}{\ensuremath{\kappa}} % General cover number symbol
+\newcommand{\radTheta}{\ensuremath{\delta}} % Cover radius in parameter domain
+\newcommand{\grid}{\ensuremath{\mathfrak{G}}}
+
+
+% Deep DA
+\newcommand{\fsl}{\ensuremath{f^{sl}}} % Source function layer l
+\newcommand{\ftl}{\ensuremath{f^{tl}}} %Target function layer l
+\newcommand{\fslm}{\ensuremath{f^{s(l-1)}}} % Source function layer l-1
+\newcommand{\ftlm}{\ensuremath{f^{t(l-1)}}} %Target function layer l-1
+\newcommand{\fsone}{\ensuremath{f^{s1}}} % Source function layer 1
+\newcommand{\ftone}{\ensuremath{f^{t1}}} %Target function layer 1
+\newcommand{\fsLm}{\ensuremath{f^{s(L-1)}}} % Source function layer 1
+\newcommand{\ftLm}{\ensuremath{f^{t(L-1)}}} %Target function layer 1
+
+% Hidden layers
+\newcommand{\hsl}{\ensuremath{\boldsymbol{\xi}^{sl}}} % Source hidden layer l
+\newcommand{\htl}{\ensuremath{\boldsymbol{\xi}^{tl}}} %Target hidden layer l
+\newcommand{\hslm}{\ensuremath{\boldsymbol{\xi}^{s(l-1)}}} % Source hidden layer l-1
+\newcommand{\htlm}{\ensuremath{\boldsymbol{\xi}^{t(l-1)}}} %Target hidden layer l-1
+\newcommand{\hsz}{\ensuremath{\boldsymbol{\xi}^{s0}}}
+\newcommand{\hsone}{\ensuremath{\boldsymbol{\xi}^{s1}}}
+\newcommand{\htz}{\ensuremath{\boldsymbol{\xi}^{t0}}}
+\newcommand{\hidl}{\ensuremath{\boldsymbol{\xi}^{l}}} % Common hidden layer l vector
+\newcommand{\hidlm}{\ensuremath{\boldsymbol{\xi}^{l-1}}} % Common hidden layer l-1 vector
+\newcommand{\hidz}{\ensuremath{\boldsymbol{\xi}^{0}}}% Common hidden layer 0 vector
+\newcommand{\hidone}{\ensuremath{\boldsymbol{\xi}^{1}}}% Common hidden layer 1vector
+\newcommand{\hidL}{\ensuremath{\boldsymbol{\xi}^{L}}}% Common hidden layer 1vector
+\newcommand{\hsL}{\ensuremath{\boldsymbol{\xi}^{sL}}} % Source final layer L
+\newcommand{\htL}{\ensuremath{\boldsymbol{\xi}^{tL}}}% Target final layer L
+\newcommand{\hsLm}{\ensuremath{\boldsymbol{\xi}^{s(L-1)}}} % Source hidden layer L-1
+\newcommand{\htLm}{\ensuremath{\boldsymbol{\xi}^{t(L-1)}}} %Target hidden layer L-1
+\newcommand{\hidLm}{\ensuremath{\boldsymbol{\xi}^{L-1}}} % Common hidden layer L-1 vector
+
+% Network parameters
+\newcommand{\Wsl}{\ensuremath{\mathbf{W}^{sl}}} % Source weight layer l
+\newcommand{\Wtl}{\ensuremath{\mathbf{W}^{tl}}} %Target weight layer l
+\newcommand{\Wl}{\ensuremath{\mathbf{W}^{l}}} %General weight layer l
+\newcommand{\Wslm}{\ensuremath{\mathbf{W}^{s(l-1)}}} % Source weight layer l-1
+\newcommand{\Wtlm}{\ensuremath{\mathbf{W}^{t(l-1)}}} %Target weight layer l-1
+\newcommand{\WsL}{\ensuremath{\mathbf{W}^{sL}}} % Source weight layer L
+\newcommand{\WtL}{\ensuremath{\mathbf{W}^{tL}}} % Target weight layer L
+\newcommand{\WL}{\ensuremath{\mathbf{W}^{L}}} % Common weight layer L
+\newcommand{\WsLm}{\ensuremath{\mathbf{W}^{s(L-1)}}} % Source weight layer L-1
+\newcommand{\WtLm}{\ensuremath{\mathbf{W}^{t(L-1)}}} %Target weight layer L-1
+\newcommand{\Wone}{\ensuremath{\mathbf{W}^{1}}} % Common weight layer 1
+\newcommand{\Wsone}{\ensuremath{\mathbf{W}^{s1}}} % Source weight layer 1
+
+% Domain-adversarial
+\newcommand{\WKdan}{\ensuremath{\mathbf{W}^{K}_\ddan}} % Common weight layer K
+\newcommand{\Wldan}{\ensuremath{\mathbf{W}^{l}_\ddan}}
+\newcommand{\Wlmdan}{\ensuremath{\mathbf{W}^{l-1}_\ddan}}
+\newcommand{\Wonedan}{\ensuremath{\mathbf{W}^{1}_\ddan}} % Common weight layer 1
+\newcommand{\bKdan}{\ensuremath{\mathbf{b}^{K}_\ddan}} % Common weight layer K
+\newcommand{\bldan}{\ensuremath{\mathbf{b}^{l}_\ddan}}
+\newcommand{\blmdan}{\ensuremath{\mathbf{b}^{l-1}_\ddan}}
+\newcommand{\bonedan}{\ensuremath{\mathbf{b}^{1}_\ddan}} % Common weight layer 1
+
+
+\newcommand{\Thetasl}{\ensuremath{\boldsymbol{\Theta}^{sl}}} 
+\newcommand{\Thetatl}{\ensuremath{\boldsymbol{\Theta}^{tl}}} 
+\newcommand{\Thetas}{\ensuremath{\boldsymbol{\Theta}^{s}}} 
+\newcommand{\Thetat}{\ensuremath{\boldsymbol{\Theta}^{t}}} 
+\newcommand{\ThetaCom}{\ensuremath{\boldsymbol{\Theta}}} 
+\newcommand{\ThetaSetl}{\ensuremath{\mathbf{\boldsymbol{\Theta}}^l}} 
+\newcommand{\Thetal}{\ensuremath{\boldsymbol{\Theta}^{l}}} 
+\newcommand{\Phis}{\ensuremath{\mathbf{\Phi}^{s}}} 
+\newcommand{\Phit}{\ensuremath{\mathbf{\Phi}^{t}}} 
+\newcommand{\PhiCom}{\ensuremath{\mathbf{\Phi}}} 
+\newcommand{\mapFs}{\ensuremath{\mathcal{M}_{\Fs}}} 
+\newcommand{\mapGs}{\ensuremath{\mathcal{M}_{\Gs}}} 
+
+\newcommand{\bsl}{\ensuremath{\mathbf{b}^{sl}}} % Source bias layer l
+\newcommand{\btl}{\ensuremath{\mathbf{b}^{tl}}} %Target bias layer l
+\newcommand{\bl}{\ensuremath{\mathbf{b}^{l}}} %General bias layer l
+\newcommand{\bslm}{\ensuremath{\mathbf{b}^{s(l-1)}}} % Source bias layer l-1
+\newcommand{\btlm}{\ensuremath{\mathbf{b}^{t(l-1)}}} %Target bias layer l-1
+\newcommand{\bsL}{\ensuremath{\mathbf{b}^{sL}}} % Source bias layer l
+\newcommand{\btL}{\ensuremath{\mathbf{b}^{tL}}} % Source bias layer l
+\newcommand{\bL}{\ensuremath{\mathbf{b}^{L}}} %Common bias layer l
+\newcommand{\bsLm}{\ensuremath{\mathbf{b}^{s(L-1)}}} % Source bias layer L-1
+\newcommand{\btLm}{\ensuremath{\mathbf{b}^{t(L-1)}}} %Target bias layer L-1
+\newcommand{\bsone}{\ensuremath{\mathbf{b}^{s1}}} % Source bias layer 1
+\newcommand{\bone}{\ensuremath{\mathbf{b}^{1}}} % Common bias layer 1
+
+
+% Topology
+\newcommand{\numL}{\ensuremath{L}} %Number of layers
+\newcommand{\numLdan}{\ensuremath{K}} %Number of layers
+\newcommand{\actl}{\ensuremath{\eta^l}} %Activation function layer l
+\newcommand{\act}{\ensuremath{\eta}} %Activation function 
+\newcommand{\actone}{\ensuremath{\eta^1}} %Activation function layer 1
+\newcommand{\lay}{\ensuremath{l}} % Layer index
+
+
+% Dimensions
+\newcommand{\dl}{\ensuremath{{d_l}}}
+\newcommand{\dlm}{\ensuremath{{d_{l-1}}}}
+\newcommand{\dz}{\ensuremath{{d_0}}}
+\newcommand{\done}{\ensuremath{{d_1}}}
+\newcommand{\dk}{\ensuremath{{d_k}}}
+\newcommand{\dkm}{\ensuremath{{d_{k-1}}}}
+\newcommand{\di}{\ensuremath{{d_i}}}
+\newcommand{\dimm}{\ensuremath{{d_{i-1}}}}
+\newcommand{\dkplone}{\ensuremath{{d_{k+1}}}}
+\newcommand{\dL}{\ensuremath{{d_L}}}
+\newcommand{\dLm}{\ensuremath{{d_{L-1}}}}
+\newcommand{\dlmax}{\ensuremath{{d_{\max}}}}
+\newcommand{\Rdl}{\ensuremath{\mathbb{R}^{d_l}}}
+\newcommand{\dcom}{\ensuremath{{d}}}
+
+\newcommand{\dlddan}{\ensuremath{{d^{\ddan}_l}}}
+\newcommand{\dlmddan}{\ensuremath{{d^{\ddan}_{l-1}}}}
+\newcommand{\dKddan}{\ensuremath{{d^{\ddan}_K}}}
+% Bounds
+\newcommand{\Bnet}{\ensuremath{{A_\Theta}}} % Bound on network parameters
+\newcommand{\Leta}{\ensuremath{{L_\eta}}} 
+\newcommand{\Binp}{\ensuremath{{A_x}}}  % Bound on xs norm
+\newcommand{\Beta}{\ensuremath{{C_\eta}}} % Activation function bound
+\newcommand{\Bddan}{\ensuremath{{C_\Dspace}}} % Domain discriminator bound
+\newcommand{\Bddansq}{\ensuremath{{C^2_\Dspace}}} % Domain discriminator bound
+
+\newcommand{\Bopeta}{\ensuremath{{A_\eta}}} % Activation function operator bound
+\newcommand{\Bdiml}{\ensuremath{{R_l}}} % Dimension-dependent bound for layer l
+\newcommand{\Bdimlm}{\ensuremath{{R_{l-1}}}} % Dimension-dependent bound for layer l
+\newcommand{\BdimL}{\ensuremath{{R_L}}} % Dimension-dependent bound for layer L
+\newcommand{\BdimLm}{\ensuremath{{R_{L-1}}}} 
+\newcommand{\Bdimz}{\ensuremath{{R_0}}}
+\newcommand{\Bdimone}{\ensuremath{{R_1}}}
+\newcommand{\Bdimi}{\ensuremath{{R_i}}} 
+\newcommand{\Bdimim}{\ensuremath{{R_{i-1}}}} 
+\newcommand{\BQdiml}{\ensuremath{{Q_l}}} 
+\newcommand{\BQdimone}{\ensuremath{{Q_1}}} 
+\newcommand{\BQdimL}{\ensuremath{{Q_L}}} 
+\newcommand{\BQdimLm}{\ensuremath{{Q_{L-1}}}} 
+\newcommand{\BQ}{\ensuremath{{Q}}} 
+
+
+% RKHS
+\newcommand{\phil}{\ensuremath{\phi^l}} % Feature map layer l
+\newcommand{\kr}{\ensuremath{k}} % Kernel 
+\newcommand{\krl}{\ensuremath{k^l}} % Kernel layer l
+\newcommand{\Xl}{\ensuremath{\mathcal{X}^l}}
+
+% Domain-adversarial networks
+\newcommand{\ddan}{\ensuremath{\Delta}} % Domain discriminator hypothesis 
+\newcommand{\dom}{\ensuremath{\mathcal{\D}}} % Domain symbol
+\newcommand{\ydoms}{\ensuremath{l^s}} % Source domain label
+\newcommand{\ydomt}{\ensuremath{l^t}} % Target domain label
+\newcommand{\actldan}{\ensuremath{\eta^l_\ddan}} %Activation function layer l
+\newcommand{\hidldan}{\ensuremath{\boldsymbol{\xi}^{l}_\ddan}}
+\newcommand{\hidlmdan}{\ensuremath{\boldsymbol{\xi}^{l-1}_\ddan}}
+\newcommand{\hidzdan}{\ensuremath{\boldsymbol{\xi}^{0}_\ddan}}
+\newcommand{\hidKdan}{\ensuremath{\boldsymbol{\xi}^{K}_\ddan}}
+\newcommand{\actKdan}{\ensuremath{\eta^\numLdan_\ddan}} %Activation function layer l
+

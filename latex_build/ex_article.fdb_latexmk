@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex latex_build/ex_article"] 1771250795.34215 "latex_build/ex_article.aux" "latex_build/ex_article.bbl" "latex_build/ex_article" 1771261139.8689 0
+["bibtex latex_build/ex_article"] 1771250795.34215 "latex_build/ex_article.aux" "latex_build/ex_article.bbl" "latex_build/ex_article" 1771322172.97482 0
   "./refs.bib" 1753879053 28286 9a9b9a0353b4c9e8f3430259aa3092bf ""
   "./siamplain.bst" 1542809838 20596 0aeadd96484ccdb5bc1b4f2635f3e545 ""
-  "latex_build/ex_article.aux" 1771261139.63767 38071 7eef472cdac4b809e2eac24928f40b97 "pdflatex"
+  "latex_build/ex_article.aux" 1771322172.57126 38071 7eef472cdac4b809e2eac24928f40b97 "pdflatex"
   (generated)
   "latex_build/ex_article.bbl"
   "latex_build/ex_article.blg"
   (rewritten before read)
-["pdflatex"] 1771261138.86745 "/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex" "latex_build/ex_article.pdf" "ex_article" 1771261139.86905 2
-  "/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex" 1771261138.56376 86710 bd27552fc874877fef2b903fd42930e6 ""
+["pdflatex"] 1771322171.4659 "/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex" "latex_build/ex_article.pdf" "ex_article" 1771322172.975 2
+  "/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex" 1771322171.06944 86711 11a1507e05a6738a153ab96584081f63 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2024/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -164,7 +164,7 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1712147339.2095 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1712147302 8221443 67138db2e6345e8bb6d0a74c215284d1 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "ex_article.tex" 1771261138.56376 86710 bd27552fc874877fef2b903fd42930e6 ""
+  "ex_article.tex" 1771322171.06944 86711 11a1507e05a6738a153ab96584081f63 ""
   "ex_shared.tex" 1771251002.21978 2822 0844a5c521a4f33bf04a69af28d0bc5a ""
   "ex_supplement_lemmas.tex" 1771236029.20185 115854 61a0f24d593e1647687319a4b015e8de ""
   "figures/adv-dcm-Ms-linefit.pdf" 1733888344 18550 7dbaca0abc5d01c3119a750a154e4fff ""
@@ -196,9 +196,9 @@
   "figures/mmd-optalpha-quadfit_Ms234.pdf" 1752139853 18423 932867e653dc713c34204cc590d809d7 ""
   "figures/toy_error_Mt_alpha.pdf" 1752223724 4742 1981526023eda6403dca1ae8d86421b0 ""
   "figures/toy_error_tau_alpha.pdf" 1752223746 5073 f91ff182b88a3c0b7cf6ee5a9b33e6e4 ""
-  "latex_build/ex_article.aux" 1771261139.63767 38071 7eef472cdac4b809e2eac24928f40b97 "pdflatex"
+  "latex_build/ex_article.aux" 1771322172.57126 38071 7eef472cdac4b809e2eac24928f40b97 "pdflatex"
   "latex_build/ex_article.bbl" 1771250795.44312 11781 ed8e89f4e760541582d269e553d38065 "bibtex latex_build/ex_article"
-  "latex_build/ex_article.out" 1771261139.63944 3296 0c521682ec83cd7935442e746ec766ab "pdflatex"
+  "latex_build/ex_article.out" 1771322172.57299 3296 0c521682ec83cd7935442e746ec766ab "pdflatex"
   "latex_build/ex_supplement_lemmas.aux" 1771250628.42192 20909 7f5c421003b6ec5004f6e31c03e19bfe ""
   "preamble.tex" 1753290022 13952 c85dcfd57e33c9ce2ceaf3f9f4a89f4c ""
   "siamonline250211.cls" 1739515267 78041 320531495d716fee63e9448f69a251ef ""

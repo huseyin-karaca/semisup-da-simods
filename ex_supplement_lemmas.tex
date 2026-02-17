@@ -1,0 +1,2628 @@
+% SIAM Supplemental File Template
+\documentclass[review,supplement,onefignum,onetabnum]{siamonline250211}
+
+\input{ex_shared}
+
+%%% Hus sonradan eklenenler
+\newtheorem*{utheorem}{Theorem}
+
+
+\externaldocument[][nocite]{ex_article}[]
+
+% Optional PDF information
+\ifpdf
+\hypersetup{
+  pdftitle={Supplementary Materials: An Example Article},
+  pdfauthor={D. Doe, P. T. Frank, and J. E. Smith}
+}
+\fi
+
+\begin{document}
+
+\maketitle
+
+\section{Technical lemmas and proofs}
+
+%%%%%%% Lemma 1 %%%%%%%
+\begin{lemma}
+\label{lem:dev_exptar_expweigh}
+Consider that \cref{assum_existence_LLs} holds. Let $\Lw(\fs, \ft, \h)$ denote the expected weighted loss in the source and target domains given by
+%
+\[
+\Lw(\fs, \ft, \h) \triangleq  (1-\alpha) \Ls(\fs, \h) + \alpha \Lt(\ft, \h).
+\]
+%
+Then the expected target loss is bounded as
+%
+\[\Lt(\ft, \h) \leq   \Lw(\fs, \ft, \h)+ (1-\alpha) \LLs  \D(\fs, \ft).\]
+\end{lemma}
+    
+%%%%%%% Proof of Lemma 1 %%%%%%%
+\begin{proof}
+We have
+$ 
+\Lt(\ft, \h) = \alpha \Lt(\ft, \h) +  (1-\alpha) \Lt(\ft, \h).
+$
+From \cref{assum_existence_LLs}, we get
+%
+\[
+    \Lt(\ft, \h) \leq \Ls (\fs, \h) + \LLs \ \D(\fs, \ft).
+\]
+%
+Using this above, we obtain
+%
+\begin{equation*}
+\begin{split}
+\Lt(\ft, \h) &\leq \alpha \Lt(\ft, \h) 
++  (1-\alpha) \left( \Ls (\fs, \h) + \LLs \ \D(\fs, \ft) \right)\\
+&= \Lw(\fs, \ft, \h)+ (1-\alpha) \LLs  \D(\fs, \ft).
+\end{split}
+\end{equation*}
+%
+\end{proof}
+
+
+
+%%%%%%% Lemma 2 %%%%%%%
+\begin{lemma}
+    \label{lem:weight_loss_gen}
+    Let the conditions in \cref{assum_HF_comp_Ll_Al} hold. Let
+    %
+    \[
+    \hLw(\fs, \ft, \h) \triangleq  (1-\alpha) \hLs(\fs, \h) + \alpha \hLt(\ft, \h)
+    \]
+    %
+    denote the empirical weighted loss. Then, we have
+    %
+    \begin{equation*}
+    \begin{split}
+    &P\left (\sup_{\fs \in \Fs, \ft \in \Ft, \h \in \Hs} |  \Lw( \fs, \ft, \h ) - \hLw( \fs,  \ft, \h )   |  \leq \epsilon \right) \\
+    & \geq 1 - 2 \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}} 
+    -2 \N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}}.
+    \end{split}
+    \end{equation*}
+    %
+\end{lemma}
+
+%%%%%%% Proof of Lemma 2 %%%%%%%
+\begin{proof}
+\label{pf_lem_weight_loss_gen}
+We characterize the complexity of function spaces via covering numbers \cite{CuckerS02}. We first derive a bound for the deviation between the expected and empirical target losses. Let the open balls of radius $\frac{\epsilon}{8 \alpha \Lls}$ around the functions $ \{ \gt_k \}_{k=1}^{\Kt}$ be a cover for the function space $\Hs \circ \Ft$ with covering number 
+
+\[
+{\Kt} = \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt).
+\]
+
+Take any $\gt_k = \h_k \circ \ft_k$, for $k=1, \dots, \Kt$. The random variables $\loss( \gt_k (\xjt), \yjt ) $, $j= 1, \dots, \Mt$ are independent identically distributed, bounded as $ | \loss( \gt_k (\xjt), \yjt ) | \leq \bls$, and they have mean $\Lt (\ft_k, \h_k)$. From Hoeffding's inequality, we get that for each $k$, the deviation between the empirical loss and the expected loss is bounded as
+
+%
+\[
+P\left( | \hLt( \ft_k, \h_k) - \Lt (\ft_k, \h_k) | \geq \frac{\epsilon}{4 \alpha} \right) \leq 2 e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}}.
+\]
+%
+
+Then, from union bound, with probability at least $1 - 2 \Kt e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}}$, the inequality 
+
+\[
+| \hLt( \ft_k, \h_k) - \Lt (\ft_k, \h_k) | \leq \frac{\epsilon}{4 \alpha}
+\]
+%
+holds for all $k= 1, \dots, \Kt$. Now for any $\gt = \h \circ \ft \in \Hs \circ \Ft$, there exists at least one $\gt_k $ such that 
+
+\[
+\dt(\gt, \gt_k) <  \frac{\epsilon}{8 \alpha \Lls}.
+\]
+%
+This gives
+%
+\begin{equation*}
+\begin{split}
+& |  \Lt(  \ft, \h ) - \Lt(  \ft_k, \h_k )   | 
+= \left | \int_{\Zt}  \left( \loss( \gt (\xt), \yt ) -   \loss( \gt_k (\xt), \yt )  \right) \, d \mut  \right | \\
+& \leq  \int_{\Zt}   \left | \loss(  \gt  (\xt), \yt ) -   \loss(  \gt_k(\xt), \yt )  \right | \, d \mut  
+ \leq  \int_{\Zt}  \Lls \|  \gt  (\xt) -  \gt_k(\xt)  \| \, d \mut  \\
+&\leq  \Lls  \int_{\Zt} \dt(\gt, \gt_k)  \, d \mut  
+ <  \frac{\epsilon}{8 \alpha }.
+\end{split}
+\end{equation*}
+
+%
+It is easy to show similarly that
+%
+\[
+|  \hLt(  \ft, \h ) - \hLt(  \ft_k, \h_k ) | <  \frac{\epsilon}{8 \alpha }.
+\]
+%
+Then with probability at least 
+
+\[1 - 2 \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}}
+\]
+%
+for any $\gt = \h \circ \ft \in \Hs \circ \Ft$ we have
+%
+\begin{equation*}
+\begin{split}
+& |  \Lt(  \ft, \h ) - \hLt(  \ft, \h )   |  \\
+&\leq   |  \Lt(  \ft, \h ) - \Lt(  \ft_k, \h_k ) | 
+ + |   \Lt(  \ft_k, \h_k ) -    \hLt( \ft_k, \h_k) 
+  + |   \hLt( \ft_k, \h_k) -  \hLt(  \ft, \h )   |  \\
+& <   \frac{\epsilon}{8 \alpha } + \frac{\epsilon}{4 \alpha} + \frac{\epsilon}{8 \alpha }
+=  \frac{\epsilon}{2 \alpha }.
+\end{split}
+\end{equation*}
+%
+Replacing $\alpha$ with $1-\alpha$ and applying the same steps for the function space $\Hs \circ \Fs$, we similarly obtain that with probability at least 
+
+\[
+1 - 2 \N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}}
+\]
+%
+the difference between the expected and empirical source losses is bounded for any $\fs$ and $\h$ as
+%
+\begin{equation*}
+\begin{split}
+& |  \Ls(  \fs, \h ) - \hLs(  \fs, \h )   |  <  
+  \frac{\epsilon}{2 (1-\alpha) }.
+\end{split}
+\end{equation*}
+%
+Combining these results, we get that with probability at least 
+%
+\begin{equation}
+\begin{split}
+&1 - 2 \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}} 
+-2 \N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}}
+\end{split}
+\end{equation}
+%
+the largest difference between the expected and empirical total weighted losses is bounded as
+%
+\begin{equation*}
+\begin{split}
+\sup_{\fs \in \Fs, \ft \in \Ft, \h \in \Hs}  & |  \Lw( \fs, \ft, \h ) - \hLw( \fs,  \ft, \h )   | \\
+& \leq \alpha \sup  |  \Lt(  \ft, \h ) - \hLt(  \ft, \h )   | 
++ (1-\alpha) \sup   |  \Ls(  \fs, \h ) - \hLs(  \fs, \h )   | \\
+& \leq \epsilon.
+\end{split}
+\end{equation*}
+%
+\end{proof}
+
+
+
+%%%%%%% Lemma 3 %%%%%%%
+\begin{lemma}
+    \label{lem:bernstein_src_trg}
+    Let the source and target distributions and the transformations $\fs: \Xs \rightarrow \X$ and $\ft: \Xt \rightarrow \X$ be such that \cref{assum_fx_bdd_moments} holds. Also, for given $\epsilon>0$, let the number of source and target samples be such that
+    %
+    \begin{equation*}
+    \Ns > \frac{\vars}{\epsilon^2}
+    , \quad
+    \Nt > \frac{\vart}{\epsilon^2}.
+    \end{equation*}
+    %
+    Then for the source domain we have
+    %
+    \begin{equation}
+    \label{eq:lem_src_empmean}
+    \begin{split}
+    &P\left( \left \|  \frac{1}{\Ns}  \sum_{i=1}^{\Ns}  \fs(\xis)  -  E[\fs(\xs)] \right \|  \geq  \epsilon \right) \\
+    &\leq
+      \exp \left(  
+      -\frac{1}{8}\left( \frac{\sqrt{\Ns} \epsilon}{\sigma_s} -1\right)^2 \frac{1}{1+\left( \frac{\sqrt{\Ns} \epsilon}{\sigma_s} -1 \right)\frac{\Cs}{2 \sqrt{\Ns} \sigma_s }}
+       \right) 
+       \end{split}
+    \end{equation} 
+    %  
+    and for the target domain we have
+    %
+    \begin{equation}
+    \label{eq:lem_trg_empmean}
+    \begin{split}
+    &P\left( \left \|  \frac{1}{\Nt}  \sum_{j=1}^{\Nt}  \ft(\xjt)  -  E[\ft(\xt)] \right \|  \geq  \epsilon \right) \\
+    &\leq
+      \exp \left(  
+      -\frac{1}{8}\left( \frac{\sqrt{\Nt} \epsilon}{\sigma_t} -1\right)^2 \frac{1}{1+\left( \frac{\sqrt{\Nt} \epsilon}{\sigma_t} -1 \right)\frac{\Ct}{2 \sqrt{\Nt} \sigma_t }}
+       \right) .
+    \end{split}
+    \end{equation}
+    %
+    %
+    %
+\end{lemma}
+
+
+%%%%%%% Proof of Lemma 3 %%%%%%%
+\begin{proof}
+    \label{pf_lem_bernstein_src_trg}
+Our proof is based on the following result by Yurinskii \cite{Yurinski76}.
+
+\begin{utheorem} \cite[Theorem 2.1]{Yurinski76}
+% \label{thm:yurinski}
+Let $\zeta_1, \dots, \zeta_N \in \mathcal{B}$ be independent random vectors, where $\mathcal{B}$ is a Banach space. Assume for all $i=1, \dots, N$
+%
+\begin{equation}
+\label{eq:cond_mom_yur}
+E[ \| \zeta_i \|^k ] \leq \frac{k!}{2} \, b_i^2 \, C^{k-2}, \text{ for } k=2,3, \cdots.
+\end{equation}
+%
+If $x>\beta_N / B_N$ where
+%
+\begin{equation}
+\label{eq:cond_betan_Bn}
+\beta_N \geq E[ \| \zeta_1 + \dots + \zeta_N \| ], 
+\quad
+B_N^2 = b_1^2 + \dots + b_N^2,
+\end{equation}
+%
+then 
+\begin{equation*}
+P\left(   \| \zeta_1 + \dots + \zeta_N \|  \geq x B_N  \right) \leq
+  \exp \left(  
+  -\frac{1}{8}\left(x-\frac{\beta_N}{B_N}\right)^2 \frac{1}{1+\left(x-\frac{\beta_N}{B_N} \right)\frac{C}{2 B_N}}
+   \right).
+\end{equation*}
+%
+\end{utheorem}
+
+Based on \cite[Theorem 2.1]{Yurinski76}, we first derive the stated result for the source domain, whose generalization to the target domain is straightforward. First notice that, due to the assumptions \eqref{eq:var_bnd_fs_ft}, \eqref{eq:mom_bnd_fs_ft}, the random vectors $ \fs(\xis)- E[\fs(\xs)]$ for $i=1, \dots, \Ns$ satisy the condition \eqref{eq:cond_mom_yur}, for the choices $b_i=\sigma_s$ and $C=\Cs$. 
+
+Next, we derive a constant $\beta_{\Ns}$ for which the zero-mean random vectors $\zeta_i = \fs(\xis)- E[\fs(\xs)]$ for $i=1, \dots, \Ns$ satisfy the condition \eqref{eq:cond_betan_Bn} for $N=\Ns$. From \eqref{eq:var_bnd_fs_ft}, we have
+%
+\begin{equation*}
+E[ \| \zeta_i  \|^2 ] \leq \vars.
+\end{equation*}
+%
+We consider now
+%
+\begin{equation*}
+\begin{split}
+E\left[ \left  \|   \sum_{i=1}^{\Ns} \zeta_i   \right \|^2
+\right]
+&= E\left[ \left \langle  \sum_{i=1}^{\Ns} \zeta_i ,  
+\sum_{j=1}^{\Ns} \zeta_j   \right \rangle
+\right]
+= \sum_{i=1}^{\Ns} \sum_{j=1}^{\Ns}  E[ \langle \zeta_i, \zeta_j  \rangle ]  \\
+&= \sum_{i=1}^{\Ns} E[ \langle \zeta_i, \zeta_i  \rangle ] 
++   \sum_{i=1}^{\Ns} \sum_{j \neq i, \, j=1}^{\Ns} E[ \langle \zeta_i, \zeta_j  \rangle ] 
+ \leq \vars \Ns
+\end{split}
+\end{equation*}
+%
+where the last inequality follows from $E[ \| \zeta_i  \|^2 ] \leq \vars$, and the fact that we have $E[ \langle \zeta_i, \zeta_j  \rangle ] =0$ for independent and zero-mean $\zeta_i$ and $\zeta_j$ for $i \neq j$.
+%
+From the nonnegativity of the variance, we have $(E[Y])^2 \leq E[Y^2]$ for any random variable $Y$. Taking 
+%
+\begin{equation*}
+Y= \left  \|  \sum_{i=1}^{\Ns} \zeta_i   \right \|
+\end{equation*}
+%
+then yields
+%
+\begin{equation*}
+\begin{split}
+E\left[ \left  \|   \sum_{i=1}^{\Ns} \zeta_i   \right \|  
+\right]
+\leq
+\left( 
+E\left[ \left  \|  \sum_{i=1}^{\Ns} \zeta_i   \right \|^2
+\right]
+\right)^{1/2}
+\leq 
+\sigma_s \sqrt{\Ns}.
+\end{split}
+\end{equation*}
+%
+%
+Hence defining $\beta_{\Ns} = \sigma_s \sqrt{\Ns}$, we get 
+ %
+ \begin{equation}
+ \label{eq:exp_sum_zetai}
+ E[  \| \zeta_1 + \dots + \zeta_{\Ns} \|] \leq \beta_{\Ns}.
+ \end{equation}
+ %
+From the choice $b_i=\sigma_s$, we have $B_{\Ns}=\sqrt{\Ns} \sigma_s = \beta_{\Ns}$. Now for given $\epsilon>0$, from the assumption $\Ns > \vars / \epsilon^2$, the following choice for $x$ 
+%
+\begin{equation*}
+x=\frac{\sqrt{\Ns} \epsilon}{\sigma_s} > 1
+\end{equation*}
+%
+satisfies the condition $x>\beta_{\Ns} / B_{\Ns}$ as $\beta_{\Ns} = B_{\Ns}$. Then from \cite[Theorem 2.1]{Yurinski76}, we have
+%
+\begin{equation*}
+\begin{split}
+P\left(   \| \zeta_1 + \dots + \zeta_{\Ns} \|  \geq \Ns \epsilon \right) \leq
+  \exp \left(  
+  -\frac{1}{8}\left( \frac{\sqrt{\Ns} \epsilon}{\sigma_s} -1\right)^2 \frac{1}{1+\left( \frac{\sqrt{\Ns} \epsilon}{\sigma_s} -1 \right)\frac{\Cs}{2 \sqrt{\Ns} \sigma_s }}
+   \right).
+\end{split}
+\end{equation*}
+%
+Replacing  $\zeta_i = \fs(\xis)- E[\fs(\xs)]$ gives the stated result
+%
+\begin{equation*}
+\begin{split}
+&P\left( \left \|  \frac{1}{\Ns}  \sum_{i=1}^{\Ns}  \fs(\xis)  -  E[\fs(\xs)] \right \|  \geq  \epsilon \right) \\
+&\leq
+  \exp \left(  
+  -\frac{1}{8}\left( \frac{\sqrt{\Ns} \epsilon}{\sigma_s} -1\right)^2 \frac{1}{1+\left( \frac{\sqrt{\Ns} \epsilon}{\sigma_s} -1 \right)\frac{\Cs}{2 \sqrt{\Ns} \sigma_s }}
+   \right).
+\end{split}
+\end{equation*}
+%
+Applying the same analysis for the target domain, it is easy to show similarly that the upper bound for the target domain in \eqref{eq:lem_trg_empmean} also holds. 
+ %
+%
+\end{proof}
+
+
+    
+%%%%%%% Lemma 4 %%%%%%%
+\begin{lemma}
+\label{lem:unif_bnd_D_hD}
+
+Let Assumptions \ref{assum_fx_bdd_moments}, \ref{assum_Fs_Ft_compact} hold. Given $\epsilon>0$, let the number of source and target samples be such that
+%
+\begin{equation*}
+\Ns > \frac{16 \vars}{\epsilon^2},
+\quad
+\Nt > \frac{16 \vart}{\epsilon^2}.
+\end{equation*}
+%
+Let us define the functions
+%
+\begin{equation*}
+\begin{split}
+\as(\Ns, \epsilon) &\triangleq 
+    \frac{1}{8}\left( \frac{\sqrt{\Ns} \epsilon}{4 \sigma_s} -1\right)^2 \frac{1}{1+\left( \frac{\sqrt{\Ns} \epsilon}{4 \sigma_s} -1 \right)\frac{\Cs}{2 \sqrt{\Ns} \sigma_s }}
+    \\
+\at(\Nt, \epsilon) &\triangleq  
+    \frac{1}{8}\left( \frac{\sqrt{\Nt} \epsilon}{4 \sigma_t} -1\right)^2 \frac{1}{1+\left( \frac{\sqrt{\Nt} \epsilon} 
+    {4 \sigma_t} -1 \right)\frac{\Ct}{2 \sqrt{\Nt} \sigma_t }}.
+\end{split}
+\end{equation*}
+%
+Then 
+%
+\begin{equation*}
+\begin{split}
+& P \left(
+\sup_{\fs \in \Fs, \ft \in \Ft}  | \D(\fs, \ft) - \hD (\fs, \ft)  | < \epsilon
+\right) \\
+& \geq 1 - \N(\Fs, \frac{\epsilon}{8}, \dXs) \exp(-\as(\Ns, \epsilon)) 
+- \N(\Ft, \frac{\epsilon}{8}, \dXt) \exp(-\at(\Nt, \epsilon)).
+\end{split}
+\end{equation*}
+%
+%
+\end{lemma}
+
+%%%%%%% Proof of Lemma 4 %%%%%%%
+\begin{proof}
+\label{pf_lem_unif_bnd_D_hD}
+
+We begin with bounding the deviation $| \D(\fs, \ft) - \hD (\fs, \ft)  | $ between the MMD and its empirical estimate for a fixed pair of transformations. Let $\fs$ and $\ft$ be a given, fixed pair of transformations. We have
+%
+\begin{equation}
+\label{eq:d_min_hD_v1}
+\begin{split}
+& | \D(\fs,\ft) - \hD(\fs,\ft) | \\
+&= \left |  \|  E[\fs(\xs)] - E[ \ft(\xt) ] \|  
+- \big \|
+\frac{1}{\Ns} \sum_{i=1}^{\Ns} \fs(\xis) -  \frac{1}{\Nt} \sum_{j=1}^{\Nt} \ft(\xjt) 
+\big \|
+\right | \\
+& \leq 
+\big \|    
+\frac{1}{\Ns} \sum_{i=1}^{\Ns} \fs(\xis) - E[\fs(\xs)] 
+    \big \|
+    + 
+    \big \|    
+\frac{1}{\Nt} \sum_{j=1}^{\Nt} \ft(\xjt)  - E[ \ft(\xt) ]
+    \big \|.
+\end{split}
+\end{equation}
+%
+Replacing $\epsilon$ by $\epsilon/4$ in \cref{lem:bernstein_src_trg}, we observe that with probability at least
+%
+\begin{equation*}
+1 - \exp(-\as(\Ns, \epsilon)) - \exp(-\at(\Nt, \epsilon))
+\end{equation*}
+%
+we have
+%
+\begin{equation*}
+\begin{split}
+\big \|    
+\frac{1}{\Ns} \sum_{i=1}^{\Ns} \fs(\xis) - E[\fs(\xs)] 
+    \big \| \leq \frac{\epsilon}{4}, 
+    \quad
+    \big \|    
+\frac{1}{\Nt} \sum_{j=1}^{\Nt} \ft(\xjt)  - E[ \ft(\xt) ]
+    \big \|  \leq \frac{\epsilon}{4}
+\end{split}
+\end{equation*}
+%
+which yields from \eqref{eq:d_min_hD_v1}
+% 
+\begin{equation*}
+| \D(\fs,\ft) - \hD(\fs,\ft) |  \leq \frac{\epsilon}{2}.
+\end{equation*}
+%
+
+In order to extend the above bound to the whole space of transformations, we consider covers of the function classes $\Fs$ and $\Ft$, consisting of open balls of radius $\epsilon/8$ respectively  around the functions $\{ \fs_k \}_{k=1}^{\Ks}$ and $\{ \ft_l \}_{l=1}^{\Kt}$, where $\Ks$ and $\Kt$ are the covering numbers
+%
+\begin{equation*}
+\Ks = \N(\Fs, \frac{\epsilon}{8}, \dXs), 
+\quad
+\Kt = \N(\Ft, \frac{\epsilon}{8}, \dXt).
+\end{equation*}
+%
+From the union bound, it follows that with probability at least 
+%
+\begin{equation*}
+1 - \Ks \exp(-\as(\Ns, \epsilon)) - \Kt \exp(-\at(\Nt, \epsilon))
+\end{equation*}
+%
+for all $k=1, \dots, \Ks$ and $l=1, \dots, \Kt$,
+%
+\begin{equation}
+\label{eq:bnd_D_hD_fsk_ftl}
+\begin{split}
+| \D(\fs_k,\ft_l) - \hD(\fs_k,\ft_l) |  \leq \frac{\epsilon}{2}.
+\end{split}
+\end{equation}
+%
+
+Now, let us consider an arbitrary pair of transformations $\fs \in \Fs$ and $\ft \in \Ft$. As the balls around $\{ \fs_k \}_{k=1}^{\Ks}$ and $\{ \ft_l \}_{l=1}^{\Kt}$ form $\epsilon/8$-covers of the function classes, there exists a source transformation $\fs_k$ and a target transformation $\ft_l$ such that
+%
+\begin{equation*}
+\dXs (\fs, \fs_k) < \frac{ \epsilon}{8},
+\quad
+\dXt (\ft, \ft_l) < \frac{ \epsilon}{8}.
+\end{equation*}
+%
+We can then bound the difference between the MMD and its sample mean for $\fs$ and $\ft$ as follows.
+%
+\begin{equation}
+\label{eq:form_D_Dhat_fs_ft}
+\begin{split}
+| \D(\fs, \ft) - \hD(\fs, \ft) |
+&\leq  | \D(\fs, \ft) - \D(\fs_k, \ft_l) |
+    + | \D(\fs_k, \ft_l) - \hD(\fs_k, \ft_l) | \\
+    &+  | \hD(\fs_k, \ft_l) - \hD(\fs, \ft) | 
+\end{split}
+\end{equation}
+%
+Next, we bound each one of the terms on the right hand side of the above inequality. The first term can be upper bounded as
+%
+\begin{equation}
+\label{eq:bnd_Dfsft_Dfskftl}
+\begin{split}
+| \D(\fs, \ft) - \D(\fs_k, \ft_l) | 
+&=
+\left | 
+\|  
+E[\fs(\xs)] - E[\ft(\xt)]
+    \|
+    - 
+    \|  
+E[\fs_k(\xs)] - E[\ft_l(\xt)]
+    \|
+\right | \\
+&\leq
+\|
+E[\fs(\xs)] - E[\fs_k(\xs)] 
+\|
++
+\|
+E[\ft(\xt)] - E[\ft_l(\xt)] 
+\| \\
+&=
+\|
+E[\fs(\xs)  - \fs_k(\xs)] 
+\|
++
+\|
+E[\ft(\xt)  - \ft_l(\xt)] 
+\| \\
+& \leq
+E[ \| \fs(\xs)  - \fs_k(\xs)  \| ] 
++ E[ \| \ft(\xt)  - \ft_l(\xt) \| ] 
+\end{split}
+\end{equation}
+%
+where the last inequality follows from Jensen's inequality, observing the fact that a norm over a Hilbert space is a convex function. From the definition of the metrics $\dXs$ and $\dXt$, we have 
+%
+\begin{equation*}
+\begin{split}
+\| \fs(\xs)  - \fs_k(\xs)  \|  \leq \dXs(\fs, \fs_k) \\
+\| \ft(\xt)  - \ft_l(\xt)  \|  \leq \dXt(\ft, \ft_l) \
+\end{split}
+\end{equation*}
+% 
+for all $\xs \in \Xs$ and $\xt \in \Xt$. Using this in \eqref{eq:bnd_Dfsft_Dfskftl}, we get
+%
+\begin{equation*}
+\begin{split}
+| \D(\fs, \ft) - \D(\fs_k, \ft_l) | 
+\leq 
+\dXs(\fs, \fs_k) +  \dXt(\ft, \ft_l)
+< 
+\frac{ \epsilon}{8} + \frac{ \epsilon}{8} = \frac{ \epsilon}{4}.
+\end{split}
+\end{equation*}
+%
+With a similar analysis by replacing the expectations with the sample means, it is easy to show that the third term in the inequality \eqref{eq:form_D_Dhat_fs_ft} can also be upper bounded as
+%
+\begin{equation*}
+| \hD(\fs_k, \ft_l) - \hD(\fs, \ft) | < \frac{ \epsilon}{4}.
+\end{equation*}
+%
+Now, remembering also the probabilistic upper bound \eqref{eq:bnd_D_hD_fsk_ftl} that holds for the second term in \eqref{eq:form_D_Dhat_fs_ft} for all $k$ and $l$, we get that with probability at least 
+%
+\begin{equation*}
+1 - \Ks \exp(-\as(\Ns, \epsilon)) - \Kt \exp(-\at(\Nt, \epsilon))
+\end{equation*}
+%
+we have for all $\fs \in \Fs$ and $\ft \in \Ft$,
+%
+\begin{equation*}
+\begin{split}
+| \D(\fs, \ft) - \hD(\fs, \ft) | < \frac{ \epsilon}{4} + \frac{ \epsilon}{2} + \frac{ \epsilon}{4}
+= \epsilon.
+\end{split}
+\end{equation*}
+%
+Hence, we get the stated result
+%
+\begin{equation*}
+\begin{split}
+& P \left(
+\sup_{\fs \in \Fs, \ft \in \Ft}  | \D(\fs, \ft) - \hD (\fs, \ft)  | < \epsilon
+\right) \\
+&\geq 1 - \Ks \exp(-\as(\Ns, \epsilon)) - \Kt \exp(-\at(\Nt, \epsilon))  \\
+&= 1 - \N(\Fs, \frac{\epsilon}{8}, \dXs) \exp(-\as(\Ns, \epsilon)) 
+- \N(\Ft, \frac{\epsilon}{8}, \dXt) \exp(-\at(\Nt, \epsilon)).
+\end{split}
+\end{equation*}
+%
+%
+\end{proof}
+    
+
+
+%%%%%%% Lemma 5 %%%%%%%
+\begin{lemma}
+\label{lem_fs_ft_measble}
+Let the condition in \cref{assum_krl_actl_cont} hold. Then the mappings $\fsl: \Xs \rightarrow \Xl$ and $\ftl:  \Xt \rightarrow \Xl$ for $\lay=1, \dots, \numL-1$, and the mappings $\fs:  \Xs \rightarrow \X $ and $\ft:  \Xt \rightarrow \X $ are measurable. Moreover, assuming that $E[\sqrt{\krl(\hsl, \hsl)}]<\infty$ and $E[\sqrt{\krl(\htl, \htl)}]<\infty$, the functions $E[\fsl(\xs)]: \Rdl \rightarrow \R$ and $E[\ftl(\xt)]: \Rdl \rightarrow \R$ defined as
+%
+\begin{equation*}
+\begin{split}
+E[\fsl(\xs)](\cdot) & \triangleq E[\fsl(\xs)(\cdot)] \\
+E[\ftl(\xt)](\cdot) & \triangleq E[\ftl(\xt)(\cdot)] 
+\end{split}
+\end{equation*}
+%
+through the Borel probability measures $\mus$ and $\mut$ in the source and target domains  are in the RKHSs $\Xl$. Consequently, the functions 
+\begin{equation*}
+\begin{split}
+    E[\fs(\xs)]& \triangleq ( E[\fsone (\xs)], \dots \, , E[\fsLm(\xs)]    )  \\ 
+    E[\ft(\xt)]& \triangleq ( E[\ftone (\xt)], \dots \, , E[\ftLm(\xt)]    ) 
+\end{split}
+\end{equation*}
+are in  the Hilbert space $\X$.
+\end{lemma}
+
+
+%%%%%%% Proof of Lemma 5 %%%%%%%
+\begin{proof}
+
+\label{pf_lem_fs_ft_measble}
+
+We prove the statements only for the source domain, as the proofs for the target domain are the same. Let $\hsl (\xs) \in \Rdl$ denote the feature in layer $\lay$ for the source input $\xs\in \R^\dz$, where we regard $\hsl(\cdot): \R^\dz \rightarrow \Rdl$ as a function. In the relation 
+%
+\[
+\hsl (\xs) =\actl( \Wsl \hslm (\xs)+ \bsl)
+\]
+%
+the expression $ \Wsl \hslm (\xs)+ \bsl$ is a continuous mapping of $\hslm (\xs)$, and the function $\actl $ is continuous. Hence, based on a simple induction argument it follows that $\hsl (\cdot): \Xs= \R^\dz \rightarrow \Rdl$ is a continuous, thus measurable function (a Borel map).
+
+We next show that the mappings $\fsl: \Xs \rightarrow \Xl$ are measurable.   Let $\B(\cdot)$ denote the Borel $\sigma$-algebra of a metric space. We recall from \eqref{eq_defn_fsl_ftl} that $\fsl(\xs)=\phil(\hsl(\xs)) \in \Xl $. Consider a sequence $\{\hsl_n\} \subset \Rdl$ with $\lim_{n \rightarrow \infty} \hsl_n = \hsl_*$ for some $\hsl_* \in \Rdl$. As the kernel $\krl(\cdot , \cdot ) $ is assumed to be a continuous function, we have
+%
+\begin{equation*}
+\begin{split}
+\lim_{n\rightarrow \infty} \| \phil(\hsl_n) - \phil(\hsl_*) \|^2_{\Xl} 
+=\lim_{n\rightarrow \infty} 
+\left(
+    \krl(\hsl_n, \hsl_n) -2 \krl(\hsl_n, \hsl_* )  +\krl(\hsl_*, \hsl_*) \right)
+    =0
+\end{split}
+\end{equation*}
+%
+where $\| \cdot \|_{\Xl}$ denotes the norm in the RKHS $\Xl$. It thus follows that
+%
+\[ \lim_{n \rightarrow \infty} \phil(\hsl_n) = \phil ( \hsl_*)\] 
+%
+and hence $\phil: \Rdl \rightarrow \Xl$ is a continuous function. $\phil $ is thus measurable with respect to the Borel $\sigma$-algebra $ \B(\Xl)$   of the RKHS $\Xl$. Since $\hsl (\cdot): \Xs \rightarrow \Rdl$  is a measurable mapping as well, we conclude that the mapping $\fsl=\phil(\hsl(\cdot)) : \Xs \rightarrow \Xl$ is measurable with respect to $\B(\Xl)$, for $\lay=1, \dots, \numL-1$.
+
+We next show that the mappings $\fs \in \Fs$ are measurable. Since the kernel $\krl(\cdot , \cdot ) $ is  assumed to be continuous, the RKHS $\Xl$ is separable for all $\lay$ \cite{SubediC19}. The separability of the RKHSs ensures that
+%
+\[
+\B(\X) = \bigotimes_{l=1}^{\numL-1} \B(\Xl)
+\]
+%
+where the right hand side denotes the $\sigma$-algebra generated by all finite products of Borel sets in $\B(\Xl)$'s \cite{Bogachev07}. Hence, denoting the set product of some collection of Borel sets $B^1 \in \B(\X^1), \ \cdots, B^{\numL-1} \in \B(\X^{\numL-1})$ as 
+%
+\[
+B^1 \times B^2 \times \cdots \times B^{\numL-1}
+    = \{ (f^1, f^2, \dots \, , f^{\numL-1}) : f^\lay \in B^\lay, \, \lay=1, \dots, \numL-1 \},
+\]
+%
+the $\sigma$-algebra generated by
+%
+\[
+B=\{ B^1 \times \cdots \times B^{\numL-1} : B^1 \in \B(\X^1), \cdots, B^{\numL-1} \in \B(\X^{\numL-1}) \}
+\]
+%
+is equal to the Borel $\sigma$-algebra $\B(\X)$. Then, in order to show that $\fs: \Xs \rightarrow \X$ is measurable, it is sufficient to show that the inverse image $(\fs)^{-1}(B)$ of the set $B$ is contained in $\B(\Xs)$. For any element $ B^1 \times \cdots \times B^{\numL-1}$ in $B$, we have
+%
+\begin{equation*}
+\begin{split}
+(\fs)^{-1} (B^1 \times \cdots \times B^{\numL-1}) 
+&= \{ \xs \in \Xs : \fs(\xs) \in B^1 \times \cdots \times B^{\numL-1}\} \\
+&=\{ \xs \in \Xs : \fsone(\xs)  \in B^1, \ \cdots \ , \fsLm(\xs) \in  B^{\numL-1}\} \\
+&= \bigcap_{\lay=1}^{\numL-1} (\fsl)^{-1} (B^\lay).
+\end{split}
+\end{equation*}
+%
+Since each $\fsl$ is measurable, $(\fsl)^{-1} (B^\lay) \in \B(\Xs)$. Hence, $(\fs)^{-1}(B^1 \times \cdots \times B^{\numL-1}) \in \B(\Xs)$ and we conclude that $\fs: \Xs \rightarrow \X$ is a measurable mapping. 
+
+In order to prove the second part of the lemma, let us fix $\boldsymbol{\xi} \in \Rdl$, and for fixed $\boldsymbol{\xi}$ consider the function $\fsl(\cdot)(\boldsymbol{\xi}): \Xs = \R^\dz \rightarrow \R$ given by
+%
+\[
+\fsl(\cdot)(\boldsymbol{\xi})=\krl(\hsl(\cdot),\boldsymbol{\xi}).
+\]
+%
+From the continuity of the kernel $\krl$ and the measurability of the function $\hsl(\cdot)$, it is easy to conclude that the function $\fsl(\cdot)(\boldsymbol{\xi})$ is measurable for any fixed $\boldsymbol{\xi}$. Hence, based on the Borel probability measure $\mus$ in the source domain, the expectation $E_{\xs}[\fsl(\xs)(\boldsymbol{\xi})]$ for fixed $\boldsymbol{\xi}$ is well defined, as well as the function $E_{\xs}[\fsl(\xs)]: \Rdl \rightarrow \R$ given by
+%
+\[
+E_{\xs}[\fsl(\xs)](\boldsymbol{\xi}) \triangleq E_{\xs}[\fsl(\xs)(\boldsymbol{\xi})].
+\]
+
+    
+
+Next, we would like to show that $E_{\xs}[\fsl(\xs)] \in \Xl$. Consider the linear functional $T_{\mus}: \Xl \rightarrow \R$ on the RKHS $\Xl$ defined by
+%
+\[
+T_{\mus}(\psi) \triangleq E_{\xs}[ \psi(\hsl) ]  
+\]
+%
+for $\psi \in \Xl$. Following the steps as in the proof of \cite[Lemma 3]{GrettonBRSS12}, the linear functional $T_{\mus}$ is observed to be bounded since 
+%
+\begin{equation*}
+\begin{split}
+| T_{\mus}(\psi) | &= \left| E_{\xs}[ \psi(\hsl) ] \right |
+\leq  E_{\xs} \left[ | \psi(\hsl) | \right]  
+=  E_{\xs} \left[ \left|  \langle \krl( \hsl, \cdot) , \psi(\cdot)    \rangle_{\Xl} \right| \right]  \\
+& \leq E_{\xs}  \left[    \|   \krl( \hsl, \cdot)  \|_{\Xl}  \|  \psi \|_{\Xl}   \right]
+= E_{\xs} \left[ \sqrt{\krl( \hsl, \hsl)}   \right]   \|  \psi \|_{\Xl}.
+\end{split}
+\end{equation*}
+%
+Hence, by the Riesz Representation Theorem \cite[Theorem 12.5]{BachmanN66},\cite[Lemma 3]{GrettonBRSS12}, there exists an element $\psi^{sl} \in \Xl$ in the RKHS $\Xl$ (called the mean embedding), such that 
+%
+\[
+T_{\mus}(\psi) = \langle  \psi, \psi^{sl} \rangle_{\Xl}
+\]
+%
+for all $\psi \in \Xl$. In particular, setting $\psi = \phil(\boldsymbol{\xi})$ for an arbitrary $\boldsymbol{\xi} \in \Rdl$, we have
+%
+\begin{equation}
+\label{eq_Tmus_phil1}
+T_{\mus}(\phil(\boldsymbol{\xi})) = \langle  \phil(\boldsymbol{\xi}), \psi^{sl} \rangle_{\Xl}
+=\psi^{sl} (\boldsymbol{\xi}). 
+\end{equation}
+%
+But it also holds that
+%
+\begin{equation}
+\label{eq_Tmus_phil2}
+\begin{split}
+T_{\mus}(\phil(\boldsymbol{\xi}))  &=  E_{\xs}[ \phil(\boldsymbol{\xi})(\hsl) ] = E_{\xs}[ \krl(\boldsymbol{\xi}, \hsl) ]
+= E_{\xs}[ \krl(\hsl, \boldsymbol{\xi}) ] \\
+&= E_{\xs}[ \phil(\hsl) (\boldsymbol{\xi}) ]
+=E_{\xs}[ \fsl(\xs) (\boldsymbol{\xi}) ] = E_{\xs}[ \fsl(\xs)  ] (\boldsymbol{\xi}).
+\end{split}
+\end{equation}
+%
+From the equality of the expressions in \eqref{eq_Tmus_phil1} and \eqref{eq_Tmus_phil2}, we observe that
+%
+\[
+    E_{\xs}[ \fsl(\xs)  ] = \psi^{sl} \in \Xl.
+\] 
+%
+It then simply follows from the construction of $\X$ that 
+\[
+    E_{\xs}[\fs(\xs)] \triangleq ( E_{\xs}[\fsone (\xs)], \dots \, , E_{\xs}[\fsLm(\xs)]    )  \\ 
+\]
+%
+is in the Hilbert space $\X$.
+
+\end{proof}
+
+%%%%%%% Lemma 6 %%%%%%%
+\begin{lemma}
+    \label{lem_Fs_Ft_HFs_HFt_comp}
+    Let Assumptions \ref{assum_Ax_Atheta}-\ref{assum_Lk_Leta} hold. Then, the transformation function classes $\Fs, \Ft$ in \eqref{eq_Fs_Ft_defn_dl} and the composite function classes $\Gs, \Gt$ in \eqref{eq_Gs_Gt_defn_dl} are compact metric spaces, respectively under the metrics $\dXs, \dXt$ in \eqref{eq_defn_dXs_dXt}, and the metrics $\ds, \dt$ in \eqref{eq_defn_ds_dt}.
+\end{lemma}
+
+%%%%%%% Proof of Lemma 6 %%%%%%%
+\begin{proof}
+\label{pf_lem_Fs_Ft_HFs_HFt_comp}
+We prove the statements only for $\Fs$ and $\Gs$ as the proofs for the target domain are similar. We first show that $\Fs$ is compact with respect to the metric $\dXs $. Let
+%
+\begin{equation*}
+\begin{split}
+\Phis&=\{ \Thetas=(\boldsymbol{\Theta}^{s1}, \dots, \boldsymbol{\Theta}^{s \numL}):  \ |\Thetasl_{ij}|  \leq \Bnet, \forall i, j, \lay \} \\
+\end{split}
+\end{equation*}
+%
+denote the parameter space over which the source network parameters are defined. Regarding $\Phis $ as the Cartesian product of the corresponding matrix spaces at layers $\lay=1, \dots, \numL$, it follows from the bound $ |\Thetasl_{ij}|  \leq \Bnet$ on the network parameters that the finite dimensional set $\Phis $ is closed and bounded, hence compact.
+    % Ref: Proposition 3.2.3 in T.Terzioglu, Introduction to Real Analysis
+    
+We next define a mapping $\mapFs: \Phis \rightarrow \Fs $ such that
+% 
+\begin{equation}
+\label{eq_defn_mapFs}
+\begin{split}
+\mapFs(\Thetas) = \fs_{\Thetas}=\big( \fsone_{\Thetas} , \, \dots \, , \fsLm_{\Thetas}    \big) 
+\end{split}
+\end{equation}
+%
+where the notation $ \fs_{\Thetas}(\xs)$ stands for the function $ \fs(\xs)$ defined in \eqref{eq_Fs_Ft_defn_dl} by explicitly referring to its dependence on the network parameters $\Thetas $. In the following, we show that the mapping $\mapFs $ is continuous. Let us consider a sequence $\{ \Thetas_n \}\subset \Phis $ converging to an element $ \Thetas_* \in \Phis$.  Since the relation \eqref{eq_defn_hsl_htl} between the features of adjacent layers is given by a linear mapping followed by a continuous activation function $\actl$, the mapping $\hsl_{\Thetas} (\xs) $ is a continuous function of $\boldsymbol{\Theta}^s$, i.e. 
+%
+\begin{equation}
+\label{eq_hsl_cont}
+\lim_{n \rightarrow \infty} \hsl_{\Thetas_n} (\xs) =\hsl_{\Thetas_*} (\xs).
+\end{equation}
+%
+In  fact, due to the assumptions on the boundedness \eqref{eq_bnd_xs_xt} of the source samples, the boundedness \eqref{eq_bnd_Thetaij} of the network parameters, and the Lipschitz continuity \eqref{eq_Lipcont_act} of the activation functions $\actl$, it is easy to show that the convergence in \eqref{eq_hsl_cont} is uniform on $\Xs$. Hence, for any given $\epsilon >0$, one can find some $n_0$ such that for $n \geq n_0$, we have
+%
+\[
+\| \hsl_{\Thetas_n} (\xs) -  \hsl_{\Thetas_*} (\xs)  \| < \epsilon
+\]
+%
+for all $\xs \in \Xs$, for $\lay=1, \dots, \numL-1$. Then we have
+%
+%\begin{equation*}
+%\begin{split}
+%&\lim_{n \rightarrow \infty}  \|  \fsl_{\Thetas_n} (\xs)  - \fsl_{\Thetas_*} (\xs) \|_{\Xl}^2
+%= \lim_{n \rightarrow \infty}  \|  \phil(\hsl_{\Thetas_n} (\xs))   -   \phil(\hsl_{\Thetas_*} (\xs))   \|_{\Xl}^2 \\
+%&= \lim_{n \rightarrow \infty}  \left(  \krl \big(\hsl_{\Thetas_n} (\xs), \hsl_{\Thetas_n} (\xs) \big)
+%- 2 \krl \big(\hsl_{\Thetas_n} (\xs), \hsl_{\Thetas_*} (\xs) \big)
+%+ \krl \big(\hsl_{\Thetas_*} (\xs), \hsl_{\Thetas_*} (\xs) \big) \right)
+%=0
+%\end{split}
+%\end{equation*}
+%
+\begin{equation*}
+\begin{split}
+& \|  \fsl_{\Thetas_n} (\xs)  - \fsl_{\Thetas_*} (\xs) \|_{\Xl}^2
+=  \|  \phil(\hsl_{\Thetas_n} (\xs))   -   \phil(\hsl_{\Thetas_*} (\xs))   \|_{\Xl}^2 \\
+&=   \krl \big(\hsl_{\Thetas_n} (\xs), \hsl_{\Thetas_n} (\xs) \big)
+- 2 \krl \big(\hsl_{\Thetas_n} (\xs), \hsl_{\Thetas_*} (\xs) \big)
++ \krl \big(\hsl_{\Thetas_*} (\xs), \hsl_{\Thetas_*} (\xs) \big)  \\
+& \leq 2 \Lk \| \hsl_{\Thetas_n} (\xs) -  \hsl_{\Thetas_*} (\xs) \|  
+< 2 \Lk \epsilon
+\end{split}
+\end{equation*}
+for all $\xs \in \Xs$ due to the Lipschitz continuity of the kernels $\krl$. This gives
+%
+%\begin{equation*}
+%\begin{split}
+%\lim_{n \rightarrow \infty}  \|  \fs_{\Thetas_n} (\xs)  - \fs_{\Thetas_*} (\xs) \|_{\X}^2
+%= \lim_{n \rightarrow \infty}  \sum_{\lay=1}^{\numL-1} \|  \fsl_{\Thetas_n} (\xs)  - \fsl_{\Thetas_*} (\xs) \|_{\Xl}^2 =0.
+%\end{split}
+%\end{equation*}
+%
+\begin{equation*}
+\begin{split}
+    \|  \fs_{\Thetas_n} (\xs)  - \fs_{\Thetas_*} (\xs) \|_{\X}^2
+= \sum_{\lay=1}^{\numL-1} \|  \fsl_{\Thetas_n} (\xs)  - \fsl_{\Thetas_*} (\xs) \|_{\Xl}^2 
+< 2 (\numL-1) \Lk  \epsilon.
+\end{split}
+\end{equation*}
+%
+We have thus obtained
+%
+\begin{equation*}
+\begin{split}
+    \|  \fs_{\Thetas_n} (\xs)  - \fs_{\Thetas_*} (\xs) \|_{\X}
+< \sqrt{2 (\numL-1) \Lk } \sqrt{ \epsilon}
+\end{split}
+\end{equation*}
+%
+for all $n \geq n_0$ and for all $\xs \in \Xs$, which shows that $\fs_{\Thetas_n} (\xs)$ converges to $\fs_{\Thetas_*} (\xs)$ uniformly on $\Xs$. Then we have
+%
+\begin{equation*}
+\begin{split}
+\lim_{n \rightarrow \infty}  \dXs(\fs_{\Thetas_n} , \fs_{\Thetas_*}   ) 
+&= \lim_{n \rightarrow \infty} \sup_{\xs \in \Xs} 
+    \|  \fs_{\Thetas_n} (\xs)  - \fs_{\Thetas_*} (\xs) \|_{\X} \\
+    &= \sup_{\xs \in \Xs} \lim_{n \rightarrow \infty}  \|  \fs_{\Thetas_n} (\xs)  - \fs_{\Thetas_*} (\xs) \|_{\X}
+=0
+\end{split}
+\end{equation*}
+%
+where the second equality follows from the uniform convergence of $\fs_{\Thetas_n} (\xs)$. We have thus shown that the mapping $\mapFs: \Phis \rightarrow \Fs$ defined in \eqref{eq_defn_mapFs} is continuous. Since the set $\Phis$ is compact, we conclude that the function space $\Fs $ is a compact metric space.
+%  Ref: Proposition 3.3.1,  T.Terzioglu, Introduction to Real Analysis
+
+Next, in order to show the compactness of $\Gs$, we proceed in a similar fashion. Let us define a mapping $\mapGs: \Phis  \rightarrow \Gs$ with $\mapGs(\Thetas) = \gs_{\Thetas}$, where the notation $\gs_{\Thetas}(\xs) = \hsL_{\Thetas} (\xs)$ refers to the network output function defined in \eqref{eq_gs_gt_defn} by clarifying its dependence on the network parameters. Similarly to \eqref{eq_hsl_cont}, it is easy to observe that $\hsL_{\Thetas} (\xs) $ is a continuous function of $\Thetas$ and for any sequence  $\{ \Thetas_n \} $ converging to an element $\Thetas_*  \in \Phis$
+%
+\begin{equation*}
+\begin{split}
+\lim_{n \rightarrow \infty} \gs_{\Thetas_n}(\xs) 
+    = \lim_{n \rightarrow \infty} \hsL_{\Thetas_n} (\xs)  = \hsL_{\Thetas_*} (\xs) 
+    =\gs_{\Thetas_*}(\xs) 
+\end{split}
+\end{equation*}
+%
+uniformly. Hence,
+%
+\begin{equation*}
+\begin{split}
+\lim_{n \rightarrow \infty}  \ds(\gs_{\Thetas_n} , \gs_{\Thetas_*}   ) 
+&= \lim_{n \rightarrow \infty} \sup_{\xs \in \Xs} 
+    \|  \gs_{\Thetas_n}(\xs)  - \gs_{\Thetas_*}(\xs)  \| \\
+    &=  \sup_{\xs \in \Xs} \lim_{n \rightarrow \infty}  \|  \gs_{\Thetas_n}(\xs)  - \gs_{\Thetas_*}(\xs)  \|
+    =0.
+\end{split}
+\end{equation*}
+%
+Hence, the mapping $\mapGs: \Phis  \rightarrow \Gs$ is continuous. Then, from the compactness of $\Phis $, it follows that the function space $\Gs$ is compact as well.
+\end{proof}
+
+
+
+%%%%%%% Lemma 7 %%%%%%%
+\begin{lemma} 
+    \label{lem_cov_num_Fs_Ft}
+    Let Assumptions \ref{assum_Ax_Atheta}, \ref{assum_Lk_Leta}, \ref{assum_bnd_act_val_op} hold. Then, the covering numbers of the function classes $\Fs$ and $\Ft$ are upper bounded as 
+    %
+    \begin{equation*}
+    \begin{split}
+    \N (  \Fs, \epsilon, \dXs) \leq \prod_{\lay=1}^{\numL-1}  \left( \frac{4 \Bnet  \Lk \BQ}{\epsilon^2}+1  \right)^{ \dl(\dlm+1) } \\
+    \N(  \Ft, \epsilon, \dXt) \leq \prod_{\lay=1}^{\numL-1}  \left( \frac{4 \Bnet  \Lk \BQ}{\epsilon^2}+1  \right)^{ \dl(\dlm+1) }
+    \end{split}
+    \end{equation*}
+    %
+    where the dimension-dependent constant $\BQ$ is defined as
+    %
+    \begin{equation*}
+    \begin{split}
+    \BQ \triangleq 
+    \sum_{\lay=1}^{\numL-1} \BQdiml
+    \end{split}
+    \end{equation*}
+    %
+    with
+    \begin{equation}
+    \label{eq_defn_Ql}
+    \begin{split}
+    \BQdiml
+    &\triangleq 
+    (\Leta \Bdimlm \sqrt{\dl \dlm}+ \Leta \sqrt{\dl}) \\
+    &+
+    \sum_{i=1}^{\lay-1}
+    (\Leta \Bdimim \sqrt{\di \dimm}
+    + \Leta \sqrt{\di})
+    \prod_{k=i+1}^{\lay}
+    \Leta \Bnet \sqrt{\dk \dkm}
+    \end{split}
+    \end{equation}
+    %
+    for $\lay=2, \dots, \numL$ and 
+    %
+    $\BQdimone \triangleq 
+    \Leta \sqrt{\done \dz} \, \Bdimz  +\Leta \sqrt{\done} $.
+     %
+     Here
+    %
+    \begin{equation*}
+    \begin{split}
+    \Bdiml &\triangleq
+    % i=1
+    (\Bopeta \Bnet) ^l  (\Binp \sqrt{\dz}+1) \sqrt{\done}
+    \prod_{k=1}^{\lay-1} \sqrt{\dkplone \dk} \\
+    &+
+    % i=2, ... , l-1
+    \sum_{i=2}^{\lay-1} (\Bopeta \Bnet)^{\lay+1-i} \sqrt{\di}
+    \prod_{k=i}^{\lay-1} \sqrt{\dkplone \dk}
+    +
+    % i=l
+    \Bopeta \Bnet \sqrt{\dl}
+    %
+    \end{split}
+    \end{equation*}
+    %
+    under condition  \eqref{eq_bnd_act_op}
+    and $\Bdiml \triangleq\Beta \sqrt{\dl} $ under condition \eqref{eq_bnd_act_value} for $\lay=2, \dots, \numL-1$, where $\Bdimz \triangleq \Binp$ and $\Bdimone \triangleq \Bopeta  \Bnet \sqrt{\done \dz}  \Binp +  \Bopeta \Bnet \sqrt{\done}$. 
+    %
+\end{lemma} 
+    
+
+%%%%%%% Proof of Lemma 7 %%%%%%%
+\begin{proof}
+\label{pf_lem_cov_num_Fs_Ft}
+We obtain the bound only for the source domain, as the derivation for the target domain is identical. Our proof is based on constructing an $\epsilon $-cover for the compact metric space $\Fs$. For two mappings $\fs_1, \fs_2 \in \Fs$ defined respectively by the parameter vectors $\Thetas_1, \Thetas_2$ we have
+%
+\begin{equation}
+\label{eq_dX_ito_dhsl}
+\begin{split}
+(\dXs(\fs_1, \fs_2) )^2
+&= \sup_{\xs \in \Xs}  \| \fs_1(\xs) - \fs_2(\xs)  \|_{\X}^2 \\
+&= \sup_{\xs \in \Xs} \sum_{\lay=1}^{\numL-1}
+	\| \phil(\hsl_{\Thetas_1} (\xs))   - \phil(\hsl_{\Thetas_2} (\xs))  \|_{\Xl}^2 \\
+&= \sup_{\xs \in \Xs}  \sum_{\lay=1}^{\numL-1}
+\krl \left(  \hsl_{\Thetas_1} (\xs) , \hsl_{\Thetas_1} (\xs) \right)
+ - 2 \krl \left(  \hsl_{\Thetas_1} (\xs) , \hsl_{\Thetas_2} (\xs) \right) \\
+&�\quad \quad +\krl \left(  \hsl_{\Thetas_2} (\xs) , \hsl_{\Thetas_2} (\xs) \right) \\
+&\leq 
+\sup_{\xs \in \Xs}  \sum_{\lay=1}^{\numL-1}
+\left |   \krl \left(   \hsl_{\Thetas_1} (\xs) ,  \hsl_{\Thetas_1} (\xs) \right)
+- 
+\krl \left(  \hsl_{\Thetas_1} (\xs) ,  \hsl_{\Thetas_2} (\xs) 
+  \right )
+  \right | \\
+&  \quad \quad 
++
+  \left |   \krl \left(   \hsl_{\Thetas_2} (\xs) ,  \hsl_{\Thetas_2} (\xs) \right)
+- 
+\krl \left(  \hsl_{\Thetas_1} (\xs) , \hsl_{\Thetas_2} (\xs)
+  \right )
+  \right | \\
+ &  \leq   \sup_{\xs \in \Xs} \sum_{\lay=1}^{\numL-1}
+2 \Lk 
+ \|   \hsl_{\Thetas_1} (\xs)  -  \hsl_{\Thetas_2} (\xs)   \|
+\end{split}
+\end{equation}
+%
+where the last inequality is due to the Lipschitz continuity of the kernels $\krl$.  We next construct a cover for the set of parameter vectors $\Thetas$, which will define a cover for $\Fs$ using the relation in \eqref{eq_dX_ito_dhsl}. From \eqref{eq_bnd_Thetaij} the network parameter vectors of layer $\lay$ are in the compact set
+%
+\begin{equation}
+\label{eq_defn_thetasetl}
+\begin{split}
+\ThetaSetl=\{ \Thetal = [\Wl \ \bl] \in \R^{\dl \times (\dlm+1)} :  | \Wl_{ij} | \leq \Bnet, | \bl_{i} | \leq \Bnet,  \,\forall i, j, \lay \}.
+\end{split}
+\end{equation}
+%
+Then there exists a cover of $\ThetaSetl$ consisting of open balls around a set $\grid^\lay = \{ \Thetal_m \}_{m=1}^{\Kl}$ of regularly sampled grid points, with a distance of $\radTheta $ between adjacent grid centers in each dimension. The maximal overall distance between two adjacent grid centers is then $\radTheta  \sqrt{\dl(\dlm+1)}$. Hence, the distance between any parameter vector $\Thetal \in \ThetaSetl $ and the nearest grid center $\Thetal_m $ is at most
+%
+\begin{equation*}
+\begin{split}
+\frac{\radTheta  \sqrt{\dl(\dlm+1)}}{2}
+\end{split}
+\end{equation*}
+%
+with the number of balls in the cover being
+\begin{equation*}
+\begin{split}
+\Kl = \left( \frac{2 \Bnet}{\radTheta}+1  \right)^{ \dl(\dlm+1) }.
+\end{split}
+\end{equation*}
+%
+From the Cartesian product of the grid centers at layers $\lay=1, \dots, \numL-1$, we then obtain a product grid
+%
+\begin{equation}
+\label{eq_grid_Fs}
+\begin{split}
+\grid= \grid^1 \times \dots \times \grid^{\numL-1}  =  \{ \boldsymbol{\Theta}_k  \}_{k=1}^{\Kgen^1 \dots \ \Kgen^{\numL-1}}
+\end{split}
+\end{equation}
+%
+which defines a cover for the overall parameter space
+%
+\begin{equation*}
+\begin{split}
+\PhiCom&=\{ \ThetaCom=(\ThetaCom ^{1}, \dots, \ThetaCom ^{\numL-1}) :  \ |\ThetaCom^{\lay}_{ij}|  \leq \Bnet, \,\forall i, j, \lay \} \\
+\end{split}
+\end{equation*}
+%
+consisting of 
+%
+\begin{equation*}
+\begin{split}
+\Kgen_\grid = \prod_{\lay=1}^{\numL-1}  \Kl = \prod_{\lay=1}^{\numL-1}  \left( \frac{2 \Bnet}{\radTheta}+1  \right)^{ \dl(\dlm+1) }
+\end{split}
+\end{equation*}
+%
+balls. Then for any $\fs \in \Fs$ with parameters $\Thetas$, there exists some $\fs_k \in \Fs$ with parameters $\boldsymbol{\Theta}_k=(\boldsymbol{\Theta}_{k}^1, \boldsymbol{\Theta}_{k}^2, \dots, \boldsymbol{\Theta}_{k}^{L-1}) \in \grid $ in the product grid such that
+%
+\begin{equation}
+\label{eq_dist_thetasl_thetakl}
+\begin{split}
+\| \Thetasl -  \boldsymbol{\Theta}_{k}^\lay \| < \radTheta  \sqrt{\dl(\dlm+1)}.
+\end{split}
+\end{equation}
+%
+For any $\xs \in \Xs$, the distance between the $\lay$-th layer features of these parameters can be bounded as
+%
+\begin{equation}
+\label{eq_bnd_hsl_thetas_thetak}
+\begin{split}
+& \| \hsl_{\Thetas}(\xs) - \hidl_{\boldsymbol{\Theta}_k}(\xs)  \|   
+= \left \|  \actl \left( \Wsl \hslm_{\Thetas}(\xs) + \bsl \right) 
+- 
+\actl \left( \Wl_k \, \hidlm_{\boldsymbol{\Theta}_k}(\xs) + \bl_k \right)
+ \right \| \\
+& \leq
+ \Leta \left \| \Wsl \hslm_{\Thetas}(\xs) + \bsl 
+ -
+ \Wl_k \, \hidlm_{\boldsymbol{\Theta}_k}(\xs) - \bl_k
+   \right \| \\
+&  = 
+ \Leta \left \| \Wsl \hslm_{\Thetas}(\xs) 
+ - \Wsl  \hidlm_{\boldsymbol{\Theta}_k}(\xs)
+ + \Wsl  \hidlm_{\boldsymbol{\Theta}_k}(\xs)
+ -  \Wl_k \, \hidlm_{\boldsymbol{\Theta}_k}(\xs)  
+ + \bsl - \bl_k
+   \right \| \\
+  & \leq
+ \Leta 
+ \|  \Wsl \|  \,  \|   \hslm_{\Thetas}(\xs)  - \hidlm_{\boldsymbol{\Theta}_k}(\xs)  \|
+ +\Leta
+ \|  \Wsl  - \Wl_k \| \, \| \hidlm_{\boldsymbol{\Theta}_k}(\xs) \|
+ +\Leta
+ \| \bsl - \bl_k \|
+\end{split}
+\end{equation}
+%
+where $\Wl_k$, $\bl_k$, and $\hidlm_{ \boldsymbol{\Theta}_k }$ denote the $\lay$-th layer network parameters and features generated by the parameter vector  $\boldsymbol{\Theta}_{k}$; and $\|  \cdot \|$ and $\| \cdot \|_F$ respectively denote the operator norm and the Frobenius norm of a matrix. From \eqref{eq_defn_thetasetl} and \eqref{eq_dist_thetasl_thetakl}, we have 
+%
+\begin{equation*}
+\begin{split}
+\| \Wsl \| & \leq \| \Wsl \|_F \leq \Bnet \sqrt{\dl \dlm} \\
+ \|  \Wsl  - \Wl_k \| 
+ & \leq  \|  \Wsl  - \Wl_k \|_F    <  \radTheta \sqrt{\dl \dlm} \\
+ \|  \bsl - \bl_k  \| 
+ & <   \radTheta \sqrt{\dl}.
+\end{split}
+\end{equation*}
+%
+These bounds together with the inequality in \eqref{eq_bnd_hsl_thetas_thetak} yield
+%
+\begin{equation}
+\label{eq_hsl_thetas_thetak_xs_bnd}
+\begin{split}
+\| \hsl_{\Thetas}(\xs) - \hidl_{\boldsymbol{\Theta}_k}(\xs)  \|   
+&< 
+ \Leta 
+ \Bnet \sqrt{\dl \dlm} \,  \|   \hslm_{\Thetas}(\xs)  - \hidlm_{\boldsymbol{\Theta}_k}(\xs)  \| \\
+ &+\Leta
+ \radTheta \sqrt{\dl \dlm} \, \| \hidlm_{\boldsymbol{\Theta}_k}(\xs) \|
+ +\Leta
+ \radTheta \sqrt{\dl}.
+\end{split}
+\end{equation}
+%
+In order to study \eqref{eq_hsl_thetas_thetak_xs_bnd}, we first obtain an upper bound on the term $\| \hidl_{\boldsymbol{\Theta}_k}(\xs) \|$. Notice that for the condition \eqref{eq_bnd_act_value}, we simply have 
+%
+\begin{equation}
+\label{eq_bnd_hidl_ito_beta}
+\begin{split}
+\| \hidl_{\boldsymbol{\Theta}_k}(\xs)  \| 
+&=
+\| \actl \left(  \Wl    \hidlm_{\boldsymbol{\Theta}_k}(\xs)  + \bl  \right) \| 
+= \left( 
+\sum_{i=1}^\dl
+ \left( \actl_i  ( \Wl    \hidlm_{\boldsymbol{\Theta}_k}(\xs)  + \bl  ) \right)^2
+  \right)^{1/2} \\
+&  \leq \Beta \sqrt{\dl}.
+ \end{split}
+\end{equation}
+%
+Next, for the condition \eqref{eq_bnd_act_op} we have
+%
+\begin{equation*}
+\begin{split}
+\|  \hidz_{\boldsymbol{\Theta}_k}(\xs) \| &=  \| \xs \| \leq \Binp \\
+\|  \hidone_{\boldsymbol{\Theta}_k}(\xs) \|  & = \| \actone \left( \Wone \hidz_{\boldsymbol{\Theta}_k}(\xs) + \bone \right) \|
+\leq 
+\Bopeta \, \| \Wone \hidz_{\boldsymbol{\Theta}_k}(\xs) + \bone \| \\
+& \leq
+\Bopeta \, (  \| \Wone \|  \| \hidz_{\boldsymbol{\Theta}_k}(\xs) \| +  \| \bone \| )
+\leq \Bopeta  \Bnet \sqrt{\done \dz}  \Binp +  \Bopeta \Bnet \sqrt{\done}
+\end{split}
+\end{equation*}
+%
+for layers $\lay=0$ and $\lay=1$. For $\lay \geq 2$, one can similarly establish a recursive relation between the parameter vectors of layers $\lay$ and $\lay-1$, which yields 
+%
+\begin{equation*}
+\begin{split}
+\|  \hidl_{\boldsymbol{\Theta}_k}(\xs) \|  
+&\leq 
+\Bopeta \, \left(  \| \Wl \|  \| \hidlm_{\boldsymbol{\Theta}_k}(\xs) \| +  \| \bl \| \right) \\
+&\leq 
+\Bopeta  \Bnet \sqrt{\dl \dlm}  \| \hidlm_{\boldsymbol{\Theta}_k}(\xs) \|  +  \Bopeta \Bnet \sqrt{\dl} \\
+&\leq 
+(\Bopeta \Bnet) ^l  (\Binp \sqrt{\dz}+1) \sqrt{\done}
+\prod_{k=1}^{\lay-1} \sqrt{\dkplone \dk} \\
+&+
+\sum_{i=2}^{\lay-1} (\Bopeta \Bnet)^{\lay+1-i} \sqrt{\di}
+\prod_{k=1}^{\lay-1} \sqrt{\dkplone \dk}
++
+\Bopeta \Bnet \sqrt{\dl}.
+\end{split}
+\end{equation*}
+%
+Hence, combining this with \eqref{eq_bnd_hidl_ito_beta}, we get 
+%
+\begin{equation}
+\label{eq_bnd_norm_Rl}
+\begin{split}
+\|  \hidl_{\boldsymbol{\Theta}_k}(\xs) \|  \leq \Bdiml
+\end{split}
+\end{equation}
+%
+for $\lay=2, \dots, \numL-1 $, where $\Bdiml$ is the constant defined in \cref{lem_cov_num_Fs_Ft}. Using this in \eqref{eq_hsl_thetas_thetak_xs_bnd}, we obtain
+%
+\begin{equation}
+\label{eq_hsl_thetas_thetak_v2}
+\begin{split}
+\| \hsl_{\Thetas}(\xs) - \hidl_{\boldsymbol{\Theta}_k}(\xs)  \|   
+&< 
+ \Leta 
+ \Bnet \sqrt{\dl \dlm} \,  \|   \hslm_{\Thetas}(\xs)  - \hidlm_{\boldsymbol{\Theta}_k}(\xs)  \| \\
+ &+\Leta
+ \radTheta \sqrt{\dl \dlm} \, \Bdimlm 
+ +\Leta
+ \radTheta \sqrt{\dl}.
+\end{split}
+\end{equation}
+%
+For layer $\lay=1$, we have
+%
+\begin{equation*}
+\begin{split}
+\| \hsone_{\Thetas}(\xs) - \hidone_{\boldsymbol{\Theta}_k}(\xs)  \|   
+&< 
+\Leta 
+ \Bnet \sqrt{\done \dz} \,  \|   \hsz_{\Thetas}(\xs)  - \hidz_{\boldsymbol{\Theta}_k}(\xs)  \| \\
+ &+\Leta
+ \radTheta \sqrt{\done \dz} \, \Bdimz 
+ +\Leta
+ \radTheta \sqrt{\done}\\
+ &=\Leta
+ \radTheta \sqrt{\done \dz} \, \Bdimz 
+ +\Leta
+ \radTheta \sqrt{\done} 
+\end{split}
+\end{equation*}
+%
+since $ \hsz_{\Thetas}(\xs)  = \hidz_{\boldsymbol{\Theta}_k}(\xs) = \xs$. This relation together with the recursive inequality in \eqref{eq_hsl_thetas_thetak_v2} yields
+%
+\begin{equation}
+\label{eq_bnd_norm_Ql_delta}
+\begin{split}
+\| \hsl_{\Thetas}(\xs) - \hidl_{\boldsymbol{\Theta}_k}(\xs)  \|   
+&< \radTheta 
+\bigg(
+(\Leta \Bdimlm \sqrt{\dl \dlm}+ \Leta \sqrt{\dl}) \\
+&+
+\sum_{i=1}^{\lay-1}
+(\Leta \Bdimim \sqrt{\di \dimm}
++ \Leta \sqrt{\di})
+\prod_{k=i+1}^{\lay}
+\Leta \Bnet \sqrt{\dk \dkm}
+\bigg)\\
+&= \BQdiml  \radTheta
+\end{split}
+\end{equation}
+%
+for $\lay=1, \dots, \numL-1 $. Hence, we have shown that for any $\fs \in \Fs$ with parameters $\Thetas$, there exists some $\fs_k \in \Fs$ with parameters $\boldsymbol{\Theta}_k \in \grid $ in the product grid such that 
+%
+\begin{equation*}
+\begin{split}
+\| \hsl_{\Thetas}(\xs) - \hidl_{\boldsymbol{\Theta}_k}(\xs)  \|    < \BQdiml  \radTheta
+\end{split}
+\end{equation*}
+%
+for any $\xs \in \Xs$. We can now use this in \eqref{eq_dX_ito_dhsl} to bound the distance $\dXs(\fs, \fs_k)$ as
+%
+\begin{equation}
+\begin{split}
+(\dXs(\fs, \fs_k) )^2
+& \leq   \sup_{\xs \in \Xs} \sum_{\lay=1}^{\numL-1}
+2 \Lk 
+ \|   \hsl_{\Thetas} (\xs)  -  \hidl_{\boldsymbol{\Theta}_k} (\xs)   \|
+< 
+2 \Lk  \radTheta \sum_{\lay=1}^{\numL-1} \BQdiml
+= 2 \Lk  \radTheta \BQ.
+\end{split}
+\end{equation}
+%
+Therefore, the set $\{ \fs_k \}_{k=1}^{\Kgen_\grid} \subset \Fs$ provides a cover for $\Fs$  with covering radius $ \sqrt{2 \Lk  \radTheta \BQ}$. In order to obtain a covering radius of $\epsilon=  \sqrt{2 \Lk  \radTheta \BQ}$, we set 
+%
+\begin{equation*}
+\begin{split}
+\radTheta = \frac{\epsilon^2}{2 \Lk \BQ}
+\end{split}
+\end{equation*}
+%
+which provides a grid consisting of
+%
+\begin{equation*}
+\begin{split}
+\prod_{\lay=1}^{\numL-1}  \Kl 
+= \prod_{\lay=1}^{\numL-1}  \left( \frac{4 \Bnet  \Lk \BQ}{\epsilon^2}+1  \right)^{ \dl(\dlm+1) }
+\end{split}
+\end{equation*}
+%
+balls that covers $\Fs$. Hence, we obtain the upper bound 
+%
+\begin{equation*}
+\begin{split}
+\N (  \Fs, \epsilon, \dXs)  \leq \prod_{\lay=1}^{\numL-1}  \left( \frac{4 \Bnet  \Lk \BQ}{\epsilon^2}+1  \right)^{ \dl(\dlm+1) }
+\end{split}
+\end{equation*}
+%
+for the covering number stated in the lemma. 
+%
+\end{proof}
+
+
+
+
+%%%%%%% Lemma 8 %%%%%%%
+\begin{lemma} 
+    \label{lem_cov_num_HFs_HFt}
+    Let Assumptions \ref{assum_Ax_Atheta}, \ref{assum_Lk_Leta}, \ref{assum_bnd_act_val_op} hold. Then, the covering numbers of the function classes $\Hs \circ \Fs$ and $\Hs \circ \Ft$ are upper bounded as 
+    %
+    \begin{equation*}
+    \begin{split}
+    \N( \Hs \circ \Fs, \epsilon, \ds) &\leq    \prod_{\lay=1}^{\numL}  \left( \frac{2 \Bnet \BQdimL}{\epsilon}+1  \right)^{ \dl(\dlm+1) } \\
+    \N( \Hs \circ \Ft, \epsilon, \dt) & \leq  \prod_{\lay=1}^{\numL}  \left( \frac{2 \Bnet \BQdimL}{\epsilon}+1  \right)^{ \dl(\dlm+1) }.
+    \end{split}
+    \end{equation*}
+    %
+\end{lemma}
+
+
+
+%%%%%%% Proof of Lemma 8 %%%%%%%
+\begin{proof}
+\label{pf_lem_cov_num_HFs_HFt}
+We prove the statement of the lemma only for the source function space $\Hs \circ \Fs$, as the derivations for the target domain are identical. In order to bound the covering number for  $\Hs \circ \Fs$, we proceed as in the proof of \cref{lem_cov_num_Fs_Ft} and extend the grid construction in \eqref{eq_grid_Fs} to include layer $\numL$ as well. This defines a grid 
+%
+\begin{equation}
+\label{eq_grid_HFs}
+\begin{split}
+\grid_{\Hs \circ \F} = \grid^1 \times \dots \times \grid^{\numL}  =  \{ \boldsymbol{\Theta}_k  \}_{k=1}^{\Kgen^1 \dots \ \Kgen^{\numL}}
+\end{split}
+\end{equation}
+%
+providing a cover for the parameter space
+%
+\begin{equation*}
+\begin{split}
+\PhiCom_{\Hs \circ \F} &=\{ \ThetaCom=(\ThetaCom ^{1}, \dots, \ThetaCom ^{\numL}) :  \ |\ThetaCom^{\lay}_{ij}|  \leq \Bnet, \,\forall i, j, \lay \} \\
+\end{split}
+\end{equation*}
+%
+consisting of 
+%
+\begin{equation}
+\label{eq_num_balls_HsF}
+\begin{split}
+ \prod_{\lay=1}^{\numL}  \Kl = \prod_{\lay=1}^{\numL}  \left( \frac{2 \Bnet}{\radTheta}+1  \right)^{ \dl(\dlm+1) }
+\end{split}
+\end{equation}
+%
+balls. Then for any   $\gs \in \Hs \circ \Fs$ with network parameters $\Thetas$, there exists some $\gs_k \in \Hs \circ \Fs$ with network parameters $\boldsymbol{\Theta}_k=(\boldsymbol{\Theta}_{k}^1, \boldsymbol{\Theta}_{k}^2, \dots, \boldsymbol{\Theta}_{k}^{L}) \in \grid_{\Hs \circ \F} $ in the grid such that
+%
+\begin{equation*}
+%\label{eq_dist_thetasl_thetakl_Hs_Fs}
+\begin{split}
+\| \Thetasl -  \boldsymbol{\Theta}_{k}^\lay \| < \radTheta  \sqrt{\dl(\dlm+1)}
+\end{split}
+\end{equation*}
+%
+for $\lay=1, \dots, \numL$. Proceeding in a similar fashion to the derivations in \eqref{eq_bnd_hsl_thetas_thetak} and \eqref{eq_hsl_thetas_thetak_xs_bnd}, we obtain
+%
+\begin{equation}
+%\label{eq_bnd_hsl_thetas_thetak_G}
+\begin{split}
+ \| \hsL_{\Thetas}(\xs) - \hidL_{\boldsymbol{\Theta}_k}(\xs)  \|   
+&   \leq
+ \Leta 
+ \|  \WsL \|  \,  \|   \hsLm_{\Thetas}(\xs)  - \hidLm_{\boldsymbol{\Theta}_k}(\xs)  \| \\
+ &+\Leta
+ \|  \WsL  - \WL_k \| \, \| \hidLm_{\boldsymbol{\Theta}_k}(\xs) \| 
+ +\Leta
+ \| \bsL - \bL_k \| \\
+&< 
+ \Leta 
+ \Bnet \sqrt{\dL \dLm} \,  \|   \hsLm_{\Thetas}(\xs)  - \hidLm_{\boldsymbol{\Theta}_k}(\xs)  \| \\
+ &+\Leta
+ \radTheta \sqrt{\dL \dLm} \, \| \hidLm_{\boldsymbol{\Theta}_k}(\xs) \|
+ +\Leta
+ \radTheta \sqrt{\dL}
+\end{split}
+\end{equation}
+%
+for any $\xs \in \Xs$. Combining this inequality with the bounds in \eqref{eq_bnd_norm_Rl} and \eqref{eq_bnd_norm_Ql_delta} gives
+%
+\begin{equation*}
+\begin{split}
+ \| \hsL_{\Thetas}(\xs) - \hidL_{\boldsymbol{\Theta}_k}(\xs)  \|   
+&   <
+ \Leta 
+ \Bnet \sqrt{\dL \dLm} \,  \BQdimLm  \radTheta \\
+ &+\Leta
+ \radTheta \sqrt{\dL \dLm} \, \BdimLm
+ +\Leta
+ \radTheta \sqrt{\dL} \\
+ &= \BQdimL \radTheta.
+\end{split}
+\end{equation*}
+%
+Recalling the definition of the distance $\ds $ in \eqref{eq_defn_ds_dt}, we then have
+%
+\begin{equation*}
+\begin{split}
+\ds(\gs, \gs_k) &= \sup_{\xs \in \Xs} \| \gs(\xs) - \gs_k(\xs)  \| 
+=  \sup_{\xs \in \Xs} \|  \hsL_{\Thetas} (\xs)  -  \hidL_{\boldsymbol{\Theta}_k} (\xs)  \| 
+< \BQdimL \radTheta.
+\end{split}
+\end{equation*}
+%
+%%%%
+% NOTE: We can still write a strict inequality here in spite of the supremum. This safety is provided by the 1/2 factor in the distance between \Theta^l and \Theta^l_m, which we removed later for the sake of simplicity.
+ %%%%
+ %
+Hence, the grid $\grid_{\Hs \circ \F}$ in \eqref{eq_grid_HFs} provides a cover for $ \Hs \circ \Fs$ with covering radius $\BQdimL \radTheta$. For a covering radius of $\epsilon $, we set $\epsilon=\BQdimL \radTheta$, which results in a cover with 
+%
+\begin{equation}
+\begin{split}
+\prod_{\lay=1}^{\numL}  \left( \frac{2 \Bnet \BQdimL}{\epsilon}+1  \right)^{ \dl(\dlm+1) }
+\end{split}
+\end{equation}
+%
+balls due to \eqref{eq_num_balls_HsF}. We thus get the covering number upper bound
+%
+\begin{equation*}
+\begin{split}
+\N( \Hs \circ \Fs, \epsilon, \ds) \leq  \prod_{\lay=1}^{\numL}  \left( \frac{2 \Bnet \BQdimL}{\epsilon}+1  \right)^{ \dl(\dlm+1) } \\
+\end{split}
+\end{equation*}
+%
+stated in the lemma.
+
+ 
+\end{proof}
+
+
+
+
+%%%%%%% Lemma 9 %%%%%%%
+\begin{lemma}
+    \label{lem_ddan_hddan_dev}
+    Let \cref{assum_ddan_bdd} hold. Assume also that the composite function classes $\Vs$ and $\Vt$ are compact with respect to the metrics 
+    %
+    \begin{equation*}
+    \begin{split}
+    \dVs(\vs_1, \vs_2) & \triangleq \sup_{\xs \in \Xs}  | \vs_1(\xs) - \vs_2(\xs) | \\
+    \dVt(\vt_1, \vt_2) & \triangleq \sup_{\xt \in \Xt}  | \vt_1(\xt) - \vt_2(\xt) | \\
+    \end{split}
+    \end{equation*}
+    %
+    where $\vs_1, \vs_2 \in \Vs$ and $\vt_1, \vt_2 \in \Vt$.
+    Then,  
+    %
+    \begin{equation*}
+    \begin{split}
+    P & \left(
+    \sup_{\fs \in \Fs, \ft \in \Ft, \ddan \in \Dspace} 
+     |  \Ddan(\fs, \ft)  - \hDdan(\fs, \ft)  | \leq  \epsilon
+     \right ) \\
+    & \geq
+     1 - 2 \N(\Vs, \frac{\epsilon}{6}, \dVs)  \exp \left( -\frac{\Ns \epsilon^2}{72 \Bddansq} \right) 
+    - 2 \N(\Vt, \frac{\epsilon}{6}, \dVt) \exp \left( -\frac{\Nt \epsilon^2}{72 \Bddansq} \right) .
+    \end{split}
+    \end{equation*}
+    % 
+\end{lemma}
+    
+
+
+
+%%%%%%% Proof of Lemma 9 %%%%%%%
+\begin{proof}
+\label{pf_lem_ddan_hddan_dev}
+Due to the assumption of compactness of the function classes $\Vs$ and $\Vt$, there exists an $\epsilon$-cover of each function space. Let us denote the cover numbers of $\Vs$ and $\Vt$ as
+%
+\begin{equation*}
+\Ks = \N(\Vs, \epsilon, \dVs), 
+\quad \quad
+\Kt = \N(\Vt, \epsilon, \dVt)
+\end{equation*}
+%
+respectively, and the corresponding sets of ball centers as  $\{ \vs_k \}_{k=1}^{\Ks}$ and $\{ \vt_l \}_{l=1}^{\Kt}$. Then, for any $\vs \in \Vs$ and any $\vt \in \Vt$ there exist some $\vs_k \in \Vs$ and $\vt_l \in \Vt$ such that
+%
+\begin{equation}
+\label{eq_dvs_dvt_ball_rad}
+\begin{split}
+\dVs (\vs , \vs_k) &= \sup_{\xs \in \Xs}  | \vs(\xs) - \vs_k(\xs) | < \epsilon \\
+\dVt (\vt , \vt_l) &= \sup_{\xt \in \Xt}  | \vt(\xt) - \vt_l(\xt) | < \epsilon. \\
+\end{split}
+\end{equation}
+%
+Let us denote
+%
+\begin{equation*}
+\begin{split}
+\D(\vs_k, \vt_l)  &\triangleq \left |  E[\vs_k(\xs)] - E[\vt_l(\xt)] \right |  \\
+\hD(\vs_k, \vt_l) &\triangleq
+\left | 
+ \frac{1}{\Ns} 
+  \sum_{i=1}^{\Ns} \vs_k (\xis)
+  - 
+  \frac{1}{\Nt} 
+  \sum_{j=1}^{\Nt} \vt_l (\xjt) 
+  \right |.
+\end{split}
+\end{equation*}
+%
+Take any $\fs \in \Fs$, $\ft \in \Ft$ and $\ddan \in \Dspace$. We have
+%
+\begin{equation}
+\label{eq_ddan_hddan_dev}
+\begin{split}
+& |  \Ddan(\fs, \ft)  - \hDdan(\fs, \ft)  |  \\
+&= 
+|  \Ddan(\fs, \ft)  - \D(\vs_k, \vt_l) + \D(\vs_k, \vt_l)  
+- \hD(\vs_k, \vt_l)  + \hD(\vs_k, \vt_l) 
+- \hDdan(\fs, \ft)  | \\
+&\leq 
+|  \Ddan(\fs, \ft)  - \D(\vs_k, \vt_l)  |
++
+| \D(\vs_k, \vt_l)  
+- \hD(\vs_k, \vt_l)  |
++
+| \hD(\vs_k, \vt_l) 
+- \hDdan(\fs, \ft) | . 
+\end{split}
+\end{equation}
+%
+We proceed by bounding each one of the three terms at the right hand side of the inequality in \eqref{eq_ddan_hddan_dev}. The first term can be upper bounded as 
+%
+\begin{equation}
+\label{eq_ddan_hddan_term1}
+\begin{split}
+ | \Ddan(\fs, \ft)  - \D(\vs_k, \vt_l) |
+&=
+\left | 
+|  E[\vs(\xs) ]  - E [\vt(\xt) ]   |
+- 
+|  E[\vs_k(\xs)] - E[\vt_l(\xt)] | 
+\right |  \\
+&\leq
+\left | 
+ E[\vs(\xs) ]  - E [\vt(\xt) ]   
+- 
+  E[\vs_k(\xs)] + E[\vt_l(\xt)] 
+\right |  \\
+&\leq
+| E[\vs(\xs) ] -   E[\vs_k(\xs)] |
++
+|  E [\vt(\xt)] - E[\vt_l(\xt)] |
+<
+2\epsilon
+\end{split}
+\end{equation}
+%
+where the last inequality follows from \eqref{eq_dvs_dvt_ball_rad}. For the third term in \eqref{eq_ddan_hddan_dev}, one can similarly show that 
+%
+\begin{equation}
+\label{eq_ddan_hddan_term3}
+\begin{split}
+| \hD(\vs_k, \vt_l) 
+- \hDdan(\fs, \ft) |  < 2 \epsilon.
+\end{split}
+\end{equation}
+%
+We lastly study the second term in \eqref{eq_ddan_hddan_dev}. We have
+%
+\begin{equation}
+\label{eq_ddan_hddan_bnd1}
+\begin{split}
+&
+| \D(\vs_k, \vt_l)  
+- \hD(\vs_k, \vt_l)  | \\
+&=
+\left |
+\left |  E[\vs_k(\xs)] - E[\vt_l(\xt)] \right | 
+- 
+\left | 
+ \frac{1}{\Ns} 
+  \sum_{i=1}^{\Ns} \vs_k (\xis)
+  - 
+  \frac{1}{\Nt} 
+  \sum_{j=1}^{\Nt} \vt_l (\xjt) 
+  \right | 
+  \right | \\
+& \leq
+\left |
+ E[\vs_k(\xs)] - E[\vt_l(\xt)] 
+- 
+ \frac{1}{\Ns} 
+  \sum_{i=1}^{\Ns} \vs_k (\xis)
+  +
+  \frac{1}{\Nt} 
+  \sum_{j=1}^{\Nt} \vt_l (\xjt) 
+\right | \\
+&\leq
+\left | 
+ \frac{1}{\Ns}   \sum_{i=1}^{\Ns} \vs_k (\xis) -  E[\vs_k(\xs)]
+ \right |
++
+\left | 
+  \frac{1}{\Nt}  \sum_{j=1}^{\Nt} \vt_l (\xjt)  - E[\vt_l(\xt)] 
+\right |.
+\end{split}
+\end{equation}
+%
+As the domain discriminator is bounded due to \cref{assum_ddan_bdd}, from Hoeffding's inequality we have
+%
+\begin{equation*}
+\begin{split}
+P \left( 
+\left |
+\frac{1}{\Ns} 
+  \sum_{i=1}^{\Ns} \vs_k (\xis)
+ - E[\vs_k(\xs)]
+\right |
+\geq \epsilon
+\right)
+\leq
+2 \exp \left(
+-\frac{\Ns \epsilon^2}{2 \Bddansq}
+\right)
+\end{split}
+\end{equation*}
+%
+for a fixed $\vs_k \in \Vs$, and a similar inequality can be obtained for a fixed  $\vt_l \in \Vt$. Applying the union bound over all ball centers  $\{ \vs_k \}_{k=1}^{\Ks}$ 
+and $\{ \vt_l \}_{l=1}^{\Kt}$, we get that with probability at least 
+%
+\begin{equation*}
+\begin{split}
+1 - 2 \Ks \exp \left( -\frac{\Ns \epsilon^2}{2 \Bddansq} \right) 
+- 2 \Kt \exp \left( -\frac{\Nt \epsilon^2}{2 \Bddansq} \right) 
+\end{split}
+\end{equation*}
+%
+we have
+%
+\begin{equation*}
+\begin{split}
+\left |
+\frac{1}{\Ns} 
+  \sum_{i=1}^{\Ns} \vs_k (\xis)
+ - E[\vs_k(\xs)]
+\right |  < \epsilon 
+\quad
+\text{ and }
+\quad
+\left |
+\frac{1}{\Nt} 
+  \sum_{j=1}^{\Nt} \vt_l (\xjt)
+ - E[\vt_l(\xt)]
+\right |  < \epsilon 
+\end{split}
+\end{equation*}
+%
+for all ball centers, which implies from \eqref{eq_ddan_hddan_bnd1}
+%
+\begin{equation*}
+\begin{split}
+| \D(\vs_k, \vt_l)  
+- \hD(\vs_k, \vt_l)  |  
+< 2 \epsilon.
+\end{split}
+\end{equation*}
+%
+Combining this result with the bounds in  \eqref{eq_ddan_hddan_dev}-\eqref{eq_ddan_hddan_term3}, we get
+%
+\begin{equation*}
+\begin{split}
+P & \left(
+\sup_{\fs \in \Fs, \ft \in \Ft, \ddan \in \Dspace} 
+ |  \Ddan(\fs, \ft)  - \hDdan(\fs, \ft)  | \leq 6 \epsilon
+ \right ) \\
+& \geq
+ 1 - 2 \Ks \exp \left( -\frac{\Ns \epsilon^2}{2 \Bddansq} \right) 
+- 2 \Kt \exp \left( -\frac{\Nt \epsilon^2}{2 \Bddansq} \right) .
+\end{split}
+\end{equation*}
+%
+Replacing $ \epsilon$ with $\epsilon/6$, we get the statement of the lemma.
+%
+\end{proof}
+
+
+
+
+\clearpage
+
+\section{Discussion of the results in relation with previous literature}
+\label{sec_rel_work}
+
+We now discuss our findings in relation with previous literature. To the best of our knowledge, our study is the first to propose an in-depth characterization of the sample complexity of domain-adaptive neural networks. A substantial body of work has focused on the effect of domain discrepancy on generalization performance, while another line of research has examined the sample complexity of neural networks, however, in a single-domain setting. We briefly overview these results below, along with a few relevant studies on the performance of domain alignment methods.  For clarity and consistency, we restate the findings of prior work using our own notation. The presence of the parameter $\delta$ in the bounds signifies that the result holds with probability at least $1-\delta$.
+
+\subsection{Effect of domain discrepancy on generalization performance}
+
+
+
+
+One of the earliest analyses examining the effect of the deviation between the source and target distributions is the study by Ben-David et al.~\cite{BenDavidBCP06}. The gap between the expected target loss and the empirical source loss is shown to be bounded by
+%
+\[
+O\left(  
+\sqrt{ \frac{\text{dim}_{VC}(\mathcal{H})}{\Ms} + \log(\delta^{-1})} \right) + d_{\mathcal{H}}(D_S, D_T) + \lambda
+\]
+%
+ignoring the logarithmic factors, where $\text{dim}_{VC}(\mathcal{H})$ denotes the VC-dimension of the hypothesis space $\mathcal{H}$, $\Ms$ is the number of of labeled source samples, and $\lambda$ is a  measure of  the proximity of the true label function to the hypothesis class $\mathcal{H}$. Here  $d_{\mathcal{H}}(D_S, D_T)$ is the $\mathcal{A}$-distance \cite{BenDavidBCP06} between the source and target distributions $D_S$ and $D_T$, given by
+%
+\[
+ d_{\mathcal{H}}(D_S, D_T) = 2 \sup_{A \in \mathcal{A}} | P_{D_S}(A) - P_{D_T}(A) |
+\]
+%
+where $\mathcal{A}$ is the set of domain subsets with characteristic functions in $\mathcal{H}$, and $P_{(\cdot)}$ denotes probability with respect to a distribution.
+
+In a succeeding study \cite{BenDavidBCKPV10}, this result has been extended to algorithms minimizing a convex combination of source and target losses, where the hypothesis that minimizes the empirical weighted loss is shown to generalize to the target domain within an error of 
+%
+\begin{equation*}
+\begin{split}
+O\bigg(
+\sqrt{\frac{\alpha^2}{\gamma} + \frac{(1-\alpha)^2}{1-\gamma}} 
+& \sqrt{  \frac{\text{dim}_{VC}(\mathcal{H}) + \log(\delta^{-1}) }{M} } \\
+&+ 
+(1-\alpha)
+\bigg(\sqrt{\frac{\text{dim}_{VC}(\mathcal{H}) \log(\delta^{-1})}{N} }
++
+\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T) 
++ \lambda
+\bigg)
+\bigg).
+\end{split}
+\end{equation*}
+%
+Here the distribution distance $\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T) $ denotes the  empirical divergence between the source and the target distributions over the symmetric difference hypothesis space $\mathcal{H}\Delta \mathcal{H}$, which corresponds to the set of disagreements \cite{BenDavidBCKPV10}. $N=\Ns=\Nt$ denotes the number of all samples in the two domains, and $M$ is the total number of labeled samples, with $\Ms=(1-\gamma)M$ source samples and $\Mt=\gamma M$ target samples. This result has some implications paralel to our study, in that the optimal weight $\alpha$ of the target loss should decrease with the scarcity of target labels, i.e., as $\gamma$ decreases. A high domain discrepancy  $\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T) $ also drives the weighted loss towards the target loss, by decreasing the weight $1-\alpha$ of the source loss. 
+
+Similar findings have been presented in the study of Mansour et al.~in terms of the Rademacher complexities of the hypothesis space \cite{MansourMR09}. However, in \cite{MansourMR09} the deviation between the source and the target domains has been characterized in terms of the discrepancy $\text{disc}_{\loss} (D_S, D_T)$, which quantifies how the loss-induced disagreement between any pair of hypotheses may differ across $D_S$ and $D_T$.
+
+
+ 
+Following these pioneering works, many other domain divergence measures have been proposed in succeeding studies \cite{RedkoMHS20}. Deng et al.~have explored a robust variant of the discrepancy in  \cite{MansourMR09} based on the adversarial Rademacher complexity definition  \cite{DengGHML23}, which has been shown to vary with the number of samples $M$ and the network width $d$ at rate $O(\sqrt{d/M})$ for two-layer ReLU neural networks. Zhang et al.~have proposed an alternative characterization of distribution distance based on the margin disparity discrepancy, leading to generalization bounds in terms of the Rademacher complexities and the covering numbers of hypothesis spaces \cite{ZhangLLJ19}. Zellinger et al.~have presented performance bounds depending on the VC-dimension of the function classes by formulating the domain discrepancy in terms of the difference between the moments of the source and target distributions \cite{ZellingerMS21}. Other recent efforts along this line include studies involving margin-aware risks with links to optimal transport distances \cite{DhouibRL20}, information-theoretic bounds based on mutual information \cite{WangM23, WuMAZ24}, hypothesis-specific divergence measures \cite{WangM24}, and risk definitions based on stochastic predictors \cite{SiciliaAAH22}.
+
+
+
+
+
+\begin{remark} 
+We note that all these aforementioned works assume that a common classifier is learnt in the original source and target domains; i.e., their setting is essentially different from ours as they do not at all consider learning a transformation or a mapping that aligns the two domains. The main distinction among these works lies in the specific distribution discrepancy each one proposes to characterize the misalignment between the domains, with the purpose of deriving tighter error bounds.  Meanwhile, the reported labeled and unlabeled sample complexities, or otherwise the errors, follow the classical dependence on the VC-dimensions or the Rademacher complexities of the hypothesis classes in consideration, consistent with well-established results in learning theory. From the perspective of domain alignment algorithms, one may want to regard the domain discrepancies in these bounds as the distance obtained after mapping the two domains to a shared domain, an interpretation that arguably extends to transformation learning. While this view holds to some extent, many of the discrepancy measures used in these works (including their empirical approximations) are defined in a theoretical manner, and are difficult to estimate in practice. Although efficient computational techniques may exist for some of these discrepancy measures, they often lack accompanying learning guarantees. In contrast, our main results in Theorems \ref{thm:main_result_mmd}-\ref{thm_main_result_dann} offer a practical means of assessing the generalization capability of domain alignment algorithms, as they are based on the empirical distribution distance computed directly on the aligned training data.
+\end{remark}
+
+
+
+
+\subsection{Performance bounds for domain alignment algorithms}
+
+To the best of our knowledge,  a very limited number of theoretical analyses have investigated the performance of learning domain-aligning transformations or representations. A multi-task domain adaptation method is proposed in \cite{ZhouTPT19}, which learns the similarity between source and target samples through a linear transformation $\mathbf{G}$. Assuming the incoherence of the projections corresponding to different tasks, the estimation error of the transformation $\mathbf{G}$ is shown to be bounded by $O(d_T \sqrt{\log(d_S)/n})$, where $d_S$ and $d_T$ denote the dimensions of the source and target Euclidean domains, and $n$ is the number of tasks. While this bound is subsequently leveraged in \cite{ZhouTPT19} to design suitable classifiers based on the incoherence principle, the scope of their analysis is limited to linear transformations. 
+
+A performance analysis of conditional distribution matching is presented in \cite{WangS15}, showing that  the generalization gap in the target domain is bounded by
+%
+\[
+O\left (  1+ \frac{1}{\sqrt{\Mt}} + \sqrt{\frac{\log(\delta^{-1})}{\Ms + \Mt}} \right)
+\]
+%
+when the source domain is mapped to the target domain through a location and scale transform. 
+
+Fang et al.~have considered semi-supervised domain alignment algorithms  as in our work  \cite{FangLLZ23}. However, their analysis is significantly different from ours since it does not explore the sample complexity of learning domain transformations, but instead treats the sample complexity as a known problem parameter. Their study aims to demonstrate that the need for labeled target data can be alleviated under certain assumptions by relying on the source and unlabeled target data. 
+%
+
+
+
+Transferring representations from a source task to a target task is a problem different from but connected to domain adaptation. Wang et al.~have provided an extensive analysis of  transfer learning and multitask learning through domain-invariant feature representations by minimizing a combined empirical loss under regularization \cite{WangMSX23}. The performance gap between the source and target losses is shown to vary at rate
+%
+\[
+O\left(\text{dist}_{\mathcal{Y}}(\fs, \ft) + \sqrt{ \frac{\log(\delta^{-1})}{\Ms + \Mt}} \right).
+\]
+%
+Here $\text{dist}_{\mathcal{Y}}(\fs, \ft)$ denotes the $\mathcal{Y}$-discrepancy \cite{MohriM12} between the two domains once transformed to a shared domain, which is, however, not easy to estimate in practice. 
+
+Galanti et al.~have modeled the transfer learning problem in a setting where a target task and multiple source tasks are drawn from the same distribution of distributions, and considered that a neural network architecture is partially transferred to the target task \cite{TomerWH16}. Their analysis implies that for accurate transfer, the number of source tasks and the number of samples  per source task must scale with the number of edges, respectively, in the transferred component and the target-specific component of the network. In a recent work, Jiao et al.~have considered a model that distinguishes between shared and domain-specific features in multi-domain deep transfer learning and shown that transferability between tasks improves the convergence rates in the target task \cite{JiaoLLY24}. McNamara and Balcan have investigated representation learning on a source task and fine-tuning on a target task  \cite{McNamaraB17}. The accuracy on the source task is shown to carry over to the target task within a performance gap of $O(\sqrt{\text{dim}_{VC}(\mathcal{H \circ F}) / \Ms} + \sqrt{\text{dim}_{VC}(\mathcal{H})/\Mt} )$, where $\mathcal{F}$ is the space of feature representations and $\mathcal{H}$ is the space of classifiers. The significance of this result lies in the fact that the number $\Mt$ of labeled target samples should scale with the dimension of only the classifier $\mathcal{H}$, rather than the more complex composite hypothesis space $\mathcal{H \circ F}$. A paralel finding is presented in \cite{TripuraneniJJ20} for the problem of transfer learning in a multi-task setting, demonstrating that the number of labeled samples for a new task needs to scale only with the complexity of its own task-specific map, assuming the abundance of the training data for the previous tasks. 
+
+\begin{remark}
+Although our domain adaptation setting differs essentially from that considered in these transfer learning studies, they are comparable in their shared focus on handling the scarcity of labeled target samples. Whereas these works tie sample complexity to the richness of the target function class, which can be still large for deep neural networks, our analysis indicates that in a domain adaptation scenario the limitedness of target labels can be tolerated through strategically choosing the weight parameter as $\alpha=O(\sqrt{\Mt})$,  independently of the complexity of  the target function class.
+\end{remark}
+
+
+
+\subsection{Sample complexity of neural networks in a single domain}
+
+Sample complexity of neural networks is a well-explored topic in statistical learning theory, a comprehensive overview of which can be found in \cite{AnthonyB02}, \cite{BartlettMR21}. Although this classical line of research pertains to learning algorithms in a single domain and does not extend to domain adaptation scenarios, we find it instructive to briefly review these results and compare them to our bounds on domain adaptive neural networks. 
+
+The sample complexity of a feed-forward network consisting of $W$ weights, $\numL$ layers and $s$ output units, with fixed piecewise-polynomial activation functions is reported as \cite[Theorem 21.5]{AnthonyB02}
+%
+\begin{equation}
+\label{eq_samp_comp_Bartlett_NN}
+\begin{split}
+O\left(  \frac{ s (W \numL \log(W) + W \numL^2) \log(\epsilon^{-1}) + \log(\delta^{-1})   }{\epsilon^2}   \right)
+\end{split}
+\end{equation}
+%
+in order to attain an error of $\epsilon$.  Denoting the network width as $\dcom$, the number of weights $W$ in an $\numL$-layer network is  obtained as $W= \dcom^2 \numL$. Then, the  sample complexity $M=O(\dcom^2 \numL^3)$ in \eqref{eq_samp_comp_Bartlett_NN} points to a quadratic dependence on $\dcom$ and a cubic dependence on $\numL$.  This polynomial dependence is in line with our results in Theorems \ref{thm_main_result_da_mmd} and \ref{thm_main_result_dann}, where the sample complexity of labeled source data has been obtained as $\Ms= O(\dcom^2 \numL^2)$. The dependence on $\numL$ is quadratic, hence slightly tighter in our bounds. 
+
+A more recent trend in the exploration of sample complexity of neural networks is the  characterization of the complexity in a dimension-independent way under particular assumptions. Neyshabur et al.~have shown that the sample complexity depends exponentially on the network depth; nevertheless, its dependence on the network width can be removed under group norm regularization of network weights \cite{NeyshaburTS15}. In succeeding studies, the exponential dependence on the network size has been reduced to polynomial \cite{WeiM19}, quadratic \cite{NeyshaburBS18}, linear \cite{GolowichRS18} and logarithmic \cite{BartlettFT17} factors. Harvey et al.~have shown that the VC-dimension of neural networks with ReLU activation functions is $O(W \numL \log(W))$, resulting in comparable bounds to our work \cite{HarveyLM17}.  In some more recent works, it has been shown that the dependence on network width can be removed for one-layer networks \cite{VardiSS22} and reduced to logarithmic factors for two-layer networks \cite{DanielyG24} under bounded Frobenius norm and spectral norm constraints. We note that these results essentially rely on the condition that the norms of the weight matrices be upper bounded in a dimension-independent manner, and would translate to rather pessimistic sample complexities under the removal of this assumption. 
+
+
+\begin{remark} 
+While the above studies have contributed to a comprehensive understanding of neural network classifiers, they all focus on the single-domain scenario, assuming identical distributions for training and test data.  To the best of our knowledge, our work is the first to provide a detailed analysis of the sample complexity of domain-adaptive neural networks. We note that our analysis does not impose any special constraints on the weight matrices, such as norm regularization. Under the incorporation of norm constraints, we would expect to arrive at tighter bounds consistently with the approaches in single-domain settings, which is left as a potential future direction of our study.
+\end{remark}
+
+
+\clearpage 
+\section{Detailed experimental results}
+\label{sec_detailed_exp_results}
+
+This section provides comprehensive details of the experimental validation presented in Section 5 of the main article, including complete setup descriptions, implementation details, and extended discussions of the results.
+
+\subsection{General domain alignment methods: Detailed setup and results}
+\label{ssec_exp_gen_da_detailed}
+
+\subsubsection{Synthetic data experiments}
+
+We validate our theoretical findings on a synthetic data set with two classes. The source and target data sets are generated by applying two different geometric transformations to 400 samples drawn from the standard normal distribution in $\R^2$. We simulate a learning algorithm that learns geometric transformations to map the source and target samples to a common domain and then trains a classifier in the shared domain. Here we emulate a setting where the transformations $\fs$ and $\ft$ are treated as if learnt from data, however, with some error. In practice,  $\fs$ and $\ft$ are formed by perturbing the ground truth geometric transformations with some transformation estimation error $\tau$.  We test a range of estimation error levels  $\tau$ in the experiments. The classifier trained after mapping the samples to the common domain is chosen as a regularized ridge regression algorithm solving
+%
+\begin{equation*}
+\min_{\wvect \in \R^2} \ \  \frac{1-\alpha}{\Ms} \sum_{i=1}^{\Ms} (\wvect ^T \fs(\xis) - \yis)^2 
++ \frac{\alpha}{\Mt} \sum_{j=1}^{\Mt} (\wvect ^T \ft(\xjt) - \yjt)^2  + \lambda \| \wvect \|^2 .
+\end{equation*}
+%
+The target misclassification rate is evaluated over 1000 test samples drawn from the target distribution and classified through the learnt hypothesis $\wvect$ and target transformation $\ft$.
+
+The variation of the target misclassification rate with the number $\Mt$ of labeled target samples is shown for different values of the weight $\alpha$ for the target loss. In order to interpret these results, it is helpful to recall our theoretical analysis: Theorem 2.1 states that the expected target loss $\Lt(\ft, \h) $ deviates from its reference value based on the empirical weighted loss $\hLw(\fs, \ft, \h)$ and the distance $\D(\fs, \ft)$ by an amount of $\epsilon$. In order to achieve this with high and fixed probability, the term $\Mt \epsilon^2$ in the probability expression must be constant (ignoring logarithmic factors and assuming that the generic covering numbers grow at a typical geometric rate). This implies that the expected target loss should decrease at rate $\epsilon = O(\sqrt{1/\Mt}) $ as $\Mt$ increases. We observe that the decay in the target error with  $\Mt$ is consistent with Theorem 2.1. The fitted theoretical rates of decay  $O(\sqrt{1/\Mt})$ closely match the experimental data.  We can also observe that large $\Mt$ values favor larger $\alpha$ values, while $\alpha$ must be chosen smaller at small $\Mt$ values. This aligns with the conclusion that the parameter $\alpha$ must be chosen as  $\alpha = O(\sqrt{\Mt})$ in order to control the probability term as $\Mt$ decreases.
+
+We also study the variation of the target misclassification rate with the estimation error $\tau$ of the geometric transformations. The parameter $\tau$ here is taken as the norm of the error matrix that is added to the ground truth transformation matrix. Hence, $\tau$ can be regarded as a parameter proportional to the distribution distance  $\D(\fs, \ft)$. The misclassification rate tends to increase with $\tau$ at an approximately linear rate, as confirmed by the theoretical linear rate of increase fitted to the experimental data. These results are coherent with the prediction of Theorem 2.1 that the expected target loss should increase proportionally to the distribution distance $\D(\fs, \ft)$.
+
+\subsubsection{MIT-CBCL face recognition experiments}
+
+We experiment on the MIT-CBCL image data set \cite{MITCBCL}. The data set consists of a total of 3240 synthetic face images belonging to 10 subjects. The images of each subject are rendered under 36 different illumination conditions and 9 poses, with Pose 1 corresponding to the frontal view and Pose 9 corresponding to a nearly profile view. We consider the images rendered under Pose 1 as the source domain, and repeat experiments by taking images from Poses 2, 5 and 9 as the target domain in each trial. First, using all labeled and unlabeled images, we compute a mapping between the source and target domains by the method proposed in \cite{FernandoHST13}, which finds a transformation that aligns the PCA bases of the source and target domains. We then train an SVM classifier using all labeled samples from the two domains. The unlabeled target samples are finally classified with the learnt transformation and classifier.
+
+The misclassification rates of unlabeled target samples are evaluated with respect to the number of labeled target and source samples. We observe that the misclassification rates are reduced effectively with the increase in the number of labeled samples. As predicted by our theory, the target loss asymptotically reduces to an error component resulting from the empirical loss and the distribution distance, at rates $O(\sqrt{1/\Mt})$ and $O(\sqrt{1/\Ms})$ with increasing $\Mt$ and $\Ms$. The experimental results seem consistent with this expectation.  The theoretical curves fitted to the experimental data with the expected rates of decrease are indicated in the plots for visual comparison.
+
+\subsection{Domain-adaptive neural networks: Detailed setup and results}
+\label{ssec_exp_dan_detailed}
+
+We experimentally verify our results in Theorems 3.6 and 3.7 regarding the sample complexity of domain-adaptive neural networks. For both MMD-based and adversarial architectures, we characterize the sample complexity with respect to the depth $\numL$ and the width $\dcom$ of the network, and investigate the optimal value of the weight $\alpha$ of the target loss.
+
+In our experiments, the MNIST handwritten digit data set \cite{mnist} is used as the source data set, which consists of 60000 images. The target data set is taken as MNIST-M \cite{mnistm}, which contains 59000 handwritten digit images with colored backgrounds. We train the neural networks with labeled and unlabeled training samples from the source and target domains, and then evaluate the target accuracy of the learnt models, defined as the correct classification rate of test samples from the target domain. In all experiments, algorithm hyperparameters and fixed variables are chosen  to keep the neural network in the overfitting regime, enabling the characterization of the sample complexity of the models under consideration.
+
+\subsubsection{MMD-based domain adaptation networks}
+
+In our analysis of MMD-based domain adaptation networks, we consider the architecture proposed in the pioneering study \cite{LongCWJ15} as our benchmark. We build on our previous experimental study \cite{KaracaAAAAUV23} and employ a neural network structure similar to the baseline model in  \cite{LongCWJ15}, beginning with convolutional layers and followed by several fully connected MMD layers. The MMD layer parameters are coupled between the source and target domains. The dimensions (widths) of all MMD layers are set as equal. Batch normalization is applied after each layer in order to stabilize the performance. We use the PyTorch implementation of the network available in \cite{mmd_code_pytorch} and adapt it for the minimization of the objective function 
+%
+\begin{equation*}
+ \frac{1-\alpha}{\Ms} \sum_{i=1}^{\Ms}  \loss( \h \circ f(\xis), \yis )  
++ \frac{\alpha}{\Mt} \sum_{i=1}^{\Mt} \loss( \h \circ f(\xjt),  \yjt  ) 
+ +  \beta \sum_{\lay=1}^{\numL-1}  (\hD^\lay)^2 (f^l, f^l)
+\end{equation*}
+%
+where $\loss(\cdot, \cdot)$ is set as the cross-entropy loss function and the source and target feature transformations are coupled as $\fs=\ft=f$ and $\fsl=\ftl=f^l$. 
+
+We study the sample complexity of labeled source samples $\Ms$ and all source samples $\Ns$ with respect to the number  $\numL$ of MMD layers in the network. The experiments show the decrease in the target accuracy as the number  $\numL$ of MMD layers increases when the network is in the overfitting regime, for different $\Ms$ and $\Ns$ values. We aim to characterize the sample complexity of $\Ms$ and $\Ns$ with respect to $\numL$ in this experiment. Therefore, we determine several desired target accuracy levels and identify the smallest $\Ms$ and $\Ns$ values that ensure this target accuracy as $\numL$ grows (in cases where obtaining the exact value of $\numL$ exceeded our computational resources, we resorted to linear extrapolation to approximately infer the corresponding $\numL$ value). We recall from Theorem 3.6 that the sample complexities of $\Ms$ and $\Ns$ are expected to grow at quadratic rates $\Ms=O(\numL^2)$ and $\Ns=O(\numL^2)$ as the network depth $\numL$ increases. The experimental findings confirm this prediction, as the increase in the required sample size for attaining a reference target accuracy level indeed follows a quadratic increase with $\numL$. The curves are obtained by fitting quadratic polynomials to the experimental data for visual evaluation.
+
+A similar experiment is conducted for sample complexity with respect to the network width. The parameter $\dcom$ represents the factor by which the network width in the original implementation  \cite{mmd_code_pytorch} is multiplied in our experiment. Hence, $\dcom$ is directly proportional to the shared width parameter of the MMD layers. The results are also consistent with the theoretical findings in Theorem 3.6, which states that the sample complexity must increase at a quadratic rate $\Ms=O(\dcom^2)$ as the network width increases.
+
+We also recall from Theorem 3.6 that, in order to maximize the target accuracy, the weight parameter $\alpha$ of the target classification loss must scale as $\alpha=O(\sqrt{\Mt})$ as the number $\Mt$ of labeled target samples varies. We experimentally validate this result. We examine the variation of the target accuracy with the weight parameter $\alpha$, which follows a non-monotonic variation with $\alpha$ as expected. We approximately identify the optimal value $\alpha_{opt}$ of the weight parameter for each value of $\Mt$ by applying polynomial fitting to the plots. In order to visually observe the prediction of Theorem  3.6, we also fit a curve of $O(\sqrt{\Mt})$ to each data sequence. The experimental data seems consistent with the fitted  curves, which supports the statement of Theorem 3.6 that the optimal weight parameter must scale at rate $\alpha_{opt}=O(\sqrt{\Mt})$.
+
+\subsubsection{Adversarial domain adaptation networks}
+
+In order to experimentally evaluate our findings in Section 3.3.2, we adopt the model proposed in \cite{GaninUAGLLML16}, which is a well-known representative of adversarial domain adaptation architectures. We use the PyTorch implementation of this model available in \cite{fungtion_DANN_py3}, by adapting it to the semi-supervised setting studied in our analysis. We train the adversarial network to minimize the objective function
+%
+%
+\begin{equation*}
+\begin{split}
+&  \frac{1-\alpha}{\Ms} \sum_{i=1}^{\Ms}  \loss( \h \circ f(\xis), \yis )  
++ \frac{\alpha}{\Mt} \sum_{i=1}^{\Mt} \loss( \h \circ f(\xjt),  \yjt  ) \\
+& - 
+\frac{\beta}{N_s + N_t}
+\left(
+ \sum_{i=1}^{\Ns}  \loss_\dom( \ddan \circ f(\xis), \ydoms_i )
+ +
+  \sum_{j=1}^{\Nt} \loss_\dom( \ddan \circ f(\xjt), \ydomt_j  ) 
+  \right)
+  \end{split}
+\end{equation*}
+%
+where the label loss $\loss(\cdot, \cdot)$ and the domain discrimator loss $\loss_\dom(\cdot, \cdot)$ are selected as the negative log likelihood function, and the source and target feature extractor networks are coupled as $\fs=\ft=f$. 
+
+The feature extractor network contains only convolutional layers, while the label predictor and domain discriminator networks consist of fully connected layers in the implementation in \cite{fungtion_DANN_py3}. In order to adapt our experiments to this structure, when analyzing the sample complexity of labeled data ($\Ms$), we set the number of layers in the feature extractor and label predictor networks as equal, which is represented by the parameter $\numL$. Likewise, when studying the sample complexity of all data ($\Ns$), the number of layers in the feature extractor and domain discriminator networks are equated and denoted as  $\numL$. We use a similar strategy to adjust the network width, where we scale the number of convolutional channels and the fully connected layer width in the original paper  \cite{GaninUAGLLML16}  with the same factor $\dcom$. Hence, the number of convolutional channels is scaled proportionally to the width of the label predictor and the domain discriminator networks, respectively, when studying the sample complexities of $\Ms$ and $\Ns$. Batch normalization and ReLU layers are included after each convolutional or fully connected layer, following standard practice.
+
+The sample complexities of the number of source samples with the network depth $\numL$ and  width $\dcom$ are presented in the figures. Similarly to the MMD experiments, we show the variation of the target accuracy with $\numL$ or $\dcom$ at different $\Ms$ and $\Ns$ values, and then investigate the smallest $\Ms$ and $\Ns$ values ensuring a reference target accuracy level as $\numL$ or $\dcom$ increases. The results of these experiments align with the theoretical bounds in Theorem 3.7, confirming the quadratic growth in the sample complexities $\Ms, \Ns=O(\numL^2)$  and $\Ms, \Ns = O(\dcom^2)$ as the network depth $\numL$ and width $\dcom$ increase.
+
+We lastly study the choice of the parameter $\alpha$ weighting the target classification loss in the objective function for the adversarial setting. The results confirm the theoretical prediction that the  optimal value  of the weight parameter should scale at rate $\alpha_{opt} =O( \sqrt{\Mt})$ as the number of labeled samples varies.
+
+Overall, our experimental findings are in line with the theoretical bounds presented in Theorems 3.6 and 3.7, supporting our sample complexity and optimal weight choice analyses for both MMD-based and adversarial domain adaptation networks.
+
+\clearpage
+
+\section{Derivation of Lipschitz constants for common nonlinear activation functions}
+\label{sec_app_lip_nonlinact}
+
+Here we derive Lipschitz constants for some widely used nonlinear activation functions. Let $\act: \Rdl \rightarrow \Rdl$ represent an activation function in layer $\lay$ giving the output $\zeta= \act (\boldsymbol{\xi})$ for the input $\boldsymbol{\xi} \in \Rdl$.   
+
+\subsection{ReLU activation}
+We begin with the rectified linear unit (ReLU) function $\act_{R}: \Rdl \rightarrow \Rdl$ given by
+%
+\begin{equation}
+\begin{split}
+\boldsymbol{\zeta}(k) = \max \{ 0, \boldsymbol{\xi}(k) \}
+\end{split}
+\end{equation}
+%
+where $\boldsymbol{\zeta}= \act_R (\boldsymbol{\xi})$, and the notation $(\cdot)(k)$ denotes the $k$-th entry of a vector. For two vectors $\boldsymbol{\xi}_1, \boldsymbol{\xi}_2 \in \Rdl$, we have
+%
+\begin{equation}
+\begin{split}
+\|  \act_R(\boldsymbol{\xi}_1) - \act_R(\boldsymbol{\xi}_2)  \|^2 
+&=\sum_{k=1}^{\dl} ( \max \{ 0, \boldsymbol{\xi}_1(k) \} -    \max \{ 0, \boldsymbol{\xi}_2(k) \} )^2 \\
+&\leq \sum_{k=1}^{\dl} ( \boldsymbol{\xi}_1(k) - \boldsymbol{\xi}_2(k))^2 
+= \| \boldsymbol{\xi}_1 - \boldsymbol{\xi}_2 \|^2  \\
+\end{split}
+\end{equation}
+%
+where $\max\{\cdot, \cdot\}$ denotes the maximum of two scalar values. We thus get
+%
+\[
+\|  \act_R(\boldsymbol{\xi}_1) - \act_R(\boldsymbol{\xi}_2)  \| \leq \| \boldsymbol{\xi}_1 - \boldsymbol{\xi}_2 \|
+\]
+%
+which gives the Lipschitz constant of the ReLU function as $\Lact_R =1$.
+
+\subsection{Softplus activation}
+Next, we consider the softplus function $\act_{SP}: \Rdl \rightarrow \Rdl$ given by
+%
+\begin{equation}
+\begin{split}
+\boldsymbol{\zeta}(k) = \log \left(1+e^{\boldsymbol{\xi}(k)}\right)
+\end{split}
+\end{equation}
+%
+where $\boldsymbol{\zeta}= \act_{SP} (\boldsymbol{\xi})$. The derivative of the components of the softplus function can be upper bounded as
+%
+\begin{equation}
+\begin{split}
+\left | \frac{d}{dt} \log(1+e^t)  \right |= \left | \frac{e^t}{1+e^t} \right | 
+<1
+\end{split}
+\end{equation}
+%
+for all $t \in \R$. Then for  $\boldsymbol{\zeta}_1= \act_{SP} (\boldsymbol{\xi}_1)$ and $\boldsymbol{\zeta}_2= \act_{SP} (\boldsymbol{\xi}_2)$ with $\boldsymbol{\xi}_1, \boldsymbol{\xi}_2 \in \Rdl$, from the mean value theorem we get
+%
+\begin{equation}
+\begin{split}
+| \boldsymbol{\zeta}_1(k) -  \boldsymbol{\zeta}_2(k) | \leq | \boldsymbol{\xi}_1(k) - \boldsymbol{\xi}_2(k) |
+\end{split}
+\end{equation}
+%
+which implies 
+%
+\begin{equation}
+\begin{split}
+\| \act_{SP}(\boldsymbol{\xi}_1) -  \act_{SP}(\boldsymbol{\xi}_2) \|  \leq \|  \boldsymbol{\xi}_1 - \boldsymbol{\xi}_2 \|.
+\end{split}
+\end{equation}
+%
+Hence, we obtain the Lipschitz constant of the softplus function as $\Lact_{SP} =1$.
+
+\subsection{Softmax activation}
+
+Lastly, we consider the softmax function  $\act_{SM}: \Rdl \rightarrow \Rdl$ given by 
+%
+\[
+\act_{SM}(\boldsymbol{\xi}) = [\act_{SM}^1(\boldsymbol{\xi}) \ \act_{SM}^2(\boldsymbol{\xi}) \ \cdots  \ \act_{SM}^{\dl}(\boldsymbol{\xi}) ]^T
+\]
+%
+where $\boldsymbol{\xi} \in \Rdl$ and each $k$-th component $\act_{SM}^k(\boldsymbol{\xi}): \Rdl \rightarrow \R$ of the softmax activation is defined as
+%
+\begin{equation}
+\begin{split}
+\act_{SM}^k(\boldsymbol{\xi}) = \frac{e^{\boldsymbol{\xi}(k)}}{ \sum_{n=1}^{\dl} e^{\boldsymbol{\xi}(n)}}.
+\end{split}
+\end{equation}
+%
+Since the functions $\act_{SM}^k(\boldsymbol{\xi})$ are differentiable for all $k$, for any two $\boldsymbol{\xi}_1, \boldsymbol{\xi}_2 \in \Rdl$, it follows from the multivariable mean value theorem that there exists some $\boldsymbol{\xi} \in \Rdl$ lying in the line segment between $\boldsymbol{\xi}_1$ and $\boldsymbol{\xi}_2$ such that
+%
+\[
+\act_{SM}^k(\boldsymbol{\xi}_1) - \act_{SM}^k(\boldsymbol{\xi}_2) = (\nabla \act_{SM}^k(\boldsymbol{\xi}))^T (\boldsymbol{\xi}_1 - \boldsymbol{\xi}_2)
+\]
+ %
+where $\nabla \act_{SM}^k (\boldsymbol{\xi}) \in \Rdl$ denotes the gradient of $\act_{SM}^k$ at $\boldsymbol{\xi}$. The following inequality is then obtained
+%
+\begin{equation}
+\label{eq_bnd_grad_sm}
+| \act_{SM}^k(\boldsymbol{\xi}_1) - \act_{SM}^k(\boldsymbol{\xi}_2) | \leq 
+\sup_{\boldsymbol{\xi} \in \Rdl} \| \nabla \act_{SM}^k (\boldsymbol{\xi})   \|  \, \| \boldsymbol{\xi}_1 - \boldsymbol{\xi}_2 \|.
+\end{equation}
+%
+In the sequel, in order to find a Lipschitz constant for the softmax function, we derive a bound on the norm $\| \nabla \act_{SM}^k (\boldsymbol{\xi})   \| $ of its gradient. 
+
+For the case $k\neq n$, the derivative of $\act_{SM}^k (\boldsymbol{\xi})  $ with respect to the $n$-th entry $\boldsymbol{\xi} (n)$ of $\boldsymbol{\xi} \in \Rdl$ is obtained as
+%
+\begin{equation*}
+\begin{split}
+\frac{\partial \act_{SM}^k (\boldsymbol{\xi})  }{\partial \boldsymbol{\xi}(n)} 
+=  \frac{\partial }{\partial \boldsymbol{\xi}(n)} 
+\left( \frac{e^{\boldsymbol{\xi}(k)}}{ \sum_{r=1}^{\dl} e^{\boldsymbol{\xi}(r)}} \right)
+= -  \frac{e^{\boldsymbol{\xi}(k)} e^{\boldsymbol{\xi}(n)} }{\left( \sum_{r=1}^{\dl} e^{\boldsymbol{\xi}(r)} \right)^2}.
+\end{split}
+\end{equation*}
+%
+Since all $e^{\boldsymbol{\xi}(1)}, \dots , e^{\boldsymbol{\xi}(\dl)}$ are positive, it is easy to show that $(e^{\boldsymbol{\xi}(1)} + \dots , +e^{\boldsymbol{\xi}(\dl)})^2 \geq 4 e^{\boldsymbol{\xi}(k)} e^{\boldsymbol{\xi}(n)}$. Using this in the above expression, we get the bound
+%
+\begin{equation}
+\label{eq_lip_sm_kneqn}
+\begin{split}
+\left | \frac{\partial \act_{SM}^k (\boldsymbol{\xi})  }{\partial \boldsymbol{\xi}(n)} \right |
+\leq \frac{1}{4}.
+\end{split}
+\end{equation}
+
+Next, for the case $k= n$, we have
+%
+\begin{equation*}
+\begin{split}
+\frac{\partial \act_{SM}^k (\boldsymbol{\xi})  }{\partial \boldsymbol{\xi}(k)} 
+=  \frac{\partial }{\partial \boldsymbol{\xi}(k)} 
+\left( \frac{e^{\boldsymbol{\xi}(k)}}{ \sum_{r=1}^{\dl} e^{\boldsymbol{\xi}(r)}} \right)
+= \left( \frac{e^{\boldsymbol{\xi}(k)}}{ \sum_{r=1}^{\dl} e^{\boldsymbol{\xi}(r)}} \right) \left( 1- \frac{e^{\boldsymbol{\xi}(k)}}{ \sum_{r=1}^{\dl} e^{\boldsymbol{\xi}(r)}} \right).
+\end{split}
+\end{equation*}
+%
+Letting $\alpha =  e^{\boldsymbol{\xi}(k)} / \sum_{r=1}^{\dl} e^{\boldsymbol{\xi}(r)}  $ in the above expression and observing that the maximum value of the function $\alpha (1-\alpha)$ in the interval $\alpha \in [0,1]$ is $1/4$, we get
+%
+\begin{equation}
+\label{eq_lip_sm_keqn}
+\begin{split}
+\left | \frac{\partial \act_{SM}^k (\boldsymbol{\xi})  }{\partial \boldsymbol{\xi}(k)} \right |
+\leq \frac{1}{4}.
+\end{split}
+\end{equation}
+%
+Combining the results \eqref{eq_lip_sm_kneqn} and \eqref{eq_lip_sm_keqn}, the gradient of $ \act_{SM}^k (\boldsymbol{\xi})   $  can be bounded as
+%
+\begin{equation*}
+\begin{split}
+\| \nabla \act_{SM}^k (\boldsymbol{\xi})   \|   \leq \frac{\sqrt{\dl}}{4}
+\end{split}
+\end{equation*}
+%
+for any $\boldsymbol{\xi} \in \Rdl$. Using this in \eqref{eq_bnd_grad_sm} gives
+%
+\[
+| \act_{SM}^k(\boldsymbol{\xi}_1) - \act_{SM}^k(\boldsymbol{\xi}_2) |  \leq \frac{\sqrt{\dl}}{4}  \| \boldsymbol{\xi}_1 - \boldsymbol{\xi}_2 \|
+\]
+for any $\boldsymbol{\xi}_1, \boldsymbol{\xi}_2 \in \Rdl$, which implies
+%
+\begin{equation*}
+\begin{split}
+\|  \act_{SM}(\boldsymbol{\xi}_1) - \act_{SM}(\boldsymbol{\xi}_2)  \| \leq \frac{\dl}{4} \| \boldsymbol{\xi}_1 - \boldsymbol{\xi}_2 \|.
+\end{split}
+\end{equation*}
+%
+Defining
+%
+\begin{equation*}
+\begin{split}
+\dlmax=\max_{\lay=1, \dots, \numL} \dl
+\end{split}
+\end{equation*}
+%
+we thus get the Lipschitz constant of the softmax function as $\Lact_{SM} =\dlmax/4$. 
+
+
+\clearpage
+
+
+
+\section{Proof of Corollary \ref{cor_covnum_rate}}
+\label{pf_cor_covnum_rate}
+
+\begin{proof}
+In order to analyze the dependence of $\N (  \Fs, \epsilon, \dXs) $ on $\dcom$ and $\numL$, we first study how the term $\Bdiml$ in Lemma \ref{lem_cov_num_Fs_Ft} grows with the dimension $\dcom$ and the number of layers $\numL$.
+For condition \eqref{eq_bnd_act_value}, we have 
+%
+\[
+\Bdiml =\Beta \sqrt{\dl} = O(\dcom^{1/2}).
+\]
+%
+For condition \eqref{eq_bnd_act_op}, representing the relevant constant terms as $c$ for simplicity, we have
+%
+\begin{equation*}
+\begin{split}
+\Bdiml = O\big( (c\dcom)^\lay \big).
+\end{split}
+\end{equation*}
+%
+We next study the term $\BQdiml$ in \eqref{eq_defn_Ql}. For condition  \eqref{eq_bnd_act_value}, we obtain
+%
+\begin{equation*}
+\begin{split}
+\BQdiml = O( c^{\lay-1} \, \dcom^{\lay+ \frac{1}{2}})
+\end{split}
+\end{equation*}
+%
+which results in
+%
+\begin{equation}
+\label{eq_BQ_bnd_35}
+\begin{split}
+\BQ = O(c^{\numL-2} \dcom^{\numL-\frac{1}{2}}).
+\end{split}
+\end{equation}
+%
+Meanwhile, condition \eqref{eq_bnd_act_op} yields
+%
+\begin{equation*}
+\begin{split}
+\BQdiml = O\big( (\lay-1) \, c^{\lay-1} \,  \dcom^\lay \big)
+\end{split}
+\end{equation*}
+%
+resulting in
+%
+\begin{equation}
+\label{eq_BQ_bnd_36}
+\begin{split}
+\BQ = O\big( (\numL-2) \, c^{\numL-2} \,  \dcom^{\numL-1} \big).
+\end{split}
+\end{equation}
+%
+For simplicity, we may combine the results in \eqref{eq_BQ_bnd_35} and \eqref{eq_BQ_bnd_36} through a slightly more pessimistic but brief common upper bound as
+%
+\begin{equation*}
+\begin{split}
+\BQ = O \big( \numL \, c^{\numL-2} \dcom^\numL   \big)
+\end{split}
+\end{equation*}
+%
+which is valid for both of the conditions in \eqref{eq_bnd_act_value} and \eqref{eq_bnd_act_op}.  Then, from the expressions of the covering numbers $\N (  \Fs, \epsilon, \dXs) $ and $\N (  \Ft, \epsilon, \dXt) $ in Lemma \ref{lem_cov_num_Fs_Ft}, we conclude
+%
+\begin{equation*}
+\begin{split}
+\N (  \Fs, \epsilon, \dXs)  
+= O\left( \left( \frac{  c\BQ}{\epsilon^2}  \right)^{\dcom^2 \numL} \right)
+= O \left( \left( \frac{\numL}{\epsilon} \right) ^{\dcom^2 \numL} \, (c \dcom)^{\dcom^2 \numL^2}  \right)
+\end{split}
+\end{equation*}
+%
+where we have taken the liberty to replace the $\epsilon^2$ term in the denominator with  $\epsilon$ for simplicity, as they will lead to equivalent bounds. Similarly,
+% 
+\begin{equation*}
+\begin{split}
+\N (  \Ft, \epsilon, \dXt)  
+= O \left( \left( \frac{\numL}{\epsilon} \right) ^{\dcom^2 \numL}  (c \dcom)^{\dcom^2 \numL^2}  \right).
+\end{split}
+\end{equation*}
+
+We next analyze the covering number  $\N ( \Hs \circ \Fs, \epsilon, \ds) $ for the hypothesis space $ \Hs \circ \Fs$. For condition  \eqref{eq_bnd_act_value}, we have
+%
+\begin{equation*}
+\begin{split}
+\BQdimL = O( c^{\numL-1} \, \dcom^{\numL+ \frac{1}{2}})
+\end{split}
+\end{equation*}
+%
+which gives from Lemma \ref{lem_cov_num_HFs_HFt}
+%
+\begin{equation}
+\label{eq_covnum_Hfs_35}
+\begin{split}
+\N ( \Hs \circ \Fs, \epsilon, \ds)  
+= O\left( \left(\frac{c \BQdimL}{\epsilon} \right)^{\dcom^2 \numL} \right)
+= O\left(  \frac{  (c \dcom)^{\dcom^2 \numL^2}  }{\epsilon^{\dcom^2 \numL}}  \right)
+\end{split}
+\end{equation}
+%
+if the $\dcom^2 \numL/2$ term added to the $\dcom^2 \numL^2$ term in the exponent is ignored for simplicity. Next, for condition \eqref{eq_bnd_act_op} we obtain
+%
+\begin{equation*}
+\begin{split}
+\BQdimL = O\big( (\numL-1) \, c^{\numL-1} \,  \dcom^\numL \big)
+\end{split}
+\end{equation*}
+%
+resulting in
+%
+\begin{equation}
+\label{eq_covnum_Hfs_36}
+\begin{split}
+\N ( \Hs \circ \Fs, \epsilon, \ds) 
+= O\left( \left(\frac{c \BQdimL}{\epsilon} \right)^{\dcom^2 \numL} \right)
+ = O\left( \left( \frac{  \numL }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} \right).
+\end{split}
+\end{equation}
+%
+Combining the bounds in \eqref{eq_covnum_Hfs_35} and \eqref{eq_covnum_Hfs_36}, we arrive at the common upper bound
+%
+\begin{equation*}
+\begin{split}
+\N ( \Hs \circ \Fs, \epsilon, \ds) 
+ = O\left( \left( \frac{  \numL }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} \right)
+\end{split}
+\end{equation*}
+%
+which covers both conditions. Identical derivations for the target domain yield
+%
+\begin{equation*}
+\begin{split}
+\N ( \Hs \circ \Ft, \epsilon, \dt) 
+ = O\left( \left( \frac{  \numL }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} \right).
+\end{split}
+\end{equation*}
+%
+
+\end{proof}
+
+%%% Appendix J
+
+
+\section{Proof of Theorem \ref{thm_main_result_da_mmd}}
+\label{pf_thm_main_result_da_mmd}
+
+
+\begin{proof}
+We first notice that, owing to Lemma \ref{lem_fs_ft_measble}, we can analyze MMD-based domain adaptation networks within the setting of Theorem \ref{thm:main_result_mmd}. The compactness of the function spaces $\Fs$, $\Ft$, $\Hs \circ \Fs$, and $\Hs \circ \Ft$ follow from Assumptions \ref{assum_Ax_Atheta}-\ref{assum_Lk_Leta} due to Lemma \ref{lem_Fs_Ft_HFs_HFt_comp}. Assumptions \ref{assum_HF_comp_Ll_Al} and \ref{assum_Fs_Ft_compact} are thereby satisfied; hence, the statement of Theorem \ref{thm:main_result_mmd} applies to the current setting in consideration.
+
+We recall from Theorem \ref{thm:main_result_mmd} that the expected target loss in \eqref{eq_accuracy_thm4} is attained with probability at least
+%
+\begin{equation}
+\label{eq_prob_expr_thm4}
+\begin{split}
+1 &- 2 \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}} 
+-2 \N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}} \\
+& - \N(\Fs, \frac{\epsilon}{8}, \dXs) \exp(-\as(\Ns, \epsilon)) 
+- \N(\Ft, \frac{\epsilon}{8}, \dXt) \exp(-\at(\Nt, \epsilon)).
+\end{split}
+\end{equation}
+%
+Our proof is then based on identifying the rate at which the number of samples should grow with $\numL$ and $\dcom$ so that each one of the terms subtracted from 1 in the expression \eqref{eq_prob_expr_thm4} remains fixed. This will in return guarantee that the generalization gap of $O(\epsilon)$ in \eqref{eq_accuracy_thm4} be attained with high probability.
+ 
+We begin with the term 
+$\N(\Fs, \frac{\epsilon}{8}, \dXs) \exp(-\as(\Ns, \epsilon)) $. Recalling the definition of  $\as(\Ns, \epsilon)$ from Lemma \ref{lem:unif_bnd_D_hD}, we have
+ %
+\begin{equation*}
+\begin{split}
+\as(\Ns, \epsilon) = \bm{\theta}(\Ns \epsilon^2)
+\end{split}
+\end{equation*}
+%
+where we use the notation $\bm{\theta}(\cdot)$ to refer to asymptotic tight bounds. Combining this with Corollary \ref{cor_covnum_rate}, we obtain 
+ %
+\begin{equation*}
+\begin{split}
+\N(\Fs, \frac{\epsilon}{8}, \dXs) \exp(-\as(\Ns, \epsilon)) 
+&=
+O\left( 
+\left( \frac{  \numL }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} 
+\exp(- \Ns \epsilon^2)
+\right) \\
+&=O\left(
+\exp \left(
+\dcom^2 \numL \, \log\left( \frac{  \numL }{\epsilon}  \right)
++ 
+\dcom^2 \numL^2 \log(c \dcom) 
+- 
+\Ns \epsilon^2
+\right)
+\right).
+\end{split}
+\end{equation*}
+%
+We conclude that the total number $\Ns$ of source samples required to ensure a lower bound on the probability expression \eqref{eq_prob_expr_thm4} scales as
+%
+\begin{equation*}
+\begin{split}
+\Ns = O \left(
+\frac{\dcom^2 \numL \, \log\left( \frac{  \numL }{\epsilon}  \right)
++ 
+\dcom^2 \numL^2 \log(\dcom) }
+{\epsilon^2}
+\right),
+\end{split}
+\end{equation*}
+%
+yielding the sample complexity stated in the theorem. An identical derivation based on bounding the term $ \N(\Ft, \frac{\epsilon}{8}, \dXt) \exp(-\at(\Nt, \epsilon))$ shows that $\Nt $ has the same sample complexity.
+
+Next, we examine the terms involving the number of labeled samples. Proceeding similarly, we get
+%
+\begin{equation*}
+\begin{split}
+ \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) &e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}}
+ =
+O\left( 
+\left( \frac{  \numL \alpha }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} 
+\exp \left(- \frac{\Mt \epsilon^2}{\alpha^2} \right)
+\right) \\
+&=O\left(
+\exp \left(
+\dcom^2 \numL \, \log\left( \frac{  \numL \alpha }{\epsilon}  \right)
++ 
+\dcom^2 \numL^2 \log(c \dcom) 
+- 
+\frac{\Mt \epsilon^2}{\alpha^2}
+\right)
+\right).
+\end{split}
+\end{equation*}
+%
+Recalling that $0\leq \alpha \leq 1$, we conclude that upper bounding the choice of the weight parameter $\alpha$ by the rate
+% 
+\begin{equation*}
+\begin{split}
+\alpha
+= O \left(
+\left(
+\frac
+{\Mt \epsilon^2}
+{\dcom^2 \numL \log \left( \frac{  \numL }{\epsilon} \right)  \, 
++ 
+\dcom^2 \numL^2 \log(\dcom) }
+\right)^{1/2}
+\right)
+\end{split}
+\end{equation*}
+%
+ensures that the probability term $ \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}}$ remain bounded.
+
+Finally, for the number of labeled samples in the source domain, we have
+%
+\begin{equation*}
+\begin{split}
+ \N( \Hs \circ \Fs, & \, \frac{\epsilon}{8 (1-\alpha) \Lls},   \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}} \\
+ &=
+O\left( 
+\left( \frac{  \numL (1-\alpha) }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} 
+\exp \left(- \frac{\Ms \epsilon^2}{(1-\alpha)^2} \right)
+\right) \\
+&=O\left(
+\exp \left(
+\dcom^2 \numL \, \log\left( \frac{  \numL (1-\alpha) }{\epsilon}  \right)
++ 
+\dcom^2 \numL^2 \log(c \dcom) 
+- 
+\frac{\Ms \epsilon^2}{(1-\alpha)^2}
+\right)
+\right).
+\end{split}
+\end{equation*}
+%
+Recalling again the bound $0\leq 1-\alpha \leq 1$, we observe that the sample complexity 
+%
+\begin{equation*}
+\begin{split}
+\Ms = 
+ O \left(
+\frac{\dcom^2 \numL \, \log\left( \frac{  \numL }{\epsilon}  \right)
++ 
+\dcom^2 \numL^2 \log(\dcom) }
+{\epsilon^2}
+\right)
+\end{split}
+\end{equation*}
+%
+ensures a lower bound on the probability expression \eqref{eq_prob_expr_thm4}, which concludes the proof of the theorem.
+%
+\end{proof}
+
+
+
+%%% Appendix K
+
+
+\section{Derivation of the bound and the Lipschitz constant for the cross-entropy loss}
+\label{sec_app_crossent}
+
+We first discuss the magnitude bound $\bls$ for the widely used cross-entropy loss function. Let $\y_1, \y_2 \in \Y \subset \R^m$ be two nonnegative label vectors in the label set $\Y=[0,1] \times \cdots \times [0,1] \subset \R^m$. In its na\"ive form, the cross-entropy loss between $\y_1$ and  $\y_2$  is given by
+%
+\begin{equation}
+\label{eq_crossent_naive}
+\begin{split}
+\loss(\y_1, \y_2) = - \sum_{k=1}^m \log(\y_1(k)) \, \y_2(k)
+\end{split}
+\end{equation}
+%
+where $\y(k)$ denotes the $k$-th entry of the vector $\y$. While the original form \eqref{eq_crossent_naive} of the cross-entropy loss is not bounded, often the following modification is made in order to avoid numerical issues in practical implementations
+%
+\begin{equation*}
+\begin{split}
+\loss(\y_1, \y_2) = - \sum_{k=1}^m \log(\y_1(k)+\delta) \, \y_2(k)
+\end{split}
+\end{equation*}
+%
+where $0<\delta < 1$ is a positive constant. We then have
+%
+\begin{equation*}
+\begin{split}
+|\loss(\y_1, \y_2) | \leq \sum_{k=1}^m | - \log(\y_1(k)+ \delta) \y_2(k)  |
+\leq m \max\{| \log(\delta) | , \ \log(1+\delta)  \}.
+\end{split}
+\end{equation*}
+%
+Assuming that $\delta$ is very small, we get the following bound on the loss magnitude
+%
+\begin{equation*}
+\begin{split}
+|\loss(\y_1, \y_2) | \leq \bls \triangleq  m \, | \log(\delta) |.
+\end{split}
+\end{equation*}
+
+
+We next derive the Lipschitz constant $\Lls$ of the cross-entropy loss function. For any $\y, \y_1, \y_2 \in \Y$ we have
+%
+\begin{equation}
+\label{eq_lip_loss_step1}
+\begin{split}
+| \loss(\y_1, \y) -  \loss(\y_2, \y) |
+&= \left |   -\sum_{k=1}^m  \log( \y_1(k) + \delta) \y(k)    
+ + \sum_{k=1}^m  \log( \y_2(k) + \delta) \y(k)   \right|  \\
+ &\leq \sum_{k=1}^m \left |  \, \log( \y_2(k) + \delta)  -   \log( \y_1(k) + \delta)  \, \right |.
+\end{split}
+\end{equation}
+%
+For any $t\geq \delta$, we have
+%
+\[
+\left |  \frac{d}{dt} \log(t)   \right | = \left |  \frac{1}{t}   \right | 
+\leq \frac{1}{\delta} 
+\]
+%
+which gives
+%
+\begin{equation*}
+\begin{split}
+ \left|  \frac{  \log( \y_2(k) + \delta)  -   \log( \y_1(k) + \delta) }{\y_2(k) - \y_1(k)} \right |
+ \leq  \frac{1}{\delta} 
+\end{split}
+\end{equation*}
+%
+due to the mean value theorem. Using this in \eqref{eq_lip_loss_step1}, we get
+%
+\begin{equation*}
+\begin{split}
+| \loss(\y_1, \y) -  \loss(\y_2, \y) |
+ \leq \sum_{k=1}^m  \delta^{-1}  |  \y_2(k) - \y_1(k) |  
+ \leq \delta^{-1} \sqrt{m} \, \|  \y_2 - \y_1 \|
+\end{split}
+\end{equation*}
+%
+which shows that the cross-entropy loss is Lipschitz continuous with respect to the first argument with constant
+%
+\[
+\Lls \triangleq \delta^{-1} \sqrt{m} .
+\]
+
+
+\section{Proof of Theorem \ref{thm_main_result_dann}}
+\label{pf_thm_main_result_dann}
+
+\begin{proof}
+
+We begin by bounding the expected target loss as
+%
+\[
+ \Lt(\ft, \h) \leq \Ls (\fs, \h) +  \LLsdan \, \Ddan(\fs, \ft)
+\]
+%
+using Assumption \ref{assum_existence_LLsdan}. It follows that
+%
+\begin{equation}
+\label{eq_Lt_Lw_RADA_ddan}
+\begin{split}
+\Lt(\ft, \h) &= \alpha \Lt(\ft, \h) +  (1-\alpha) \Lt(\ft, \h) \\
+	&\leq \alpha \Lt(\ft, \h) +  (1-\alpha) \left( \Ls (\fs, \h) + \LLsdan \, \Ddan(\fs, \ft) \right)\\
+&= \Lw(\fs, \ft, \h)+ (1-\alpha) \LLsdan \, \Ddan(\fs, \ft) .
+\end{split}
+\end{equation}
+%
+
+We next aim to upper bound the expected loss $\Lw(\fs, \ft, \h)$ and the expected distribution distance $ \Ddan(\fs, \ft) $ in terms of their empirical counterparts. It follows from Assumptions \ref{assum_Ax_Atheta} and \ref{assum_actddan_cont_Lip} that the source hypothesis space $\Gs=\Hs \circ \Fs$, the target hypothesis space $\Gt= \Hs \circ \Ft$, the source domain discriminator space $\Vs = \Dspace \circ \Fs$ and the target domain discriminator space $\Vt = \Dspace \circ \Ft$ are compact with respect to the metrics $\ds, \dt, \dVs, \dVt$ respectively, which can be shown by following similar steps as in the proof of Lemma \ref{lem_Fs_Ft_HFs_HFt_comp} in Appendix \ref{pf_lem_Fs_Ft_HFs_HFt_comp}.
+
+Due to the compactness of $\Gs, \Gt$ and the assumptions on the classification loss function $\loss$, we have 
+%
+\begin{equation}
+\label{eq_cons_lem_weight_loss_gen}
+\begin{split}
+&P\left (\sup_{\fs \in \Fs, \ft \in \Ft, \h \in \Hs} |  \Lw( \fs, \ft, \h ) - \hLw( \fs,  \ft, \h )   |  \leq \epsilon \right) \\
+& \geq 1 - 2 \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}} 
+-2 \N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}}
+\end{split}
+\end{equation}
+%
+from Lemma \ref{lem:weight_loss_gen}. Similarly, the compactness of $\Vs, \Vt$ together with Assumption \ref{assum_ddan_bdd} implies that 
+%
+\begin{equation}
+\label{eq_cons_lem_ddan_hhdan_dev}
+\begin{split}
+P & \left(
+\sup_{\fs \in \Fs, \ft \in \Ft, \ddan \in \Dspace} 
+ |  \Ddan(\fs, \ft)  - \hDdan(\fs, \ft)  | \leq  \epsilon
+ \right ) \\
+& \geq
+ 1 - 2 \N(\Vs, \frac{\epsilon}{6}, \dVs)  \exp \left( -\frac{\Ns \epsilon^2}{72 \Bddansq} \right) 
+- 2 \N(\Vt, \frac{\epsilon}{6}, \dVt) \exp \left( -\frac{\Nt \epsilon^2}{72 \Bddansq} \right) 
+\end{split}
+\end{equation}
+%
+due to Lemma \ref{lem_ddan_hddan_dev}. 
+
+Combining the results in \eqref{eq_Lt_Lw_RADA_ddan}, \eqref{eq_cons_lem_weight_loss_gen}, and \eqref{eq_cons_lem_ddan_hhdan_dev}, we get that with probability at least
+%
+\begin{equation}
+\label{eq_prob_exp_thm4}
+\begin{split}
+1 &-2 \N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}} 
+- 2 \N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}} 
+\\
+&- 2 \N(\Vs, \frac{\epsilon}{6}, \dVs)  \exp \left( -\frac{\Ns \epsilon^2}{72 \Bddansq} \right) 
+- 2 \N(\Vt, \frac{\epsilon}{6}, \dVt) \exp \left( -\frac{\Nt \epsilon^2}{72 \Bddansq} \right) 
+\end{split}
+\end{equation}
+%
+the expected target loss is bounded as
+%
+\begin{equation*}
+\begin{split}
+\Lt(\ft, \h) & \leq \hLw(\fs, \ft, \h)+ (1-\alpha) \LLsdan \, \hDdan(\fs, \ft) 
+ + (1- \alpha) \LLsdan \epsilon +  \epsilon.
+\end{split}
+\end{equation*}
+%
+
+In the sequel, we examine each one of the terms in the probability expression in \eqref{eq_prob_exp_thm4}. As for the covering numbers of $\Hs \circ \Fs$ and $\Hs \circ \Ft$, Assumptions \ref{assum_Ax_Atheta}, \ref{assum_bnd_act_val_op}, and \ref{assum_actddan_cont_Lip} ensure that the result in Lemma \ref{assum_bnd_act_val_op} applies to this setting as well, which implies that the rate of growth of $\N( \Hs \circ \Fs, \epsilon, \ds) $ and $\N( \Hs \circ \Ft, \epsilon, \dt) $ with $\numL$ and $\dcom$ is upper bounded by
+%
+\begin{equation*}
+\begin{split}
+O\left( \left( \frac{  \numL }{\epsilon}  \right)^{\dcom^2 \numL}   (c \dcom)^{\dcom^2 \numL^2} \right)
+\end{split}
+\end{equation*}
+%
+due to Corollary \ref{cor_covnum_rate}. Then, following the very same steps as in the proof of Theorem \ref{thm_main_result_da_mmd}, we get that  upper bounding the  weight parameter $\alpha$ by 
+% 
+\begin{equation*}
+\begin{split}
+\alpha
+= O \left(
+\left(
+\frac
+{\Mt \epsilon^2}
+{\dcom^2 \numL \log \left( \frac{  \numL }{\epsilon} \right)  \, 
++ 
+\dcom^2 \numL^2 \log(\dcom) }
+\right)^{1/2}
+\right),
+\end{split}
+\end{equation*}
+%
+together with scaling $\Ms $ at rate
+%
+\begin{equation*}
+\begin{split}
+\Ms = 
+ O \left(
+\frac{\dcom^2 \numL \, \log\left( \frac{  \numL }{\epsilon}  \right)
++ 
+\dcom^2 \numL^2 \log(\dcom) }
+{\epsilon^2}
+\right)
+\end{split}
+\end{equation*}
+%
+ensures an upper bound on the terms 
+%
+\[
+\N( \Hs \circ \Fs, \frac{\epsilon}{8 (1-\alpha) \Lls}, \ds) e^{-\frac{\Ms \epsilon^2}{8 (1-\alpha)^2 \bls^2}} 
+\]
+%
+and 
+%
+\[
+\N( \Hs \circ \Ft, \frac{\epsilon}{8 \alpha \Lls}, \dt) e^{-\frac{\Mt \epsilon^2}{8 \alpha^2 \bls^2}} 
+\]
+%
+in the probability expression in \eqref{eq_prob_exp_thm4}. 
+
+Then, in order to analyze the covering numbers of $\Vs$ and $\Vt$, we proceed with the following reasoning: Noting the paralel between the structures of the domain discriminator and the feature extractor network parameters considered in Assumptions \ref{assum_actddan_cont_Lip}, \ref{assum_bnd_act_val_op} and \ref{assum_bnd_act_val_op_ddan}, we observe that the function space $\Vs=\Dspace \circ \Fs$ has an identical construction to the function space $\Gs=\Hs \circ \Fs$, if the metric 
+\[
+\ds(\gs_1, \gs_2) = \sup_{\xs \in \Xs}  \| \gs_1(\xs) - \gs_2(\xs) \|
+\]
+based on the Euclidean distance in $\R^{m}$ is replaced by its counterpart
+%
+\[
+\dVs(\vs_1, \vs_2) = \sup_{\xs \in \Xs}  | \vs_1(\xs) - \vs_2(\xs) | 
+\]
+%
+which uses the Euclidean distance in $\R$ instead. Hence, the latter is a special case of the former that can be obtained by setting $m=1$. Consequently, the analysis of the covering number $\N ( \Hs \circ \Fs, \epsilon, \ds) $  in Corollary \ref{cor_covnum_rate} immediately applies to $\N ( \Dspace \circ \Fs, \epsilon, \dVs) $ as well, only by replacing the number of layers $\numL$ with the total number of layers $\numL+\numLdan -1$ in the cascade network formed by the combination of the feature extractor and the domain discriminator networks. We thus get
+%
+\begin{equation*}
+\begin{split}
+\N (  \Vs, \epsilon, \dVs) 
+ = O\left( \left( \frac{  \numL + \numLdan}{\epsilon}  \right)^{\dcom^2 (\numL+ \numLdan)}   (c \dcom)^{\dcom^2 (\numL + \numLdan)^2} \right)
+\end{split}
+\end{equation*}
+%
+which yields
+%
+\begin{equation}
+\label{eq_NVs_exp}
+\begin{split}
+&\N(\Vs, \frac{\epsilon}{6}, \dVs)  \exp \left( -\frac{\Ns \epsilon^2}{72 \Bddansq} \right) \\
+&=
+O\left( \left( \frac{  \numL + \numLdan}{\epsilon}  \right)^{\dcom^2 (\numL+ \numLdan)}   (c \dcom)^{\dcom^2 (\numL + \numLdan)^2}
+\exp \left( -\frac{\Ns \epsilon^2}{72 \Bddansq} \right) 
+ \right) \\
+ &=
+ O\left( 
+ \exp \left(
+  \dcom^2 (\numL+ \numLdan) \log \left( \frac{  \numL + \numLdan}{\epsilon}  \right)       
+ +
+  \dcom^2 (\numL + \numLdan)^2 \log(c \dcom) 
+ -
+  \frac{\Ns \epsilon^2}{72 \Bddansq} 
+ \right)
+ \right).
+\end{split}
+\end{equation}
+%
+We thus conclude that the sample complexity
+%
+\begin{equation*}
+\begin{split}
+\Ns = O \left(
+\frac{  \dcom^2 (\numL+ \numLdan) \log \left( \frac{  \numL + \numLdan}{\epsilon} \right) 
++
+\dcom^2 (\numL + \numLdan)^2 \log( \dcom) 
+}
+{\epsilon^2}
+\right)
+\end{split}
+\end{equation*}
+%
+ensures  an upper bound on the term \eqref{eq_NVs_exp}. The same arguments also hold for the target domain, resulting in the sample complexity
+%
+\begin{equation*}
+\begin{split}
+\Nt = O \left(
+\frac{  \dcom^2 (\numL+ \numLdan) \log \left( \frac{  \numL + \numLdan}{\epsilon} \right) 
++
+\dcom^2 (\numL + \numLdan)^2 \log( \dcom) 
+}
+{\epsilon^2}
+\right)
+\end{split}
+\end{equation*}
+%
+for the number of target samples, which concludes the proof of the theorem.
+%
+\end{proof}
+
+
+
+\clearpage
+    
+\bibliographystyle{siamplain}
+\bibliography{refs}
+\end{document}

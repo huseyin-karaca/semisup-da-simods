@@ -3,6 +3,16 @@
 % supplement. If no supplement is required, then this information can
 % be included directly in the main document.
 
+% Huseyin sonradan eklenenler
+\usepackage[caption=false]{subfig} % <- Preamble
+\usepackage{amssymb}
+\crefname{subsection}{Section}{Sections}
+\Crefname{subsection}{Section}{Sections}
+\crefname{section}{Section}{Sections}
+\Crefname{section}{Section}{Sections}
+
+\usepackage{enumitem}
+
 
 % Packages and macros go here
 \usepackage{lipsum}
@@ -31,6 +41,11 @@
 \newsiamthm{claim}{Claim}
 \newsiamremark{fact}{Fact}
 \crefname{fact}{Fact}{Facts}
+\newsiamthm{assumption}{Assumption}
+\crefname{assumption}{Assumption}{Assumptions}
+\newsiamthm{definition}{Definition}
+\crefname{definition}{Definition}{Definitions}
+\crefname{proof}{Proof}{Proofs}
 
 % Sets running headers as well as PDF title and authors
 \headers{A Unified Analysis of Generalization and Sample Complexity for Semi-Supervised Domain Adaptation}{Elif Vural, Huseyin Karaca}

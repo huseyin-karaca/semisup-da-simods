@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  16 FEB 2026 17:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  17 FEB 2026 18:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -734,10 +734,10 @@ Package rerunfilecheck Info: File `ex_supplement_lemmas.out' has not changed.
 (rerunfilecheck)             Checksum: 315416CD6679BC2611E81BD5078834A8;5345.
  ) 
 Here is how much of TeX's memory you used:
- 17635 strings out of 474116
- 284827 string characters out of 5743683
+ 17651 strings out of 474116
+ 285221 string characters out of 5743683
  1960187 words of memory out of 5000000
- 37988 multiletter control sequences out of 15000+600000
+ 38004 multiletter control sequences out of 15000+600000
  574512 words of font info for 96 fonts, out of 8000000 for 9000
  2715 hyphenation exceptions out of 8191
  89i,22n,96p,1908b,725s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -805,7 +805,7 @@ pdfTeX warning (dest): name{theorem.14} has been referenced but does not exist, 
 pdfTeX warning (dest): name{theorem.11} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on latex_build/ex_supplement_lemmas.pdf (40 pages, 492591 bytes).
+Output written on latex_build/ex_supplement_lemmas.pdf (40 pages, 492674 bytes).
 PDF statistics:
  801 PDF objects out of 1000 (max. 8388607)
  701 compressed objects within 8 object streams

@@ -163,6 +163,9 @@
 \bibitem{YaoPNLM15}
 {\sc T.~Yao, Y.~Pan, C.~Ngo, H.~Li, and T.~Mei}, {\em Semi-supervised domain adaptation with subspace learning for visual recognition}, in {IEEE} Conference on Computer Vision and Pattern Recognition, 2015, pp.~2142--2150.
 
+\bibitem{Yurinski76}
+{\sc V.~V. Yurinskii}, {\em Exponential inequalities for sums of random vectors}, Journal of Multivariate Analysis, 6 (1976), pp.~473--499.
+
 \bibitem{ZengSRGFZ25}
 {\sc Y.~Zeng~et al.}, {\em Multirepresentation dynamic adaptive network for cross-domain rolling bearing fault diagnosis in complex scenarios}, IEEE Transactions on Instrumentation and Measurement, 74 (2025), pp.~1--16.
 

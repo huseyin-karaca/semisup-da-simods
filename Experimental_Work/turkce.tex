@@ -1,0 +1,62 @@
+Çalışmamızın önceki kısımlarında, domain adaptation'un target domain'inde belirli bir hedef doğruluğunu garantileyebilmek için gerekli olan hem etiketli hem de etiketli + etiketsiz toplam verilerin sayısının network büyüklüğü ile ilişkisinin kuadratik olduğunu teorik olarak göstermiştik. Bu kısımda, bu ilişkinin deneysel olarak da geçerli olduğunu göstermek amacıyla düzenlediğimiz bir dizi kontrollü deney sonucunu paylaşacağız. 
+
+Deneyler, birisi metric-based ve diğeri adversarial olmak üzere iki farklı domain adaptation network architecture'ı için ayrı ayrı düzenlenmiştir. Her bir architecture için, hem $M_s$, hem de $N_s = N_t$'nin katman sayısı ve katman boyutuna göre değişimlerinin ayrı ayrı incelendiği dört deney ile optimal source-target dengesinin araştırıldığı bir deney paylaşılacaktır. 
+
+Deneylerde kaynak veri kümesi olarak MNIST el yazısı rakam veri kümesi kullanılmıstır. Hedef veri kümesi olarak ise MNIST kümesindeki arka planların renklendirilmesiyle elde edilen bir veri kümesi olan MNIST-M kullanılmıstır. Hedef ve kaynak veri kümelerindeki etiketli (labeled) ve etiketsiz (unlabeled) eğitim verileri sinir ağna girdi olarak verilerek hem etiketli hem de toplam eğitim verisi sayılarının öğenme performansı üzerindeki etkileri ayrı ayrı incelenmiştir. Öğrenme performansı ise hedef veri kümesindeki test verileri üzerinde test edilmiş, performans ölçütü olarak hedef doğruluğu (target accuracy); yani hedef veri kümesindeki test verilerinin doğru sınıflandırılma yüzdesi esas alınmışır. 
+
+\paragraph{Hyperarameter Selection}
+Bütün trainingler boyunca, neural network'ün overfitting bölgesine en kolay şekilde girmesini sağlayacak hiperparametreler aranmış ve kullanılmıştır. [Bu parametrelerin açık bir şekilde paylaşılması gerekiyor mu?] Bu sayede, network'ün overfite girmemesi için gereken etiketli ya da etiketsiz data miktarı kolaylıkla saptanabilmiştir. Overfitting bölgesinde olduğumuz için, kullanılan etiketli veya etiketsiz veri miktarındaki artış, network'ün hedef doğruluğundaki belirlenmiş bir eşik değerin altına, network büyüklüğü bakımından daha geç düşmesine sebep olmaktadır. Ya da alternatif bir ifadeyle, aynı network, daha fazla veriyle eğitilmişse, hedef doğruluğu daha yüksek olmaktadır. 
+
+\paragraph{Figures}
+Deneylerde öncelikle network'ün hedef doğruluğundaki düşüş, complexity'sindeki artışa bağlı olarak karakterize edilmeye çalışılmıştır (soldaki figürler). Overfitting bölgesinde, sabit bir $M_s$ ya da $N_s$ değeri için, network complexity'si arttıkça hedef doğruluğunun düşmesi beklenir. Bu figürlerde, computational efficiency bakımından deney yapılan noktalar linear extrapolation yöntemiyle birleştirilerek (genişletilerek) deney yapılmayan noktalar için de kestirimde bulunulmuştur. 
+
+Sağdaki figürlerde ise, buradan hareketle sabit bir hedef doğruluğunu garantileyebilmek için gerekli olan etiketli ya da etiketsiz data miktarının network büyüklüğüyle nasıl değiştiği incelenmiştir. Öncelikle belirli hedef doğruluğu değerleri seçilmiş ve bu hedef doğruluğu değerlerinin sağlandığı network büyüklüğü saptanmıştır. Bu işlem, belirlenen hedef doğruluğu değerlerinden yatay bir çizgi çekilerek ilk aşamada fit edilen linear extrapolation eğrisi ile kesiştiği noktalar belirlenerek elde edilmiştir. Network'ün belirlenen eşik doğruluğunun üstünde doğruluk vermeye devam edebildiği maksimum network complexity'si bu sayede belirlendikten sonra, bu complexity değerlerinin grup değişkenine (genellikle $M_s$ ya da $N_s$) göre nasıl değiştiği plotlanmıştır. Sonuç olarak, Bu plotlar ile, makalenin önceki bölümlerinde teorik olarak doğruluğu gösterilmiş olan kuadratik öngörünün doğrulandığı görülmüştür. 
+
+\subsection{Adversarial DA İçin Düzenlenen Deneyler}
+
+Adversarial domain adaptation, discrepancy temelli metotlardan sonra en çok kullanılan domain adaptation model ailelerinden birisidir \cite{da_review}. Her ne kadar adversarial modeller kendi içlerinde adversarial discriminative, adversarial generative ya da adversarial reconstruction-based modeller gibi alt model ailelerine ayrılsalar da, bu çalışmada bütün model ailesini temsilen discriminative bir model olan \cite{ganin15} çalışması temel alınmıştır. \cite{ganin15}'ın unofficial bir PyTorch implementation'u olan \cite{fungtion_DANN_py3} repository'si, koda iki ana ekleme yapılarak bütün deneylerde kullanılmıştır:
+\begin{enumerate}
+    \item Unsupervised'den semisupervised hale getirme.
+    \item Network büyüklüğünü (kapasitesini) kontrollü bir şekilde arttırabilme.
+\end{enumerate}
+
+
+Çalışmamızda kullanılan loss fonksiyonu, \cite{ganin15}'de kullanılan fonksiyonun aşağıdaki gibi güncellenmiş halidir:
+
+
+\subsubsection{Optimal gamma}
+$L$ ve $d$ karmaşıklığı deneylerine ek olarak, bir de loss fonksiyonundaki source ve target related terimleri ağırlıklandıran $\gamma$ parametresinin örnek karmaşıklığını inceledik. Bu deneylerde amaç, Section \ref{karşılık gelen section}'da teorik olarak gösterilen $\gamma_{opt} \propto \sqrt{M_t}$ ilişkisinin deneysel olarak da doğrulandığını göstermektir.
+
+Öncelikle target accuracy ve $\gamma$'nın ilişkisi karakterize edilerek her bir $M_t$ değeri için $\gamma_{opt}$ bulunmaya çalışılmıştır (sabit $M_s$ için). Deney sonuçları incelendiğinde, bu ilişkinin  quadratik olarak varsayılabileceği anlaşılmıştır. Bu varsayım, $\gamma$'nın bir optimal değeri olması gerektiği düşünüldüğünde anlamlıdır ve deney sonuçlarımızla uyumludur. Fit edilen parabolün tepe noktasına karşılık gelen $\gamma$, $\gamma_{opt}$ olarak not edilmiştir. Figür \ref{fig:adv-optgamma} ve \ref{fig:mmd-optgamma}'da sol kısımlarında deney sonuçları ve quadratik curve fitting'ler görülebilir. 
+
+Daha sonraki aşamada ise, önceki sectionlarda (?) açıklanan ilişkinin sağlandığı gösterilmek için, düşey eksende $\gamma_{opt}$ ve yatay eksende $M_t$ olacak şekilde veriler plotlanmış ve ters quadratik curve ($a + b\sqrt{x}$ formunda) fit edilmiştir. Bu, üç farklı $M_s$ değeri için tekrarlanmış ve üç durumda da fit edilen curve ile deney sonuçlarının uyum içerisinde olduğu görülmüştür. İlgili grafikler Figür \ref{fig:adv-optgamma} ve \ref{fig:mmd-optgamma}'nın sağ kısımlarında görülebilirler.
+
+
+
+
+\begin{comment}
+SIU'dan direkt çeviri:
+
+Here, $x_i^s$ and $x_i^t$ represent the data from the source and target domains, respectively, while $y_i^s$ and $y_i^t$ denote their corresponding labels. With this reformulation, the contributions of the classification loss from the source and target domains were weighted by the factors $\gamma$ and $1-\gama$, respectively. The parameter $\gamma$ is a hyperparameter selected such that $0<\gamma<1$.,
+
+In \eqref{eq:long-objfunc}, the expressions \(x_i\) and \(y_i\) from the dataset \(\{ (x_i,y_i) \}_{i=1}^{N}\) correspond to the representations of the data points in the original feature space and their respective labels. The function \(J(\cdot, \cdot)\) represents the loss function, specifically the cross-entropy loss, which quantifies the discrepancy between the hypothesis function \(f(x)\), determined by the network parameters, and the true label \(y\). Thus, the first two terms represent the total classification loss of the labeled data.
+
+The parameter \(L\) in the second term denotes the number of MMD layers, and \(\beta\) is a positive weighting parameter. The distance \(\hat{D}_k(\cdot, \cdot)\) is an estimate of the distance \(D_k(\cdot, \cdot)\) defined in \eqref{eq:mmd-def}, based on the training data. This term represents the total distribution distance, or alignment error, computed between the source and target MMD layers.
+
+The term \(\mathcal{D}_l^s\), defined for the source domain, represents the set \(\{\mathbf{h}_l^{si}\}\), consisting of the features of \(n_s\) source samples at the \(l\)-th layer. Here, the activation function at any MMD layer \(l\) is denoted by \(g_l\), with the weight matrix \(\mathbf{W}_l\), bias vector \(\mathbf{b}_l\), and the representation of each source sample at that layer given by 
+\[
+\mathbf{h}_{l}^{si} = g_l(\mathbf{W}_l^{\mathrm{T}} \mathbf{h}_{l-1}^{si}+\mathbf{b}_l).
+\]
+Similarly, \(\mathcal{D}_l^t\) represents the set of features at the \(l\)-th layer for \(n_t\) target domain samples.
+
+Since the computation of the distance \(\hat{D}_k^2(\mathcal{D}_l^s,\mathcal{D}_l^t)\) does not require label information, this term includes the MMD distance of both labeled and unlabeled data.
+
+
+[SIU bildirisinden direkt çeviri - bitiş]
+\end{comment}
+
+\begin{comment}
+- layer arttırırken sadece extractor kısmı arttırılmış. classifier kısmı daima tek katman kalmış. bu aslında adversarial çalışmada yapmadığımız bir şeydi. 
+
+- dimension nasıl arttırılmış? ona bakalım: dimension hem source net, hem target net, hem de extractor için değiştirilmiş. al işte... bir çelişki daha.
+\end{comment}

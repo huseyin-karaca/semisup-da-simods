@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  17 FEB 2026 18:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  18 FEB 2026 10:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -628,26 +628,57 @@ Overfull \vbox (14.04993pt too high) has occurred while \output is active []
  [25
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
  [26]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
+LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <10.95> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 1835.
 
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [27]
+Underfull \hbox (badness 10000) in paragraph at lines 1890--1890
+[]\OT1/cmr/bx/n/10.95 Independent Vari-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1890--1890
+[]\OT1/cmr/bx/n/10.95 Group (Con-trol)
+ []
+
+
+Underfull \hbox (badness 1102) in paragraph at lines 1890--1890
+[]$\OML/cmm/m/it/10.95 M[]$\OT1/cmr/m/n/10.95 : 115, $\OML/cmm/m/it/10.95 N[]$\OT1/cmr/m/n/10.95 : 60000, $\OML/cmm/m/it/10.95 N[]$\OT1/cmr/m/n/10.95 :
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 1890.
+(/usr/local/texlive/2024/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1890.
+
+Underfull \hbox (badness 1102) in paragraph at lines 1890--1890
+[]$\OML/cmm/m/it/10.95 M[]$\OT1/cmr/m/n/10.95 : 115, $\OML/cmm/m/it/10.95 N[]$\OT1/cmr/m/n/10.95 : 60000, $\OML/cmm/m/it/10.95 N[]$\OT1/cmr/m/n/10.95 :
+ []
+
+
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
  [28]
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [29
+ [29]
+Underfull \hbox (badness 10000) in paragraph at lines 1978--1978
+[]\OT1/cmr/bx/n/10.95 Independent Vari-
+ []
 
-]
+
+Underfull \hbox (badness 10000) in paragraph at lines 1978--1978
+[]\OT1/cmr/bx/n/10.95 Group (Con-trol)
+ []
+
+
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
  [30]
@@ -659,40 +690,6 @@ Overfull \vbox (3.04993pt too high) has occurred while \output is active []
  [32
 
 ]
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_supplement_lemmas.tex:2210: Undefined control sequence.
-<argument> ...{split} \as (\Ns , \epsilon ) = \bm 
-                                                  {\theta }(\Ns \epsilon ^2)...
-l.2210 \end{split}
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_supplement_lemmas.tex:2210: Undefined control sequence.
-<argument> ...{split} \as (\Ns , \epsilon ) = \bm 
-                                                  {\theta }(\Ns \epsilon ^2)...
-l.2210 \end{split}
-                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_supplement_lemmas.tex:2213: Undefined control sequence.
-<recently read> \bm 
-                    
-l.2213 where we use the notation $\bm
-                                     {\theta}(\cdot)$ to refer to asymptotic...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [33]
@@ -701,7 +698,43 @@ Overfull \vbox (3.04993pt too high) has occurred while \output is active []
  [34]
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [35]
+ [35
+
+]
+/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_supplement_lemmas.tex:2341: Undefined control sequence.
+<argument> ...{split} \as (\Ns , \epsilon ) = \bm 
+                                                  {\theta }(\Ns \epsilon ^2)...
+l.2341 \end{split}
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_supplement_lemmas.tex:2341: Undefined control sequence.
+<argument> ...{split} \as (\Ns , \epsilon ) = \bm 
+                                                  {\theta }(\Ns \epsilon ^2)...
+l.2341 \end{split}
+                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_supplement_lemmas.tex:2344: Undefined control sequence.
+<recently read> \bm 
+                    
+l.2344 where we use the notation $\bm
+                                     {\theta}(\cdot)$ to refer to asymptotic...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
  [36]
@@ -710,69 +743,72 @@ Overfull \vbox (14.04993pt too high) has occurred while \output is active []
  [37]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [38] (latex_build/ex_supplement_lemmas.bbl
+ [38]
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [39]
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+
+ [40]
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [41] (latex_build/ex_supplement_lemmas.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [39
+ [42
 
 ])
 \tf@thm=\write4
 \openout4 = `ex_supplement_lemmas.thm'.
 
 
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [40] (latex_build/ex_supplement_lemmas.aux)
+ [43] (latex_build/ex_supplement_lemmas.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
  ***********
 Package rerunfilecheck Info: File `ex_supplement_lemmas.out' has not changed.
-(rerunfilecheck)             Checksum: 315416CD6679BC2611E81BD5078834A8;5345.
+(rerunfilecheck)             Checksum: 54954F3DD165CC3C6B573BCB6B4A37A7;5536.
  ) 
 Here is how much of TeX's memory you used:
- 17651 strings out of 474116
- 285221 string characters out of 5743683
+ 17703 strings out of 474116
+ 286127 string characters out of 5743683
  1960187 words of memory out of 5000000
- 38004 multiletter control sequences out of 15000+600000
- 574512 words of font info for 96 fonts, out of 8000000 for 9000
+ 38036 multiletter control sequences out of 15000+600000
+ 574868 words of font info for 97 fonts, out of 8000000 for 9000
  2715 hyphenation exceptions out of 8191
  89i,22n,96p,1908b,725s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-pdfTeX warning (dest): name{theorem.80} has been referenced but does not exist, replaced by a fixed one
-
 
 pdfTeX warning (dest): name{theorem.75} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{theorem.81} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{theorem.70} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{equation.61} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{theorem.59} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{theorem.83} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{theorem.32} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{theorem.73} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{theorem.76} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{equation.57} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{equation.58} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{theorem.55} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{theorem.56} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.78} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.69} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.52} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{equation.43} has been referenced but does not exist, replaced by a fixed one
@@ -781,22 +817,25 @@ pdfTeX warning (dest): name{equation.43} has been referenced but does not exist,
 pdfTeX warning (dest): name{equation.15} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{equation.31} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{theorem.53} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{theorem.41} has been referenced but does not exist, replaced by a fixed one
-
-
 pdfTeX warning (dest): name{equation.44} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{theorem.30} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{theorem.37} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.45} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.27} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{equation.26} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{equation.25} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.24} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{theorem.14} has been referenced but does not exist, replaced by a fixed one
@@ -804,11 +843,11 @@ pdfTeX warning (dest): name{theorem.14} has been referenced but does not exist, 
 
 pdfTeX warning (dest): name{theorem.11} has been referenced but does not exist, replaced by a fixed one
 
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on latex_build/ex_supplement_lemmas.pdf (40 pages, 492674 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on latex_build/ex_supplement_lemmas.pdf (43 pages, 519314 bytes).
 PDF statistics:
- 801 PDF objects out of 1000 (max. 8388607)
- 701 compressed objects within 8 object streams
- 211 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 846 PDF objects out of 1000 (max. 8388607)
+ 741 compressed objects within 8 object streams
+ 227 named destinations out of 1000 (max. 500000)
+ 169 words of extra memory for PDF output out of 10000 (max. 10000000)
 

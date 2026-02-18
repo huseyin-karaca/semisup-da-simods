@@ -69,6 +69,10 @@
 \bibitem{GhifaryKZBL16}
 {\sc M.~Ghifary~et al.}, {\em Deep reconstruction-classification networks for unsupervised domain adaptation}, in European Conf. Comp. Vision,, vol.~9908, 2016, pp.~597--613.
 
+\bibitem{fungtion_DANN_py3}
+{\sc {GitHub repository}}, {\em Dann\_py3}, 2023.
+\newblock [Online]. Available: \url{https://github.com/fungtion/DANN_py3.git}.
+
 \bibitem{GrettonBRSS12}
 {\sc A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"{o}}lkopf, and A.~J. Smola}, {\em A kernel two-sample test}, J. Mach. Learn. Res., 13 (2012), pp.~723--773.
 
@@ -77,6 +81,9 @@
 
 \bibitem{JiaoLLY24}
 {\sc Y.~Jiao, H.~Lin, Y.~Luo, and J.~Z. Yang}, {\em Deep transfer learning: Model framework and error analysis}, arXiv preprint: http://arxiv.org/abs/2410.09383,  (2024).
+
+\bibitem{KaracaAAAAUV23}
+{\sc H.~Karaca~et al.}, {\em An experimental study of the sample complexity of domain adaptation}, in {IEEE} Signal Processing and Communications Applications Conference, 2023, pp.~1--4.
 
 \bibitem{KouwL21}
 {\sc W.~M. Kouw and M.~Loog}, {\em A review of domain adaptation without target labels}, {IEEE} Trans. Pattern Anal. Mach. Intell., 43 (2021), pp.~766--785.

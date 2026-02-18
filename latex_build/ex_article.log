@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  17 FEB 2026 19:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  17 FEB 2026 23:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -705,110 +705,73 @@ Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [19]
-<figures/toy_error_Mt_alpha.pdf, id=1225, 374.53467pt x 315.31372pt>
-File: figures/toy_error_Mt_alpha.pdf Graphic file (type pdf)
-<use figures/toy_error_Mt_alpha.pdf>
-Package pdftex.def Info: figures/toy_error_Mt_alpha.pdf  used on input line 998.
-(pdftex.def)             Requested size: 177.81041pt x 149.69377pt.
-<figures/toy_error_tau_alpha.pdf, id=1226, 367.86163pt x 315.27626pt>
-File: figures/toy_error_tau_alpha.pdf Graphic file (type pdf)
-<use figures/toy_error_tau_alpha.pdf>
-Package pdftex.def Info: figures/toy_error_tau_alpha.pdf  used on input line 1000.
-(pdftex.def)             Requested size: 177.81041pt x 152.38924pt.
-<figures/face_dataset.pdf, id=1227, 373.08675pt x 48.2876pt>
-File: figures/face_dataset.pdf Graphic file (type pdf)
-<use figures/face_dataset.pdf>
-Package pdftex.def Info: figures/face_dataset.pdf  used on input line 1009.
-(pdftex.def)             Requested size: 199.16928pt x 25.77797pt.
-<figures/mit_error_Mt.pdf, id=1228, 515.1753pt x 412.95078pt>
-File: figures/mit_error_Mt.pdf Graphic file (type pdf)
-<use figures/mit_error_Mt.pdf>
-Package pdftex.def Info: figures/mit_error_Mt.pdf  used on input line 1018.
-(pdftex.def)             Requested size: 177.81041pt x 142.52487pt.
-<figures/mit_error_Ms.pdf, id=1229, 469.64647pt x 382.31822pt>
-File: figures/mit_error_Ms.pdf Graphic file (type pdf)
-<use figures/mit_error_Ms.pdf>
-Package pdftex.def Info: figures/mit_error_Ms.pdf  used on input line 1020.
-(pdftex.def)             Requested size: 177.81041pt x 144.74573pt.
-
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
  [20
 
 ]
+<figures/toy_error_Mt_alpha.pdf, id=1253, 374.53467pt x 315.31372pt>
+File: figures/toy_error_Mt_alpha.pdf Graphic file (type pdf)
+<use figures/toy_error_Mt_alpha.pdf>
+Package pdftex.def Info: figures/toy_error_Mt_alpha.pdf  used on input line 982.
+(pdftex.def)             Requested size: 177.81041pt x 149.69377pt.
+<figures/toy_error_tau_alpha.pdf, id=1254, 367.86163pt x 315.27626pt>
+File: figures/toy_error_tau_alpha.pdf Graphic file (type pdf)
+<use figures/toy_error_tau_alpha.pdf>
+Package pdftex.def Info: figures/toy_error_tau_alpha.pdf  used on input line 984.
+(pdftex.def)             Requested size: 177.81041pt x 152.38924pt.
+<figures/face_dataset.pdf, id=1255, 373.08675pt x 48.2876pt>
+File: figures/face_dataset.pdf Graphic file (type pdf)
+<use figures/face_dataset.pdf>
+Package pdftex.def Info: figures/face_dataset.pdf  used on input line 993.
+(pdftex.def)             Requested size: 199.16928pt x 25.77797pt.
+<figures/mit_error_Mt.pdf, id=1256, 515.1753pt x 412.95078pt>
+File: figures/mit_error_Mt.pdf Graphic file (type pdf)
+<use figures/mit_error_Mt.pdf>
+Package pdftex.def Info: figures/mit_error_Mt.pdf  used on input line 1002.
+(pdftex.def)             Requested size: 177.81041pt x 142.52487pt.
+<figures/mit_error_Ms.pdf, id=1257, 469.64647pt x 382.31822pt>
+File: figures/mit_error_Ms.pdf Graphic file (type pdf)
+<use figures/mit_error_Ms.pdf>
+Package pdftex.def Info: figures/mit_error_Ms.pdf  used on input line 1004.
+(pdftex.def)             Requested size: 177.81041pt x 144.74573pt.
+
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [21 <./figures/toy_error_Mt_alpha.pdf> <./figures/toy_error_tau_alpha.pdf> <./figures/face_dataset.pdf> <./figures/mit_error_Mt.pdf> <./figures/mit_error_Ms.pdf>]
-<figures/mmd-layer-Ms-linefit.pdf, id=1301, 226.90646pt x 171.69144pt>
-File: figures/mmd-layer-Ms-linefit.pdf Graphic file (type pdf)
-<use figures/mmd-layer-Ms-linefit.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ms-linefit.pdf  used on input line 1035.
-(pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/mmd-layer-Ms-quadprog.pdf, id=1302, 228.81007pt x 171.69144pt>
-File: figures/mmd-layer-Ms-quadprog.pdf Graphic file (type pdf)
-<use figures/mmd-layer-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ms-quadprog.pdf  used on input line 1038.
-(pdftex.def)             Requested size: 177.81041pt x 133.42886pt.
-<figures/mmd-layer-Ns-linefit.pdf, id=1303, 231.92522pt x 171.69144pt>
-File: figures/mmd-layer-Ns-linefit.pdf Graphic file (type pdf)
-<use figures/mmd-layer-Ns-linefit.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ns-linefit.pdf  used on input line 1040.
-(pdftex.def)             Requested size: 177.81041pt x 131.63168pt.
-<figures/mmd-layer-Ns-quadprog.pdf, id=1304, 221.66815pt x 182.79543pt>
-File: figures/mmd-layer-Ns-quadprog.pdf Graphic file (type pdf)
-<use figures/mmd-layer-Ns-quadprog.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ns-quadprog.pdf  used on input line 1043.
-(pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
-<figures/mmd-dim-Ms-linefit.pdf, id=1307, 226.90646pt x 171.69144pt>
-File: figures/mmd-dim-Ms-linefit.pdf Graphic file (type pdf)
-<use figures/mmd-dim-Ms-linefit.pdf>
-Package pdftex.def Info: figures/mmd-dim-Ms-linefit.pdf  used on input line 1052.
-(pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/mmd-dim-Ms-quadprog.pdf, id=1308, 223.67564pt x 171.69144pt>
-File: figures/mmd-dim-Ms-quadprog.pdf Graphic file (type pdf)
-<use figures/mmd-dim-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/mmd-dim-Ms-quadprog.pdf  used on input line 1054.
-(pdftex.def)             Requested size: 177.81041pt x 136.48618pt.
-
-
-LaTeX Warning: Text page 22 contains only floats.
-
-
+ [21 <./figures/toy_error_Mt_alpha.pdf> <./figures/toy_error_tau_alpha.pdf> <./figures/face_dataset.pdf>]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [22
-
- <./figures/mmd-layer-Ms-linefit.pdf> <./figures/mmd-layer-Ms-quadprog.pdf> <./figures/mmd-layer-Ns-linefit.pdf> <./figures/mmd-layer-Ns-quadprog.pdf> <./figures/mmd-dim-Ms-linefit.pdf> <./figures/mmd-dim-Ms-quadprog.pdf>]
-<figures/adv-layer-Ms-linefit.pdf, id=1527, 226.90646pt x 171.69144pt>
-File: figures/adv-layer-Ms-linefit.pdf Graphic file (type pdf)
-<use figures/adv-layer-Ms-linefit.pdf>
-Package pdftex.def Info: figures/adv-layer-Ms-linefit.pdf  used on input line 1068.
+ [22 <./figures/mit_error_Mt.pdf> <./figures/mit_error_Ms.pdf>]
+<figures/mmd-layer-Ms-linefit.pdf, id=1315, 226.90646pt x 171.69144pt>
+File: figures/mmd-layer-Ms-linefit.pdf Graphic file (type pdf)
+<use figures/mmd-layer-Ms-linefit.pdf>
+Package pdftex.def Info: figures/mmd-layer-Ms-linefit.pdf  used on input line 1019.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/adv-layer-Ms-quadprog.pdf, id=1528, 223.67564pt x 174.28386pt>
-File: figures/adv-layer-Ms-quadprog.pdf Graphic file (type pdf)
-<use figures/adv-layer-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/adv-layer-Ms-quadprog.pdf  used on input line 1070.
-(pdftex.def)             Requested size: 177.81041pt x 138.54701pt.
-<figures/adv-layer-Ns-linefit.pdf, id=1529, 226.90646pt x 171.69144pt>
-File: figures/adv-layer-Ns-linefit.pdf Graphic file (type pdf)
-<use figures/adv-layer-Ns-linefit.pdf>
-Package pdftex.def Info: figures/adv-layer-Ns-linefit.pdf  used on input line 1072.
-(pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/adv-layer-Ns-quadprog.pdf, id=1530, 221.66815pt x 182.79543pt>
-File: figures/adv-layer-Ns-quadprog.pdf Graphic file (type pdf)
-<use figures/adv-layer-Ns-quadprog.pdf>
-Package pdftex.def Info: figures/adv-layer-Ns-quadprog.pdf  used on input line 1074.
+<figures/mmd-layer-Ms-quadprog.pdf, id=1316, 228.81007pt x 171.69144pt>
+File: figures/mmd-layer-Ms-quadprog.pdf Graphic file (type pdf)
+<use figures/mmd-layer-Ms-quadprog.pdf>
+Package pdftex.def Info: figures/mmd-layer-Ms-quadprog.pdf  used on input line 1022.
+(pdftex.def)             Requested size: 177.81041pt x 133.42886pt.
+<figures/mmd-layer-Ns-linefit.pdf, id=1317, 231.92522pt x 171.69144pt>
+File: figures/mmd-layer-Ns-linefit.pdf Graphic file (type pdf)
+<use figures/mmd-layer-Ns-linefit.pdf>
+Package pdftex.def Info: figures/mmd-layer-Ns-linefit.pdf  used on input line 1024.
+(pdftex.def)             Requested size: 177.81041pt x 131.63168pt.
+<figures/mmd-layer-Ns-quadprog.pdf, id=1318, 221.66815pt x 182.79543pt>
+File: figures/mmd-layer-Ns-quadprog.pdf Graphic file (type pdf)
+<use figures/mmd-layer-Ns-quadprog.pdf>
+Package pdftex.def Info: figures/mmd-layer-Ns-quadprog.pdf  used on input line 1027.
 (pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
-<figures/mmd-optalpha-quadfit_Ms234.pdf, id=1531, 227.53883pt x 171.69144pt>
-File: figures/mmd-optalpha-quadfit_Ms234.pdf Graphic file (type pdf)
-<use figures/mmd-optalpha-quadfit_Ms234.pdf>
-Package pdftex.def Info: figures/mmd-optalpha-quadfit_Ms234.pdf  used on input line 1083.
-(pdftex.def)             Requested size: 177.81041pt x 134.17027pt.
-<figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf, id=1532, 226.68689pt x 171.81691pt>
-File: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf Graphic file (type pdf)
-<use figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>
-Package pdftex.def Info: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1085.
-(pdftex.def)             Requested size: 177.81041pt x 134.77954pt.
+<figures/mmd-dim-Ms-linefit.pdf, id=1321, 226.90646pt x 171.69144pt>
+File: figures/mmd-dim-Ms-linefit.pdf Graphic file (type pdf)
+<use figures/mmd-dim-Ms-linefit.pdf>
+Package pdftex.def Info: figures/mmd-dim-Ms-linefit.pdf  used on input line 1036.
+(pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
+<figures/mmd-dim-Ms-quadprog.pdf, id=1322, 223.67564pt x 171.69144pt>
+File: figures/mmd-dim-Ms-quadprog.pdf Graphic file (type pdf)
+<use figures/mmd-dim-Ms-quadprog.pdf>
+Package pdftex.def Info: figures/mmd-dim-Ms-quadprog.pdf  used on input line 1038.
+(pdftex.def)             Requested size: 177.81041pt x 136.48618pt.
 
 
 LaTeX Warning: Text page 23 contains only floats.
@@ -818,68 +781,108 @@ Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [23
 
- <./figures/adv-layer-Ms-linefit.pdf> <./figures/adv-layer-Ms-quadprog.pdf> <./figures/adv-layer-Ns-linefit.pdf> <./figures/adv-layer-Ns-quadprog.pdf> <./figures/mmd-optalpha-quadfit_Ms234.pdf> <./figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>]
-<figures/adv-dcm-Ms-linefit.pdf, id=1750, 226.90646pt x 172.73701pt>
-File: figures/adv-dcm-Ms-linefit.pdf Graphic file (type pdf)
-<use figures/adv-dcm-Ms-linefit.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ms-linefit.pdf  used on input line 1097.
-(pdftex.def)             Requested size: 177.81041pt x 135.36954pt.
-<figures/adv-dcm-Ms-quadprog.pdf, id=1751, 223.67564pt x 171.69144pt>
-File: figures/adv-dcm-Ms-quadprog.pdf Graphic file (type pdf)
-<use figures/adv-dcm-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ms-quadprog.pdf  used on input line 1099.
-(pdftex.def)             Requested size: 177.81041pt x 136.48618pt.
-<figures/adv-dcm-Ns-linefit.pdf, id=1752, 226.90646pt x 171.69144pt>
-File: figures/adv-dcm-Ns-linefit.pdf Graphic file (type pdf)
-<use figures/adv-dcm-Ns-linefit.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ns-linefit.pdf  used on input line 1101.
+ <./figures/mmd-layer-Ms-linefit.pdf> <./figures/mmd-layer-Ms-quadprog.pdf> <./figures/mmd-layer-Ns-linefit.pdf> <./figures/mmd-layer-Ns-quadprog.pdf> <./figures/mmd-dim-Ms-linefit.pdf> <./figures/mmd-dim-Ms-quadprog.pdf>]
+<figures/adv-layer-Ms-linefit.pdf, id=1541, 226.90646pt x 171.69144pt>
+File: figures/adv-layer-Ms-linefit.pdf Graphic file (type pdf)
+<use figures/adv-layer-Ms-linefit.pdf>
+Package pdftex.def Info: figures/adv-layer-Ms-linefit.pdf  used on input line 1052.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/adv-dcm-Ns-quadprog.pdf, id=1753, 221.66815pt x 182.79543pt>
-File: figures/adv-dcm-Ns-quadprog.pdf Graphic file (type pdf)
-<use figures/adv-dcm-Ns-quadprog.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ns-quadprog.pdf  used on input line 1103.
+<figures/adv-layer-Ms-quadprog.pdf, id=1542, 223.67564pt x 174.28386pt>
+File: figures/adv-layer-Ms-quadprog.pdf Graphic file (type pdf)
+<use figures/adv-layer-Ms-quadprog.pdf>
+Package pdftex.def Info: figures/adv-layer-Ms-quadprog.pdf  used on input line 1054.
+(pdftex.def)             Requested size: 177.81041pt x 138.54701pt.
+<figures/adv-layer-Ns-linefit.pdf, id=1543, 226.90646pt x 171.69144pt>
+File: figures/adv-layer-Ns-linefit.pdf Graphic file (type pdf)
+<use figures/adv-layer-Ns-linefit.pdf>
+Package pdftex.def Info: figures/adv-layer-Ns-linefit.pdf  used on input line 1056.
+(pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
+<figures/adv-layer-Ns-quadprog.pdf, id=1544, 221.66815pt x 182.79543pt>
+File: figures/adv-layer-Ns-quadprog.pdf Graphic file (type pdf)
+<use figures/adv-layer-Ns-quadprog.pdf>
+Package pdftex.def Info: figures/adv-layer-Ns-quadprog.pdf  used on input line 1058.
 (pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
-<figures/adv-optalpha-quadfit_Ms240.pdf, id=1754, 227.53883pt x 171.69144pt>
-File: figures/adv-optalpha-quadfit_Ms240.pdf Graphic file (type pdf)
-<use figures/adv-optalpha-quadfit_Ms240.pdf>
-Package pdftex.def Info: figures/adv-optalpha-quadfit_Ms240.pdf  used on input line 1112.
+<figures/mmd-optalpha-quadfit_Ms234.pdf, id=1545, 227.53883pt x 171.69144pt>
+File: figures/mmd-optalpha-quadfit_Ms234.pdf Graphic file (type pdf)
+<use figures/mmd-optalpha-quadfit_Ms234.pdf>
+Package pdftex.def Info: figures/mmd-optalpha-quadfit_Ms234.pdf  used on input line 1067.
 (pdftex.def)             Requested size: 177.81041pt x 134.17027pt.
-<figures/adv-optalpha-asqrtx_fit_den_Mss.pdf, id=1755, 226.68689pt x 171.81691pt>
-File: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf Graphic file (type pdf)
-<use figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>
-Package pdftex.def Info: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1114.
+<figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf, id=1546, 226.68689pt x 171.81691pt>
+File: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf Graphic file (type pdf)
+<use figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>
+Package pdftex.def Info: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1069.
 (pdftex.def)             Requested size: 177.81041pt x 134.77954pt.
+
+
+LaTeX Warning: Text page 24 contains only floats.
+
 
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [24 <./figures/adv-dcm-Ms-linefit.pdf> <./figures/adv-dcm-Ms-quadprog.pdf> <./figures/adv-dcm-Ns-linefit.pdf> <./figures/adv-dcm-Ns-quadprog.pdf> <./figures/adv-optalpha-quadfit_Ms240.pdf> <./figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>]
+ [24
+
+ <./figures/adv-layer-Ms-linefit.pdf> <./figures/adv-layer-Ms-quadprog.pdf> <./figures/adv-layer-Ns-linefit.pdf> <./figures/adv-layer-Ns-quadprog.pdf> <./figures/mmd-optalpha-quadfit_Ms234.pdf> <./figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>]
+<figures/adv-dcm-Ms-linefit.pdf, id=1764, 226.90646pt x 172.73701pt>
+File: figures/adv-dcm-Ms-linefit.pdf Graphic file (type pdf)
+<use figures/adv-dcm-Ms-linefit.pdf>
+Package pdftex.def Info: figures/adv-dcm-Ms-linefit.pdf  used on input line 1081.
+(pdftex.def)             Requested size: 177.81041pt x 135.36954pt.
+<figures/adv-dcm-Ms-quadprog.pdf, id=1765, 223.67564pt x 171.69144pt>
+File: figures/adv-dcm-Ms-quadprog.pdf Graphic file (type pdf)
+<use figures/adv-dcm-Ms-quadprog.pdf>
+Package pdftex.def Info: figures/adv-dcm-Ms-quadprog.pdf  used on input line 1083.
+(pdftex.def)             Requested size: 177.81041pt x 136.48618pt.
+<figures/adv-dcm-Ns-linefit.pdf, id=1766, 226.90646pt x 171.69144pt>
+File: figures/adv-dcm-Ns-linefit.pdf Graphic file (type pdf)
+<use figures/adv-dcm-Ns-linefit.pdf>
+Package pdftex.def Info: figures/adv-dcm-Ns-linefit.pdf  used on input line 1085.
+(pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
+<figures/adv-dcm-Ns-quadprog.pdf, id=1767, 221.66815pt x 182.79543pt>
+File: figures/adv-dcm-Ns-quadprog.pdf Graphic file (type pdf)
+<use figures/adv-dcm-Ns-quadprog.pdf>
+Package pdftex.def Info: figures/adv-dcm-Ns-quadprog.pdf  used on input line 1087.
+(pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
+<figures/adv-optalpha-quadfit_Ms240.pdf, id=1768, 227.53883pt x 171.69144pt>
+File: figures/adv-optalpha-quadfit_Ms240.pdf Graphic file (type pdf)
+<use figures/adv-optalpha-quadfit_Ms240.pdf>
+Package pdftex.def Info: figures/adv-optalpha-quadfit_Ms240.pdf  used on input line 1096.
+(pdftex.def)             Requested size: 177.81041pt x 134.17027pt.
+<figures/adv-optalpha-asqrtx_fit_den_Mss.pdf, id=1769, 226.68689pt x 171.81691pt>
+File: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf Graphic file (type pdf)
+<use figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>
+Package pdftex.def Info: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1098.
+(pdftex.def)             Requested size: 177.81041pt x 134.77954pt.
+
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [25
+ [25 <./figures/adv-dcm-Ms-linefit.pdf> <./figures/adv-dcm-Ms-quadprog.pdf> <./figures/adv-dcm-Ns-linefit.pdf> <./figures/adv-dcm-Ns-quadprog.pdf> <./figures/adv-optalpha-quadfit_Ms240.pdf> <./figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>]
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+
+ [26
 
 
 ] (latex_build/ex_article.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [26
+ [27
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [27])
+ [28])
 \tf@thm=\write4
 \openout4 = `ex_article.thm'.
 
 
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [28] (latex_build/ex_article.aux)
+ [29] (latex_build/ex_article.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -889,13 +892,13 @@ L3 programming layer <2024-02-20>
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `ex_article.out' has not changed.
-(rerunfilecheck)             Checksum: C5DE8F96518EFF8FACB6A200FCAC29AD;3296.
+(rerunfilecheck)             Checksum: A82D95CD9642634A518EE4535A83A158;3296.
  ) 
 Here is how much of TeX's memory you used:
- 17870 strings out of 474116
- 294072 string characters out of 5743683
+ 17881 strings out of 474116
+ 294328 string characters out of 5743683
  1956187 words of memory out of 5000000
- 38193 multiletter control sequences out of 15000+600000
+ 38202 multiletter control sequences out of 15000+600000
  573811 words of font info for 94 fonts, out of 8000000 for 9000
  2715 hyphenation exceptions out of 8191
  89i,20n,96p,2468b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -909,16 +912,16 @@ pdfTeX warning (dest): name{subsection.65} has been referenced but does not exis
 pdfTeX warning (dest): name{section.64} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{section.97} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.111} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{section.94} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.108} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{section.91} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.105} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{section.85} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.99} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{theorem.43} has been referenced but does not exist, replaced by a fixed one
@@ -927,7 +930,7 @@ pdfTeX warning (dest): name{theorem.43} has been referenced but does not exist, 
 pdfTeX warning (dest): name{theorem.25} has been referenced but does not exist, replaced by a fixed one
 
 
-pdfTeX warning (dest): name{section.71} has been referenced but does not exist, replaced by a fixed one
+pdfTeX warning (dest): name{section.85} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{proof.22} has been referenced but does not exist, replaced by a fixed one
@@ -951,10 +954,10 @@ pdfTeX warning (dest): name{theorem.2} has been referenced but does not exist, r
 pdfTeX warning (dest): name{section.56} has been referenced but does not exist, replaced by a fixed one
 
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on latex_build/ex_article.pdf (28 pages, 1692475 bytes).
+Output written on latex_build/ex_article.pdf (29 pages, 1697260 bytes).
 PDF statistics:
- 2169 PDF objects out of 2487 (max. 8388607)
- 1546 compressed objects within 16 object streams
- 243 named destinations out of 1000 (max. 500000)
+ 2183 PDF objects out of 2487 (max. 8388607)
+ 1559 compressed objects within 16 object streams
+ 245 named destinations out of 1000 (max. 500000)
  258 words of extra memory for PDF output out of 10000 (max. 10000000)
 

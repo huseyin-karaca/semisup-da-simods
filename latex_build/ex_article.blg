@@ -4,45 +4,45 @@ The top-level auxiliary file: ex_article.aux
 The style file: siamplain.bst
 Database file #1: refs.bib
 Warning--empty year in LongCWJ15
-You've used 60 entries,
+You've used 62 entries,
             2244 wiz_defined-function locations,
-            934 strings with 13850 characters,
-and the built_in function-call counts, 25415 in all, are:
-= -- 2303
-> -- 995
+            945 strings with 14162 characters,
+and the built_in function-call counts, 25969 in all, are:
+= -- 2348
+> -- 1009
 < -- 0
-+ -- 401
-- -- 332
-* -- 1780
-:= -- 3490
-add.period$ -- 61
-call.type$ -- 60
-change.case$ -- 344
++ -- 408
+- -- 336
+* -- 1810
+:= -- 3567
+add.period$ -- 64
+call.type$ -- 62
+change.case$ -- 352
 chr.to.int$ -- 0
-cite$ -- 61
-duplicate$ -- 1380
-empty$ -- 2381
-format.name$ -- 332
-if$ -- 5750
+cite$ -- 63
+duplicate$ -- 1414
+empty$ -- 2449
+format.name$ -- 336
+if$ -- 5876
 int.to.chr$ -- 0
-int.to.str$ -- 60
-missing$ -- 61
-newline$ -- 184
-num.names$ -- 120
-pop$ -- 619
+int.to.str$ -- 62
+missing$ -- 62
+newline$ -- 191
+num.names$ -- 124
+pop$ -- 640
 preamble$ -- 1
-purify$ -- 286
+purify$ -- 292
 quote$ -- 0
-skip$ -- 976
+skip$ -- 995
 stack$ -- 0
-substring$ -- 1835
-swap$ -- 512
+substring$ -- 1862
+swap$ -- 520
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 236
+type$ -- 244
 warning$ -- 1
-while$ -- 251
-width$ -- 62
-write$ -- 541
+while$ -- 258
+width$ -- 64
+write$ -- 559
 (There was 1 warning)

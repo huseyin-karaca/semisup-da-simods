@@ -1,0 +1,370 @@
+
+\documentclass[12pt]{article}
+
+
+\usepackage[cmex10]{amsmath}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{breqn}
+\usepackage{hyperref}
+\usepackage{}
+%\usepackage{fontawesome}
+\usepackage{amssymb}
+\usepackage{comment}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\centered}[1]{\begin{tabular}{l} #1 \end{tabular}}
+
+\newcommand{\plotfigure}[4]{
+\begin{figure}
+  \centering
+  \begin{subfigure}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width = \linewidth]{#2} 
+    %\caption{}
+    %\label{fig:#1-1}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.49\linewidth}
+    \centering
+    \includegraphics[width = \linewidth]{#3} 
+    %\caption{}
+    %\label{fig:#1-2}
+  \end{subfigure}
+    \caption{ #4}
+\label{fig:#1}
+\end{figure}
+}
+
+\usepackage{subcaption}
+\usepackage{float}
+\begin{document}
+
+\title{Sample Complexity of Domain Adaptation Paper \\ Experimental Work Section}
+
+\author{Elif Vural \and Hüseyin Karaca}
+
+
+
+%\maketitle
+
+
+\section{Experimental Work}
+
+
+In the earlier sections of our study, we theoretically demonstrated that the relationship between the number of labeled and total (labeled + unlabeled) samples required to guarantee a specific target accuracy in the target domain of domain adaptation and the network size is quadratic. In this section, we will share the results of a series of controlled experiments conducted to empirically validate this relationship.
+
+\subsection{General Information About the Experiments}
+The experiments were conducted separately for two different domain adaptation network architectures: one metric-based and the other adversarial. For each architecture, we will present experiments examining the variations of \(M_s\) and \(N_s = N_t\) with respect to the number of layers and layer size (dimension), as well as an additional experiment investigating the optimal source-target balance. In Table \ref{tab:nomenclature}, the nomenclature of the variables which their relationships to each other analyzed in this study can be seen.
+
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|l|}
+    \hline
+    \textbf{Symbol} & \textbf{Description} \\ \hline
+    $N_s$           & Number of total source samples \\ \hline
+    $N_t$           & Number of total target samples \\ \hline
+    $M_s$           & Number of labeled source samples \\ \hline
+    $M_t$           & Number of labeled target samples \\ \hline
+    $L$             & Number of layers in the neural network. \\ \hline
+    $d$             & Dimensionality of feature space. \\ \hline
+    $\gamma$        & Weight of the target classifier term in the loss function. \\ \hline
+    $\beta$         & Weight of the discriminator term in the loss function. \\ \hline
+\end{tabular}
+\caption{Nomenclature of symbols and variables used in this paper.}
+\label{tab:nomenclature}
+\end{table}
+
+
+
+In these experiments, the MNIST handwritten digit dataset \cite{mnist} was used as the source dataset. The target dataset was MNIST-M \cite{mnistm}, a dataset obtained by adding colored backgrounds to the MNIST dataset. Labeled and unlabeled training samples from the source and target datasets were provided as inputs to the neural network, and the effects of both labeled and total training sample counts on learning performance were examined separately. Learning performance was evaluated on test samples from the target dataset, with the performance metric being target accuracy, i.e., the percentage of correctly classified test samples from the target dataset.
+
+\subsubsection{Hyperparameter Selection}  
+Throughout all training processes, hyperparameters were selected and used to ensure that the neural network enters the overfitting region as easily as possible. The corresponding values can be seen at Table \ref{tab:adv-hyperparams} and Table \ref{tab:mmd-hyperparams}. This approach allowed us to easily determine the amount of labeled or unlabeled data required to prevent the network from overfitting, without using excessive amount of computational resource. Operating in the overfitting region means that increasing the amount of labeled or unlabeled data delays the network’s target accuracy from dropping below a predefined threshold as network size increases. %Alternatively, a network trained with more data achieves higher target accuracy.
+
+
+\subsubsection{Figures}  
+In the experiments, the primary goal was to characterize how target accuracy behaves as network complexity increases (illustrated in the left figures). In the overfitting region, for a fixed \(M_s\) or \(N_s\) value, it is expected that target accuracy decreases as network complexity grows. Our experiments revealed that this decrease can be approximated as a linear decline. Therefore, in addition to the points we experimentally tested, we estimated values for untested points by applying linear extrapolation. This approach improves computational efficiency. The target accuracy vs independent variable curves and corresponding linear regression curves can be seen at the left panels of Figures \ref{fig:adv-layer-Ms}, \ref{fig:adv-layer-Ns}, \ref{fig:adv-dcm-Ms}, \ref{fig:adv-dcm-Ns}, \ref{fig:mmd-layer-Ms}, \ref{fig:mmd-layer-Ns}, \ref{fig:mmd-dim-Ms}.
+
+
+The right figures analyze how the amount of labeled or unlabeled data required to guarantee a fixed target accuracy changes with network size. Specific target accuracy values were selected, and the corresponding network sizes capable of achieving these accuracies were determined. This was done by drawing a horizontal line at the chosen target accuracy and identifying where it intersects with the linearly extrapolated curves. Once the maximum network complexity at which the network maintains the predefined target accuracy was identified, the variation of these complexity values with respect to a group variable (typically \(M_s\) or \(N_s\)) was plotted. A quadratic curve in the form of $ax^2 + bx + c$, with $\frac{-b}{2a} \geq 0$ constraint, is also fittet to the experimental results and added to the plots. The corresponding complexity values and quadratic fits can be seen at the right panels of Figures \ref{fig:adv-layer-Ms}, \ref{fig:adv-layer-Ns}, \ref{fig:adv-dcm-Ms}, \ref{fig:adv-dcm-Ns}, \ref{fig:mmd-layer-Ms}, \ref{fig:mmd-layer-Ns}, \ref{fig:mmd-dim-Ms}. %The agreement level between fitted quadratic curves and experimental results confirm the quadratic relationship predicted theoretically in earlier sections of the paper.
+
+\subsubsection{Optimum $\gamma$ Experiments}
+
+
+
+In addition to the experiments on $L$ and $d$ complexity, we also analyzed the sample complexity of the $\gamma$ parameter, which weights the source- and target-related terms in the loss function. The goal of these experiments is to validate the theoretical relationship $\gamma_{opt} \propto \sqrt{M_t}$ presented in Section \ref{corresponding section} through empirical results.
+
+First, the relationship between target accuracy and $\gamma$ was characterized, and $\gamma_{opt}$ was identified for each $M_t$ value (while keeping $M_s$ constant). Experimental results suggest that this relationship can be assumed to be quadratic. This assumption is meaningful as $\gamma$ is expected to have an optimal value, and it aligns with our observations. The $\gamma$ value corresponding to the peak of the fitted parabola is denoted as $\gamma_{opt}$. The left panels of Figures \ref{fig:adv-optgamma} and \ref{fig:mmd-optgamma} display the experimental results along with the quadratic curve fittings.
+
+In the next step, to demonstrate the validity of the theoretical relationship described in the previous sections, the data were plotted with $\gamma_{opt}$ on the vertical axis and $M_t$ on the horizontal axis, and a reverse quadratic curve in the form of $a + b\sqrt{x}$ was fitted. This procedure was repeated for three different $M_s$ values, and in all cases, the fitted curve was consistent with the experimental results. These plots can be seen in the right panels of Figures \ref{fig:adv-optgamma} and \ref{fig:mmd-optgamma}.
+
+
+\subsection{Experiments for Adversarial DA}
+
+Adversarial domain adaptation is one of the most widely used families of domain adaptation models, following discrepancy-based methods \cite{da_review}. Although adversarial models are further divided into subfamilies such as adversarial discriminative, adversarial generative, and adversarial reconstruction-based models, this study adopts the discriminative model proposed in \cite{ganin15} as a representative of the entire family.
+
+The loss function used in this study is an updated version of the function defined in \cite{ganin15}, as shown below:
+
+\begin{equation}  
+\mathcal{L}= \frac{1-\gamma}{M_s} \sum_{i=1}^{M_s} \mathcal{L}_y^i(\theta_f, \theta_y) + \frac{\gamma}{M_t} \sum_{i=1}^{M_t} \mathcal{L}_y^i(\theta_f, \theta_y)
+- \beta \left( 
+\frac{1}{N_s + N_t} \sum_{i=1}^{N_s + N_t} \mathcal{L}_d^i(\theta_f, \theta_d)
+\right)
+\label{eq:adv-loss}
+\end{equation}
+
+Here, $\theta_f, \theta_y, \theta_d$ represent the parameters of the feature extractor, classifier, and discriminator networks, respectively. $G(\cdot \,; \theta)$ denotes the outputs of these networks.
+
+\[
+\mathcal{L}_y^i(\theta_f, \theta_y) = \mathcal{L}_y(G_y(G_f(\mathbf{x}_i; \theta_f); \theta_y), y_i),
+\]
+\[
+\mathcal{L}_d^i(\theta_f, \theta_d) = \mathcal{L}_d(G_d(G_f(\mathbf{x}_i; \theta_f); \theta_d), d_i).
+\]
+
+Here, $\theta_f$, $\theta_y$, and $\theta_d$ represent the parameters of the feature extractor, classifier, and discriminator networks, respectively. $G(\cdot \,; \theta)$ denotes the outputs of these networks.
+
+\subsubsection{Code Changes}
+We utilized the unofficial PyTorch implementation of \cite{ganin15}, available in the repository \cite{fungtion_DANN_py3}, with the following two major modifications: \begin{enumerate} \item Transitioning from a fully unsupervised structure to a semisupervised framework. \item Adding the capability to systematically increase the network capacity (size). \end{enumerate}
+
+
+
+The first modification can be interpreted as the implementation of variables characterizing the input dataset, such as $M_s$, $M_t$, $N_s$, and $N_t$. The second modification pertains to implementing variables that define network complexity, such as $L$, $d$, and $\gamma$. The impact of the first modification is evident in the summation limits of Equation~\ref{eq:adv-loss}. In contrast, the second modification indirectly affects the loss function through the altered $G(\cdot \,; \theta)$ terms.
+
+The second modification deserves a more detailed explanation:
+
+\paragraph{Imputing $L$}
+The variable $L$ simply represents the "number of layers." However, the intricate structure of adversarial networks—comprising a classifier and discriminator network both utilizing the same feature extractor—may lead to confusion about which network's layer count $L$ represents. For simplicity, in this work, the number of convolutional layers in the common feature extractor and the number of fully connected (linear) layers in both the classifier and discriminator networks are set to be equal and denoted by $L$.
+
+In the original study, the feature extractor consisted of two convolutional layers, while the classifier and discriminator networks had three and two linear layers, respectively. In this work, the model code has been updated to take $L$ as input and dynamically stack the corresponding number of convolutional and linear layers. Specifically:
+\begin{itemize}
+    \item When analyzing the sample complexity of labeled data, the number of layers in the classifier network was modified.
+    \item When analyzing the sample complexity of total data, the number of layers in the discriminator network was adjusted.
+\end{itemize}
+
+The convolutional layers in the feature extractor, being shared by both networks, were modified in all experiments. When stacking layers, BatchNorm and ReLU layers were also repeated alongside the convolutional or linear layers.
+
+\paragraph{Imputing $d$}
+The strategy used to vary the number of layers is similarly applied to adjust the layer dimensions. However, the use of convolutional layers in the feature extractor and linear layers in the classifier and discriminator networks introduces challenges in characterizing network complexity with a single variable. To resolve this, both the number of channels in convolutional layers and the number of neurons in linear layers, as specified in the original paper, were scaled by the same factor $d$.
+
+In the original paper, convolutional layers had 64 channels, and linear layers had 100 neurons. For instance, in an $M_s\textrm{ vs }d$ experiment with $d=2$ and $L=3$, the resulting network architecture is as follows:
+\begin{itemize}
+    \item Feature extractor: 4 convolutional layers, each with 128 channels.
+    \item Discriminator: 2 linear layers, each with 100 neurons.
+    \item Classifier: 4 linear layers, each with 200 neurons.
+\end{itemize}
+
+\subsubsection{Training Details}
+In this work, the Adam optimizer with a learning rate of 0.001 was employed. Various computational resources were utilized. Training was conducted with a batch size of 128 for 100 epochs.
+
+
+
+
+\clearpage
+\begin{table}
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|p{4.2cm}|p{4.2cm}|p{4.2cm}|}
+        \hline
+        \textbf{Experiment} & \textbf{Fixed Variables} & \textbf{Independent Variables} & \textbf{Group (Control) Variables} \\ \hline
+        
+        $L\textrm{ vs }M_s$ & 
+        $M_t$: 20 \newline 
+        $N_{s,t}$: 6000 \newline 
+        $d$: 1 & 
+        $L$: {4, 5, 6, 7, 8, 9, 10} & 
+        $M_s$: {60, 120, 180, 240} \\ \hline
+        
+        $L\textrm{ vs }N_s$ & 
+        $M_t$: 20 \newline 
+        $M_s$: 240 \newline 
+        $d$: 1 & 
+        $L$: {3, 5, 7, 9} & 
+        $N_{s,t}$: 750, 1500, 3000, 12000 \\ \hline
+        
+        $d\textrm{ vs }M_s$ & 
+        $M_t$: 30 \newline 
+        $N_{s,t}$: 6000 \newline 
+        $L$: 2 & 
+        $d$: {1, 4, 8, 16, 24, 32} & 
+        $M_s$: {120, 180, 240, 300, 360} \\ \hline
+        
+        $d\textrm{ vs }N_s$ & 
+        $M_t$: 30 \newline 
+        $M_s$: 300 \newline 
+        $L$: 2 & 
+        $d$: {1, 4, 8, 16, 24, 32} & 
+        $N_{s,t}$: 750, 1500, 3000, 6000 \\ \hline
+        
+        Optimum $\gamma$ & 
+        $M_s$: {240, 360, 480} \newline 
+        $N_{s,t}$: 6000 \newline 
+        $L$: 3 \newline 
+        $d$: 1 & 
+        $\gamma$: {60, 120, 210, 240} & 
+        $M_t$: {60, 120, 210, 240} \\ \hline
+    \end{tabular}
+    }
+    \caption{Hyper parameter values for adversarial domain adaptation experiments.}
+    \label{tab:adv-hyperparams}
+\end{table}
+
+\clearpage
+\plotfigure{adv-layer-Ms}{figures/adv-layer-Ms-linefit.pdf}{figures/adv-layer-Ms-quadprog.pdf}{The relationship between target accuracy and $L$ (left) and $M_s$ complexity of $L$ (right) for the adversarial domain adaptation model.}
+\plotfigure{adv-layer-Ns}{figures/adv-layer-Ns-linefit.pdf}{figures/adv-layer-Ns-quadprog.pdf}{The relationship between target accuracy and $L$ (left) and $N_s$ complexity of $L$ (right) for the adversarial domain adaptation model.}
+\plotfigure{adv-dcm-Ms}{figures/adv-dcm-Ms-linefit.pdf}{figures/adv-dcm-Ms-quadprog.pdf}{The relationship between target accuracy and $d$ (left) and $M_s$ complexity of $d$ (right) for the adversarial domain adaptation model.}
+\plotfigure{adv-dcm-Ns}{figures/adv-dcm-Ns-linefit.pdf}{figures/adv-dcm-Ns-quadprog.pdf}{The relationship between target accuracy and $d$ (left) and $N_s$ complexity of $d$ (right) for the adversarial domain adaptation model.}
+\plotfigure{adv-optgamma}{figures/adv-optgamma-quadfit_Ms240.pdf}{figures/adv-optgamma-asqrtx_fit_den_Mss.pdf}{The relationship between target accuracy and $\gamma$, for $M_s = 240$ (left) and $M_t$ complexity of $\gamma_{opt}$, for different $M_s$ values (right) for the adversarial domain adaptation model}
+
+\begin{comment}
+
+\plotfigure{figures/adv-layer-Ns}{$N_s$}{number of layers}
+\clearpage
+\plotfigure{figures/adv-dcm-Ms}{$M_s$}{layer dimension}
+\plotfigure{figures/adv-dcm-Ns}{$N_s$}{layer dimension}
+\clearpage
+\plotfigurex{figures/adv-optgamma}{Ms240}{$\gamma$ parameter}{$\gamma_{opt} - M_t$}
+\clearpage
+\end{comment}
+
+\clearpage
+\subsection{Experiments for Metric-Based Domain Adaptation}
+
+The second domain adaptation model family analyzed in this paper is metric-based models. In metric-based models, a domain discrepancy metric is employed to minimize the distance between the source and target domains, specifically the distance between their latent representations in the network. This approach aims to align data from different domains in a common representation space.
+
+[SIU bildirisinden direkt çeviri - başlangıç buraya atıf vermeli miyiz, biraz değiştirmeli miyiz]
+
+In our experimental analysis, a neural network was constructed similarly to the model proposed in \cite{longxx}. This network begins with shared convolutional layers, followed by separate MMD layers for the source and target domains. The dimensions of the MMD layers were set equal. The original objective function, was reformulated for this study as: 
+
+\begin{equation} 
+\mathcal{L} = \frac{1-\gamma}{M_s} \sum_{i=1}^{M_s}J(f(x_i^s),y_i^s) + \frac{\gamma}{M_t} \sum_{i=1}^{M_t}J(f(x_i^t),y_i^t) + \beta \sum_{l=1}^{L} \hat{D}_k^2(\mathcal{D}_l^s,\mathcal{D}_l^t) 
+\end{equation} 
+
+\subsubsection{Code Changes}
+
+The original code was implemented in Caffe \cite{mmd_code_caffe}. For our implementation, we adapted the PyTorch version available at \cite{mmd_code_pytorch}. 
+
+One significant modification we made was in the handling of the convolutional layers used in the feature extractor. In the original article, these layers were fixed during training, meaning their parameters were not updated. However, in our implementation, we trained these convolutional layers iteratively during each training process instead of keeping them fixed. 
+Then we imputed some variables which are necessary for our experimental organization.
+
+\paragraph{Imputing \(L\) and \(d\)}
+
+The parameter \(L\) represent the number of MMD layers in the feature extractor, and the \(d\) value represent the ratio of sizes of those layers to the original size value in the \cite{mmd_code_pytorch}. All of these layers are fully connected (linear) layers, hence their configuration can be easily adjusted. When adding new fully connected layers to the network (i.e., increasing \(L\)), we also inserted batch normalization layers between the newly added fully connected layers to stabilize training and improve performance.
+
+\paragraph{Imputing \(\gamma\) and \(\beta\)}
+
+The parameters \(\gamma\) and \(\beta\) are regularization parameters that determine the weights of the terms in the loss function. To incorporate these parameters into the code, we simply added them as multipliers in the corresponding lines of code where the loss function is defined. This approach ensured that the loss function appropriately weighted the classification loss and the distribution alignment loss based on these parameters.
+
+
+\subsubsection{Tuning of \(\beta\)}
+
+The parameter \(\beta\) determines the weight of the MMD term in the loss function. Since the MMD loss is computed separately for each layer and then summed, the overall MMD loss increases as the number of MMD layers increases. To prevent this term from dominating and suppressing the classification information from the labeled data, the parameter \(\beta\) was chosen to be inversely proportional to the number of layers. 
+
+The constant value of \(\beta L\) was optimized through a series of experiments. However, since these experiments are relatively out of the main focus of the study, their details have not been included in this paper.
+
+\subsubsection{Training Details}
+
+During training, the learning rate was set to 0.001, and the momentum was chosen as 0.9. The optimizer used was Stochastic Gradient Descent (SGD). The batch size was set to 512. The number of epochs was selected to increase proportionally with the size of the network to ensure convergence.
+
+\clearpage
+\begin{table}
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|p{4.2cm}|p{4.2cm}|p{4.2cm}|}
+        \hline
+        \textbf{Experiment} & \textbf{Fixed Variables} & \textbf{Independent Variables} & \textbf{Group (Control) Variables} \\ \hline
+        
+        \multirow{6}{*}{$L\textrm{ vs }M_s$} & 
+        $M_t$: 115 \newline 
+        $N_s$: 60000 \newline 
+        $N_t$: 59000 \newline 
+        $d$: 80 \newline 
+        $\alpha$: 0.2 \newline 
+        $\beta$: $1.75/L$ & 
+        $L$: {4, 5, 6, 7, 8} & 
+        $M_s$: {117, 234, 351, 819} \\ \hline
+        
+        \multirow{5}{*}{$L\textrm{ vs }N_s$} & 
+        $M_t$: 750 \newline 
+        $M_s$: 2750 \newline 
+        $d$: 80 \newline 
+        $\alpha$: 0.2 \newline 
+        $\beta$: $1.75/(1 + \frac{L}{4})$ & 
+        $L$: {2, 3, 4, 5, 6} & 
+        $N_{s,t}$: 30000, 36000, 42000, 54000 \\ \hline
+        
+        \multirow{6}{*}{$d\textrm{ vs }M_s$} & 
+        $M_t$: 115 \newline 
+        $N_s$: 60000 \newline 
+        $N_t$: 59000 \newline 
+        $L$: 1 \newline 
+        $\alpha$: 0.25 \newline 
+        $\beta$: 1 & 
+        $d$: {40, 80, 120, 160, 320, 640, 1280} & 
+        $M_s$: {117, 234, 351, 819} \\ \hline
+        
+        \multirow{6}{*}{Optimum $\gamma$} & 
+        $M_s$: {234, 819, 1755} \newline 
+        $N_s$: 6000 \newline 
+        $N_t$: 5900 \newline 
+        $L$: 4 \newline 
+        $d$: 80 \newline 
+        $\beta$: 0.875 & 
+        $\gamma$: {0.2, 0.4, 0.6, 0.8} & 
+        $M_t$: {115, 345, 460, 575} \\ \hline
+    \end{tabular}
+    }
+    \caption{Hyper parameter values for metric-based domain adaptation experiments.}
+    \label{tab:mmd-hyperparams}
+\end{table}
+
+
+\clearpage
+
+\plotfigure{mmd-layer-Ms}{figures/mmd-layer-Ms-linefit.pdf}{figures/mmd-layer-Ms-quadprog.pdf}{The relationship between target accuracy and $L$ (left) and $M_s$ complexity of $L$ (right) for the metric-based domain adaptation model.}
+\plotfigure{mmd-layer-Ns}{figures/mmd-layer-Ns-linefit.pdf}{figures/mmd-layer-Ns-quadprog.pdf}{The relationship between target accuracy and $L$ (left) and $N_s$ complexity of $L$ (right) for the metric-based domain adaptation model.}
+\plotfigure{mmd-dim-Ms}{figures/mmd-dim-Ms-linefit.pdf}{figures/mmd-dim-Ms-quadprog.pdf}{The relationship between target accuracy and $d$ (left) and $M_s$ complexity of $d$ (right) for the metric-based domain adaptation model.}
+\plotfigure{mmd-optgamma}{figures/mmd-optgamma-quadfit_Ms234.pdf}{figures/mmd-optgamma-asqrtx_fit_den_Mss.pdf}{The relationship between target accuracy and $\gamma$, for $M_s = 234$ (left) and $M_t$ complexity of $\gamma_{opt}$, for different $M_s$ values (right) for the metric-based domain adaptation model.}
+
+
+\begin{comment}
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|p{0.1cm}|}
+        \hline
+        \textbf{Experiment} & \textbf{$M_s$} & \textbf{$M_t$} & \textbf{$N_{s,t}$} & \textbf{Ind. Variables}     & \textbf{Group Variables} \\ \hline
+        Layer - Ms  & -    & \multicolumn{2}{l|}{asda}  & $L$: {2,3,4,5,6,7,8,9,10} & $M_s$: {60, 120, 180, 240}  \\ \hline
+        Layer - Ns  & 240  & 20  & -     & $L$: {3,5,7,9} & $N_{s,t}$: 750, 1500, 3000, 12000 \\ \hline
+        Dim - Ms    & -    & 30  & 6000  & $d$: {0.25, 4, 8, 16, 32} & $M_s$: {120, 180, 240, 300, 360} \\ \hline
+        Dim - Ns    & 300  & 30  & -     & $d$: {0.25, 1, 4, 8, 16, 24, 32} & $N_{s,t}$: 750, 1500, 3000, 6000 \\ \hline
+        Opt gamma   & {240, 360, 480} &  -  & 6000 & $\gamma$: {60,120,210,240} & $M_t$: {60, 120, 210, 240} \\ \hline
+    \end{tabular}
+    \caption{Table of experiment hyper parameter values}
+    \label{tab:hyperparams}
+\end{table}
+\end{comment}
+
+\begin{comment}
+https://wandb.ai/hkaraca/layermchange
+https://wandb.ai/hkaraca/layernchange4_mean_loss
+https://wandb.ai/hkaraca/dim-ms-change-2
+https://wandb.ai/hkaraca/dim-ns-change
+https://wandb.ai/hkaraca/optgamma
+\end{comment}
+
+\clearpage
+
+\bibliographystyle{IEEEtran}
+\bibliography{ref.bib}
+
+
+\end{document}
+
+

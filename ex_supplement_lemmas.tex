@@ -1808,7 +1808,16 @@ The misclassification rates of unlabeled target samples are evaluated with respe
 
 We experimentally verify our results in Theorems 3.6 and 3.7 regarding the sample complexity of domain-adaptive neural networks. For both MMD-based and adversarial architectures, we characterize the sample complexity with respect to the depth $\numL$ and the width $\dcom$ of the network, and investigate the optimal value of the weight $\alpha$ of the target loss.
 
-In our experiments, the MNIST handwritten digit data set \cite{mnist} is used as the source data set, which consists of 60000 images. The target data set is taken as MNIST-M \cite{mnistm}, which contains 59000 handwritten digit images with colored backgrounds. We train the neural networks with labeled and unlabeled training samples from the source and target domains, and then evaluate the target accuracy of the learnt models, defined as the correct classification rate of test samples from the target domain. In all experiments, algorithm hyperparameters and fixed variables are chosen  to keep the neural network in the overfitting regime, enabling the characterization of the sample complexity of the models under consideration.
+In our experiments, the MNIST handwritten digit data set \cite{mnist} is used as the source data set, which consists of 60000 images. The target data set is taken as MNIST-M \cite{mnistm}, which contains 59000 handwritten digit images with colored backgrounds. We train the neural networks with labeled and unlabeled training samples from the source and target domains, and then evaluate the target accuracy of the learnt models, defined as the correct classification rate of test samples from the target domain. In all experiments, algorithm hyperparameters and fixed variables are chosen  to keep the neural network in the overfitting regime, enabling the characterization of the sample complexity of the models under consideration. Operating in the overfitting regime means that the network's target accuracy drops below a predefined threshold as network complexity increases for a fixed number of training samples. Increasing the amount of labeled or unlabeled data delays the onset of this accuracy drop, which allows us to determine the required sample size for a given level of network complexity without using excessive computational resources.
+
+\subsubsection{Experimental methodology}
+\label{sssec_exp_methodology}
+
+In the experiments, the primary goal is to characterize how target accuracy behaves as network complexity increases, measured either by the number of layers $\numL$ or the width parameter $\dcom$. In the overfitting regime, for fixed sample sizes $\Ms$ or $\Ns$, target accuracy decreases as network complexity grows. Our experiments indicate that this decrease can be approximated as a linear decline. Therefore, in addition to the data points obtained experimentally, we estimate values for untested complexity levels by applying linear extrapolation, improving computational efficiency. The target accuracy vs.\ network complexity curves along with the corresponding linear regression fits are presented in the left panels of the relevant figures.
+
+The right panels analyze how the number of labeled or unlabeled samples required to guarantee a fixed target accuracy changes with network size. Specific target accuracy levels are selected, and the network complexities at which these accuracy levels are maintained are identified by drawing a horizontal line at the chosen target accuracy and finding its intersections with the linearly extrapolated curves. Once the maximum network complexity at which the network maintains the predefined target accuracy is identified, the variation of these complexity values with respect to $\Ms$ or $\Ns$ is plotted. A quadratic curve in the form of $ax^2 + bx + c$ with the constraint $\frac{-b}{2a} \geq 0$ is fitted to the experimental results for visual evaluation.
+
+For the optimal $\alpha$ experiments, the relationship between target accuracy and $\alpha$ is first characterized, and the optimal value $\alpha_{opt}$ is identified for each $\Mt$ value (while keeping $\Ms$ constant). Our experimental results suggest that the variation of target accuracy with $\alpha$ can be approximated as quadratic, which is meaningful since $\alpha$ is expected to have an optimal value that maximizes target accuracy. The $\alpha$ value corresponding to the peak of the fitted parabola is denoted as $\alpha_{opt}$. Subsequently, to validate the theoretical relationship $\alpha_{opt} = O(\sqrt{\Mt})$, the data are plotted with $\alpha_{opt}$ on the vertical axis and $\Mt$ on the horizontal axis, and a curve of the form $a + b\sqrt{x}$ is fitted. This procedure is repeated for different $\Ms$ values to verify consistency.
 
 \subsubsection{MMD-based domain adaptation networks}
 
@@ -1822,11 +1831,74 @@ In our analysis of MMD-based domain adaptation networks, we consider the archite
 %
 where $\loss(\cdot, \cdot)$ is set as the cross-entropy loss function and the source and target feature transformations are coupled as $\fs=\ft=f$ and $\fsl=\ftl=f^l$. 
 
+\paragraph{Implementation details.}
+One significant modification with respect to the original implementation is the handling of the convolutional layers in the feature extractor. In the original article \cite{LongCWJ15}, these layers were fixed during training, i.e., their parameters were not updated. In our implementation, the convolutional layers are trained iteratively during each training process. The parameter $\numL$ represents the number of fully connected MMD layers in the network, and all of these layers can be easily configured since they are fully connected (linear) layers. The parameter $\dcom$ represents the factor by which the width of the MMD layers in the original implementation \cite{mmd_code_pytorch} is multiplied. When new fully connected layers are added to the network (i.e., when $\numL$ increases), batch normalization layers are inserted between the added layers to stabilize training and improve performance.
+
+\paragraph{Tuning of $\beta$.}
+The parameter $\beta$ determines the weight of the MMD term in the objective function. Since the MMD loss is computed separately for each layer and then summed, the overall MMD loss increases as $\numL$ increases. To prevent this term from dominating and suppressing the classification information from the labeled data, the parameter $\beta$ is chosen to be inversely proportional to the number of layers $\numL$.
+
+\paragraph{Training details.}
+During training, we use the Stochastic Gradient Descent (SGD) optimizer with a learning rate of 0.001 and momentum of 0.9. The batch size is set to 512. The number of training epochs is selected to increase proportionally with the size of the network in order to ensure convergence. The complete experimental configurations, including fixed, independent, and group (control) variable values for each experiment, are summarized in Table~\ref{tab:mmd-hyperparams-supp}.
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|p{5.0cm}|p{4.2cm}|p{4.2cm}|}
+        \hline
+        \textbf{Experiment} & \textbf{Fixed Variables} & \textbf{Independent Variables} & \textbf{Group (Control) Variables} \\ \hline
+        
+        $\numL$ vs.\ $\Ms$ & 
+        $\Mt$: 115, 
+        $\Ns$: 60000, 
+        $\Nt$: 59000, \newline 
+        $\dcom$: 80, 
+        $\alpha$: 0.2, 
+        $\beta$: $1.75/\numL$ & 
+        $\numL$: \{4, 5, 6, 7, 8\} & 
+        $\Ms$: \{117, 234, 351, 819\} \\ \hline
+        
+        $\numL$ vs.\ $\Ns$ & 
+        $\Mt$: 750, 
+        $\Ms$: 2750, \newline 
+        $\dcom$: 80, 
+        $\alpha$: 0.2, 
+        $\beta$: $1.75/(1 + \numL/4)$ & 
+        $\numL$: \{2, 3, 4, 5, 6\} & 
+        $\Ns, \Nt$: \{30000, 36000, 42000, 54000\} \\ \hline
+        
+        $\dcom$ vs.\ $\Ms$ & 
+        $\Mt$: 115, 
+        $\Ns$: 60000, 
+        $\Nt$: 59000, \newline 
+        $\numL$: 1, 
+        $\alpha$: 0.25, 
+        $\beta$: 1 & 
+        $\dcom$: \{40, 80, 120, 160, 320, 640, 1280\} & 
+        $\Ms$: \{117, 234, 351, 819\} \\ \hline
+        
+        Optimum $\alpha$ & 
+        $\Ms$: \{234, 819, 1755\}, \newline 
+        $\Ns$: 6000, 
+        $\Nt$: 5900, \newline 
+        $\numL$: 4, 
+        $\dcom$: 80, 
+        $\beta$: 0.875 & 
+        $\alpha$: \{0.2, 0.4, 0.6, 0.8\} & 
+        $\Mt$: \{115, 345, 460, 575\} \\ \hline
+    \end{tabular}
+    }
+    \caption{Experimental configurations for MMD-based domain adaptation experiments.}
+    \label{tab:mmd-hyperparams-supp}
+\end{table}
+
+\paragraph{Sample complexity with respect to depth and width.}
 We study the sample complexity of labeled source samples $\Ms$ and all source samples $\Ns$ with respect to the number  $\numL$ of MMD layers in the network. The experiments show the decrease in the target accuracy as the number  $\numL$ of MMD layers increases when the network is in the overfitting regime, for different $\Ms$ and $\Ns$ values. We aim to characterize the sample complexity of $\Ms$ and $\Ns$ with respect to $\numL$ in this experiment. Therefore, we determine several desired target accuracy levels and identify the smallest $\Ms$ and $\Ns$ values that ensure this target accuracy as $\numL$ grows (in cases where obtaining the exact value of $\numL$ exceeded our computational resources, we resorted to linear extrapolation to approximately infer the corresponding $\numL$ value). We recall from Theorem 3.6 that the sample complexities of $\Ms$ and $\Ns$ are expected to grow at quadratic rates $\Ms=O(\numL^2)$ and $\Ns=O(\numL^2)$ as the network depth $\numL$ increases. The experimental findings confirm this prediction, as the increase in the required sample size for attaining a reference target accuracy level indeed follows a quadratic increase with $\numL$. The curves are obtained by fitting quadratic polynomials to the experimental data for visual evaluation.
 
 A similar experiment is conducted for sample complexity with respect to the network width. The parameter $\dcom$ represents the factor by which the network width in the original implementation  \cite{mmd_code_pytorch} is multiplied in our experiment. Hence, $\dcom$ is directly proportional to the shared width parameter of the MMD layers. The results are also consistent with the theoretical findings in Theorem 3.6, which states that the sample complexity must increase at a quadratic rate $\Ms=O(\dcom^2)$ as the network width increases.
 
-We also recall from Theorem 3.6 that, in order to maximize the target accuracy, the weight parameter $\alpha$ of the target classification loss must scale as $\alpha=O(\sqrt{\Mt})$ as the number $\Mt$ of labeled target samples varies. We experimentally validate this result. We examine the variation of the target accuracy with the weight parameter $\alpha$, which follows a non-monotonic variation with $\alpha$ as expected. We approximately identify the optimal value $\alpha_{opt}$ of the weight parameter for each value of $\Mt$ by applying polynomial fitting to the plots. In order to visually observe the prediction of Theorem  3.6, we also fit a curve of $O(\sqrt{\Mt})$ to each data sequence. The experimental data seems consistent with the fitted  curves, which supports the statement of Theorem 3.6 that the optimal weight parameter must scale at rate $\alpha_{opt}=O(\sqrt{\Mt})$.
+\paragraph{Optimal weight parameter $\alpha$.}
+We recall from Theorem 3.6 that, in order to maximize the target accuracy, the weight parameter $\alpha$ of the target classification loss must scale as $\alpha=O(\sqrt{\Mt})$ as the number $\Mt$ of labeled target samples varies. We experimentally validate this result. We examine the variation of the target accuracy with the weight parameter $\alpha$, which follows a non-monotonic variation with $\alpha$ as expected. We approximately identify the optimal value $\alpha_{opt}$ of the weight parameter for each value of $\Mt$ by applying polynomial fitting to the plots. In order to visually observe the prediction of Theorem  3.6, we also fit a curve of $O(\sqrt{\Mt})$ to each data sequence. The experimental data seems consistent with the fitted  curves, which supports the statement of Theorem 3.6 that the optimal weight parameter must scale at rate $\alpha_{opt}=O(\sqrt{\Mt})$.
 
 \subsubsection{Adversarial domain adaptation networks}
 
@@ -1849,10 +1921,69 @@ In order to experimentally evaluate our findings in Section 3.3.2, we adopt the 
 %
 where the label loss $\loss(\cdot, \cdot)$ and the domain discrimator loss $\loss_\dom(\cdot, \cdot)$ are selected as the negative log likelihood function, and the source and target feature extractor networks are coupled as $\fs=\ft=f$. 
 
-The feature extractor network contains only convolutional layers, while the label predictor and domain discriminator networks consist of fully connected layers in the implementation in \cite{fungtion_DANN_py3}. In order to adapt our experiments to this structure, when analyzing the sample complexity of labeled data ($\Ms$), we set the number of layers in the feature extractor and label predictor networks as equal, which is represented by the parameter $\numL$. Likewise, when studying the sample complexity of all data ($\Ns$), the number of layers in the feature extractor and domain discriminator networks are equated and denoted as  $\numL$. We use a similar strategy to adjust the network width, where we scale the number of convolutional channels and the fully connected layer width in the original paper  \cite{GaninUAGLLML16}  with the same factor $\dcom$. Hence, the number of convolutional channels is scaled proportionally to the width of the label predictor and the domain discriminator networks, respectively, when studying the sample complexities of $\Ms$ and $\Ns$. Batch normalization and ReLU layers are included after each convolutional or fully connected layer, following standard practice.
+\paragraph{Implementation details.}
+Two major modifications were applied to the original implementation \cite{fungtion_DANN_py3}: (i) transitioning from a fully unsupervised structure to the semi-supervised framework studied in our analysis, and (ii) adding the capability to systematically increase the network capacity. The first modification is reflected in the summation limits of the objective function, which now distinguish between labeled samples (used for classification loss) and all samples (used for domain discrimination loss). The second modification is implemented through the parameters $\numL$ and $\dcom$ as described below.
 
+The feature extractor network contains only convolutional layers, while the label predictor and domain discriminator networks consist of fully connected layers in the implementation in \cite{fungtion_DANN_py3}. The original architecture in \cite{GaninUAGLLML16} consists of a feature extractor with two convolutional layers, a label predictor with three fully connected layers, and a domain discriminator with two fully connected layers. In our implementation, the model is updated to take $\numL$ as an input parameter and dynamically stack the corresponding number of convolutional and fully connected layers. Specifically, when analyzing the sample complexity of labeled data ($\Ms$), we set the number of layers in the feature extractor and label predictor networks as equal, which is represented by the parameter $\numL$. Likewise, when studying the sample complexity of all data ($\Ns$), the number of layers in the feature extractor and domain discriminator networks are equated and denoted as  $\numL$. The convolutional layers in the feature extractor, being shared by both networks, are modified in all experiments. Batch normalization and ReLU layers are included after each convolutional or fully connected layer, following standard practice.
+
+We use a similar strategy to adjust the network width, where we scale the number of convolutional channels and the fully connected layer width in the original paper  \cite{GaninUAGLLML16}  with the same factor $\dcom$. In the original architecture, the convolutional layers have 64 channels and the fully connected layers have 100 neurons. Hence, the number of convolutional channels is scaled proportionally to the width of the label predictor and the domain discriminator networks, respectively, when studying the sample complexities of $\Ms$ and $\Ns$. For instance, in a $\Ms$ vs.\ $\dcom$ experiment with $\dcom=2$ and $\numL=3$, the resulting architecture consists of a feature extractor with 4 convolutional layers (each with 128 channels), a label predictor with 4 fully connected layers (each with 200 neurons), and a domain discriminator with 2 fully connected layers (each with 100 neurons).
+
+\paragraph{Training details.}
+Training is conducted using the Adam optimizer with a learning rate of 0.001. The batch size is set to 128, and the network is trained for 100 epochs. The complete experimental configurations for each experiment are summarized in Table~\ref{tab:adv-hyperparams-supp}.
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.2}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|p{5.0cm}|p{4.2cm}|p{4.2cm}|}
+        \hline
+        \textbf{Experiment} & \textbf{Fixed Variables} & \textbf{Independent Variables} & \textbf{Group (Control) Variables} \\ \hline
+        
+        $\numL$ vs.\ $\Ms$ & 
+        $\Mt$: 20, 
+        $\Ns, \Nt$: 6000, \newline 
+        $\dcom$: 1 & 
+        $\numL$: \{4, 5, 6, 7, 8, 9, 10\} & 
+        $\Ms$: \{60, 120, 180, 240\} \\ \hline
+        
+        $\numL$ vs.\ $\Ns$ & 
+        $\Mt$: 20, 
+        $\Ms$: 240, \newline 
+        $\dcom$: 1 & 
+        $\numL$: \{3, 5, 7, 9\} & 
+        $\Ns, \Nt$: \{750, 1500, 3000, 12000\} \\ \hline
+        
+        $\dcom$ vs.\ $\Ms$ & 
+        $\Mt$: 30, 
+        $\Ns, \Nt$: 6000, \newline 
+        $\numL$: 2 & 
+        $\dcom$: \{1, 4, 8, 16, 24, 32\} & 
+        $\Ms$: \{120, 180, 240, 300, 360\} \\ \hline
+        
+        $\dcom$ vs.\ $\Ns$ & 
+        $\Mt$: 30, 
+        $\Ms$: 300, \newline 
+        $\numL$: 2 & 
+        $\dcom$: \{1, 4, 8, 16, 24, 32\} & 
+        $\Ns, \Nt$: \{750, 1500, 3000, 6000\} \\ \hline
+        
+        Optimum $\alpha$ & 
+        $\Ms$: \{240, 360, 480\}, \newline 
+        $\Ns, \Nt$: 6000, \newline 
+        $\numL$: 3, 
+        $\dcom$: 1 & 
+        $\alpha$: varied in $[0,1]$ & 
+        $\Mt$: \{60, 120, 210, 240\} \\ \hline
+    \end{tabular}
+    }
+    \caption{Experimental configurations for adversarial domain adaptation experiments.}
+    \label{tab:adv-hyperparams-supp}
+\end{table}
+
+\paragraph{Sample complexity with respect to depth and width.}
 The sample complexities of the number of source samples with the network depth $\numL$ and  width $\dcom$ are presented in the figures. Similarly to the MMD experiments, we show the variation of the target accuracy with $\numL$ or $\dcom$ at different $\Ms$ and $\Ns$ values, and then investigate the smallest $\Ms$ and $\Ns$ values ensuring a reference target accuracy level as $\numL$ or $\dcom$ increases. The results of these experiments align with the theoretical bounds in Theorem 3.7, confirming the quadratic growth in the sample complexities $\Ms, \Ns=O(\numL^2)$  and $\Ms, \Ns = O(\dcom^2)$ as the network depth $\numL$ and width $\dcom$ increase.
 
+\paragraph{Optimal weight parameter $\alpha$.}
 We lastly study the choice of the parameter $\alpha$ weighting the target classification loss in the objective function for the adversarial setting. The results confirm the theoretical prediction that the  optimal value  of the weight parameter should scale at rate $\alpha_{opt} =O( \sqrt{\Mt})$ as the number of labeled samples varies.
 
 Overall, our experimental findings are in line with the theoretical bounds presented in Theorems 3.6 and 3.7, supporting our sample complexity and optimal weight choice analyses for both MMD-based and adversarial domain adaptation networks.

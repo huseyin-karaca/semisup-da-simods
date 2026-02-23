@@ -1,3 +1,20 @@
+% macOS hidden files
 /.DS_Store
+
+% my own notes
 /CHANGES.md
-/test.txt
+
+% latex auxilary files
+
+# /latex_output/*.aux # they are needed for xref
+/latex_output/*.bbl
+/latex_output/*.blg
+/latex_output/*.fdb_latexmk
+/latex_output/*.fls
+/latex_output/*.log
+/latex_output/*.out
+/latex_output/*.synctex.gz
+/latex_output/*.thm
+/latex_output/*.toc
+/latex_output/*.lof
+/latex_output/*.lot

@@ -1,6 +1,6 @@
 # A Unified Analysis of Generalization and Sample Complexity for Semi-Supervised Domain Adaptation
 
-**Elif Vural, Hüseyin Karaca** — Submitted to SIAM Journal on Mathematics of Data Science (SIMODS)
+**Elif Vural, Hüseyin Karaca** — In preparation for submission to SIAM Journal on Mathematics of Data Science (SIMODS)
 
 
 ## File Overview
@@ -9,8 +9,7 @@
 |---|---|
 | `article.tex` | Main manuscript |
 | `supplement.tex` | Supplementary material (proofs) |
-| `shared.tex` | Shared preamble (title, authors, common packages/macros) included by both documents |
-| `preamble.tex` | Additional macro definitions |
+| `shared.tex` | Shared preamble (title, authors, common packages/macros, math symbols) included by both documents |
 | `refs.bib` | Bibliography |
 | `siamonline250211.cls` | SIAM document class |
 | `siamplain.bst` | SIAM bibliography style |
@@ -23,7 +22,13 @@
 
 ## Local Use (VS Code + LaTeX Workshop)
 
-A `.vscode/` folder is included with settings pre-configured for the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension. Build outputs are directed to `latex_output/`. No extra setup needed — open the folder in VS Code and compile `article.tex` or `supplement.tex` directly.
+A .vscode/ folder is included with settings pre-configured for the [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) extension. 
+Build outputs are directed to `latex_output/`.
+
+A LaTeX distribution (e.g., MacTeX, TeX Live, or MiKTeX) must be installed on your system.
+The configuration assumes that `latexmk`, `pdflatex`, and `bibtex` are available in `/Library/TeX/texbin/` (default MacTeX path on macOS).
+
+No extra VS Code setup is required — open the folder in VS Code and compile `article.tex` or `supplement.tex` directly.
 
 
 ## Overleaf

@@ -9,6 +9,12 @@
 \bibitem{BaktashmotlaghHLS13}
 {\sc M.~Baktashmotlagh, M.~T. Harandi, B.~C. Lovell, and M.~Salzmann}, {\em Unsupervised domain adaptation by domain invariant projection}, in {IEEE} International Conference on Computer Vision, 2013, pp.~769--776.
 
+\bibitem{BartlettFT17}
+{\sc P.~L. Bartlett, D.~J. Foster, and M.~Telgarsky}, {\em Spectrally-normalized margin bounds for neural networks}, in Advances in Neural Information Processing Systems 30, 2017, pp.~6240--6249.
+
+\bibitem{BartlettMR21}
+{\sc P.~L. Bartlett, A.~Montanari, and A.~Rakhlin}, {\em Deep learning: a statistical viewpoint}, Acta Numerica, 30 (2021), pp.~87--201.
+
 \bibitem{BenDavidBCKPV10}
 {\sc S.~Ben{-}David, J.~Blitzer, K.~Crammer, A.~Kulesza, F.~Pereira, and J.~Wortman}, {\em A theory of learning from different domains}, Machine Learning, 79 (2010), pp.~151--175.
 
@@ -35,6 +41,9 @@
 
 \bibitem{DaumeKS10}
 {\sc H.~Daum{\'{e}}~III, A.~Kumar, and A.~Saha}, {\em Co-regularization based semi-supervised domain adaptation}, in Proc. Advances in Neural Information Processing Systems 23, 2010, pp.~478--486.
+
+\bibitem{DengGHML23}
+{\sc Y.~Deng~et al.}, {\em On the hardness of robustness transfer: {A} perspective from {R}ademacher complexity over symmetric difference hypothesis space}, arXiv preprint: http://arxiv.org/abs/2302.12351,  (2023).
 
 \bibitem{DhouibRL20}
 {\sc S.~Dhouib, I.~Redko, and C.~Lartizien}, {\em Margin-aware adversarial domain adaptation with optimal transport}, in Proc. Int. Conf. Machine Learning,, vol.~119, 2020, pp.~2514--2524.
@@ -73,8 +82,14 @@
 {\sc {GitHub repository}}, {\em Dann\_py3}, 2023.
 \newblock [Online]. Available: \url{https://github.com/fungtion/DANN_py3.git}.
 
+\bibitem{GolowichRS18}
+{\sc N.~Golowich, A.~Rakhlin, and O.~Shamir}, {\em Size-independent sample complexity of neural networks}, in Conference On Learning Theory, vol.~75, 2018, pp.~297--299.
+
 \bibitem{GrettonBRSS12}
 {\sc A.~Gretton, K.~M. Borgwardt, M.~J. Rasch, B.~Sch{\"{o}}lkopf, and A.~J. Smola}, {\em A kernel two-sample test}, J. Mach. Learn. Res., 13 (2012), pp.~723--773.
+
+\bibitem{HarveyLM17}
+{\sc N.~Harvey, C.~Liaw, and A.~Mehrabian}, {\em Nearly-tight {VC}-dimension bounds for piecewise linear neural networks}, in Proc. Conf. Learning Theory, vol.~65, 2017, pp.~1064--1068.
 
 \bibitem{HuangSGBS06}
 {\sc J.~Huang, A.~J. Smola, A.~Gretton, K.~M. Borgwardt, and B.~Sch{\"{o}}lkopf}, {\em Correcting sample selection bias by unlabeled data}, in Proc. Advances in Neural Information Processing Systems 19, 2006, pp.~601--608.
@@ -107,6 +122,12 @@
 \bibitem{McNamaraB17}
 {\sc D.~McNamara and M.~Balcan}, {\em Risk bounds for transferring representations with and without fine-tuning}, in Proc. Int. Conf. Machine Learning,, vol.~70, 2017, pp.~2373--2381.
 
+\bibitem{MohriM12}
+{\sc M.~Mohri and A.~M. Medina}, {\em New analysis and algorithm for learning with drifting distributions}, in Int. Conf. Algorithmic Learning Theory, vol.~7568, 2012, pp.~124--138.
+
+\bibitem{NeyshaburBS18}
+{\sc B.~Neyshabur, S.~Bhojanapalli, and N.~Srebro}, {\em A {PAC}-bayesian approach to spectrally-normalized margin bounds for neural networks}, in Int. Conf. Learning Representations, 2018.
+
 \bibitem{NeyshaburTS15}
 {\sc B.~Neyshabur, R.~Tomioka, and N.~Srebro}, {\em Norm-based capacity control in neural networks}, in Prof. 28th Conference on Learning Theory, vol.~40, 2015, pp.~1376--1401.
 
@@ -115,6 +136,9 @@
 
 \bibitem{RedkoMHS20}
 {\sc I.~Redko, E.~Morvant, A.~Habrard, M.~Sebban, and Y.~Bennani}, {\em A survey on domain adaptation theory}, arXiv preprint: http://arxiv.org/abs/2004.11829,  (2020).
+
+\bibitem{SiciliaAAH22}
+{\sc A.~Sicilia, K.~Atwell, M.~Alikhani, and S.~J. Hwang}, {\em {PAC}-{B}ayesian domain adaptation bounds for multiclass learners}, in Proc. Conf. Uncertainty in Artificial Intelligence, vol.~180, 2022, pp.~1824--1834.
 
 \bibitem{SinghalWRK23}
 {\sc P.~Singhal, R.~Walambe, S.~Ramanna, and K.~Kotecha}, {\em Domain adaptation: Challenges, methods, datasets, and applications}, {IEEE} Access, 11 (2023), pp.~6973--7020.
@@ -130,6 +154,9 @@
 
 \bibitem{TangJ20}
 {\sc H.~Tang and K.~Jia}, {\em Discriminative adversarial domain adaptation}, in {AAAI} Conference on Artificial Intelligence, 2020, pp.~5940--5947.
+
+\bibitem{TripuraneniJJ20}
+{\sc N.~Tripuraneni, M.~I. Jordan, and C.~Jin}, {\em On the theory of transfer learning: The importance of task diversity}, in Advances in Neural Information Processing Systems, 2020.
 
 \bibitem{TzengHDS15}
 {\sc E.~Tzeng, J.~Hoffman, T.~Darrell, and K.~Saenko}, {\em Simultaneous deep transfer across domains and tasks}, in {IEEE} International Conference on Computer Vision, 2015, pp.~4068--4076.
@@ -152,14 +179,23 @@
 \bibitem{WangS15}
 {\sc X.~Wang and J.~Schneider}, {\em Generalization bounds for transfer learning under model shift}, in Proc. Conf. Uncertainty in Artificial Intelligence, 2015, pp.~922--931.
 
+\bibitem{WangM23}
+{\sc Z.~Wang and Y.~Mao}, {\em Information-theoretic analysis of unsupervised domain adaptation}, in Int. Conf. Learning Representations, 2023.
+
 \bibitem{WangM24}
 {\sc Z.~Wang and Y.~Mao}, {\em On f-divergence principled domain adaptation: An improved framework}, in Advances in Neural Information Processing Systems, 2024.
+
+\bibitem{WangMSX23}
+{\sc B.~Wang~et al.}, {\em Gap minimization for knowledge sharing and transfer}, J. Mach. Learn. Res., 24 (2023), pp.~33:1--33:57.
 
 \bibitem{WangYXWZW23}
 {\sc P.~Wang~et al.}, {\em Information maximizing adaptation network with label distribution priors for unsupervised domain adaptation}, IEEE Transactions on Multimedia, 25 (2023), pp.~6026--6039.
 
 \bibitem{WeiM19}
 {\sc C.~Wei and T.~Ma}, {\em Data-dependent sample complexity of deep neural networks via {L}ipschitz augmentation}, in Advances in Neural Information Processing Systems 32, 2019, pp.~9722--9733.
+
+\bibitem{WuMAZ24}
+{\sc X.~Wu, J.~H. Manton, U.~Aickelin, and J.~Zhu}, {\em On the generalization for transfer learning: An information-theoretic analysis}, {IEEE} Trans. Inf. Theory, 70 (2024), pp.~7089--7124.
 
 \bibitem{DXiaLZSL25}
 {\sc Z.~Xia~et al.}, {\em Meta domain adaptation approach for multi-domain ranking}, {IEEE} Access, 13 (2025), pp.~92921--92931.
@@ -172,6 +208,9 @@
 
 \bibitem{Yurinski76}
 {\sc V.~V. Yurinskii}, {\em Exponential inequalities for sums of random vectors}, Journal of Multivariate Analysis, 6 (1976), pp.~473--499.
+
+\bibitem{ZellingerMS21}
+{\sc W.~Zellinger, B.~A. Moser, and S.~Saminger{-}Platz}, {\em On generalization in moment-based domain adaptation}, Ann. Math. Artif. Intell., 89 (2021), pp.~333--369.
 
 \bibitem{ZengSRGFZ25}
 {\sc Y.~Zeng~et al.}, {\em Multirepresentation dynamic adaptive network for cross-domain rolling bearing fault diagnosis in complex scenarios}, IEEE Transactions on Instrumentation and Measurement, 74 (2025), pp.~1--16.

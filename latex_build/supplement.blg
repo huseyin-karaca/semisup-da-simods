@@ -1,12 +1,12 @@
 This is BibTeX, Version 0.99d (TeX Live 2024)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
-The top-level auxiliary file: ex_supplement_lemmas.aux
+The top-level auxiliary file: supplement.aux
 The style file: siamplain.bst
 Database file #1: refs.bib
 Warning--empty year in LongCWJ15
 You've used 46 entries,
             2244 wiz_defined-function locations,
-            845 strings with 11486 characters,
+            845 strings with 11466 characters,
 and the built_in function-call counts, 18520 in all, are:
 = -- 1648
 > -- 748

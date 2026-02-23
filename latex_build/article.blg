@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: article.aux
+The style file: siamplain.bst
+Database file #1: refs.bib
+Warning--empty year in LongCWJ15
+You've used 75 entries,
+            2244 wiz_defined-function locations,
+            1021 strings with 16164 characters,
+and the built_in function-call counts, 31395 in all, are:
+= -- 2840
+> -- 1221
+< -- 0
++ -- 492
+- -- 406
+* -- 2194
+:= -- 4311
+add.period$ -- 77
+call.type$ -- 75
+change.case$ -- 426
+chr.to.int$ -- 0
+cite$ -- 76
+duplicate$ -- 1709
+empty$ -- 2964
+format.name$ -- 406
+if$ -- 7101
+int.to.chr$ -- 0
+int.to.str$ -- 75
+missing$ -- 75
+newline$ -- 230
+num.names$ -- 150
+pop$ -- 773
+preamble$ -- 1
+purify$ -- 353
+quote$ -- 0
+skip$ -- 1199
+stack$ -- 0
+substring$ -- 2254
+swap$ -- 626
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 296
+warning$ -- 1
+while$ -- 311
+width$ -- 77
+write$ -- 676
+(There was 1 warning)

@@ -387,3 +387,42 @@ User feedback indicated that Phase 2 compressed experimental section too aggress
 - References to supplement guide readers to full details
 
 **Result:** Balanced compression that preserves scientific communication quality while achieving length targets.
+
+
+
+
+
+## sonradan discussion section'u değişiklikleri
+
+1- remark'lar footnote oldu.
+
+Yapılan kısaltmanın özeti:
+Tüm atıflar, denklemler, çapraz referanslar ve dipnotlar korundu. Hiçbir bilgi kaybı yok.
+Ana kısaltma stratejileri:
+Gereksiz giriş ifadeleri sadeleştirildi ("One of the earliest analyses examining the effect of..." → "Ben-David et al. present one of the earliest analyses of...")
+Tekrarlayan açıklamalar kaldırıldı ("with respect to a distribution" → sadece "probability")
+Uzun cümleler birleştirildi veya kısaltıldı (özellikle 6.1'deki "Following these pioneering works..." paragrafı, birçok ayrı cümle yerine tek bir liste formatına dönüştürüldü)
+Dipnotlar önemli ölçüde kısaltıldı (bilgi içeriği korunarak)
+Gereksiz bağlaçlar ve dolgu ifadeleri temizlendi ("We note that", "To the best of our knowledge" tekrarları, "a very limited number of theoretical analyses have investigated" → "Very few theoretical analyses have investigated")
+Subsection 6.2'de Zhou et al. açıklaması tek cümleye indirildi, Fang et al. paragrafı kısaltıldı
+Subsection 6.3'te giriş paragrafı ve son paragraf yoğunlaştırıldı
+Tahmini olarak ~%15-20 kelime tasarrufu sağlandı; bu da bu section için yaklaşık yarım sayfa civarı yer kazandırır.
+
+
+
+Merhaba Hocam, 
+
+Nasılsınız, umarım iyisinizdir. Geç dönüş için kusura bakmayın lütfen. Yer kazanmak için yaptığım değişikliklerin bir listesi:
+
+- Öncelikle sizin dediklerinizi uyguladım. Tüm appendix ve experimental work section'unun çoğu şu an supplementary'de. Tüm lemma'lar da supplementary'de state edilip proof'lanıyor. Ana metinde lemma'lar sadece prooflarda ya da genel akışta işimize yaradığı şekliyle cite edilip geçiliyor. 
+- Normalde eski dördüncü section'u (comparison with previous work) de tamamen kaldırmıştım fakat sonradan remark'ları footnote'a alınca ve daha doğrudan bir üslup kullanarak sığdırabileceğimizi fark ettim.
+- En çok uğraştığım ve bize epey line kazandıran şey, ileride cite edilmeyen equation'ları inline'a almak oldu. Benzer şekilde, aynı equation içinde hem source hem de target için yazdığımız ifadeleri de alt alta değil yan yana yazdım. 
+- Footnote'ların line sayısından düşmediğini fark edince, remark gibi, ek açıklama gibi gördüğüm her şeyi footnote'a aldım. Bunu en çok experimental work kısmında kullandım. Bu bize epey yer kazandırdı. 
+- AI'ı olabildiğince sorumlu kullanmaya gayret ettim. 
+- Referansları \cref'e çevirmek, [1], [2], [3] gibi sıralı referansları [1,2,3] haline getirmek, introduction'daki itemize ortamının marjinlerini küçültmek, bazı açıklamaları figure caption'larına kaydırmak (caption'lar da line number'dan düşmüyor) gibi bir iki line demeyip bize line kazandıracak her hileyi kendimce uyguladım. 
+- Bir de, kod paylaşmanın önemli olacağını düşünerek, bir github reposu hazırladım ve bunu da reproducibility & support further research diyerek hem main contribution'larımızı sıraladığımız listede, hem de experimental work section'unda linkini verdim / bahsettim.
+- Bahsi geçtiğinde (Footnote'larda) hem convolutional layer hem de dropout, batchnorm vb mekanizmaları teorik analizimize almasak bile deneysel setupta kullandığımızı ve teorik bulgularımızın buna rağmen doğrulandığını olumlu bir şekilde vurguladım. (Yani teorik analizin bir eksikliği gibi değil)
+
+
+
+Hocam umarım yaptığım değişiklikler makalede matematiksel rigor'u bozacak ölçüde ileri gitmemiştir. Fakat gözlemledim ki o kadar da kısıtlı değiliz / yer kazanabileceğimiz pek çok alan var. Eğer benim kaldırmış olduğum / değiştirdiğim ama sizin çok önemli gördüğünüz kısımlar varsa bana söyleyin lütfen ben sığdırmanın bir yolunu bulurum.

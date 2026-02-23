@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  17 FEB 2026 23:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.3)  23 FEB 2026 14:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex
-(/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex
+**/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex
+(/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
 (/usr/local/texlive/2024/texmf-dist/tex/latex/hyperref/xr-hyper.sty
@@ -364,7 +364,7 @@ Package: lineno 2023/05/20 line numbers on paragraphs v5.3
 \bframebox=\box55
 \linenoamsmath@ams@eqpen=\count312
 LaTeX Info: Redefining \\ on input line 3180.
-)) (./ex_shared.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/subfig/subfig.sty
+)) (./shared.tex (/usr/local/texlive/2024/texmf-dist/tex/latex/subfig/subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
  (/usr/local/texlive/2024/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
@@ -444,7 +444,7 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \c@endassumptionctr=\count339
 
 
-./ex_shared.tex:46: LaTeX Error: Command \definition already defined.
+./shared.tex:46: LaTeX Error: Command \definition already defined.
                Or name \end... illegal, see p.192 of the manual.
 
 See the LaTeX manual or LaTeX Companion for explanation.
@@ -458,16 +458,28 @@ Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
 (./preamble.tex))
-Package xr Info: IMPORTING LABELS FROM ex_supplement_lemmas.aux on input line 27.
- (latex_build/ex_article.aux
+Package xr Info: IMPORTING LABELS FROM supplement.aux on input line 27.
+ (latex_build/article.aux
 
 LaTeX Warning: Label `eq_hD2_dda' multiply defined.
 
 
 LaTeX Warning: Label `eq_hD2_dda@cref' multiply defined.
 
+
+LaTeX Warning: Label `sec_rel_work' multiply defined.
+
+
+LaTeX Warning: Label `sec_rel_work@cref' multiply defined.
+
+
+LaTeX Warning: Label `eq_samp_comp_Bartlett_NN' multiply defined.
+
+
+LaTeX Warning: Label `eq_samp_comp_Bartlett_NN@cref' multiply defined.
+
 )
-\openout1 = `ex_article.aux'.
+\openout1 = `article.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
@@ -488,9 +500,9 @@ LaTeX Font Info:    ... okay on input line 42.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
 LaTeX Font Info:    ... okay on input line 42.
 Package hyperref Info: Link coloring ON on input line 42.
- (latex_build/ex_article.out) (latex_build/ex_article.out)
+ (latex_build/article.out) (latex_build/article.out)
 \@outlinefile=\write3
-\openout3 = `ex_article.out'.
+\openout3 = `article.out'.
 
  (/usr/local/texlive/2024/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -528,38 +540,38 @@ Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [3]
-<figures/illus_domain_relation_a.pdf, id=226, 633.3154pt x 369.31476pt>
+<figures/illus_domain_relation_a.pdf, id=239, 633.3154pt x 369.31476pt>
 File: figures/illus_domain_relation_a.pdf Graphic file (type pdf)
 <use figures/illus_domain_relation_a.pdf>
-Package pdftex.def Info: figures/illus_domain_relation_a.pdf  used on input line 148.
+Package pdftex.def Info: figures/illus_domain_relation_a.pdf  used on input line 150.
 (pdftex.def)             Requested size: 177.81041pt x 103.68918pt.
-<figures/illus_domain_relation_b.pdf, id=227, 624.98055pt x 428.63167pt>
+<figures/illus_domain_relation_b.pdf, id=240, 624.98055pt x 428.63167pt>
 File: figures/illus_domain_relation_b.pdf Graphic file (type pdf)
 <use figures/illus_domain_relation_b.pdf>
-Package pdftex.def Info: figures/illus_domain_relation_b.pdf  used on input line 150.
+Package pdftex.def Info: figures/illus_domain_relation_b.pdf  used on input line 152.
 (pdftex.def)             Requested size: 177.81041pt x 121.94545pt.
+Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 161.
 
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [4
+ [4]
+Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 177.
+LaTeX Font Info:    Trying to load font information for U+euf on input line 177.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
+File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
+)
+Underfull \vbox (badness 1331) has occurred while \output is active []
 
-]
-Package hyperref Info: bookmark level for unknown assumption defaults to 0 on input line 159.
 
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [5 <./figures/illus_domain_relation_a.pdf> <./figures/illus_domain_relation_b.pdf>]
-Package hyperref Info: bookmark level for unknown definition defaults to 0 on input line 175.
-LaTeX Font Info:    Trying to load font information for U+euf on input line 175.
- (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/ueuf.fd
-File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
-)
-Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 209.
+Package hyperref Info: bookmark level for unknown theorem defaults to 0 on input line 211.
 
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:240: Misplaced alignment tab character &.
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:242: Misplaced alignment tab character &.
 <argument> ...\hD (\fs , \ft ) | \geq \epsilon ) &
                                                   \leq (\N _{\Fs , \epsilon ...
-l.240 ...tribution distance is chosen as the MMD.}
+l.242 ...tribution distance is chosen as the MMD.}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -568,10 +580,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:240: Misplaced alignment tab character &.
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:242: Misplaced alignment tab character &.
 <recently read> &
                  
-l.240 ...tribution distance is chosen as the MMD.}
+l.242 ...tribution distance is chosen as the MMD.}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -580,10 +592,10 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:240: Misplaced alignment tab character &.
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:242: Misplaced alignment tab character &.
 <argument> ...ution distance as $\Lt (\ft , \h ) &
                                                   \leq \hLw (\fs , \ft , \h ...
-l.240 ...tribution distance is chosen as the MMD.}
+l.242 ...tribution distance is chosen as the MMD.}
                                                   
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -602,17 +614,14 @@ Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
  [8]
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
-
- [9]
-<figures/illus_mmd_network.pdf, id=421, 1407.98238pt x 320.57918pt>
+<figures/illus_mmd_network.pdf, id=429, 1407.98238pt x 320.57918pt>
 File: figures/illus_mmd_network.pdf Graphic file (type pdf)
 <use figures/illus_mmd_network.pdf>
-Package pdftex.def Info: figures/illus_mmd_network.pdf  used on input line 367.
+Package pdftex.def Info: figures/illus_mmd_network.pdf  used on input line 369.
 (pdftex.def)             Requested size: 398.33858pt x 90.69586pt.
 
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:375: Misplaced alignment tab character &.
-l.375 \Thetas&
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:377: Misplaced alignment tab character &.
+l.377 \Thetas&
               =(\boldsymbol{\Theta}^{s1}, \dots, \boldsymbol{\Theta}^{s \num...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -621,8 +630,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:375: Misplaced alignment tab character &.
-l.375 ...dsymbol{\Theta}^{s \numL})$ and $\Thetat&
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:377: Misplaced alignment tab character &.
+l.377 ...dsymbol{\Theta}^{s \numL})$ and $\Thetat&
                                                   =(\boldsymbol{\Theta}^{t1}...
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -632,11 +641,15 @@ you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
 
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [9 <./figures/illus_mmd_network.pdf>]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [10
+ [10]
+Underfull \vbox (badness 2894) has occurred while \output is active []
 
- <./figures/illus_mmd_network.pdf>]
+
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [11]
@@ -648,25 +661,20 @@ Package hyperref Info: bookmark level for unknown corollary defaults to 0 on inp
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [13]
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
-
- [14]
-<figures/illus_ddan_network.pdf, id=699, 1794.73674pt x 730.53456pt>
+<figures/illus_ddan_network.pdf, id=704, 1794.73674pt x 730.53456pt>
 File: figures/illus_ddan_network.pdf Graphic file (type pdf)
 <use figures/illus_ddan_network.pdf>
 Package pdftex.def Info: figures/illus_ddan_network.pdf  used on input line 659.
 (pdftex.def)             Requested size: 369.88582pt x 150.55199pt.
 
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
-
- [15
-
- <./figures/illus_ddan_network.pdf>]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [16]
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:775: Misplaced alignment tab character &.
-l.775 \Vs &
+ [14 <./figures/illus_ddan_network.pdf>]
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [15]
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:773: Misplaced alignment tab character &.
+l.773 \Vs &
            = \Dspace \circ \Fs =
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -675,8 +683,8 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-/Users/huseyinkaraca/Desktop/semisup-da-simods/ex_article.tex:779: Misplaced alignment tab character &.
-l.779 \Vt &
+/Users/huseyinkaraca/Desktop/semisup-da-simods/article.tex:777: Misplaced alignment tab character &.
+l.777 \Vt &
            = \Dspace \circ \Ft =
 I can't figure out why you would want to use a tab mark
 here. If you just want an ampersand, the remedy is
@@ -685,204 +693,193 @@ up above has ended a previous alignment prematurely,
 you're probably due for more error messages, and you
 might try typing `S' now just to see what is salvageable.
 
-<figures/illus_ddan_bad_align.pdf, id=982, 918.19397pt x 764.44206pt>
+<figures/illus_ddan_bad_align.pdf, id=990, 918.19397pt x 764.44206pt>
 File: figures/illus_ddan_bad_align.pdf Graphic file (type pdf)
 <use figures/illus_ddan_bad_align.pdf>
-Package pdftex.def Info: figures/illus_ddan_bad_align.pdf  used on input line 827.
+Package pdftex.def Info: figures/illus_ddan_bad_align.pdf  used on input line 825.
 (pdftex.def)             Requested size: 155.5892pt x 129.53351pt.
-<figures/illus_ddan_good_align.pdf, id=983, 707.62366pt x 616.97304pt>
+<figures/illus_ddan_good_align.pdf, id=991, 707.62366pt x 616.97304pt>
 File: figures/illus_ddan_good_align.pdf Graphic file (type pdf)
 <use figures/illus_ddan_good_align.pdf>
-Package pdftex.def Info: figures/illus_ddan_good_align.pdf  used on input line 829.
+Package pdftex.def Info: figures/illus_ddan_good_align.pdf  used on input line 827.
 (pdftex.def)             Requested size: 155.5892pt x 135.65916pt.
 
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
-
- [17]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [18 <./figures/illus_ddan_bad_align.pdf> <./figures/illus_ddan_good_align.pdf>]
+ [16]
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [17 <./figures/illus_ddan_bad_align.pdf> <./figures/illus_ddan_good_align.pdf>]
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+
+ [18]
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
  [19]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [20
+ [20]
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
-]
-<figures/toy_error_Mt_alpha.pdf, id=1253, 374.53467pt x 315.31372pt>
+ [21]
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+
+ [22]
+<figures/toy_error_Mt_alpha.pdf, id=1332, 374.53467pt x 315.31372pt>
 File: figures/toy_error_Mt_alpha.pdf Graphic file (type pdf)
 <use figures/toy_error_Mt_alpha.pdf>
-Package pdftex.def Info: figures/toy_error_Mt_alpha.pdf  used on input line 982.
+Package pdftex.def Info: figures/toy_error_Mt_alpha.pdf  used on input line 1075.
 (pdftex.def)             Requested size: 177.81041pt x 149.69377pt.
-<figures/toy_error_tau_alpha.pdf, id=1254, 367.86163pt x 315.27626pt>
+<figures/toy_error_tau_alpha.pdf, id=1333, 367.86163pt x 315.27626pt>
 File: figures/toy_error_tau_alpha.pdf Graphic file (type pdf)
 <use figures/toy_error_tau_alpha.pdf>
-Package pdftex.def Info: figures/toy_error_tau_alpha.pdf  used on input line 984.
+Package pdftex.def Info: figures/toy_error_tau_alpha.pdf  used on input line 1077.
 (pdftex.def)             Requested size: 177.81041pt x 152.38924pt.
-<figures/face_dataset.pdf, id=1255, 373.08675pt x 48.2876pt>
-File: figures/face_dataset.pdf Graphic file (type pdf)
-<use figures/face_dataset.pdf>
-Package pdftex.def Info: figures/face_dataset.pdf  used on input line 993.
-(pdftex.def)             Requested size: 199.16928pt x 25.77797pt.
-<figures/mit_error_Mt.pdf, id=1256, 515.1753pt x 412.95078pt>
+<figures/mit_error_Mt.pdf, id=1334, 515.1753pt x 412.95078pt>
 File: figures/mit_error_Mt.pdf Graphic file (type pdf)
 <use figures/mit_error_Mt.pdf>
-Package pdftex.def Info: figures/mit_error_Mt.pdf  used on input line 1002.
+Package pdftex.def Info: figures/mit_error_Mt.pdf  used on input line 1079.
 (pdftex.def)             Requested size: 177.81041pt x 142.52487pt.
-<figures/mit_error_Ms.pdf, id=1257, 469.64647pt x 382.31822pt>
+<figures/mit_error_Ms.pdf, id=1335, 469.64647pt x 382.31822pt>
 File: figures/mit_error_Ms.pdf Graphic file (type pdf)
 <use figures/mit_error_Ms.pdf>
-Package pdftex.def Info: figures/mit_error_Ms.pdf  used on input line 1004.
+Package pdftex.def Info: figures/mit_error_Ms.pdf  used on input line 1081.
 (pdftex.def)             Requested size: 177.81041pt x 144.74573pt.
-
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
-
- [21 <./figures/toy_error_Mt_alpha.pdf> <./figures/toy_error_tau_alpha.pdf> <./figures/face_dataset.pdf>]
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
-
- [22 <./figures/mit_error_Mt.pdf> <./figures/mit_error_Ms.pdf>]
-<figures/mmd-layer-Ms-linefit.pdf, id=1315, 226.90646pt x 171.69144pt>
+<figures/mmd-layer-Ms-linefit.pdf, id=1336, 226.90646pt x 171.69144pt>
 File: figures/mmd-layer-Ms-linefit.pdf Graphic file (type pdf)
 <use figures/mmd-layer-Ms-linefit.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ms-linefit.pdf  used on input line 1019.
+Package pdftex.def Info: figures/mmd-layer-Ms-linefit.pdf  used on input line 1127.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/mmd-layer-Ms-quadprog.pdf, id=1316, 228.81007pt x 171.69144pt>
+<figures/mmd-layer-Ms-quadprog.pdf, id=1337, 228.81007pt x 171.69144pt>
 File: figures/mmd-layer-Ms-quadprog.pdf Graphic file (type pdf)
 <use figures/mmd-layer-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ms-quadprog.pdf  used on input line 1022.
+Package pdftex.def Info: figures/mmd-layer-Ms-quadprog.pdf  used on input line 1130.
 (pdftex.def)             Requested size: 177.81041pt x 133.42886pt.
-<figures/mmd-layer-Ns-linefit.pdf, id=1317, 231.92522pt x 171.69144pt>
+<figures/mmd-layer-Ns-linefit.pdf, id=1338, 231.92522pt x 171.69144pt>
 File: figures/mmd-layer-Ns-linefit.pdf Graphic file (type pdf)
 <use figures/mmd-layer-Ns-linefit.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ns-linefit.pdf  used on input line 1024.
+Package pdftex.def Info: figures/mmd-layer-Ns-linefit.pdf  used on input line 1132.
 (pdftex.def)             Requested size: 177.81041pt x 131.63168pt.
-<figures/mmd-layer-Ns-quadprog.pdf, id=1318, 221.66815pt x 182.79543pt>
+<figures/mmd-layer-Ns-quadprog.pdf, id=1339, 221.66815pt x 182.79543pt>
 File: figures/mmd-layer-Ns-quadprog.pdf Graphic file (type pdf)
 <use figures/mmd-layer-Ns-quadprog.pdf>
-Package pdftex.def Info: figures/mmd-layer-Ns-quadprog.pdf  used on input line 1027.
+Package pdftex.def Info: figures/mmd-layer-Ns-quadprog.pdf  used on input line 1135.
 (pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
-<figures/mmd-dim-Ms-linefit.pdf, id=1321, 226.90646pt x 171.69144pt>
+<figures/mmd-dim-Ms-linefit.pdf, id=1342, 226.90646pt x 171.69144pt>
 File: figures/mmd-dim-Ms-linefit.pdf Graphic file (type pdf)
 <use figures/mmd-dim-Ms-linefit.pdf>
-Package pdftex.def Info: figures/mmd-dim-Ms-linefit.pdf  used on input line 1036.
+Package pdftex.def Info: figures/mmd-dim-Ms-linefit.pdf  used on input line 1144.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/mmd-dim-Ms-quadprog.pdf, id=1322, 223.67564pt x 171.69144pt>
+<figures/mmd-dim-Ms-quadprog.pdf, id=1343, 223.67564pt x 171.69144pt>
 File: figures/mmd-dim-Ms-quadprog.pdf Graphic file (type pdf)
 <use figures/mmd-dim-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/mmd-dim-Ms-quadprog.pdf  used on input line 1038.
+Package pdftex.def Info: figures/mmd-dim-Ms-quadprog.pdf  used on input line 1146.
 (pdftex.def)             Requested size: 177.81041pt x 136.48618pt.
-
-
-LaTeX Warning: Text page 23 contains only floats.
-
-
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
-
- [23
-
- <./figures/mmd-layer-Ms-linefit.pdf> <./figures/mmd-layer-Ms-quadprog.pdf> <./figures/mmd-layer-Ns-linefit.pdf> <./figures/mmd-layer-Ns-quadprog.pdf> <./figures/mmd-dim-Ms-linefit.pdf> <./figures/mmd-dim-Ms-quadprog.pdf>]
-<figures/adv-layer-Ms-linefit.pdf, id=1541, 226.90646pt x 171.69144pt>
+<figures/adv-layer-Ms-linefit.pdf, id=1344, 226.90646pt x 171.69144pt>
 File: figures/adv-layer-Ms-linefit.pdf Graphic file (type pdf)
 <use figures/adv-layer-Ms-linefit.pdf>
-Package pdftex.def Info: figures/adv-layer-Ms-linefit.pdf  used on input line 1052.
+Package pdftex.def Info: figures/adv-layer-Ms-linefit.pdf  used on input line 1160.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/adv-layer-Ms-quadprog.pdf, id=1542, 223.67564pt x 174.28386pt>
+<figures/adv-layer-Ms-quadprog.pdf, id=1345, 223.67564pt x 174.28386pt>
 File: figures/adv-layer-Ms-quadprog.pdf Graphic file (type pdf)
 <use figures/adv-layer-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/adv-layer-Ms-quadprog.pdf  used on input line 1054.
+Package pdftex.def Info: figures/adv-layer-Ms-quadprog.pdf  used on input line 1162.
 (pdftex.def)             Requested size: 177.81041pt x 138.54701pt.
-<figures/adv-layer-Ns-linefit.pdf, id=1543, 226.90646pt x 171.69144pt>
+<figures/adv-layer-Ns-linefit.pdf, id=1346, 226.90646pt x 171.69144pt>
 File: figures/adv-layer-Ns-linefit.pdf Graphic file (type pdf)
 <use figures/adv-layer-Ns-linefit.pdf>
-Package pdftex.def Info: figures/adv-layer-Ns-linefit.pdf  used on input line 1056.
+Package pdftex.def Info: figures/adv-layer-Ns-linefit.pdf  used on input line 1164.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/adv-layer-Ns-quadprog.pdf, id=1544, 221.66815pt x 182.79543pt>
+<figures/adv-layer-Ns-quadprog.pdf, id=1347, 221.66815pt x 182.79543pt>
 File: figures/adv-layer-Ns-quadprog.pdf Graphic file (type pdf)
 <use figures/adv-layer-Ns-quadprog.pdf>
-Package pdftex.def Info: figures/adv-layer-Ns-quadprog.pdf  used on input line 1058.
+Package pdftex.def Info: figures/adv-layer-Ns-quadprog.pdf  used on input line 1166.
 (pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
-<figures/mmd-optalpha-quadfit_Ms234.pdf, id=1545, 227.53883pt x 171.69144pt>
+<figures/mmd-optalpha-quadfit_Ms234.pdf, id=1348, 227.53883pt x 171.69144pt>
 File: figures/mmd-optalpha-quadfit_Ms234.pdf Graphic file (type pdf)
 <use figures/mmd-optalpha-quadfit_Ms234.pdf>
-Package pdftex.def Info: figures/mmd-optalpha-quadfit_Ms234.pdf  used on input line 1067.
+Package pdftex.def Info: figures/mmd-optalpha-quadfit_Ms234.pdf  used on input line 1175.
 (pdftex.def)             Requested size: 177.81041pt x 134.17027pt.
-<figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf, id=1546, 226.68689pt x 171.81691pt>
+<figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf, id=1349, 226.68689pt x 171.81691pt>
 File: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf Graphic file (type pdf)
 <use figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>
-Package pdftex.def Info: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1069.
+Package pdftex.def Info: figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1177.
 (pdftex.def)             Requested size: 177.81041pt x 134.77954pt.
-
-
-LaTeX Warning: Text page 24 contains only floats.
-
-
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
-
- [24
-
- <./figures/adv-layer-Ms-linefit.pdf> <./figures/adv-layer-Ms-quadprog.pdf> <./figures/adv-layer-Ns-linefit.pdf> <./figures/adv-layer-Ns-quadprog.pdf> <./figures/mmd-optalpha-quadfit_Ms234.pdf> <./figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>]
-<figures/adv-dcm-Ms-linefit.pdf, id=1764, 226.90646pt x 172.73701pt>
+<figures/adv-dcm-Ms-linefit.pdf, id=1350, 226.90646pt x 172.73701pt>
 File: figures/adv-dcm-Ms-linefit.pdf Graphic file (type pdf)
 <use figures/adv-dcm-Ms-linefit.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ms-linefit.pdf  used on input line 1081.
+Package pdftex.def Info: figures/adv-dcm-Ms-linefit.pdf  used on input line 1189.
 (pdftex.def)             Requested size: 177.81041pt x 135.36954pt.
-<figures/adv-dcm-Ms-quadprog.pdf, id=1765, 223.67564pt x 171.69144pt>
+<figures/adv-dcm-Ms-quadprog.pdf, id=1351, 223.67564pt x 171.69144pt>
 File: figures/adv-dcm-Ms-quadprog.pdf Graphic file (type pdf)
 <use figures/adv-dcm-Ms-quadprog.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ms-quadprog.pdf  used on input line 1083.
+Package pdftex.def Info: figures/adv-dcm-Ms-quadprog.pdf  used on input line 1191.
 (pdftex.def)             Requested size: 177.81041pt x 136.48618pt.
-<figures/adv-dcm-Ns-linefit.pdf, id=1766, 226.90646pt x 171.69144pt>
+<figures/adv-dcm-Ns-linefit.pdf, id=1352, 226.90646pt x 171.69144pt>
 File: figures/adv-dcm-Ns-linefit.pdf Graphic file (type pdf)
 <use figures/adv-dcm-Ns-linefit.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ns-linefit.pdf  used on input line 1085.
+Package pdftex.def Info: figures/adv-dcm-Ns-linefit.pdf  used on input line 1193.
 (pdftex.def)             Requested size: 177.81041pt x 134.55014pt.
-<figures/adv-dcm-Ns-quadprog.pdf, id=1767, 221.66815pt x 182.79543pt>
+<figures/adv-dcm-Ns-quadprog.pdf, id=1353, 221.66815pt x 182.79543pt>
 File: figures/adv-dcm-Ns-quadprog.pdf Graphic file (type pdf)
 <use figures/adv-dcm-Ns-quadprog.pdf>
-Package pdftex.def Info: figures/adv-dcm-Ns-quadprog.pdf  used on input line 1087.
+Package pdftex.def Info: figures/adv-dcm-Ns-quadprog.pdf  used on input line 1195.
 (pdftex.def)             Requested size: 177.81041pt x 146.63539pt.
-<figures/adv-optalpha-quadfit_Ms240.pdf, id=1768, 227.53883pt x 171.69144pt>
+<figures/adv-optalpha-quadfit_Ms240.pdf, id=1354, 227.53883pt x 171.69144pt>
 File: figures/adv-optalpha-quadfit_Ms240.pdf Graphic file (type pdf)
 <use figures/adv-optalpha-quadfit_Ms240.pdf>
-Package pdftex.def Info: figures/adv-optalpha-quadfit_Ms240.pdf  used on input line 1096.
+Package pdftex.def Info: figures/adv-optalpha-quadfit_Ms240.pdf  used on input line 1204.
 (pdftex.def)             Requested size: 177.81041pt x 134.17027pt.
-<figures/adv-optalpha-asqrtx_fit_den_Mss.pdf, id=1769, 226.68689pt x 171.81691pt>
+<figures/adv-optalpha-asqrtx_fit_den_Mss.pdf, id=1355, 226.68689pt x 171.81691pt>
 File: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf Graphic file (type pdf)
 <use figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>
-Package pdftex.def Info: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1098.
+Package pdftex.def Info: figures/adv-optalpha-asqrtx_fit_den_Mss.pdf  used on input line 1206.
 (pdftex.def)             Requested size: 177.81041pt x 134.77954pt.
 
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [25 <./figures/adv-dcm-Ms-linefit.pdf> <./figures/adv-dcm-Ms-quadprog.pdf> <./figures/adv-dcm-Ns-linefit.pdf> <./figures/adv-dcm-Ns-quadprog.pdf> <./figures/adv-optalpha-quadfit_Ms240.pdf> <./figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>]
+ [23]
 Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [26
+ [24 <./figures/toy_error_Mt_alpha.pdf> <./figures/toy_error_tau_alpha.pdf> <./figures/mit_error_Mt.pdf> <./figures/mit_error_Ms.pdf>]
+
+LaTeX Warning: Text page 25 contains only floats.
 
 
-] (latex_build/ex_article.bbl
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [25 <./figures/mmd-layer-Ms-linefit.pdf> <./figures/mmd-layer-Ms-quadprog.pdf> <./figures/mmd-layer-Ns-linefit.pdf> <./figures/mmd-layer-Ns-quadprog.pdf> <./figures/mmd-dim-Ms-linefit.pdf> <./figures/mmd-dim-Ms-quadprog.pdf>]
+
+LaTeX Warning: Text page 26 contains only floats.
+
+
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+
+ [26 <./figures/adv-layer-Ms-linefit.pdf> <./figures/adv-layer-Ms-quadprog.pdf> <./figures/adv-layer-Ns-linefit.pdf> <./figures/adv-layer-Ns-quadprog.pdf> <./figures/mmd-optalpha-quadfit_Ms234.pdf> <./figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf>]
+Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+
+ [27 <./figures/adv-dcm-Ms-linefit.pdf> <./figures/adv-dcm-Ms-quadprog.pdf> <./figures/adv-dcm-Ns-linefit.pdf> <./figures/adv-dcm-Ns-quadprog.pdf> <./figures/adv-optalpha-quadfit_Ms240.pdf> <./figures/adv-optalpha-asqrtx_fit_den_Mss.pdf>] (latex_build/article.bbl
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (14.04993pt too high) has occurred while \output is active []
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
 
- [27
+ [28
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (3.04993pt too high) has occurred while \output is active []
-
- [28])
-\tf@thm=\write4
-\openout4 = `ex_article.thm'.
-
-
 Overfull \vbox (14.04993pt too high) has occurred while \output is active []
 
- [29] (latex_build/ex_article.aux)
+ [29])
+\tf@thm=\write4
+\openout4 = `article.thm'.
+
+
+Overfull \vbox (3.04993pt too high) has occurred while \output is active []
+
+ [30] (latex_build/article.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -891,17 +888,17 @@ L3 programming layer <2024-02-20>
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `ex_article.out' has not changed.
-(rerunfilecheck)             Checksum: A82D95CD9642634A518EE4535A83A158;3296.
+Package rerunfilecheck Info: File `article.out' has not changed.
+(rerunfilecheck)             Checksum: 167DA2AD919E28F27F52B57F0008A99D;4722.
  ) 
 Here is how much of TeX's memory you used:
- 17881 strings out of 474116
- 294328 string characters out of 5743683
+ 17902 strings out of 474116
+ 294325 string characters out of 5743683
  1956187 words of memory out of 5000000
- 38202 multiletter control sequences out of 15000+600000
+ 38207 multiletter control sequences out of 15000+600000
  573811 words of font info for 94 fonts, out of 8000000 for 9000
  2715 hyphenation exceptions out of 8191
- 89i,20n,96p,2468b,642s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,20n,96p,2465b,638s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{subsection.68} has been referenced but does not exist, replaced by a fixed one
 
@@ -913,6 +910,9 @@ pdfTeX warning (dest): name{section.64} has been referenced but does not exist, 
 
 
 pdfTeX warning (dest): name{section.111} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{theorem.49} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{section.108} has been referenced but does not exist, replaced by a fixed one
@@ -928,9 +928,6 @@ pdfTeX warning (dest): name{theorem.43} has been referenced but does not exist, 
 
 
 pdfTeX warning (dest): name{theorem.25} has been referenced but does not exist, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.85} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{proof.22} has been referenced but does not exist, replaced by a fixed one
@@ -950,14 +947,11 @@ pdfTeX warning (dest): name{theorem.4} has been referenced but does not exist, r
 
 pdfTeX warning (dest): name{theorem.2} has been referenced but does not exist, replaced by a fixed one
 
-
-pdfTeX warning (dest): name{section.56} has been referenced but does not exist, replaced by a fixed one
-
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/utmr8a.pfb>
-Output written on latex_build/ex_article.pdf (29 pages, 1697260 bytes).
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/euler/eufm10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on latex_build/article.pdf (30 pages, 1426461 bytes).
 PDF statistics:
- 2183 PDF objects out of 2487 (max. 8388607)
- 1559 compressed objects within 16 object streams
- 245 named destinations out of 1000 (max. 500000)
- 258 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2220 PDF objects out of 2487 (max. 8388607)
+ 1602 compressed objects within 17 object streams
+ 261 named destinations out of 1000 (max. 500000)
+ 285 words of extra memory for PDF output out of 10000 (max. 10000000)
 

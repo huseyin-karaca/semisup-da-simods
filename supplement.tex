@@ -1,19 +1,19 @@
 % SIAM Supplemental File Template
 \documentclass[review,supplement,onefignum,onetabnum]{siamonline250211}
 
-\input{ex_shared}
+\input{shared}
 
 %%% Hus sonradan eklenenler
 \newtheorem*{utheorem}{Theorem}
 
 
-\externaldocument[][nocite]{ex_article}[]
+\externaldocument[][nocite]{article}[]
 
 % Optional PDF information
 \ifpdf
 \hypersetup{
-  pdftitle={Supplementary Materials: An Example Article},
-  pdfauthor={D. Doe, P. T. Frank, and J. E. Smith}
+  pdftitle={Supplementary Materials: A Unified Analysis of Generalization and Sample Complexity for Semi-Supervised Domain Adaptation},
+  pdfauthor={Elif Vural, Huseyin Karaca}
 }
 \fi
 
@@ -1808,12 +1808,12 @@ The misclassification rates of unlabeled target samples are evaluated with respe
 
 We experimentally verify our results in Theorems 3.6 and 3.7 regarding the sample complexity of domain-adaptive neural networks. For both MMD-based and adversarial architectures, we characterize the sample complexity with respect to the depth $\numL$ and the width $\dcom$ of the network, and investigate the optimal value of the weight $\alpha$ of the target loss.
 
-In our experiments, the MNIST handwritten digit data set \cite{mnist} is used as the source data set, which consists of 60000 images. The target data set is taken as MNIST-M \cite{mnistm}, which contains 59000 handwritten digit images with colored backgrounds. We train the neural networks with labeled and unlabeled training samples from the source and target domains, and then evaluate the target accuracy of the learnt models, defined as the correct classification rate of test samples from the target domain. In all experiments, algorithm hyperparameters and fixed variables are chosen  to keep the neural network in the overfitting regime, enabling the characterization of the sample complexity of the models under consideration. Operating in the overfitting regime means that the network's target accuracy drops below a predefined threshold as network complexity increases for a fixed number of training samples. Increasing the amount of labeled or unlabeled data delays the onset of this accuracy drop, which allows us to determine the required sample size for a given level of network complexity without using excessive computational resources.
+In our experiments, the MNIST handwritten digit data set \cite{mnist} is used as the source data set, which consists of 60000 images. The target data set is taken as MNIST-M \cite{mnistm}, which contains 59000 handwritten digit images with colored backgrounds. We train the neural networks with labeled and unlabeled training samples from the source and target domains, and then evaluate the target accuracy of the learnt models, defined as the correct classification rate of test samples from the target domain. In all experiments, the standard training components of the original implementations, including batch normalization, are retained. Although our theoretical analysis does not explicitly account for such regularization techniques, the experimental results remain consistent with the theoretical predictions, suggesting that our bounds are robust and compatible with modern training practices. As the network complexity increases for fixed sample sizes, target accuracy naturally decreases beyond a threshold, which is the expected behavior when the number of available training samples is insufficient relative to the model capacity. Increasing the amount of labeled or unlabeled data delays the onset of this accuracy drop, which allows us to determine the required sample size for a given level of network complexity. The code for reproducing all experiments is publicly available at \url{https://github.com/huseyin-karaca/semisup-da}.
 
 \subsubsection{Experimental methodology}
 \label{sssec_exp_methodology}
 
-In the experiments, the primary goal is to characterize how target accuracy behaves as network complexity increases, measured either by the number of layers $\numL$ or the width parameter $\dcom$. In the overfitting regime, for fixed sample sizes $\Ms$ or $\Ns$, target accuracy decreases as network complexity grows. Our experiments indicate that this decrease can be approximated as a linear decline. Therefore, in addition to the data points obtained experimentally, we estimate values for untested complexity levels by applying linear extrapolation, improving computational efficiency. The target accuracy vs.\ network complexity curves along with the corresponding linear regression fits are presented in the left panels of the relevant figures.
+In the experiments, the primary goal is to characterize how target accuracy behaves as network complexity increases, measured either by the number of layers $\numL$ or the width parameter $\dcom$. For fixed sample sizes $\Ms$ or $\Ns$, target accuracy decreases as network complexity grows beyond the capacity supported by the available data. Our experiments indicate that this decrease can be approximated as a linear decline. Therefore, in addition to the data points obtained experimentally, we estimate values for untested complexity levels by applying linear extrapolation, improving computational efficiency. The target accuracy vs.\ network complexity curves along with the corresponding linear regression fits are presented in the left panels of the relevant figures.
 
 The right panels analyze how the number of labeled or unlabeled samples required to guarantee a fixed target accuracy changes with network size. Specific target accuracy levels are selected, and the network complexities at which these accuracy levels are maintained are identified by drawing a horizontal line at the chosen target accuracy and finding its intersections with the linearly extrapolated curves. Once the maximum network complexity at which the network maintains the predefined target accuracy is identified, the variation of these complexity values with respect to $\Ms$ or $\Ns$ is plotted. A quadratic curve in the form of $ax^2 + bx + c$ with the constraint $\frac{-b}{2a} \geq 0$ is fitted to the experimental results for visual evaluation.
 

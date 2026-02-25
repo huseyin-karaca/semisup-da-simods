@@ -62,6 +62,8 @@ Domain adaptation, generalization bounds, domain-adaptive neural networks, maxim
 \section{Introduction}
 \label{sec:intro}
 
+% \subsection*{Background}
+% \label{subsec:background}
 % DA: Purpose, applications, brief history
 Domain adaptation is a subfield of machine learning that aims to improve model performance in a target domain by leveraging the greater availability of labeled samples in a source domain. The main challenge in domain adaptation is to address the discrepancy between the source and target distributions, which can take various forms such as covariate shift \cite{KouwL21}, label shift \cite{Azizzadenesheli19, Combes0WG20}, as well as more challenging heterogeneous settings  with source and target samples originating from different data spaces \cite{SinghalWRK23}. 
 Early work in domain adaptation explored instance reweighting methods for covariate shift \cite{HuangSGBS06, SunCPY11}, feature augmentation approaches \cite{DaumeIII07, DaumeKS10, DuanXT12}, and techniques for learning feature projections or transformations \cite{BaktashmotlaghHLS13, PanTKY11, YaoPNLM15}. More recently, in line with broader advances in data science, domain adaptation research over the last decade has largely shifted towards deep learning-based techniques \cite{SinghalWRK23, WangD18}.  Metrics such as maximum mean discrepancy (MMD)   \cite{LongCWJ15, TzengHZSD14, GhifaryKZ14} lead to efficient solutions for aligning source and target domains across various applications \cite{ZengSRGFZ25, WangYXWZW23, DXiaLZSL25, YangZLLLC25}. Adversarial architectures \cite{GaninUAGLLML16, TzengHSD17, TangJ20, ZonooziS23}  and reconstruction-based approaches using encoder-decoder structures \cite{GhifaryKZBL16, BousmalisTSKE16, ZonooziSD25} are also commonly employed. 
@@ -69,16 +71,26 @@ Early work in domain adaptation explored instance reweighting methods for covari
 Despite the variety of models and the diversity of solutions, the basic paradigm in domain adaptation - whether using shallow methods or neural networks- often boils down to first aligning the source and target domains by mapping them to a common space through feature transformations, followed by learning a hypothesis function, typically a classifier, in that shared domain. The alignment of the source and target distributions is achieved by minimizing a suitably defined \textit{distribution distance} (also referred to as \textit{domain discrepancy} or \textit{distribution divergence}), with common choices including MMD \cite{LongCWJ15}, covariance-based metrics \cite{SunS16}, and the Wasserstein distance \cite{CourtyFTR17, DamodaranKFTC18, HamriBF25}. Although domain adaptation algorithms have been successfully applied across a wide range of fields  including computer vision, time-series analysis, and natural language processing  \cite{SinghalWRK23, ZonooziS23}, surprisingly, the literature still lacks a thorough theoretical characterization of their performance. In particular, there is a notable gap in understanding the behavior of \textit{domain alignment algorithms}, which we define as methods that explicitly map source and target domains to a common representation through feature transformations. In this paper, we focus on this important class of algorithms, and aim to provide a rigorous theoretical analysis of their performance.
 
 
+\subsection{Related work}
+\label{subsec:related_work}
 
+\subsubsection{Effect of domain discrepancy on generalization}
+A substantial body of theoretical work has studied how domain discrepancy affects target-domain generalization. Ben-David et al.~\cite{BenDavidBCP06, BenDavidBCKPV10} bound the target generalization gap in terms of the VC-dimension of the hypothesis space and the $\mathcal{A}$-distance between source and target distributions.  Their analysis of weighted source-target losses \cite{BenDavidBCKPV10} parallels our study, in that the optimal weight of the target loss should decrease as target labels become scarcer. Mansour et al.~\cite{MansourMR09} present similar findings using Rademacher complexities and a discrepancy measure based on loss-induced disagreements. Following these pioneering works, numerous alternative domain divergence measures have been proposed \cite{RedkoMHS20}, including adversarial Rademacher complexity-based discrepancy \cite{DengGHML23}, margin disparity discrepancy \cite{ZhangLLJ19}, moment-based discrepancy \cite{ZellingerMS21}, margin-aware risks linked to optimal transport \cite{DhouibRL20}, information-theoretic bounds \cite{WangM23, WuMAZ24}, hypothesis-specific divergences \cite{WangM24}, and stochastic predictor-based risks \cite{SiciliaAAH22}. All these works assume that a common classifier is learnt in the original domains without considering domain-aligning transformations. They mainly differ in the discrepancy measure used, while sample complexities follow classical dependence on VC-dimensions or Rademacher complexities. From a domain alignment perspective, these discrepancies can be viewed as post-alignment distances, but many are theoretically defined and difficult to estimate in practice. In contrast, our results in \crefrange{thm:main_result_mmd}{thm_main_result_dann} provide a practical assessment based on the empirical distribution distance computed directly on aligned training data.
 
-Most existing theoretical analyses focus on understanding how the discrepancy between source and target domains affects the target-domain performance of classifiers trained to perform well on the source domain \cite{RedkoMHS20, BenDavidBCP06, MansourMR09, ZhangLLJ19, DhouibRL20, WangM24}. While these studies provide useful insight into how models trained with abundant source labels generalize to a target domain with limited or no labeled data, they inherently assume that source and target data reside in the same space. Consequently, their results do not straightforwardly extend to the prevalent framework where source and target domains are aligned through feature transformations or mappings -whether shallow or deep- prior to classification. Only a few studies have investigated the performance of domain alignment algorithms \cite{ZhouTPT19, FangLLZ23, WangS15}; however, these works rather focus on specific transformation types, such as linear mappings \cite{ZhouTPT19} or location and scale changes \cite{WangS15}. Some literature has investigated the performance and sample complexity of transfer learning via deep learning approaches \cite{TomerWH16, McNamaraB17, JiaoLLY24}. However, domain adaptation and transfer learning remain distinct problems:  transfer learning deals with  differing source and target tasks, unlike domain adaptation. Notably, the characterization of the sample complexity of domain-adaptive neural networks remains an important yet largely unexplored subject in current learning theory. It is well established that the amount of data required to successfully train a neural network increases with the size of the network to prevent overfitting, and many studies have addressed this issue in classical single-domain settings \cite{AnthonyB02, NeyshaburTS15, WeiM19, VardiSS22, DanielyG24}.  To the best of our knowledge, however, the scaling of labeled and unlabeled source and target sample requirements with respect to the width and depth of domain-adaptive networks has not been extensively studied yet. 
+\subsubsection{Performance bounds for domain alignment algorithms}
+Only a few studies have investigated the performance of learning domain-aligning transformations. Zhou et al.~\cite{ZhouTPT19} propose a multi-task method learning domain similarity through a linear transformation, with estimation error bounded by $O(d_T \sqrt{\log(d_S)/n})$; however, their analysis is limited to linear transformations. Wang and Schneider \cite{WangS15} analyze conditional distribution matching through location and scale transforms, showing the target generalization gap is bounded by $O(1+ 1/\sqrt{\Mt} + \sqrt{\log(\delta^{-1})/(\Ms + \Mt)})$. Fang et al.~\cite{FangLLZ23} consider semi-supervised domain alignment as in our work, but treat the sample complexity as a known parameter rather than deriving it.  Transfer learning, while distinct from domain adaptation, is closely related. Wang et al.~\cite{WangMSX23} analyze transfer and multitask learning through domain-invariant representations, with bounds involving the $\mathcal{Y}$-discrepancy \cite{MohriM12}, which is not easy to estimate in practice. Galanti et al.~\cite{TomerWH16} and Jiao et al.~\cite{JiaoLLY24} study how partial network transfer and shared features improve target convergence. McNamara and Balcan \cite{McNamaraB17} show that in representation learning followed by fine-tuning, the labeled target samples $\Mt$ need only scale with the dimension of the classifier space $\mathcal{H}$, not the more complex composite space $\mathcal{H \circ F}$; a parallel result appears in \cite{TripuraneniJJ20} for multi-task transfer learning. Although our domain adaptation setting differs from these transfer learning studies, they share the focus on handling scarce target labels. Whereas these works tie sample complexity to the richness of the target function class, which can be large for deep networks, our analysis shows that target label scarcity can be tolerated by choosing $\alpha=O(\sqrt{\Mt})$, independently of the target function class complexity.
 
+\subsubsection{Sample complexity of neural networks in a single domain}
+Sample complexity of neural networks is well-explored in learning theory \cite{AnthonyB02, BartlettMR21}. The sample complexity of a feed-forward network with $W$ weights and $\numL$ layers scales as $O(W \numL \log(W))$ in terms of the VC-dimension \cite{HarveyLM17}, with $W=\dcom^2 \numL$ for width $\dcom$. This yields $M=O(\dcom^2 \numL^3)$ \cite[Theorem 21.5]{AnthonyB02}, consistent with our domain-adaptive result $\Ms=O(\dcom^2 \numL^2)$ in \cref{thm_main_result_da_mmd,thm_main_result_dann}, with a slightly tighter quadratic dependence on $\numL$. A recent trend is dimension-independent characterization: width dependence has been removed or reduced under norm regularization \cite{NeyshaburTS15, NeyshaburBS18, GolowichRS18, BartlettFT17, WeiM19, VardiSS22, DanielyG24}, though these results crucially rely on dimension-independent bounds on weight matrix norms and yield pessimistic complexities without such assumptions. To the best of our knowledge, our work is the first detailed analysis of the sample complexity of domain-adaptive neural networks. Our analysis does not impose norm constraints on weight matrices; incorporating such constraints could yield tighter bounds, which we leave as future work.
+
+\subsection{Main Contributions}
+\label{subsec:contributions}
 
 In this work, we aim to fill this gap by providing a comprehensive theoretical analysis of domain adaptation in the widely used setting where the source and target domains are mapped to a common space through feature transformations, and a hypothesis is learnt in that shared space after alignment.  We consider a semi-supervised setting where labels are largely available for the source samples but limited (or unavailable) for the target samples. The structure of the paper along with our main contributions are summarized below:
 
 % 3 line kazanmak için: 
-\begin{itemize}[labelsep=0.5em, wide=0.5em]
-% \begin{itemize}
+% \begin{itemize}[labelsep=0.5em, wide=0.5em]
+\begin{itemize}
 \item In \cref{sec:gen_bounds}, we study a general setting that involves learning a source feature transformation $\fs \in \Fs$, a target feature transformation $\ft \in \Ft$ and a hypothesis $\h \in \Hs$ in the common domain. The learning objective minimizes a loss function composed of a weighted (convex) combination of the source and target classification losses, along with a distribution distance term that measures the discrepancy between the aligned domains. At this stage, our analysis remains general and does not assume any specific structure for the learning algorithm. In \cref{ssec:gen_bnd_arb_dist} (\cref{thm:gen_defect_target}), we present a probabilistic bound on the expected target loss in terms of the empirical weighted loss and the expected distribution discrepancy.  
 
 \item  In \cref{ssec_gen_bnd_mmd} we develop these results for the setting where the distribution distance is selected as the popular maximum mean discrepancy (MMD) metric. In \cref{thm:main_result_mmd}, we show that  the expected target loss can be effectively bounded in terms of the empirical classification and distribution losses alone. This bound holds provided that the number of labeled source samples $\Ms$  scales logarithmically with the covering number of the composite hypothesis class $\Hs \circ \Fs$, while the total number of source and target samples, $\Ns$ and $\Nt$, must scale logarithmically with the covering numbers of the feature transformation classes $\Fs$ and $\Ft$. 
@@ -89,7 +101,7 @@ In this work, we aim to fill this gap by providing a comprehensive theoretical a
 \end{itemize}
 
 
-We defer a detailed discussion of closely related literature to \cref{sec_rel_work}, where we also compare and contrast our results with previous findings.  \cref{sec:exp_results} presents some simulation results for the experimental validation of our findings, and \cref{sec:conclusion} concludes the paper. A preliminary version of our study was presented in \cite{Vural18}, which laid the groundwork for the results in \cref{ssec:gen_bnd_arb_dist}.  
+\cref{sec:exp_results} presents simulation results for the experimental validation of our findings, and \cref{sec:conclusion} concludes the paper. A preliminary version of our study was presented in \cite{Vural18}, which laid the groundwork for the results in \cref{ssec:gen_bnd_arb_dist}.  
 
 
 % \clearpage
@@ -933,101 +945,102 @@ While we analyze single-layer label predictors as in \cref{fig_illus_ddan_networ
 % AI generated, a bit shorter version:
 % The proof of the \cref{thm_main_result_dann} is in \cref{pf_thm_main_result_dann}. The findings of \cref{thm_main_result_dann} on the sample complexity of domain-adversarial networks are in line with those of \cref{thm_main_result_da_mmd}: the optimal weight $\alpha$ scales as $O(\sqrt{\Mt})$; to prevent overfitting, $\Ms$ must increase at rate $\Ms=O(\dcom^2 \numL^2)$ (quadratically with width $\dcom$ and depth $\numL$ of the feature extractor), while $\Ns$ and $\Nt$ must increase at rate $O(\dcom^2 (\numL+\numLdan)^2)$ (quadratically with the combined depth $\numL + \numLdan$ of feature extractor and discriminator networks); and sample sizes scale as $O(\epsilon^{-2})$ for an $O(\epsilon)$ bound on the loss difference.  
 
-% \clearpage
-\section{Discussion of the results in relation with previous literature}
-\label{sec_rel_work}
+% % \clearpage
+% \section{Discussion of the results in relation with previous literature}
+% \label{sec_rel_work}
 
-We discuss our findings in relation with previous literature. To the best of our knowledge, our study is the first to characterize the sample complexity of domain-adaptive neural networks in depth. Prior work has focused on either the effect of domain discrepancy on generalization, or the sample complexity of neural networks in a single-domain setting. We overview these results below along with relevant studies on domain alignment methods, restating prior findings using our notation. The parameter $\delta$ in bounds signifies that the result holds with probability at least $1-\delta$.
+% We discuss our findings in relation with previous literature. To the best of our knowledge, our study is the first to characterize the sample complexity of domain-adaptive neural networks in depth. Prior work has focused on either the effect of domain discrepancy on generalization, or the sample complexity of neural networks in a single-domain setting. We overview these results below along with relevant studies on domain alignment methods, restating prior findings using our notation. The parameter $\delta$ in bounds signifies that the result holds with probability at least $1-\delta$.
 
-\subsection{Effect of domain discrepancy on generalization performance}
+% \subsection{Effect of domain discrepancy on generalization performance}
 
-Ben-David et al.~\cite{BenDavidBCP06} present one of the earliest analyses of the deviation between source and target distributions. The gap between the expected target loss and the empirical source loss is bounded by
-%
-\[
-O\left(  
-\sqrt{ \frac{\text{dim}_{VC}(\mathcal{H})}{\Ms} + \log(\delta^{-1})} \right) + d_{\mathcal{H}}(D_S, D_T) + \lambda
-\]
-%
-ignoring logarithmic factors, where $\text{dim}_{VC}(\mathcal{H})$ is the VC-dimension of hypothesis space $\mathcal{H}$, $\Ms$ is the number of labeled source samples, and $\lambda$ measures the proximity of the true label function to $\mathcal{H}$. Here $d_{\mathcal{H}}(D_S, D_T)$ is the $\mathcal{A}$-distance \cite{BenDavidBCP06} between $D_S$ and $D_T$:
-%
-\[
- d_{\mathcal{H}}(D_S, D_T) = 2 \sup_{A \in \mathcal{A}} | P_{D_S}(A) - P_{D_T}(A) |
-\]
-%
-where $\mathcal{A}$ is the set of domain subsets with characteristic functions in $\mathcal{H}$ and $P_{(\cdot)}$ denotes probability.
+% Ben-David et al.~\cite{BenDavidBCP06} present one of the earliest analyses of the deviation between source and target distributions. The gap between the expected target loss and the empirical source loss is bounded by
+% %
+% \[
+% O\left(  
+% \sqrt{ \frac{\text{dim}_{VC}(\mathcal{H})}{\Ms} + \log(\delta^{-1})} \right) + d_{\mathcal{H}}(D_S, D_T) + \lambda
+% \]
+% %
+% ignoring logarithmic factors, where $\text{dim}_{VC}(\mathcal{H})$ is the VC-dimension of hypothesis space $\mathcal{H}$, $\Ms$ is the number of labeled source samples, and $\lambda$ measures the proximity of the true label function to $\mathcal{H}$. Here $d_{\mathcal{H}}(D_S, D_T)$ is the $\mathcal{A}$-distance \cite{BenDavidBCP06} between $D_S$ and $D_T$:
+% %
+% \[
+%  d_{\mathcal{H}}(D_S, D_T) = 2 \sup_{A \in \mathcal{A}} | P_{D_S}(A) - P_{D_T}(A) |
+% \]
+% %
+% where $\mathcal{A}$ is the set of domain subsets with characteristic functions in $\mathcal{H}$ and $P_{(\cdot)}$ denotes probability.
 
-This result was extended in \cite{BenDavidBCKPV10} to algorithms minimizing a convex combination of source and target losses, where the hypothesis minimizing the empirical weighted loss generalizes to the target domain within an error of 
-%
-\begin{equation*}
-\begin{split}
-O\bigg(
-\sqrt{\frac{\alpha^2}{\gamma} + \frac{(1-\alpha)^2}{1-\gamma}} 
-& \sqrt{  \frac{\text{dim}_{VC}(\mathcal{H}) + \log(\delta^{-1}) }{M} } \\
-&+ 
-(1-\alpha)
-\bigg(\sqrt{\frac{\text{dim}_{VC}(\mathcal{H}) \log(\delta^{-1})}{N} }
-+
-\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T) 
-+ \lambda
-\bigg)
-\bigg).
-\end{split}
-\end{equation*}
-%
-Here $\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T)$ is the empirical divergence over the symmetric difference hypothesis space $\mathcal{H}\Delta \mathcal{H}$ \cite{BenDavidBCKPV10}, $N=\Ns=\Nt$ is the total number of samples in each domain, and $M$ is the total number of labeled samples with $\Ms=(1-\gamma)M$ source and $\Mt=\gamma M$ target samples. This parallels our study: the optimal target loss weight $\alpha$ should decrease as target labels become scarcer (as $\gamma$ decreases), and a high discrepancy $\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T)$ drives the loss towards the target by reducing the source weight $1-\alpha$.
+% This result was extended in \cite{BenDavidBCKPV10} to algorithms minimizing a convex combination of source and target losses, where the hypothesis minimizing the empirical weighted loss generalizes to the target domain within an error of 
+% %
+% \begin{equation*}
+% \begin{split}
+% O\bigg(
+% \sqrt{\frac{\alpha^2}{\gamma} + \frac{(1-\alpha)^2}{1-\gamma}} 
+% & \sqrt{  \frac{\text{dim}_{VC}(\mathcal{H}) + \log(\delta^{-1}) }{M} } \\
+% &+ 
+% (1-\alpha)
+% \bigg(\sqrt{\frac{\text{dim}_{VC}(\mathcal{H}) \log(\delta^{-1})}{N} }
+% +
+% \hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T) 
+% + \lambda
+% \bigg)
+% \bigg).
+% \end{split}
+% \end{equation*}
+% %
+% Here $\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T)$ is the empirical divergence over the symmetric difference hypothesis space $\mathcal{H}\Delta \mathcal{H}$ \cite{BenDavidBCKPV10}, $N=\Ns=\Nt$ is the total number of samples in each domain, and $M$ is the total number of labeled samples with $\Ms=(1-\gamma)M$ source and $\Mt=\gamma M$ target samples. This parallels our study: the optimal target loss weight $\alpha$ should decrease as target labels become scarcer (as $\gamma$ decreases), and a high discrepancy $\hat d_{\mathcal{H}\Delta \mathcal{H}}(D_S, D_T)$ drives the loss towards the target by reducing the source weight $1-\alpha$.
 
-Mansour et al.~\cite{MansourMR09} presented similar findings using Rademacher complexities, characterizing domain deviation through the discrepancy $\text{disc}_{\loss}(D_S, D_T)$, which measures how loss-induced disagreement between hypothesis pairs may differ across $D_S$ and $D_T$.
+% Mansour et al.~\cite{MansourMR09} presented similar findings using Rademacher complexities, characterizing domain deviation through the discrepancy $\text{disc}_{\loss}(D_S, D_T)$, which measures how loss-induced disagreement between hypothesis pairs may differ across $D_S$ and $D_T$.
 
-Following these works, numerous domain divergence measures have been proposed \cite{RedkoMHS20}. These include a robust discrepancy variant based on adversarial Rademacher complexity \cite{DengGHML23} shown to vary at rate $O(\sqrt{d/M})$ for two-layer ReLU networks, margin disparity discrepancy with bounds via Rademacher complexities and covering numbers \cite{ZhangLLJ19}, moment-based discrepancy with VC-dimension-dependent bounds \cite{ZellingerMS21}, margin-aware risks linked to optimal transport \cite{DhouibRL20}, information-theoretic bounds based on mutual information \cite{WangM23, WuMAZ24}, hypothesis-specific divergences \cite{WangM24}, and stochastic predictor-based risks \cite{SiciliaAAH22}.%
-\footnote{All these works assume a common classifier is learnt in the original domains without considering domain-aligning transformations. They mainly differ in the distribution discrepancy measure used, while sample complexities follow classical dependence on VC-dimensions or Rademacher complexities. From a domain alignment perspective, these discrepancies can be viewed as post-alignment distances, but many are theoretically defined and hard to estimate in practice. In contrast, our results in \crefrange{thm:main_result_mmd}{thm_main_result_dann} provide a practical assessment based on the empirical distribution distance computed directly on aligned training data.}
+% Following these works, numerous domain divergence measures have been proposed \cite{RedkoMHS20}. These include a robust discrepancy variant based on adversarial Rademacher complexity \cite{DengGHML23} shown to vary at rate $O(\sqrt{d/M})$ for two-layer ReLU networks, margin disparity discrepancy with bounds via Rademacher complexities and covering numbers \cite{ZhangLLJ19}, moment-based discrepancy with VC-dimension-dependent bounds \cite{ZellingerMS21}, margin-aware risks linked to optimal transport \cite{DhouibRL20}, information-theoretic bounds based on mutual information \cite{WangM23, WuMAZ24}, hypothesis-specific divergences \cite{WangM24}, and stochastic predictor-based risks \cite{SiciliaAAH22}.%
+% \footnote{All these works assume a common classifier is learnt in the original domains without considering domain-aligning transformations. They mainly differ in the distribution discrepancy measure used, while sample complexities follow classical dependence on VC-dimensions or Rademacher complexities. From a domain alignment perspective, these discrepancies can be viewed as post-alignment distances, but many are theoretically defined and hard to estimate in practice. In contrast, our results in \crefrange{thm:main_result_mmd}{thm_main_result_dann} provide a practical assessment based on the empirical distribution distance computed directly on aligned training data.}
+
+% % For comparison of Lemma 3 with previous work:
+% % The empirical convergence of the MMD estimator was studied in \cite{GrettonBRSS12}, where McDiarmid's inequality is applied to bound the deviation of the biased empirical MMD from the population value. For a characteristic kernel satisfying $0 \leq k(x,x) \leq K$ and equal sample sizes $m = n$, the bound decays at rate $O(\sqrt{K/m})$ with probability improving exponentially in $m\varepsilon^2/K$. Our \cref{lem:bernstein_src_trg} addresses a distinct but related quantity: the deviation of the empirical mean embedding from the true mean embedding in $\X$, considered separately for each domain and for parametric feature transformations $\fs \in \Fs$, $\ft \in \Ft$. The proof uses Yurinskii's Bernstein-type inequality for Hilbert-space-valued random variables \cite{Yurinski76}, which yields an exponential bound governed by the distribution-specific variance and moment parameters $(\vars, \Cs)$, $(\vart, \Ct)$ rather than a uniform kernel bound $K$; consequently, the result is applicable without a bounded-kernel assumption and provides tighter concentration when $\vars$ and $\vart$ are small. Moreover, this per-domain formulation is the key building block for the uniform bound on $|\D(\fs,\ft) - \hD(\fs,\ft)|$ over all transformation pairs $(\fs, \ft) \in \Fs \times \Ft$ established in \cref{lem:unif_bnd_D_hD}, which does not have a direct counterpart in \cite{GrettonBRSS12} where the kernel is fixed rather than learned.
+
+% \subsection{Performance bounds for domain alignment algorithms}
+
+% Very few theoretical analyses have investigated learning domain-aligning transformations. Zhou et al.~\cite{ZhouTPT19} propose a multi-task method learning domain similarity through a linear transformation $\mathbf{G}$, with estimation error bounded by $O(d_T \sqrt{\log(d_S)/n})$ under projection incoherence, where $d_S$, $d_T$ are the domain dimensions and $n$ is the number of tasks; however, their analysis is limited to linear transformations.
+
+% Wang and Schneider \cite{WangS15} analyze conditional distribution matching, showing the target generalization gap is bounded by
+% %
+% \[
+% O\left (  1+ \frac{1}{\sqrt{\Mt}} + \sqrt{\frac{\log(\delta^{-1})}{\Ms + \Mt}} \right)
+% \]
+% %
+% when the source domain is mapped to the target through a location and scale transform. 
+
+% Fang et al.~\cite{FangLLZ23} consider semi-supervised domain alignment as in our work, but do not explore the sample complexity of learning domain transformations; they instead treat it as a known parameter and aim to show that labeled target data requirements can be alleviated under certain assumptions.
+% %
+
+% Transfer learning, while different from domain adaptation, is closely related. Wang et al.~\cite{WangMSX23} analyze transfer and multitask learning through domain-invariant representations, showing the source-target performance gap varies at rate
+% %
+% \[
+% O\left(\text{dist}_{\mathcal{Y}}(\fs, \ft) + \sqrt{ \frac{\log(\delta^{-1})}{\Ms + \Mt}} \right),
+% \]
+% %
+% where $\text{dist}_{\mathcal{Y}}(\fs, \ft)$ is the $\mathcal{Y}$-discrepancy \cite{MohriM12} between the transformed domains, which is not easy to estimate in practice. Galanti et al.~\cite{TomerWH16} model transfer learning where a target task and multiple source tasks are drawn from the same meta-distribution, showing that the number of source tasks and samples per task must scale with the number of edges in the transferred and target-specific network components, respectively. Jiao et al.~\cite{JiaoLLY24} distinguish shared and domain-specific features in deep transfer learning, showing that cross-task transferability improves target convergence rates. McNamara and Balcan \cite{McNamaraB17} analyze representation learning followed by fine-tuning, with the source-to-target performance gap bounded by $O(\sqrt{\text{dim}_{VC}(\mathcal{H \circ F}) / \Ms} + \sqrt{\text{dim}_{VC}(\mathcal{H})/\Mt})$, where $\mathcal{F}$ is the representation space and $\mathcal{H}$ is the classifier space. The key insight is that $\Mt$ scales with the dimension of $\mathcal{H}$ alone, not the more complex $\mathcal{H \circ F}$. A parallel result in \cite{TripuraneniJJ20} shows that in multi-task transfer learning, the labeled samples for a new task scale only with its task-specific map complexity, given sufficient data for previous tasks.%
+% \footnote{Although our domain adaptation setting differs from these transfer learning studies, they share the focus on handling scarce target labels. Whereas these works tie sample complexity to the richness of the target function class, which can be large for deep networks, our analysis shows that target label scarcity can be tolerated by choosing $\alpha=O(\sqrt{\Mt})$, independently of the target function class complexity.}
 
 
 
-\subsection{Performance bounds for domain alignment algorithms}
+% \subsection{Sample complexity of neural networks in a single domain}
 
-Very few theoretical analyses have investigated learning domain-aligning transformations. Zhou et al.~\cite{ZhouTPT19} propose a multi-task method learning domain similarity through a linear transformation $\mathbf{G}$, with estimation error bounded by $O(d_T \sqrt{\log(d_S)/n})$ under projection incoherence, where $d_S$, $d_T$ are the domain dimensions and $n$ is the number of tasks; however, their analysis is limited to linear transformations.
+% Sample complexity of neural networks is well-explored in learning theory; see \cite{AnthonyB02, BartlettMR21} for comprehensive overviews. Although this line of research is limited to the single-domain setting, we briefly review these results for comparison with our domain-adaptive bounds.
 
-Wang and Schneider \cite{WangS15} analyze conditional distribution matching, showing the target generalization gap is bounded by
-%
-\[
-O\left (  1+ \frac{1}{\sqrt{\Mt}} + \sqrt{\frac{\log(\delta^{-1})}{\Ms + \Mt}} \right)
-\]
-%
-when the source domain is mapped to the target through a location and scale transform. 
+% The sample complexity of a feed-forward network with $W$ weights, $\numL$ layers, and $s$ output units with fixed piecewise-polynomial activations is \cite[Theorem 21.5]{AnthonyB02}
+% %
+% \begin{equation}
+% \label{eq_samp_comp_Bartlett_NN}
+% \begin{split}
+% O\left(  \frac{ s (W \numL \log(W) + W \numL^2) \log(\epsilon^{-1}) + \log(\delta^{-1})   }{\epsilon^2}   \right)
+% \end{split}
+% \end{equation}
+% %
+% for error $\epsilon$. With network width $\dcom$, we have $W= \dcom^2 \numL$, giving sample complexity $M=O(\dcom^2 \numL^3)$ in \eqref{eq_samp_comp_Bartlett_NN}---quadratic in $\dcom$ and cubic in $\numL$. This is consistent with our results in \cref{thm_main_result_da_mmd,thm_main_result_dann}, where $\Ms= O(\dcom^2 \numL^2)$, with a slightly tighter quadratic dependence on $\numL$.
 
-Fang et al.~\cite{FangLLZ23} consider semi-supervised domain alignment as in our work, but do not explore the sample complexity of learning domain transformations; they instead treat it as a known parameter and aim to show that labeled target data requirements can be alleviated under certain assumptions.
-%
+% A recent trend is dimension-independent characterization of sample complexity. \cite{NeyshaburTS15} show exponential dependence on depth but remove width dependence under group norm regularization. Subsequent works reduce the dependence on network size to polynomial \cite{WeiM19}, quadratic \cite{NeyshaburBS18}, linear \cite{GolowichRS18}, and logarithmic \cite{BartlettFT17} factors. Harvey et al.~\cite{HarveyLM17} show the VC-dimension of ReLU networks is $O(W \numL \log(W))$, yielding comparable bounds to ours. More recently, width dependence has been removed for one-layer networks \cite{VardiSS22} and reduced to logarithmic factors for two-layer networks \cite{DanielyG24} under bounded Frobenius and spectral norm constraints. These results crucially rely on dimension-independent bounds on weight matrix norms and yield pessimistic complexities without such assumptions.%
+% \footnote{While these studies have comprehensively advanced the understanding of neural network classifiers, they all focus on the single-domain scenario. To the best of our knowledge, our work is the first detailed analysis of the sample complexity of domain-adaptive neural networks. Our analysis does not impose norm constraints on weight matrices; incorporating such constraints could yield tighter bounds, which we leave as future work.}
 
-Transfer learning, while different from domain adaptation, is closely related. Wang et al.~\cite{WangMSX23} analyze transfer and multitask learning through domain-invariant representations, showing the source-target performance gap varies at rate
-%
-\[
-O\left(\text{dist}_{\mathcal{Y}}(\fs, \ft) + \sqrt{ \frac{\log(\delta^{-1})}{\Ms + \Mt}} \right),
-\]
-%
-where $\text{dist}_{\mathcal{Y}}(\fs, \ft)$ is the $\mathcal{Y}$-discrepancy \cite{MohriM12} between the transformed domains, which is not easy to estimate in practice. Galanti et al.~\cite{TomerWH16} model transfer learning where a target task and multiple source tasks are drawn from the same meta-distribution, showing that the number of source tasks and samples per task must scale with the number of edges in the transferred and target-specific network components, respectively. Jiao et al.~\cite{JiaoLLY24} distinguish shared and domain-specific features in deep transfer learning, showing that cross-task transferability improves target convergence rates. McNamara and Balcan \cite{McNamaraB17} analyze representation learning followed by fine-tuning, with the source-to-target performance gap bounded by $O(\sqrt{\text{dim}_{VC}(\mathcal{H \circ F}) / \Ms} + \sqrt{\text{dim}_{VC}(\mathcal{H})/\Mt})$, where $\mathcal{F}$ is the representation space and $\mathcal{H}$ is the classifier space. The key insight is that $\Mt$ scales with the dimension of $\mathcal{H}$ alone, not the more complex $\mathcal{H \circ F}$. A parallel result in \cite{TripuraneniJJ20} shows that in multi-task transfer learning, the labeled samples for a new task scale only with its task-specific map complexity, given sufficient data for previous tasks.%
-\footnote{Although our domain adaptation setting differs from these transfer learning studies, they share the focus on handling scarce target labels. Whereas these works tie sample complexity to the richness of the target function class, which can be large for deep networks, our analysis shows that target label scarcity can be tolerated by choosing $\alpha=O(\sqrt{\Mt})$, independently of the target function class complexity.}
-
-
-
-\subsection{Sample complexity of neural networks in a single domain}
-
-Sample complexity of neural networks is well-explored in learning theory; see \cite{AnthonyB02, BartlettMR21} for comprehensive overviews. Although this line of research is limited to the single-domain setting, we briefly review these results for comparison with our domain-adaptive bounds.
-
-The sample complexity of a feed-forward network with $W$ weights, $\numL$ layers, and $s$ output units with fixed piecewise-polynomial activations is \cite[Theorem 21.5]{AnthonyB02}
-%
-\begin{equation}
-\label{eq_samp_comp_Bartlett_NN}
-\begin{split}
-O\left(  \frac{ s (W \numL \log(W) + W \numL^2) \log(\epsilon^{-1}) + \log(\delta^{-1})   }{\epsilon^2}   \right)
-\end{split}
-\end{equation}
-%
-for error $\epsilon$. With network width $\dcom$, we have $W= \dcom^2 \numL$, giving sample complexity $M=O(\dcom^2 \numL^3)$ in \eqref{eq_samp_comp_Bartlett_NN}---quadratic in $\dcom$ and cubic in $\numL$. This is consistent with our results in \cref{thm_main_result_da_mmd,thm_main_result_dann}, where $\Ms= O(\dcom^2 \numL^2)$, with a slightly tighter quadratic dependence on $\numL$.
-
-A recent trend is dimension-independent characterization of sample complexity. \cite{NeyshaburTS15} show exponential dependence on depth but remove width dependence under group norm regularization. Subsequent works reduce the dependence on network size to polynomial \cite{WeiM19}, quadratic \cite{NeyshaburBS18}, linear \cite{GolowichRS18}, and logarithmic \cite{BartlettFT17} factors. Harvey et al.~\cite{HarveyLM17} show the VC-dimension of ReLU networks is $O(W \numL \log(W))$, yielding comparable bounds to ours. More recently, width dependence has been removed for one-layer networks \cite{VardiSS22} and reduced to logarithmic factors for two-layer networks \cite{DanielyG24} under bounded Frobenius and spectral norm constraints. These results crucially rely on dimension-independent bounds on weight matrix norms and yield pessimistic complexities without such assumptions.%
-\footnote{While these studies have comprehensively advanced the understanding of neural network classifiers, they all focus on the single-domain scenario. To the best of our knowledge, our work is the first detailed analysis of the sample complexity of domain-adaptive neural networks. Our analysis does not impose norm constraints on weight matrices; incorporating such constraints could yield tighter bounds, which we leave as future work.}
-
-% \clearpage
+% % \clearpage
 
 \section{Experimental results}
 \label{sec:exp_results}

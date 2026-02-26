@@ -12,13 +12,29 @@
 \usepackage{xr}         % Referans okuma
 \usepackage{clipboard}  % Metin okuma
 \usepackage{etoolbox}   % Döngü işlemleri
+\usepackage{graphicx}
 \input{preamble}
+
 
 % ------------------------------------------------
 % 2. Manuscript Connection
 % ------------------------------------------------
 \externaldocument{latex_output/article} % Sayfa numaralarını al
+\externaldocument{latex_output/supplement}
 \openclipboard{latex_output/article}    % Metin içeriğini al (.cpy dosyasından)
+
+\usepackage{cleveref}
+\crefname{subsection}{Section}{Sections}
+\Crefname{subsection}{Section}{Sections}
+\crefname{section}{Section}{Sections}
+\Crefname{section}{Section}{Sections}
+\crefname{hypothesis}{Hypothesis}{Hypotheses}
+\crefname{fact}{Fact}{Facts}
+\crefname{assumption}{Assumption}{Assumptions}
+\crefname{definition}{Definition}{Definitions}
+\crefname{proof}{Proof}{Proofs}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{figure}{Figure}{Figures}
 
 % ------------------------------------------------
 % 3. Color Palette (SENİN SEÇİMLERİN)
@@ -84,7 +100,7 @@
         colback=revisionbg, frame hidden,
         borderline west={3pt}{0pt}{blue!40}, % Mavi çizgi
         left=5pt, right=5pt, top=5pt, bottom=5pt,
-        arc=2pt
+        arc=2pt 
     ]
         % Başlık
         \textbf{\textcolor{blue!40!black}{Revisions in Manuscript:}}
@@ -99,7 +115,7 @@
             % 2. Metin (Alt satıra yapıştır)
             \par\nopagebreak
             \begingroup
-            \itshape\small ``\Paste{text:##1}''
+            \itshape\small \Paste{text:##1}
             \endgroup
         }
         \docsvlist{#1} % Listeyi işle
@@ -147,21 +163,21 @@
     \ReviewerText{
         The setting of the kernel map in Section 3.2 looks strange. Specifically, if the mappings $f^s$ and $f^t$ for the shared representation learning are both set as $\phi$, how could $\phi$ ensure that the original spaces $\mathcal{X}^s$ and $\mathcal{X}^t$ are projected into the same space? Moreover, in such a setting, this theory may be limited to the scenarios that the source space and target space share the same or similar structures, e.g., it would fail in the heterogeneous cases.
     }
-    \AuthorResponse{Hocam zaten remark 2'de siz bundan açıkça bahsetmişsiniz. Section 3.1 (MMD-based Networks) bölümünde MMD tabanlı ağlar için fonksiyon uzayları tanımlanıyor. Dikkat edilirse: $f^{s}(x^s) := \phi(\xi^{s}(x^s))$ olarak tanımlanıyor. $f^{t}(x^t) := \phi(\xi^{t}(x^t))$ olarak tanımlanıyor. Burada $\phi$, veriyi RKHS (Reproducing Kernel Hilbert Space) uzayına taşıyan kanonik özellik haritasıdır (örneğin Gaussian kernel). Bu harita ($\phi$) her iki domain için aynıdır çünkü ortak bir RKHS uzayında karşılaştırma yapılacaktır.
+    \AuthorResponse{Reviewer Section 3.2 demiş ama sanırım 2.3'ü kastediyor. Kafa karışıklığını önlemek için Section 2.3'teki kernel map discussion'u, Remark 2 ile birleştirilerek footnote olarak yazıldı. Bu sayede $\fs = \ft$ varsayımının $\Xs = \Xt$ varsayımından geldiği; ama bizim böyle bir varsayımı yine de kullanmadığımız açıkça ifade edilmiş oldu. Bonus olarak yer kazanmış olduk.
     }
-    %%\AutoRevision{}
-    \PlainRevision{
+    \AutoRevision{1.2}
+    % \PlainRevision{
         
-    \begin{equation}
-        dfdsfg = 3x^2
-    \end{equation}
+    % \begin{equation}
+    %     dfdsfg = 3x^2
+    % \end{equation}
     
-    \begin{itemize}
-        \item dfdsfg = 3x^2
-        \item dfdsfg = 3x^2
-    \end{itemize}
+    % \begin{itemize}
+    %     \item dfdsfg = 3x^2
+    %     \item dfdsfg = 3x^2
+    % \end{itemize}
 
-    }
+    % }
 \end{ReviewCycle}
 
 
@@ -169,7 +185,7 @@
     \ReviewerText{
         The finite variance/moment assumption, i.e., Assumption 3, needs further clarification. In the current version, there is a simple justification that “these assumptions hold for many common data distributions in practice”. Since this assumption is important, it would be helpful to provide a more informative discussion, e.g., which types of data would satisfy this condition, or what conditions are necessary for the data?
     }
-    \AuthorResponse{Hocam yanlış anlamadıysam bounded input ve neural networkler için bu varsayım direkt geçerli. Bunları da zaten Assumption 5'te ve Lemma 7'de gösteriyoruz. Bir remark ekleyip geçebiliriz, ya da direkt görmezden gelebiliriz.}
+    \AuthorResponse{Hocam yanlış anlamadıysam bounded input ve neural networkler için bu varsayım direkt geçerli. Bunları da zaten Assumption 5'te ve Lemma 7'de gösteriyoruz. Aşağıdaki açıklamaları da "These assumptions hold for many common data distributions in practice" cümlesine bir footnote olarak ekledim:}
     \AutoRevision{1.3}
 \end{ReviewCycle}
 
@@ -177,7 +193,7 @@
     \ReviewerText{
         Following the last question, if the functions $f^s$ and $f^t$ are related to the RKHSs, it would also be helpful to clarify the connection between the assumption and the kernels. Specifically, the finite assumption on kernel-based statistics would be closely related to the choices of kernels.
     }
-    \AuthorResponse{Burada last question derken anlaşılan sondan bir öncekini kastediyor. Hüseyin, trivial bir şeyden söz etmiyor olabilir. Şunlardan emin ol: 1-Finite assumption on kernel based statistics nedir? 2- Kernel seçimiyle nasıl yakından alakalıdır? 3- Bizim burada seçtiğimiz kernel'ler nedir, neural network'ler mi? ** Yani bu adamı ikna edecek bir cevap yazacak kadar konuyu öğrenmelisin. Zaten Comment 1.2 ile yakından alakalı.}
+    \AuthorResponse{Belki Comment 1.3 bu doğrultuda improve edilebilir fakat ben bu comment'e özel bir aksiyon almadım.}
     %\AutoRevision{}
 \end{ReviewCycle}
 
@@ -186,39 +202,37 @@
     \ReviewerText{
         The convergence bound of empirical MMD seems to have already been studied in existing literature. It would be helpful to discuss the differences between the results in Lemma 3 and existing bounds.
     }
-    \AuthorResponse{}
+    \AuthorResponse{Hocam sanırım Gretton et al. (2012) A Kernel Two-Sample Test makalesinde bazı boundlar var. Üzerinde detaylı düşünemedim ve makalede bu konuyla ilgili bir değişiklik yapmadım fakat bilginize sunarım (ekran alıntısı adı geçen makaleden):}
+    \begin{center}
+      \includegraphics[width=0.5\textwidth]{gretton-thm7-8.png}
+    \end{center}
     %\AutoRevision{}
 \end{ReviewCycle}
 
 
-\begin{ReviewCycle}{Reviewer 1, Comment 6}
+\begin{ReviewCycle}{Reviewer 1, Comment 6-7}
     \ReviewerText{
         As far as I understand this submission, the major results are the generalization bound in Theorem 1 and its connection to specific algorithms that characterize the discrepancy $D(f^s,f^t)$. However, an important prior is Assumption 1, which can be taken as a stronger version of the change of measure inequality. Note that the L.H.S. of Eq. (3) is dominated by both variables $X$ and $Y$, while the R.H.S. (i.e., $D(f^s,f^t)$) seems to only depend on $X$. Such scenarios make this assumption less informative or too strict. More discussion would be helpful.
     }
-    \AuthorResponse{ Zurnanın zırt dediği yer burası. Çok önemli fikirsel atılım: Aslında MMD hesabı, Y’lerden bağımsız olmuyor. Sonuçta backprop yapıyoruz, her bir MMD katmanındaki benzerlik buna göre şekilleniyor. Thank you for this insightful comment. We agree that Assumption 1 is a key component of our analysis. To address your concern and provide a rigorous justification, we have added a new appendix (Appendix \ref{sec:app_just_assum1}) where we formally prove that this assumption holds naturally for MMD-based domain adaptation. Specifically, we show that the constant $R$ corresponds to the Lipschitz constant (or RKHS norm) of the composite loss function in the shared feature space. This interpretation clarifies that the assumption is consistent with standard kernel learning theory and the boundedness of network weights.
-    }
-    \AutoRevision{1.6a, 1.6b}
-\end{ReviewCycle}
-\begin{ReviewCycle}{Reviewer 1, Comment 7}
     \ReviewerText{
         Following the last question, the analysis on sample complexity under popular learning algorithms is interesting, but the constant $R$ is also important, in my understanding. It seems that the constant $R$ is unjustified throughout this manuscript. It would be expected to show the nature of $R$ explicitly, e.g., how MMD-based network and domain adversarial network satisfy Assumption 1 and what are their corresponding values of $R$.
     }
-    \AuthorResponse{Thank you for pointing this out. As detailed in our response to Comment 6, we have included a formal derivation in Appendix \ref{sec:app_just_assum1} explicitly showing the nature of the constant $R$ (denoted as $\LLs$ in the manuscript). We demonstrate that $R = \|\psi\|_{\X}$, where $\psi$ is the composite loss function and $\|\cdot\|_{\X}$ is the RKHS norm. This explicitly links $R$ to the complexity of the loss function and the geometry of the shared feature space.}
-    % \AutoRevision{1.7}
+    \AuthorResponse{Bu konuya eğileceğiz (Assumption 1).}
+    % \AutoRevision{1.6a, 1.6b}
 \end{ReviewCycle}
 
 \begin{ReviewCycle}{Reviewer 1, Comment 8}
     \ReviewerText{
         The result $\alpha_{optimal}=O(\sqrt{M_t})$ is consistent with the empirical observation, which is good. However, since $\alpha$ should be set within $(0,1)$, is there any further suggestion for a practical setting for it?
     }
-    \AuthorResponse{}
+    \AuthorResponse{No action needed.}
     %\AutoRevision{}
 \end{ReviewCycle}
 \begin{ReviewCycle}{Reviewer 2, Comment 1}
     \ReviewerText{
         The paper relies on assumptions that may not hold in practical domain adaptation scenarios. For example, The theoretical framework relies on Assumption 1, which posits a linear bound between the loss difference and distribution discrepancy (e.g., |Ls - Lt|<=RD(fs,ft)). This assumption may not hold in complex real-world scenarios where domain shifts involve non-linear or high-dimensional disparities, such as label skew or heterogeneous data structures. For instance, the paper acknowledges that domain adaptation must handle "covariate shift, label shift, and heterogeneous settings", yet the assumption simplifies these into a uniform bound. Strengthening this by incorporating more flexible discrepancy measures (e.g., conditional distributions) could improve robustness.
     }
-    \AuthorResponse{Thank you for this valuable feedback. We acknowledge that Assumption 1 simplifies the relationship between loss difference and distribution discrepancy. However, as we now formally show in the newly added Appendix \ref{sec:app_just_assum1}, this linear bound is not an arbitrary simplification but a direct consequence of using the Maximum Mean Discrepancy (MMD) in a Reproducing Kernel Hilbert Space (RKHS). In this setting, the inequality $|\Ls - \Lt| \le R \cdot \D(\fs, \ft)$ holds with $R$ being the RKHS norm of the composite loss function. This provides a strong theoretical footing for the assumption within the context of the MMD-based algorithms analyzed in our work.}
+    \AuthorResponse{Bu konuya eğileceğiz (Assumption 1).}
     % \AutoRevision{2.1}
 \end{ReviewCycle}
 
@@ -226,9 +240,10 @@
     \ReviewerText{
         The sample complexity bounds derived for neural networks (e.g., quadratic scaling with width and depth) are not proven to be tight. The paper acknowledges that these bounds are pessimistic but does not compare them to empirical scaling or provide lower bounds, limiting their practical utility. For example, the sample complexity bounds depend heavily on covering numbers of function classes. However, for deep neural networks, covering numbers are often computationally intractable to estimate and can lead to loose bounds that scale quadratically with depth/width ($O(d^2 L^2)$).
     }
-    \AuthorResponse{Hocam sanki bu yorum ve hakemin diğer yorumları, neural networklerle ilgili herhangi bir teori yapılamaz varsayımından ileri geliyor gibi. Resmen covering numbers neural network'ler için tractable değildir ve loose bound'lara lead eder diyip geçilmiş. Biraz ciddiye almaya değmez gibi geldi. Ayrıca sonuç olarak gerçek hayatta çalıştığını gösteren deneylerimiz var, onların anlamı nedir öyleyse? Deneylerimizde kullanılan networklerin gerçek hayatta kullanılan networklerden farklı olduğunu düşünmüş olabilir (drop out vs şeyler kullanılmadığı için). Burada biraz haklı olur. Aslında overfitting rejimine girmesi için sadece data ile oynadığımızı hatırlıyorum, eğer orijinal kodlarda kullanılan bir overfitting mitigation stratejisi varsa, ben onları kasten kaldırmadım. Belki deneylerimizin gerçek hayatta kullanılan neural network traininglerine çok benzediği gibi bir savunma yapabiliriz, eğer geçerli bir savunma olursa bu. Başka bir comment'te de (comment 2.4) bundan bahsedilmişti. Hüseyin, sen yine de şunları düşün:
-    1- Burada covering numbers'a bağlı bir sample complexity hesabı olduğunu söylemiş, ama biz makalemizde bunu kullanmıyoruz. 
-    2- Intractability problemimiz bizim de var mı? }
+    \AuthorResponse{No action needed.}
+    % \AuthorResponse{Hocam sanki bu yorum ve hakemin diğer yorumları, neural networklerle ilgili herhangi bir teori yapılamaz varsayımından ileri geliyor gibi. Resmen covering numbers neural network'ler için tractable değildir ve loose bound'lara lead eder diyip geçilmiş. Biraz ciddiye almaya değmez gibi geldi. Ayrıca sonuç olarak gerçek hayatta çalıştığını gösteren deneylerimiz var, onların anlamı nedir öyleyse? Deneylerimizde kullanılan networklerin gerçek hayatta kullanılan networklerden farklı olduğunu düşünmüş olabilir (drop out vs şeyler kullanılmadığı için). Burada biraz haklı olur. Aslında overfitting rejimine girmesi için sadece data ile oynadığımızı hatırlıyorum, eğer orijinal kodlarda kullanılan bir overfitting mitigation stratejisi varsa, ben onları kasten kaldırmadım. Belki deneylerimizin gerçek hayatta kullanılan neural network traininglerine çok benzediği gibi bir savunma yapabiliriz, eğer geçerli bir savunma olursa bu. Başka bir comment'te de (comment 2.4) bundan bahsedilmişti. Hüseyin, sen yine de şunları düşün:
+    % 1- Burada covering numbers'a bağlı bir sample complexity hesabı olduğunu söylemiş, ama biz makalemizde bunu kullanmıyoruz. 
+    % 2- Intractability problemimiz bizim de var mı? }
     %\AutoRevision{}
 \end{ReviewCycle}
 
@@ -236,7 +251,7 @@
     \ReviewerText{
         Assumption 5 restricts network parameters to a bounded set. While this simplifies analysis, it contradicts common practices where parameters are regularized but not strictly bounded. In real training, unbounded optimization (e.g., via gradient descent) could violate this assumption, undermining the generality of the bounds. Incorporating norm-based regularization explicitly into the theory would align better with empirical practices.
     }
-    \AuthorResponse{Anlamlı bir yorum olma ihtimali olsa bile uygulaması zor diye düşünüyorum. Hocam eğer siz de böyle düşünüyorsanız bu yorumu görmezden gelebiliriz. Ya da belki bu varsayımın mantıklı olduğunu savunan bir remark ekleme yoluna gidebiliriz.}
+    \AuthorResponse{No action needed.}
 
     %\AutoRevision{}
 \end{ReviewCycle}
@@ -245,33 +260,16 @@
     \ReviewerText{
         The experiments deliberately maintain networks in the overfitting regime to study sample complexity. While this isolates the effect of network size, it ignores practical techniques like dropout or early stopping that mitigate overfitting. Consequently, the reported sample complexities (e.g., $O(d^2 L^2)$) may be overstated for real-world applications. Including ablation studies with regularization could provide a balanced view.
     }
-    \AuthorResponse{Hocam bence bu saçma bir yorum değil. Ablation study yapmak demek benim için biraz tüm deneyleri baştan yapmak demek, aksi takdirde güvenilir bir şekilde kıyaslama yapamayız diye düşünüyorum, kodlarımız da dağınık olduğu için. Ama zaten ben orijinal kodda kullanılan overfitting mitigation stratejilerini kaldırmamıştım, bu yüzden belki deneylerimizde zaten sadece labeled / unlabeled data sayısında oynama yapılarak overfitting region'a itildiği savunulabilir. Ama şart değilse, ki bence ICML NeurIPS gibi top konferans falan hedefleseydik ancak öyle olurdu, ablation study koymayabiliriz.}
-    %\AutoRevision{}
+    \AuthorResponse{Hocam ana metinden "deliberately kept in overfitting regime" ifadesini kaldırdım, ve deneylerle ilgili detay verdiğimiz footnote'lara aşağıdaki ifadeleri açıkça ekledim. Bunları daha da öne çıkarıp, bir remark olarak mesela, ifade etmek de mümkün tabii. Yani teorik analizimizde dahil etmedik ama deneysel olarak gösterdik ki bulgularımız gerçek hayat pratikleriyle tutarlı gibisinden.}
+    \AutoRevision{2.4a, 2.4b}
 \end{ReviewCycle}
 
 \begin{ReviewCycle}{Reviewer 2, Comment 5}
     \ReviewerText{
         The experiments focus on specific architectures (e.g., MMD-based networks and adversarial networks). The paper notes that "convolutional layers are left out of the scope" in some analyses, which reduces relevance to modern architectures like Transformers or ResNets. Testing a broader range of models would strengthen the claims about generalizability.
     }
-    \AuthorResponse{Hocam burada da aslında şöyle bir durum var. Conv layer'ları scope'un dışında tuttuk ama sonuçta kullandık, ve bound'ların achieve edildiğini göstermiş olduk. Yani matematiksel titizlik yönünden saldırılsaydı bişey demezdim ama gerçek hayattaki mimarilerle alakasızlık yönünden saldırılınca, acaba analizimizin conv layerlarla da hala geçerli olduğunu savunan bir remark / minik açıklama mı eklesek? }
-    %\AutoRevision{}
+    \AuthorResponse{Bu doğrultuda aşağıdaki footnote eklendi:}
+    \AutoRevision{2.5}
 \end{ReviewCycle}
-
-\bigskip
-
-\hrule
-\hrule
-\hrule
-
-\bigskip
-
-\begin{ReviewCycle}{Netleştirilecek Diğer Konular}
-    \begin{itemize}
-        \item Dergi Elsevier Neural Networks mü olacak?
-        \item 
-    \end{itemize}
-\end{ReviewCycle}
-
-
 
 \end{document}

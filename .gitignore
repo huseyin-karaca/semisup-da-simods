@@ -18,3 +18,10 @@
 /latex_output/*.toc
 /latex_output/*.lof
 /latex_output/*.lot
+
+
+# I've tried to implement a CrossRef API to get the BibTeX entries for the references.
+# However, it didn't work 
+/crossrefapi.py
+/zengin.bib
+

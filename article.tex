@@ -286,7 +286,6 @@ where $\| \cdot \|_{\X}$ stands for the inner-product-induced norm in the Hilber
 In order to study the performance of KMM algorithms,  we first derive a bound on the deviation between the actual distribution discrepancy $\D(\fs, \ft)$ and its empirical estimate $\hD(\fs, \ft)$.\footnote{Although most KMM methods assume $\Xs = \Xt$ and $\fs=\ft=\phi$, we do not make these assumptions. We only assume that the distribution discrepancy between $\nus$ and $\nut$ is taken as in \eqref{eq:defn_D_MMD} and the empirical estimate is computed as in \eqref{eq:defn_hD_MMD}.} We make the following assumption on the data distributions:
 
 
-
 \begin{assumption}
 \label{assum_fx_bdd_moments}
 The random variables ${ \fs(\xis) }{i=1}^{\Ns}$ and ${ \ft(\xjt) }{j=1}^{\Nt}$ have bounded expected deviations from their respective means $E[\fs(\xs)]$ and $E[\ft(\xt)]$; that is, there exist constants $\vars$ and $\vart$ such that
@@ -307,9 +306,6 @@ E \left[  \| \ft(\xjt) - E[\ft(\xt)]  \|^k \right]  &\leq \frac{k!}{2} \vart \, 
 \end{assumption}
 %
 The condition \eqref{eq:var_bnd_fs_ft} can be seen as a finite variance assumption for a distribution over a Hilbert space, and the condition \eqref{eq:mom_bnd_fs_ft} bounds the growth of the $k$-th central moment by a rate of $O(k! \, C^{k})$. These assumptions hold for many common data distributions in practice.
-
-
-
 
 
 To analyze the MMD estimator, we first establish concentration of sample means in Hilbert spaces. Using a Bernstein-type inequality due to Yurinskii \cite{Yurinski76}, we show that deviations of empirical means from expectations decay exponentially in the sample size (\cref{lem:bernstein_src_trg}). Building on this, we derive uniform bounds on $| \D(\fs, \ft) - \hD (\fs, \ft)  |$ that hold simultaneously for all transformation pairs in $\Fs \times \Ft$ by constructing finite covers of these function classes and applying union bounds (\cref{lem:unif_bnd_D_hD}). This uniformity requires the following compactness assumption.
@@ -414,8 +410,6 @@ for some magnitude bound parameter $\Bnet>0$, for $\lay=1, \dots, \numL$ and $i=
 Clearly, the features $\hsl$, $\htl$ in all layers depend on both the input vectors $\xs$, $\xt$ and the network parameters $\Thetas $, $\Thetat$. In the following, with a slight abuse of notation we write $\hsl_{\Thetas}$ when we would like emphasize the dependence of $\hsl$ on the network parameters $\Thetas$, and we write $\hsl (\xs)$ when we would like to refer to the dependence of $\hsl$ on the input $\xs$. The notation is set similarly for the target domain variables. % burası da footnote'a alınabilir
 
 
-
-
 MMD-based deep domain adaptation networks employ a feature mapping $\phil: \Rdl \rightarrow \Xl $ between the hidden layer feature vectors $\hsl, \htl$ and a Reproducing Kernel Hilbert Space (RKHS) $\Xl$ \cite{LongCWJ15, GrettonBRSS12}. The RKHS $\Xl$ of each layer $\lay$ has a symmetric, positive definite characteristic kernel $\krl: \Rdl \times \Rdl \rightarrow \R$ such that
 %
 $%
@@ -484,7 +478,6 @@ In the following, we first assume the continuity of the kernels and the activati
 \label{assum_krl_actl_cont}
 The kernels $\krl(\cdot , \cdot ) $ for layers $\lay=1, \dots, \numL-1$ and the activation functions $\actl (\cdot)$ for layers $\lay=1, \dots, \numL$ are continuous.
 \end{assumption}
-
 
 
 As stated in \cref{lem_fs_ft_measble} and proved in \cref{pf_lem_fs_ft_measble}, this assumption ensures that $ E[\fs(\xs)]$ and $ E[\ft(\xt)]$ are in $ \X $. % Hüseyin: Bu Lemma 5 yerine geçiyor. Lemma 5'in statement'ini de kaldırdık.
@@ -595,8 +588,6 @@ The Lipschitz continuity condition \eqref{eq_assum_kernel_lip_cont} holds for ma
 To upper bound the covering numbers, we construct finite covers by discretizing the network parameter space into regular grids and leveraging the Lipschitz continuity of network components to control the induced function space distances. This analysis yields explicit covering number bounds in terms of network depth, width, and the problem-dependent constants (\cref{lem_cov_num_Fs_Ft,lem_cov_num_HFs_HFt}). From these technical results, we obtain the following characterization of the growth rates of covering numbers with network depth and width.
 
 
-
-
 \begin{corollary}
 \label{cor_covnum_rate}
 
@@ -614,9 +605,6 @@ where $c$ denotes a constant.
 \end{corollary}
 
 \Cref{cor_covnum_rate} is proved in \cref{pf_cor_covnum_rate} of the supplement. Combining \cref{cor_covnum_rate} and \cref{thm:main_result_mmd}, we are now ready to state our main result about the sample complexity of MMD-based domain adaptation networks in \cref{thm_main_result_da_mmd} below, whose proof is presented in \cref{pf_thm_main_result_da_mmd} of the supplement. 
-
-
-
 
 
 \begin{theorem}
@@ -656,8 +644,6 @@ O\left(
 \right) . 
 \end{equation}
 \end{theorem}
-
-
 
 
 \cref{thm_main_result_da_mmd} shows that sample complexities $\Ms$, $\Ns$, and $\Nt$ must increase at rate $O(\dcom^2 \numL^2)$ as network depth $\numL$ and width $\dcom$ increase (ignoring logarithmic terms), indicating quadratic growth with network size to prevent overfitting.\footnote{The assumption of the existence of constants $\bls$ and $\Lls$ is satisfied in many settings; we derive these for cross-entropy loss in Appendix \ref{sec_app_crossent}.} For limited labeled target samples $\Mt$, the weight $\alpha$ must shrink at rate $\alpha=O(\sqrt{\Mt})$ to avoid overfitting, and similarly at rate $\alpha=O((\dcom \numL)^{-1})$ as network size grows. Sample sizes scale as $O(\epsilon^{-2})$ for an $O(\epsilon)$ bound on loss difference. 
@@ -880,7 +866,6 @@ for any transformations $\fs \in \Fs$, $\ft \in \Ft$, and any hypothesis $\h \in
 \cref{assum_existence_LLsdan} is the counterpart of \cref{assum_existence_LLs} in the context of adversarial domain adaptation networks, which is illustrated in \cref{fig_illus_domain_ddan}. The assumption asserts that the source and the target distributions be related in such a way that, when efficiently aligned via the feature mappings $\fs$ and $\ft$ so as to minimize the domain discrepancy $\Ddan(\fs, \ft)$, the classification losses arising in the source and the target domains are also comparable. \footnote{Note that the assumption is not limited to the ideal scenario where the domains are well-aligned: In  case of poor alignment,  $\Ddan(\fs, \ft)$ may be high, possibly leading to significantly different losses in the two domains. We, however, assume that the domain discriminator network is sufficiently well-trained; i.e., the learnt discriminator $\ddan $ is able to distinguish between the source and target domains if the mappings $\fs$ and $\ft$ result in poor feature alignment.}
 
 
-
 We can now state our main result about the sample complexity of adversarial domain adaptation networks. 
 
 
@@ -1021,7 +1006,6 @@ While we analyze single-layer label predictors as in \cref{fig_illus_ddan_networ
 % \footnote{Although our domain adaptation setting differs from these transfer learning studies, they share the focus on handling scarce target labels. Whereas these works tie sample complexity to the richness of the target function class, which can be large for deep networks, our analysis shows that target label scarcity can be tolerated by choosing $\alpha=O(\sqrt{\Mt})$, independently of the target function class complexity.}
 
 
-
 % \subsection{Sample complexity of neural networks in a single domain}
 
 % Sample complexity of neural networks is well-explored in learning theory; see \cite{AnthonyB02, BartlettMR21} for comprehensive overviews. Although this line of research is limited to the single-domain setting, we briefly review these results for comparison with our domain-adaptive bounds.
@@ -1040,189 +1024,148 @@ While we analyze single-layer label predictors as in \cref{fig_illus_ddan_networ
 % A recent trend is dimension-independent characterization of sample complexity. \cite{NeyshaburTS15} show exponential dependence on depth but remove width dependence under group norm regularization. Subsequent works reduce the dependence on network size to polynomial \cite{WeiM19}, quadratic \cite{NeyshaburBS18}, linear \cite{GolowichRS18}, and logarithmic \cite{BartlettFT17} factors. Harvey et al.~\cite{HarveyLM17} show the VC-dimension of ReLU networks is $O(W \numL \log(W))$, yielding comparable bounds to ours. More recently, width dependence has been removed for one-layer networks \cite{VardiSS22} and reduced to logarithmic factors for two-layer networks \cite{DanielyG24} under bounded Frobenius and spectral norm constraints. These results crucially rely on dimension-independent bounds on weight matrix norms and yield pessimistic complexities without such assumptions.%
 % \footnote{While these studies have comprehensively advanced the understanding of neural network classifiers, they all focus on the single-domain scenario. To the best of our knowledge, our work is the first detailed analysis of the sample complexity of domain-adaptive neural networks. Our analysis does not impose norm constraints on weight matrices; incorporating such constraints could yield tighter bounds, which we leave as future work.}
 
-% % \clearpage
+\clearpage
 
 \section{Experimental results}
 \label{sec:exp_results}
 
-In this section, we present experimental results for the verification of the proposed generalization bounds. We first study the generic bounds using shallow classifier models, then examine the sample complexity of domain-adaptive neural networks. Complete experimental details are provided in \cref{sec_detailed_exp_results} of the supplement, and the codes are shared publicly in \url{https://github.com/huseyin-karaca/semisup-da}.
+In this section, we present experimental results for the verification of the proposed generalization bounds. We first study the generic bounds using shallow classifiers, then examine the sample complexity of domain-adaptive neural networks. 
+% \footnote{
+Complete experimental details are provided in \cref{sec_detailed_exp_results} of the supplement, and the codes are shared publicly in \url{https://github.com/huseyin-karaca/semisup-da}.
+% }  
 
 
 \subsection{General domain alignment methods} 
 \label{ssec_exp_gen_da}
 
-We validate our findings on a synthetic data set with two classes.\footnote{Source and target data are generated by applying different geometric transformations to 400 samples drawn from the standard normal distribution in $\R^2$. We emulate a setting where the transformations $\fs$ and $\ft$ are learnt with some estimation error $\tau$. The classifier is a regularized ridge regression trained in the common domain. Target misclassification rates are evaluated over 1000 test samples. Complete setup is provided in \cref{ssec_exp_gen_da_detailed}.}
+\subsubsection{Experiments with synthetic data}
+\label{ssec_exp_syn_data}
+We first validate the findings of \cref{sec:gen_bounds} on a synthetic two-class data set.
+% \footnote{
+Source and target data sets are generated by applying two different geometric transformations to 400 samples drawn from the standard normal distribution in $\R^2$. We emulate a setting where the transformations $\fs$ and $\ft$ are learnt from data with some error: $\fs$ and $\ft$ are formed by perturbing the ground truth geometric transformations with a transformation estimation error $\tau$, and we test a range of error levels $\tau$. Target misclassification rates are evaluated over 1000 test samples drawn from the target distribution and classified through the learnt hypothesis $\wvect$ and target transformation $\ft$.
+% }
+The classifier trained in the common domain is a regularized ridge regression solving
+%
+\vspace{-0.3cm}
+\begin{align}
+  \min_{\wvect \in \R^2} \ \  \frac{1-\alpha}{\Ms} \sum_{i=1}^{\Ms} (\wvect ^T \fs(\xis) - \yis)^2 
+  + \frac{\alpha}{\Mt} \sum_{j=1}^{\Mt} (\wvect ^T \ft(\xjt) - \yjt)^2  + \lambda \| \wvect \|^2 .
+\end{align}
 
-\cref{fig:toy_error_Mt} shows the variation of the target misclassification rate with the number $\Mt$ of labeled target samples for different values of $\alpha$. The decay in the target error is consistent with the rate $O(\sqrt{1/\Mt})$ predicted by \cref{thm:gen_defect_target}, as confirmed by the fitted theoretical curves. We also observe that large $\Mt$ values favor larger $\alpha$, while smaller $\Mt$ values require smaller $\alpha$, supporting the scaling $\alpha = O(\sqrt{\Mt})$. \cref{fig:toy_error_tau} illustrates that the misclassification rate increases approximately linearly with the transformation estimation error $\tau$, which is proportional to $\D(\fs, \ft)$, confirming the prediction of \cref{thm:gen_defect_target} that the target loss increases proportionally to the distribution distance.
+\cref{fig:toy_error_Mt} shows the variation of the target misclassification rate with $\Mt$ for different values of $\alpha$. Recall from \cref{thm:gen_defect_target} that the expected target loss $\Lt(\ft, \h)$ deviates from its reference value by an amount of $\epsilon$; for this to hold with fixed probability, the term $\Mt \epsilon^2$ in \eqref{eq_prob_expr_thm1} must remain constant, 
+%\footnote{Ignoring logarithmic factors and assuming that the covering numbers in \cref{thm:gen_defect_target} grow at a typical geometric rate with decreasing covering radius.} 
+implying $\epsilon = O(\sqrt{1/\Mt})$. The dashed lines in \cref{fig:toy_error_Mt} correspond to fitted rates of decay $O(\sqrt{1/\Mt})$, which closely match the experimental data, confirming the prediction of \cref{thm:gen_defect_target}. We also observe that large $\Mt$ values favor larger $\alpha$, while $\alpha$ must be chosen smaller at small $\Mt$ values, aligning with the theoretical scaling $\alpha = O(\sqrt{\Mt})$.
 
-We next experiment on the MIT-CBCL face data set \cite{MITCBCL}.\footnote{The dataset contains 3240 synthetic face images of 10 subjects rendered under 36 illumination conditions and 9 poses. We use Pose 1 (frontal) as source and Poses 2, 5, 9 as targets in separate trials. Domain alignment uses the PCA-based method of \cite{FernandoHST13} and an SVM classifier. Complete setup in \cref{ssec_exp_gen_da_detailed}.} \cref{fig:mit_error_Mt,fig:mit_error_Ms} shows that misclassification rates are effectively reduced with increasing labeled samples, at rates consistent with $O(\sqrt{1/\Mt})$ and $O(\sqrt{1/\Ms})$, as predicted by our theory. The fitted theoretical curves closely match the experimental data.
+\cref{fig:toy_error_tau} shows the variation of the target error with the transformation estimation error $\tau$, which is proportional to the distribution distance $\D(\fs, \ft)$. The misclassification rate increases approximately linearly with $\tau$, as confirmed by the fitted dashed lines, which is coherent with the prediction of \cref{thm:gen_defect_target} that the expected target loss grows proportionally to $\D(\fs, \ft)$.
+
+
+\subsubsection{Experiments with the MIT-CBCL face data}
+We next experiment on the MIT-CBCL face data set \cite{MITCBCL}
+% \footnote{The dataset contains 3240 synthetic face images of 10 subjects rendered under 36 illumination conditions and 9 poses.}
+(\cref{fig:face_dataset}).
+Using Pose 1 as the source domain and Poses 2, 5, 9 as separate target domains, we compute source-target mappings via the PCA-based method of \cite{FernandoHST13} and train an SVM classifier on all labeled samples from both domains.
+
+\cref{fig:mit_error_Mt,fig:mit_error_Ms} show that the misclassification rates of unlabeled target samples decrease effectively with increasing labeled samples. The rates of decrease are consistent with $O(\sqrt{1/\Mt})$ and $O(\sqrt{1/\Ms})$ as predicted by the theory; the fitted theoretical curves (dashed lines) closely match the experimental data.
+
+\clearpage
+
+\begin{figure}[t!]
+  \begin{center}
+       \subfloat[]
+         {\label{fig:toy_error_Mt}\includegraphics[width = 0.4\textwidth]{figures/toy_error_Mt_alpha.pdf}}
+         \hspace{0.1\textwidth}
+       \subfloat[]
+         {\label{fig:toy_error_tau}\includegraphics[width = 0.4\textwidth]{figures/toy_error_tau_alpha.pdf}}
+   \end{center}
+   \vspace{-0.3cm}
+   \caption{Variation of the target error on synthetical data with (a) Number of labeled target samples, (b) Distribution distance after transformation. Solid lines indicate experimental data and dashed lines represent theoretical rates of variation.}
+   \label{fig:toy_error}
+\end{figure}
+
+
+\begin{figure}[t!]
+  \centering
+  \centerline{\includegraphics[width=7.0cm]{figures/face_dataset.pdf}}
+  \vspace{-0.3cm}
+  \caption{Sample images from the MIT-CBCL face data set for four different subjects, rendered respectively under poses 1, 2, 5, and 9 for various illumination conditions. The dataset contains 3240 synthetic face images of 10 subjects rendered under 36 illumination conditions and 9 poses. 
+  %We use Pose 1 (frontal) as source and Poses 2, 5, 9 as targets in separate trials.
+  }
+  \label{fig:face_dataset}
+\end{figure}
+
+\begin{figure}[t!]
+\begin{center}
+     \subfloat[]
+       {\label{fig:mit_error_Mt}\includegraphics[width = 0.4\textwidth]{figures/mit_error_Mt.pdf}}
+      \hspace{0.1\textwidth}
+     \subfloat[]
+       {\label{fig:mit_error_Ms}\includegraphics[width = 0.4\textwidth]{figures/mit_error_Ms.pdf}}
+ \end{center}
+ \vspace{-0.3cm}
+ \caption{Variation of the target error on MIT-CBCL face data with (a) Number of labeled target samples, (b) Number of labeled source samples. Solid lines indicate experimental data and dashed lines represent theoretical rates of variation.}
+ \label{fig:mit_error}
+\end{figure}
+
+\clearpage
 
 
 \subsection{Domain-adaptive neural networks} 
 \label{ssec_exp_dan}
 
-We experimentally verify the sample complexity results of \cref{thm_main_result_da_mmd,thm_main_result_dann} using MNIST $\rightarrow$ MNIST-M experiments \cite{mnist,mnistm}.\footnote{MNIST (60000 images) serves as source and MNIST-M (59000 colored background images) as target. Networks are trained with varying numbers of labeled and unlabeled samples. The standard training components of the original implementations, including batch normalization, are retained throughout. Although our theoretical analysis does not explicitly account for such regularization, the consistency of the experimental results with the theoretical bounds suggests that our analysis is compatible with modern training practices. As network complexity increases for fixed sample sizes, target accuracy naturally decreases, which is the expected behavior when the available training data is insufficient relative to the model capacity. This enables the empirical characterization of sample complexity by identifying the minimum sample sizes required to maintain reference accuracy levels as complexity increases. Complete details and code for reproducing all experiments are provided in \cref{ssec_exp_dan_detailed}.}
+We next verify the sample complexity results of \cref{thm_main_result_da_mmd,thm_main_result_dann} for domain-adaptive neural networks. We use the MNIST data set \cite{mnist} as the source domain and MNIST-M \cite{mnistm} as the target domain.\footnote{MNIST consists of 60000 images and MNIST-M contains 59000 handwritten digit images with colored backgrounds. Networks are trained with labeled and unlabeled samples from both domains, and the target accuracy is defined as the correct classification rate on target test samples. In all experiments, hyperparameters are chosen to keep the network in the overfitting regime, enabling the characterization of sample complexity. Complete details and code for reproducing all experiments are provided in \cref{ssec_exp_dan_detailed}.} We present results for MMD-based (\cref{ssec_exp_mmd_dan}) and adversarial (\cref{exp_adv_da}) architectures, characterizing sample complexity with respect to depth $\numL$, width $\dcom$. We additionally investigate the optimal value of the weight $\alpha$ of the target loss in the objective function for both cases.
+
 
 \subsubsection{MMD-based domain adaptation networks}
 \label{ssec_exp_mmd_dan}
 
-We adopt the MMD-based architecture from \cite{LongCWJ15}, building on our previous experimental study \cite{KaracaAAAAUV23}.\footnote{The network begins with convolutional layers followed by fully connected MMD layers with coupled parameters between domains, and is trained with batch normalization after each layer. The network minimizes cross-entropy loss weighted by $(1-\alpha)$ and $\alpha$ for source and target samples, plus $\beta$ times the MMD distance across all layers. The parameter $\beta$ is chosen inversely proportional to $\numL$ to prevent the MMD term from dominating. Training is conducted with SGD (learning rate 0.001, momentum 0.9, batch size 512). 
-%Complete implementation details and hyperparameter values are provided in \cref{ssec_exp_dan_detailed}.
-} \cref{fig_mmd_results_L} presents the sample complexity with respect to network depth: the left panels show the decrease in target accuracy as $\numL$ increases for different $\Ms$ and $\Ns$ values, while the right panels plot the minimum sample sizes needed to achieve reference accuracy levels, with fitted quadratic polynomials confirming $\Ms, \Ns=O(\numL^2)$. \cref{fig_mmd_results_d} demonstrates analogous quadratic growth $\Ms=O(\dcom^2)$ with respect to the width parameter $\dcom$, which scales the width of all MMD layers. These results are consistent with the predictions of \cref{thm_main_result_da_mmd}.
 
-\cref{fig_mmd_results_alpha} validates the theoretical prediction for the optimal weight parameter. The target accuracy exhibits a non-monotonic variation with $\alpha$, and the optimal value $\alpha_{opt}$, identified via polynomial fitting for each $\Mt$, scales as $\alpha_{opt}=O(\sqrt{\Mt})$, in agreement with \cref{thm_main_result_da_mmd}.
+We adopt the architecture from \cite{LongCWJ15}, building on our previous study \cite{KaracaAAAAUV23}.\footnote{The network begins with convolutional layers followed by fully connected MMD layers with coupled parameters between domains and equal widths. Batch normalization is applied after each layer. We use the PyTorch implementation in \cite{mmd_code_pytorch}.} The network minimizes
+%
+\begin{equation} 
+ \frac{1-\alpha}{\Ms} \sum_{i=1}^{\Ms}  \loss( \h \circ f(\xis), \yis )  
++ \frac{\alpha}{\Mt} \sum_{i=1}^{\Mt} \loss( \h \circ f(\xjt),  \yjt  ) 
+ +  \beta \sum_{\lay=1}^{\numL-1}  (\hD^\lay)^2 (f^l, f^l)
+\end{equation} 
+%
+where $\loss(\cdot, \cdot)$ is the cross-entropy loss and $\fs=\ft=f$, $\fsl=\ftl=f^l$.
+
+
+
+
+In \cref{fig_mmd_results_L}, we study the sample complexity with respect to network depth $\numL$. \cref{fig_mmd-layer-Ms-linefit,fig_mmd-layer-Ns-linefit} show the decrease in target accuracy as $\numL$ increases for different $\Ms$ and $\Ns$ values. For several reference accuracy levels, we identify the smallest $\Ms$ and $\Ns$ values ensuring each target accuracy as $\numL$ grows,
+% \footnote{In cases where obtaining the exact value of $\numL$ exceeded our computational resources, we resorted to linear extrapolation of the curves in \cref{fig_mmd-layer-Ms-linefit,fig_mmd-layer-Ns-linefit} to approximately infer the corresponding $\numL$ value.} 
+which are plotted in \cref{fig_mmd-layer-Ms-quadprog,fig_mmd-layer-Ns-quadprog}. The fitted quadratic polynomials confirm the prediction of \cref{thm_main_result_da_mmd} that sample complexities grow at rates $\Ms=O(\numL^2)$ and $\Ns=O(\numL^2)$. \cref{fig_mmd_results_d} demonstrates analogous quadratic growth $\Ms=O(\dcom^2)$ with respect to the width parameter $\dcom$, which scales the width of all MMD layers, consistently with \cref{thm_main_result_da_mmd}.
+
+
+\cref{fig_mmd_results_alpha} validates the prediction of \cref{thm_main_result_da_mmd} for the optimal weight parameter. The target accuracy in \cref{fig_mmd-optalpha_quadfit_Ms234} exhibits a non-monotonic variation with $\alpha$ as expected. The optimal value $\alpha_{opt}$, identified via polynomial fitting for each $\Mt$, is plotted in \cref{fig_mmd-optalpha-asqrtx_fit_den_Mss}. The experimental data is consistent with the fitted $O(\sqrt{\Mt})$ curves, supporting the theoretical scaling $\alpha_{opt}=O(\sqrt{\Mt})$.
 
 
 \subsubsection{Adversarial domain adaptation networks}
 \label{exp_adv_da}
 
-We adopt the domain-adversarial architecture from \cite{GaninUAGLLML16}, adapted for our semi-supervised setting.\footnote{The feature extractor is trained adversarially against a domain discriminator using the objective in \cref{ssec_exp_dan_detailed}, with negative log likelihood for both classification and domain discrimination losses, and $\fs=\ft=f$. The original implementation \cite{fungtion_DANN_py3} was modified to (i) support labeled target samples in the classification loss, and (ii) systematically scale the network capacity via $\numL$ and $\dcom$. When studying $\Ms$, the feature extractor and label predictor depths are set equal as $\numL$; for $\Ns$, the feature extractor and domain discriminator depths are equated. The width parameter $\dcom$ scales both convolutional channels and fully connected layer widths proportionally. Training uses Adam (learning rate 0.001, batch size 128, 100 epochs).
-% Complete details in \cref{ssec_exp_dan_detailed}
-}
+We adopt the domain-adversarial architecture from \cite{GaninUAGLLML16}, adapted for our semi-supervised setting.
+% \footnote{We use the PyTorch implementation in \cite{fungtion_DANN_py3}, modified to support semi-supervised domain adaptation.} 
+The network minimizes
 
-Figures \ref{fig_adv_results_L}-\ref{fig_adv_results_d} present the sample complexity analysis. The results confirm \cref{thm_main_result_dann}: required sample sizes grow quadratically as $\Ms, \Ns=O(\numL^2)$ and $\Ms, \Ns = O(\dcom^2)$ with respect to network depth and width. \cref{fig_adv_results_alpha} further validates that the optimal weight parameter scales as $\alpha_{opt}=O(\sqrt{\Mt})$, consistently across different $\Ms$ values.
-
-\begin{figure}[t]
-  \begin{center}
-       \subfloat[]
-         {\label{fig:toy_error_Mt}\includegraphics[width = 0.4\textwidth]{figures/toy_error_Mt_alpha.pdf}}
-       \subfloat[]
-         {\label{fig:toy_error_tau}\includegraphics[width = 0.4\textwidth]{figures/toy_error_tau_alpha.pdf}} \\
-       \subfloat[]
-         {\label{fig:mit_error_Mt}\includegraphics[width = 0.4\textwidth]{figures/mit_error_Mt.pdf}}
-       \subfloat[]
-         {\label{fig:mit_error_Ms}\includegraphics[width = 0.4\textwidth]{figures/mit_error_Ms.pdf}}
-   \end{center}
-   \caption{Variation of the target error on synthetical data with (a) Number of labeled target samples, and (b) Distribution distance after transformation. Variation of the target error on MIT-CBCL face data with (c) Number of labeled target samples, and (d) Number of labeled source samples. Solid lines indicate experimental data and dashed lines represent theoretical rates of variation.}
-   \label{fig:combined_error}
-\end{figure}
-
-% \begin{figure}[t]
-%   \begin{center}
-%        \subfloat[]
-%          {\label{fig:toy_error_Mt}\includegraphics[width = 0.4\textwidth]{figures/toy_error_Mt_alpha.pdf}}
-%        \subfloat[]
-%          {\label{fig:toy_error_tau}\includegraphics[width = 0.4\textwidth]{figures/toy_error_tau_alpha.pdf}}
-%    \end{center}
-%    \caption{Variation of the target error on synthetical data with (a) Number of labeled target samples, (b) Distribution distance after transformation. Solid lines indicate experimental data and dashed lines represent theoretical rates of variation.}
-%    \label{fig:toy_error}
-% \end{figure}
+\begin{equation*} 
+\begin{split}
+&  \frac{1-\alpha}{\Ms} \sum_{i=1}^{\Ms}  \loss( \h \circ f(\xis), \yis )  
++ \frac{\alpha}{\Mt} \sum_{i=1}^{\Mt} \loss( \h \circ f(\xjt),  \yjt  ) \\
+& - 
+\frac{\beta}{N_s + N_t}
+\left(
+ \sum_{i=1}^{\Ns}  \loss_\dom( \ddan \circ f(\xis), \ydoms_i )
+ +
+  \sum_{j=1}^{\Nt} \loss_\dom( \ddan \circ f(\xjt), \ydomt_j  ) 
+  \right)
+  \end{split}
+\end{equation*} 
+where $\loss$ and $\loss_\dom$ are the negative log likelihood functions and $\fs=\ft=f$.
 
 
-% \begin{figure}[t]
-%   \centering
-%   \centerline{\includegraphics[width=7.0cm]{figures/face_dataset.pdf}}
-%   \caption{Sample images from the MIT-CBCL face data set for four different subjects, rendered respectively under poses 1, 2, 5, and 9 for various illumination conditions. }
-%   \label{fig:face_dataset}
-% \end{figure}
+The feature extractor consists of convolutional layers, while the label predictor and domain discriminator are fully connected.\footnote{When studying $\Ms$, the feature extractor and label predictor depths are set equal as $\numL$; for $\Ns$, the feature extractor and domain discriminator depths are equated. The width parameter $\dcom$ scales both convolutional channels and fully connected layer widths proportionally. Batch normalization and ReLU layers are included after each layer.}
 
-
-% \begin{figure}[t]
-% \begin{center}
-%      \subfloat[]
-%        {\label{fig:mit_error_Mt}\includegraphics[width = 0.4\textwidth]{figures/mit_error_Mt.pdf}}
-%      \subfloat[]
-%        {\label{fig:mit_error_Ms}\includegraphics[width = 0.4\textwidth]{figures/mit_error_Ms.pdf}}
-%  \end{center}
-%  \caption{Variation of the target error on MIT-CBCL face data with (a) Number of labeled target samples, (b) Number of labeled source samples. Solid lines indicate experimental data and dashed lines represent theoretical rates of variation.}
-%  \label{fig:mit_error}
-% \end{figure}
-
-
-
-% \clearpage
-
-
-%% Ms, Ns vs. L for MMD
-\begin{figure}[t]
-\centering
-\subfloat[]%
-  {\label{fig_mmd-layer-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ms-linefit.pdf}}
-  % \hspace{0.1\textwidth}
-\subfloat[]%
-  {\label{fig_mmd-layer-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ms-quadprog.pdf}}\\
-\subfloat[]%
-  {\label{fig_mmd-layer-Ns-linefit}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ns-linefit.pdf}}
-  % \hspace{0.1\textwidth}
-\subfloat[]%
-  {\label{fig_mmd-layer-Ns-quadprog}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ns-quadprog.pdf}}
-\caption{Sample complexity with respect to depth $\numL$ for MMD-based networks \cite{LongCWJ15}. Left panels show target accuracy variation with $\numL$ at different sample sizes. Right panels show quadratic growth $\Ms, \Ns=O(\numL^2)$.}
-\label{fig_mmd_results_L}
-\end{figure}
-
-%% Ms vs. d for MMD
-\begin{figure}[t!]
-\begin{center}
-     \subfloat[]
-       {\label{fig_mmd-dim-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/mmd-dim-Ms-linefit.pdf}}
-     \subfloat[]
-       {\label{fig_mmd-dim-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/mmd-dim-Ms-quadprog.pdf}}
-%
- \end{center}
- \caption{Sample complexity with respect to width $\dcom$ for MMD-based networks. Quadratic growth $\Ms=O(\dcom^2)$ confirmed.}
- \label{fig_mmd_results_d}
-\end{figure}
-
-
-
-% \clearpage
-
-\begin{figure}[t]
-  \begin{center}
-       \subfloat[]
-         {\label{fig_adv-layer-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ms-linefit.pdf}}
-       \subfloat[]
-         {\label{fig_adv-layer-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ms-quadprog.pdf}}\\
-        \subfloat[]
-         {\label{fig_adv-layer-Ns-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ns-linefit.pdf}}
-       \subfloat[]
-         {\label{fig_adv-layer-Ns-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ns-quadprog.pdf}}
-  \end{center}
-   \caption{Sample complexity with respect to depth $\numL$ for adversarial networks. Left: accuracy vs depth. Right: quadratic growth $\Ms, \Ns=O(\numL^2)$.}
-   \label{fig_adv_results_L}
-\end{figure}
-
-\begin{figure}[t!]
-\begin{center}
-     \subfloat[]
-       {\label{fig_mmd-optalpha_quadfit_Ms234}\includegraphics[width = 0.4\textwidth]{figures/mmd-optalpha-quadfit_Ms234.pdf}}
-     \subfloat[]
-       {\label{fig_mmd-optalpha-asqrtx_fit_den_Mss}\includegraphics[width = 0.4\textwidth]{figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf}}
- \end{center}
- \caption{Optimal weight parameter for MMD-based networks. (a) Target accuracy variation with $\alpha$ shows non-monotonic behavior. (b) Optimal $\alpha_{opt}$ scales as $O(\sqrt{\Mt})$.}
- \label{fig_mmd_results_alpha}
-\end{figure}
-
-
-% \clearpage
-
-\begin{figure}[t]
-\begin{center}
-     \subfloat[]
-       {\label{fig_adv-dcm-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ms-linefit.pdf}}
-     \subfloat[]
-       {\label{fig_adv-dcm-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ms-quadprog.pdf}}\\
-            \subfloat[]
-       {\label{fig_adv-dcm-Ns-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ns-linefit.pdf}}
-     \subfloat[]
-       {\label{fig_adv-dcm-Ns-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ns-quadprog.pdf}}
-\end{center}
- \caption{Sample complexity with respect to width $\dcom$ for adversarial networks. Left: accuracy vs width. Right: quadratic growth $\Ms, \Ns = O(\dcom^2)$.}
- \label{fig_adv_results_d}
-\end{figure}
-
-\begin{figure}[ht]
-\begin{center}
-     \subfloat[]
-       {\label{fig_adv-optalpha_quadfit_Ms240}\includegraphics[width = 0.4\textwidth]{figures/adv-optalpha-quadfit_Ms240.pdf}}
-     \subfloat[]
-       {\label{fig_adv-optalpha-asqrtx_fit_den_Mss.pdf}\includegraphics[width = 0.4\textwidth]{figures/adv-optalpha-asqrtx_fit_den_Mss.pdf}}
- \end{center}
- \caption{Optimal weight for adversarial networks. (a) Accuracy vs $\alpha$. (b) $\alpha_{opt}$ scales as $O(\sqrt{\Mt})$.}
- \label{fig_adv_results_alpha}
-\end{figure}
-
-% \clearpage
+\cref{fig_adv_results_L,fig_adv_results_d} present the sample complexity with respect to network depth $\numL$ and width $\dcom$. Following the same methodology as in \cref{ssec_exp_mmd_dan}, the results confirm the predictions of \cref{thm_main_result_dann}: required sample sizes grow quadratically as $\Ms, \Ns=O(\numL^2)$ and $\Ms, \Ns = O(\dcom^2)$. \cref{fig_adv_results_alpha} further validates that the optimal weight parameter scales as $\alpha_{opt}=O(\sqrt{\Mt})$, consistently across different $\Ms$ values.
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -1233,14 +1176,117 @@ Building on these results, we have then extended our analysis to characterize th
 
 To the best of our knowledge, our study provides the first comprehensive theoretical characterization of the sample complexity of domain-adaptive neural networks. 
 
-% \textbf{Relation to prior work.}\footnote{A detailed discussion is provided in the supplement.} Previous theoretical analyses of domain adaptation have primarily focused on how domain discrepancy affects generalization when learning a classifier in the original source and target domains, without considering domain-aligning transformations \cite{BenDavidBCP06,BenDavidBCKPV10,MansourMR09}. These works establish generalization bounds in terms of VC-dimensions or Rademacher complexities of hypothesis classes, combined with various distribution divergence measures. While theoretically insightful, many of these divergence measures are difficult to estimate in practice. In contrast, our results in Theorems \ref{thm:main_result_mmd}-\ref{thm_main_result_dann} provide practical generalization bounds based on empirical losses and distribution distances computed directly on aligned training data. Research on neural network sample complexity in single-domain settings \cite{NeyshaburTS15,WeiM19} has shown dependencies on network size; our work extends these insights to the domain adaptation setting, demonstrating quadratic scaling with both network depth and width. 
+\section*{Acknowledgement}
+
+The authors would like to thank \"Ozlem Akg\"ul, \"Omer Faruk Arslan, Atilla Can Aydemir, Firdevs Su Ayd{\i}n and Enes Ata \"Unsal for their help with the experiments in \cref{ssec_exp_mmd_dan}. 
 
 
-% \section*{Acknowledgement}
+%%% FIGURES %%%
 
-% The authors would like to thank \"Ozlem Akg\"ul, \"Omer Faruk Arslan, Atilla Can Aydemir, Firdevs Su Ayd{\i}n and Enes Ata \"Unsal for their help with the experiments in \cref{ssec_exp_mmd_dan}. 
+
+%% Ms, Ns vs. L for MMD
+\begin{figure}[t!]
+  \centering
+    \subfloat[]%
+      {\label{fig_mmd-layer-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ms-linefit.pdf}}
+      \hspace{0.1\textwidth}
+    \subfloat[]%
+      {\label{fig_mmd-layer-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ms-quadprog.pdf}}\\ \vspace{-0.45cm}
+    \subfloat[]%
+      {\label{fig_mmd-layer-Ns-linefit}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ns-linefit.pdf}}
+      \hspace{0.1\textwidth}
+    \subfloat[]%
+      {\label{fig_mmd-layer-Ns-quadprog}\includegraphics[width = 0.4\textwidth]{figures/mmd-layer-Ns-quadprog.pdf}}
+  \vspace{-0.3cm}
+  \caption{Sample complexity with respect to depth $\numL$ for MMD-based networks \cite{LongCWJ15}. Left panels show target accuracy variation with $\numL$ at different sample sizes. Right panels show quadratic growth $\Ms, \Ns=O(\numL^2)$.}
+  \label{fig_mmd_results_L}
+\end{figure}
+  
+%% Ms vs. d for MMD
+\begin{figure}[t!]
+  \begin{center}
+    \subfloat[]
+      {\label{fig_mmd-dim-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/mmd-dim-Ms-linefit.pdf}}
+      \hspace{0.1\textwidth}
+    \subfloat[]
+      {\label{fig_mmd-dim-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/mmd-dim-Ms-quadprog.pdf}}
+  %
+  \end{center}
+  % \vspace{-0.3cm}
+  \caption{Sample complexity with respect to width $\dcom$ for MMD-based networks. Quadratic growth $\Ms=O(\dcom^2)$ confirmed.}
+  \label{fig_mmd_results_d}
+\end{figure}
+  
+\clearpage
+
+\begin{figure}[t!]
+  \begin{center}
+    \subfloat[]
+      {\label{fig_mmd-optalpha_quadfit_Ms234}\includegraphics[width = 0.4\textwidth]{figures/mmd-optalpha-quadfit_Ms234.pdf}}
+      \hspace{0.1\textwidth}
+    \subfloat[]
+      {\label{fig_mmd-optalpha-asqrtx_fit_den_Mss}\includegraphics[width = 0.4\textwidth]{figures/mmd-optalpha-asqrtx_fit_den_Mss.pdf}}
+  \end{center}
+  \vspace{-0.3cm}
+  \caption{Optimal weight parameter for MMD-based networks. (a) Target accuracy variation with $\alpha$ shows non-monotonic behavior. (b) Optimal $\alpha_{opt}$ scales as $O(\sqrt{\Mt})$.}
+  \label{fig_mmd_results_alpha}
+\end{figure}
+
+
+\begin{figure}[t!]
+  \begin{center}
+       \subfloat[]
+         {\label{fig_adv-layer-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ms-linefit.pdf}}
+         \hspace{0.1\textwidth}
+       \subfloat[]
+         {\label{fig_adv-layer-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ms-quadprog.pdf}}\\ \vspace{-0.6cm}
+        \subfloat[]
+         {\label{fig_adv-layer-Ns-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ns-linefit.pdf}}
+         \hspace{0.1\textwidth}
+       \subfloat[]
+         {\label{fig_adv-layer-Ns-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-layer-Ns-quadprog.pdf}}
+  \end{center}
+  \vspace{-0.3cm}
+   \caption{Sample complexity with respect to depth $\numL$ for adversarial networks. Left: accuracy vs depth. Right: quadratic growth $\Ms, \Ns=O(\numL^2)$.}
+   \label{fig_adv_results_L}
+\end{figure}
 
 \clearpage
+
+\begin{figure}[t!]
+\begin{center}
+     \subfloat[]
+       {\label{fig_adv-dcm-Ms-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ms-linefit.pdf}}
+       \hspace{0.1\textwidth}
+     \subfloat[]
+       {\label{fig_adv-dcm-Ms-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ms-quadprog.pdf}}\\ \vspace{-0.45cm}
+            \subfloat[]
+       {\label{fig_adv-dcm-Ns-linefit}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ns-linefit.pdf}}
+       \hspace{0.1\textwidth}
+     \subfloat[]
+       {\label{fig_adv-dcm-Ns-quadprog}\includegraphics[width = 0.4\textwidth]{figures/adv-dcm-Ns-quadprog.pdf}}
+\end{center}
+ \vspace{-0.3cm}
+ \caption{Sample complexity with respect to width $\dcom$ for adversarial networks. Left: accuracy vs width. Right: quadratic growth $\Ms, \Ns = O(\dcom^2)$.}
+ \label{fig_adv_results_d}
+\end{figure}
+
+\begin{figure}[t!]
+  \begin{center}
+       \subfloat[]
+         {\label{fig_adv-optalpha_quadfit_Ms240}\includegraphics[width = 0.4\textwidth]{figures/adv-optalpha-quadfit_Ms240.pdf}}
+         \hspace{0.1\textwidth}
+       \subfloat[]
+         {\label{fig_adv-optalpha-asqrtx_fit_den_Mss.pdf}\includegraphics[width = 0.4\textwidth]{figures/adv-optalpha-asqrtx_fit_den_Mss.pdf}}
+   \end{center}
+   \vspace{-0.3cm}
+   \caption{Optimal weight for adversarial networks. (a) Accuracy vs $\alpha$. (b) $\alpha_{opt}$ scales as $O(\sqrt{\Mt})$.}
+   \label{fig_adv_results_alpha}
+  \end{figure}
+
+
+\clearpage
+
 
 \bibliographystyle{siamplain}
 \bibliography{refs}

@@ -34,7 +34,7 @@ No extra VS Code setup is required — open the folder in VS Code and compile `a
 
 ## Overleaf
 
-The Overleaf project is linked to the GitHub repository **[huseyin-karaca/semisup-da-simods](https://github.com/huseyin-karaca/semisup-da-simods)** and syncs from it.
+The [Overleaf project](https://www.overleaf.com/5828151487npbrscqrknjt#a4c8bb) is linked to the GitHub repository **[huseyin-karaca/semisup-da-simods](https://github.com/huseyin-karaca/semisup-da-simods)** and syncs from it.
 
 **Set the main document** to `article.tex` in Overleaf's Menu → Main document.
 

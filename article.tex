@@ -39,6 +39,55 @@
 %</award-group>
 %</funding-group>
 
+
+
+%%% Hüseyin Automated Response Letter Macros
+
+% ------------------------------------------------
+% 1. Packages
+% ------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{etoolbox} % Döngü (loop) işlemleri için şart
+\usepackage{clipboard}
+
+% ------------------------------------------------
+% 2. Clipboard Kurulumu
+% ------------------------------------------------
+\newclipboard{article} % manuscript.cpy dosyasını oluşturur
+
+% ------------------------------------------------
+% 3. The "Smart" Revision Macro (Tekrar Önleyici)
+% ------------------------------------------------
+% Kullanım: \paperrevision{1.1} veya \paperrevision{1.2a, 1.2b} veya \paperrevision{2.1, 3.4}
+\newcommand{\paperrevision}[2]{%
+    % A. GÖRSEL KISIM:
+    % Metni PDF'e sadece 1 kez basar.
+    \textcolor{blue}{#2}%
+    %
+    % B. MANTIKSAL KISIM (Arka Plan):
+    % ID listesindeki her eleman için döner, veriyi hafızaya alır.
+    \renewcommand{\do}[1]{%
+        \label{rev:##1}% Sayfa/Section referansı için etiket
+        % "Phantom Box" Tekniği:
+        % Kopyalama işlemini görünmez bir kutunun içinde yapıyoruz.
+        % Böylece \Copy komutu ekrana tekrar çıktı vermez.
+        \setbox0=\vbox{%
+            \Copy{text:##1}{%
+                \textcolor{blue}{#2 (Reviewers #1)}%
+            }%
+        }%
+    }%
+    \docsvlist{#1}% Döngüyü çalıştır
+}
+
+%%% Hüseyin Automated Response Letter Macros End
+
+
+
+
+
 \begin{document}
 
 \maketitle

@@ -10,6 +10,7 @@
 | `article.tex` | Main manuscript |
 | `supplement.tex` | Supplementary material (proofs) |
 | `shared.tex` | Shared preamble (title, authors, common packages/macros, math symbols) included by both documents |
+| `response.tex` | Reviewer comments from previous submission and list of corresponding revisions |
 | `refs.bib` | Bibliography |
 | `siamonline250211.cls` | SIAM document class |
 | `siamplain.bst` | SIAM bibliography style |
